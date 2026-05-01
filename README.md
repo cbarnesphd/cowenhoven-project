@@ -52,7 +52,7 @@ A complete bibliography is maintained in the project's public Zotero library.
 
 ## Citing this project
 
-Barnes, Christopher. *The Cowenhoven Project: Recovering Black Lives from Enslaver Archives in New York and New Jersey.* https://cowenhoven.org
+Barnes, Christopher A. *The Cowenhoven Project: Recovering Black Lives from Enslaver Archives in New York and New Jersey.* https://cowenhoven.org
 
 ---
 
