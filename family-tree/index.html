@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Cowenhoven Project — Live Family Tree</title>
+<style>
+  :root {
+    --brick: #945446;
+    --brick-shadow: #8D5341;
+    --mortar: #B2AA99;
+    --cool-trim: #A8A29B;
+    --door-green: #4F7451;
+    --slate-blue: #738C8F;
+    --paper: #FAF7F2;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #6B5C50;
+
+    /* residence palette */
+    --res-brooklyn: #945446;
+    --res-flatlands: #A0594B;
+    --res-new_utrecht: #8D5341;
+    --res-manhattan: #B2AA99;
+    --res-monmouth: #4F7451;
+    --res-somerset: #738C8F;
+    --res-netherlands: #6B8089;
+    --res-delaware: #C2A578;
+    --res-penns_neck: #5A8460;
+    --res-other: #A8A29B;
+    --res-unknown: #C9C2B5;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
+  header { padding: 22px 28px 14px; border-bottom: 1px solid #E5DED2; }
+  header h1 { margin: 0 0 4px; font-size: 22px; }
+  header p.subtitle { margin: 0; font-size: 13px; font-style: italic; color: var(--ink-soft); }
+  header p.meta { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-mute); font-family: "Courier New", monospace; }
+
+  #toolbar { padding: 10px 28px; border-bottom: 1px solid #E5DED2; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 12px; }
+  #toolbar input[type="search"] { padding: 5px 8px; border: 1px solid var(--cool-trim); border-radius: 4px; min-width: 220px; font: 12px Georgia, serif; }
+  #toolbar button { padding: 5px 11px; border: 1px solid var(--cool-trim); border-radius: 4px; background: #fff; cursor: pointer; font: 12px Georgia, serif; color: var(--ink); }
+  #toolbar button:hover { background: #F2EBDD; }
+  #toolbar button.active { background: var(--brick); color: #fff; border-color: var(--brick-shadow); }
+  #toolbar .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; align-items: center; font-size: 11px; }
+  #toolbar .legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -2px; margin-right: 3px; }
+  #toolbar .legend .badge-demo { display: inline-block; padding: 1px 5px; background: var(--brick); color: #fff; font: 700 9.5px "Courier New", monospace; border-radius: 6px; vertical-align: 1px; margin-right: 3px; }
+
+  #stage { display: grid; grid-template-columns: 1fr 360px; height: calc(100vh - 158px); }
+  #tree-wrap { position: relative; overflow: hidden; background: var(--paper); }
+  #tree-svg { width: 100%; height: 100%; cursor: grab; }
+  #tree-svg:active { cursor: grabbing; }
+  #side { border-left: 1px solid #E5DED2; padding: 18px 20px; overflow-y: auto; background: #fff; }
+  #side h2 { margin: 0 0 4px; font-size: 16px; }
+  #side .subline { color: var(--ink-mute); font-size: 11.5px; font-family: "Courier New", monospace; margin-bottom: 12px; }
+  #side dl { margin: 0; font-size: 12.5px; }
+  #side dt { font-weight: 600; color: var(--ink-mute); margin-top: 9px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  #side dd { margin: 2px 0 0; line-height: 1.4; }
+  #side .empty-hint { color: var(--ink-mute); font-style: italic; font-size: 12px; }
+  #side a { color: var(--brick); }
+  #side .e-tag { display: inline-block; padding: 2px 7px; border-radius: 10px; background: var(--brick); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; margin-left: 6px; vertical-align: 1px; }
+  #side .pid-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #F2EBDD; color: var(--ink-mute); font: 10px "Courier New", monospace; margin-right: 4px; }
+  #side .ep-section { margin: 14px 0 6px; padding: 10px 12px; background: #FFF6E5; border-left: 3px solid var(--brick); border-radius: 4px; }
+  #side .ep-section h3 { margin: 0 0 8px; font-size: 13px; color: var(--brick-shadow); }
+  #side .ep-list { margin: 0; padding: 0; list-style: none; font-size: 12.5px; }
+  #side .ep-list li { padding: 4px 0; border-bottom: 1px dotted #E5DED2; }
+  #side .ep-list li:last-child { border-bottom: 0; }
+  #side .ep-list .ep-name { font-weight: 600; color: var(--ink); }
+  #side .ep-list .ep-name a { color: var(--brick); text-decoration: none; }
+  #side .ep-list .ep-name a:hover { text-decoration: underline; }
+  #side .ep-list .ep-meta { font-size: 11px; color: var(--ink-soft); display: block; margin-top: 1px; }
+  #side .ep-list .ep-pid { font: 9.5px "Courier New", monospace; color: var(--ink-mute); margin-left: 4px; }
+  #side .ep-list .ep-tag { display: inline-block; padding: 1px 5px; border-radius: 8px; font-size: 9.5px; margin-left: 4px; vertical-align: 1px; }
+  #side .ep-list .ep-tag-sub { background: #E8E0D2; color: var(--ink-mute); }
+  #side .ep-list .ep-tag-passed { background: #E8E0D2; color: var(--ink-mute); }
+  #side .ug-list { margin: 6px 0 0; padding: 0; list-style: none; font-size: 12px; }
+  #side .ug-list li { padding: 3px 0; color: var(--ink-soft); }
+  #side .ug-list .ug-num { font-weight: 700; color: var(--brick); }
+  #side .ep-empty { font-style: italic; color: var(--ink-mute); font-size: 11.5px; }
+  /* count badge on tree node */
+  .ens-badge { font: 700 9.5px "Courier New", monospace; fill: #fff; pointer-events: none; }
+  .ens-badge-bg { fill: var(--brick); }
+  #unlinked { margin-top: 22px; padding-top: 14px; border-top: 1px dashed #E5DED2; }
+  #unlinked h3 { margin: 0 0 6px; font-size: 13px; color: var(--ink-mute); }
+  #unlinked ul { margin: 0; padding: 0; list-style: none; font-size: 12px; }
+  #unlinked li { padding: 3px 0; cursor: pointer; }
+  #unlinked li:hover { color: var(--brick); }
+  #unlinked li .pid { font: 9.5px "Courier New", monospace; color: var(--ink-mute); margin-right: 4px; }
+
+  /* SVG node styling */
+  .node .descendant-circle { stroke: #fff; stroke-width: 1.5; cursor: pointer; }
+  .node.enslaver .descendant-circle { stroke: #1a1a1a; stroke-width: 2; }
+  .node.has-children .descendant-circle { stroke-width: 2.2; }
+  .node.collapsed .descendant-circle { fill-opacity: 0.85; }
+  .node.search-hit .descendant-circle { stroke: #C8A437; stroke-width: 3.2; }
+  .node.selected .descendant-circle { stroke: var(--brick-shadow); stroke-width: 3; }
+  .node .spouse-circle { stroke: var(--ink-mute); stroke-width: 1.5; cursor: pointer; }
+  .node .spouse-circle.enslaver { stroke: #1a1a1a; stroke-width: 2; }
+  .node .marriage-line { stroke: var(--ink-mute); stroke-width: 1.4; }
+  .node text { font: 11px Georgia, serif; fill: var(--ink); pointer-events: none; }
+  .node text.spouse-name { font-style: italic; fill: var(--ink-soft); }
+
+  .link { fill: none; stroke: var(--mortar); stroke-width: 1.2; }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Cowenhoven Project — Live Family Tree</h1>
+  <p class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</p>
+  <p class="meta" id="meta">loading…</p>
+</header>
+
+<div id="toolbar">
+  <input type="search" id="search" placeholder="Search by name or PID…" autocomplete="off" />
+  <button id="btn-expand">Expand all</button>
+  <button id="btn-collapse">Collapse to G3</button>
+  <button id="btn-fit">Fit to screen</button>
+  <button id="btn-only-enslavers">Only enslavers</button>
+  <span class="legend" id="legend"></span>
+</div>
+
+<div id="stage">
+  <div id="tree-wrap">
+    <svg id="tree-svg"></svg>
+  </div>
+  <aside id="side">
+    <div id="card">
+      <p class="empty-hint">Click any person to see their details. Click a circle with a thick edge to expand or collapse their descendants.</p>
+    </div>
+    <div id="unlinked"></div>
+  </aside>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- family-tree-data.js sets window.FAMILY_TREE_DATA. Used for local file:// viewing where fetch() is CORS-blocked. -->
+<script src="family-tree-data.js"></script>
+<script>
+(async function () {
+  const RES_LABELS = {
+    brooklyn: "Brooklyn / Kings",
+    flatlands: "Flatlands",
+    new_utrecht: "New Utrecht",
+    manhattan: "Manhattan",
+    monmouth: "Monmouth NJ",
+    somerset: "Somerset NJ",
+    netherlands: "Netherlands",
+    delaware: "Delaware",
+    penns_neck: "Penn's Neck NJ",
+    other: "Other",
+    unknown: "Unknown",
+  };
+
+  // populate legend
+  const legendEl = document.getElementById("legend");
+  for (const [bucket, label] of Object.entries(RES_LABELS)) {
+    const span = document.createElement("span");
+    span.innerHTML = `<i class="swatch" style="background: var(--res-${bucket})"></i>${label}`;
+    legendEl.appendChild(span);
+  }
+  // count-badge legend hint
+  const badgeHint = document.createElement("span");
+  badgeHint.innerHTML = `<span class="badge-demo">N</span>= matched enslaved persons`;
+  legendEl.appendChild(badgeHint);
+
+  // --- load data (prefer the inline JS-wrapped data, fall back to fetch for HTTP-served deploys)
+  let payload = window.FAMILY_TREE_DATA;
+  if (!payload) {
+    try {
+      const resp = await fetch("family-tree.json");
+      if (!resp.ok) throw new Error(resp.statusText);
+      payload = await resp.json();
+    } catch (err) {
+      document.getElementById("meta").textContent =
+        "ERROR loading family-tree data — neither family-tree-data.js nor family-tree.json could be loaded. " + err;
+      return;
+    }
+  }
+
+  const people = payload.people;
+  const byId = Object.fromEntries(people.map(p => [p.id, p]));
+  document.getElementById("meta").textContent = `Generated ${payload.metadata.generated_at} from ${payload.metadata.source_workbook}  ·  ${payload.metadata.node_count} people  ·  ${payload.metadata.family_rows} FAMILY rows + ${payload.metadata.enslaver_rows} ENSLAVER rows`;
+
+  // --- build the hierarchy from Wolphert (cp_fam_001), greedy/visited
+  const visited = new Set();
+
+  function buildNode(id) {
+    // Only blood descendants become tree-hierarchy nodes. Spouses are attached
+    // to their descendant partner as a `.spouse` property and rendered as a
+    // paired circle next to the descendant, not as a separate tree leaf.
+    if (visited.has(id)) return null;
+    visited.add(id);
+    const p = byId[id];
+    if (!p) return null;
+    const n = {
+      id: p.id,
+      name: p.name || "(unnamed)",
+      data: p,
+      spouse: null,        // person record of the paired spouse, if any
+      children: [],
+    };
+    // Pick the first spouse in our data (descendants of in-laws aren't traversed).
+    for (const spId of (p.spouse_ids || [])) {
+      if (!visited.has(spId) && byId[spId]) {
+        n.spouse = byId[spId];
+        visited.add(spId);
+        break;
+      }
+    }
+    // Children: union of descendant's child_ids + spouse's child_ids,
+    // de-duplicated by the shared `visited` set.
+    for (const ch of (p.child_ids || [])) {
+      const child = buildNode(ch);
+      if (child) n.children.push(child);
+    }
+    if (n.spouse) {
+      for (const ch of (n.spouse.child_ids || [])) {
+        const child = buildNode(ch);
+        if (child) n.children.push(child);
+      }
+    }
+    return n;
+  }
+
+  const rootData = buildNode("cp_fam_001");
+  if (!rootData) {
+    document.getElementById("meta").textContent += "  · ERROR: cp_fam_001 (Wolphert) not found in JSON.";
+    return;
+  }
+  // unlinked = anyone the recursive walk didn't reach
+  const unlinked = people.filter(p => !visited.has(p.id));
+
+  // --- render unlinked sidebar
+  const unlinkedEl = document.getElementById("unlinked");
+  if (unlinked.length) {
+    const groups = {};
+    for (const p of unlinked) {
+      const g = p.is_enslaver ? "Standalone enslavers" : "Other unlinked";
+      (groups[g] = groups[g] || []).push(p);
+    }
+    let html = `<h3>Unlinked from main descent (${unlinked.length})</h3>`;
+    for (const [g, list] of Object.entries(groups)) {
+      list.sort((a, b) => (a.birth_year || 9999) - (b.birth_year || 9999));
+      html += `<details ${g.includes("enslavers") ? "open" : ""}><summary>${g} (${list.length})</summary><ul>`;
+      for (const p of list) {
+        html += `<li data-id="${p.id}"><span class="pid">${p.id}</span>${escapeHtml(p.name || "(unnamed)")}${p.birth_year || p.death_year ? ` <span class="pid">${p.birth_year || "?"}–${p.death_year || "?"}</span>` : ""}</li>`;
+      }
+      html += "</ul></details>";
+    }
+    unlinkedEl.innerHTML = html;
+    unlinkedEl.querySelectorAll("li[data-id]").forEach(li => {
+      li.addEventListener("click", () => showCard(byId[li.dataset.id]));
+    });
+  }
+
+  // --- D3 tree
+  const svg = d3.select("#tree-svg");
+  const wrap = document.getElementById("tree-wrap");
+  const W = wrap.clientWidth, H = wrap.clientHeight;
+  const g = svg.append("g");
+  const linkLayer = g.append("g").attr("class", "links");
+  const nodeLayer = g.append("g").attr("class", "nodes");
+
+  const zoom = d3.zoom()
+    .scaleExtent([0.15, 3])
+    .on("zoom", (e) => g.attr("transform", e.transform));
+  svg.call(zoom);
+
+  // Vertical orientation: root at top, generations stacked downward.
+  // Wider sibling spacing because each node may render as a husband+wife pair.
+  const tree = d3.tree().nodeSize([200, 120]);
+  const SPOUSE_OFFSET_X = 32;   // horizontal gap from descendant circle to spouse circle
+  const PAIR_MID_X = SPOUSE_OFFSET_X / 2;  // midpoint x for label centering + child link origin
+
+  // collapse helpers
+  function collapse(d) {
+    if (d.children) {
+      d._children = d.children;
+      d._children.forEach(collapse);
+      d.children = null;
+    }
+  }
+  function collapseToDepth(d, depth) {
+    if (d.depth >= depth) {
+      collapse(d);
+    } else if (d.children) {
+      d.children.forEach(c => collapseToDepth(c, depth));
+    } else if (d._children) {
+      d.children = d._children;
+      d._children = null;
+      d.children.forEach(c => collapseToDepth(c, depth));
+    }
+  }
+
+  let root = d3.hierarchy(rootData);
+  root.x0 = 0;
+  root.y0 = 0;
+  // start collapsed to depth 3 so the page isn't overwhelming
+  if (root.children) root.children.forEach(c => collapseToDepth(c, 3));
+
+  let onlyEnslaverFilter = false;
+
+  function update(source) {
+    const treeData = tree(root);
+    const nodes = treeData.descendants();
+    let links = treeData.descendants().slice(1);
+
+    // optional: filter to only enslavers (still show ancestors of enslavers)
+    if (onlyEnslaverFilter) {
+      const keep = new Set();
+      nodes.forEach(d => {
+        if (d.data.data.is_enslaver) {
+          let cur = d;
+          while (cur) { keep.add(cur); cur = cur.parent; }
+        }
+      });
+      const filteredNodes = nodes.filter(d => keep.has(d));
+      const filteredLinks = links.filter(d => keep.has(d) && keep.has(d.parent));
+      renderNodes(filteredNodes, source);
+      renderLinks(filteredLinks, source);
+    } else {
+      renderNodes(nodes, source);
+      renderLinks(links, source);
+    }
+
+    nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+  }
+
+  function renderNodes(nodes, source) {
+    const node = nodeLayer.selectAll("g.node").data(nodes, d => d.data.id);
+
+    const nodeEnter = node.enter().append("g")
+      .attr("class", d => {
+        const cls = ["node"];
+        if (d.data.data.is_enslaver) cls.push("enslaver");
+        if (d._children) cls.push("collapsed", "has-children");
+        else if (d.children) cls.push("has-children");
+        return cls.join(" ");
+      })
+      .attr("data-id", d => d.data.id)
+      .attr("transform", d => `translate(${source.x0},${source.y0})`);
+
+    // Marriage line + spouse circle (drawn first so descendant circle sits on top of line ends)
+    nodeEnter.filter(d => d.data.spouse).each(function (d) {
+      const g = d3.select(this);
+      g.append("line").attr("class", "marriage-line")
+        .attr("x1", 8).attr("y1", 0)
+        .attr("x2", SPOUSE_OFFSET_X - 8).attr("y2", 0);
+      g.append("circle")
+        .attr("class", "spouse-circle" + (d.data.spouse.is_enslaver ? " enslaver" : ""))
+        .attr("cx", SPOUSE_OFFSET_X).attr("cy", 0).attr("r", 7)
+        .style("fill", `var(--res-${d.data.spouse.residence_bucket || "unknown"})`)
+        .on("click", (event) => {
+          event.stopPropagation();
+          showCard(d.data.spouse);
+          nodeLayer.selectAll("g.node").classed("selected", false);
+          d3.select(this.parentNode).classed("selected", true);
+        });
+    });
+
+    // Descendant circle (always)
+    nodeEnter.append("circle")
+      .attr("class", "descendant-circle")
+      .attr("r", 8)
+      .style("fill", d => `var(--res-${d.data.data.residence_bucket || "unknown"})`)
+      .on("click", (event, d) => {
+        event.stopPropagation();
+        if (d.children || d._children) {
+          if (d.children) { d._children = d.children; d.children = null; }
+          else { d.children = d._children; d._children = null; }
+          update(d);
+        }
+        showCard(d.data.data);
+        nodeLayer.selectAll("g.node").classed("selected", false);
+        d3.select(event.currentTarget.parentNode).classed("selected", true);
+      });
+
+    // Count badge on enslaver descendant circles (anchored upper-right of descendant)
+    nodeEnter.filter(d => (d.data.data.enslaved_total_count || 0) > 0)
+      .append("g").attr("class", "ens-badge-group")
+      .attr("transform", "translate(8,-10)")
+      .call(g => {
+        g.append("rect").attr("class", "ens-badge-bg")
+          .attr("x", -1).attr("y", -7)
+          .attr("width", d => (String(d.data.data.enslaved_total_count).length * 6) + 6)
+          .attr("height", 12).attr("rx", 6);
+        g.append("text").attr("class", "ens-badge")
+          .attr("x", d => ((String(d.data.data.enslaved_total_count).length * 6) + 6) / 2 - 1)
+          .attr("y", 2.5).attr("text-anchor", "middle")
+          .text(d => d.data.data.enslaved_total_count);
+      });
+    // Count badge on spouse circle when she's an enslaver in her own right
+    nodeEnter.filter(d => d.data.spouse && (d.data.spouse.enslaved_total_count || 0) > 0)
+      .append("g").attr("class", "ens-badge-group")
+      .attr("transform", `translate(${SPOUSE_OFFSET_X + 8},-10)`)
+      .call(g => {
+        g.append("rect").attr("class", "ens-badge-bg")
+          .attr("x", -1).attr("y", -7)
+          .attr("width", d => (String(d.data.spouse.enslaved_total_count).length * 6) + 6)
+          .attr("height", 12).attr("rx", 6);
+        g.append("text").attr("class", "ens-badge")
+          .attr("x", d => ((String(d.data.spouse.enslaved_total_count).length * 6) + 6) / 2 - 1)
+          .attr("y", 2.5).attr("text-anchor", "middle")
+          .text(d => d.data.spouse.enslaved_total_count);
+      });
+
+    // Label — centered under the pair midpoint (or under the single circle if no spouse)
+    nodeEnter.append("text")
+      .attr("x", d => d.data.spouse ? PAIR_MID_X : 0)
+      .attr("y", 22)
+      .attr("text-anchor", "middle")
+      .text(d => labelFor(d.data));
+
+    const nodeUpdate = nodeEnter.merge(node);
+    nodeUpdate.transition().duration(400)
+      .attr("transform", d => `translate(${d.x},${d.y})`)
+      .attr("class", d => {
+        const cls = ["node"];
+        if (d.data.data.is_enslaver) cls.push("enslaver");
+        if (d._children) cls.push("collapsed", "has-children");
+        else if (d.children) cls.push("has-children");
+        return cls.join(" ");
+      });
+    nodeUpdate.select("text").text(d => labelFor(d.data));
+
+    node.exit().transition().duration(400)
+      .attr("transform", d => `translate(${source.x},${source.y})`)
+      .remove();
+  }
+
+  function renderLinks(links, source) {
+    const link = linkLayer.selectAll("path.link").data(links, d => d.data.id);
+
+    // Vertical S-curve: parent at (s.x, s.y), child at (t.x, t.y), curve through midpoint.
+    function diag(s, t) {
+      return `M${s.x},${s.y}C${s.x},${(s.y + t.y) / 2} ${t.x},${(s.y + t.y) / 2} ${t.x},${t.y}`;
+    }
+
+    const linkEnter = link.enter().insert("path", "g")
+      .attr("class", "link")
+      .attr("d", d => diag({x: source.x0, y: source.y0}, {x: source.x0, y: source.y0}));
+
+    // When the parent has a spouse, drop the line from the midpoint between
+    // the two circles rather than from the descendant circle's center.
+    function parentOriginX(d) {
+      return d.parent.x + (d.parent.data.spouse ? PAIR_MID_X : 0);
+    }
+
+    linkEnter.merge(link).transition().duration(400)
+      .attr("d", d => diag({x: parentOriginX(d), y: d.parent.y}, {x: d.x, y: d.y}));
+
+    link.exit().transition().duration(400)
+      .attr("d", d => diag({x: source.x, y: source.y}, {x: source.x, y: source.y}))
+      .remove();
+  }
+
+  function firstName(p) {
+    return (p && p.name ? p.name : "?").trim().split(/\s+/)[0];
+  }
+  function shortDateSpan(p) {
+    if (!p) return "";
+    const by = p.birth_year || "";
+    const dy = p.death_year ? ("–" + String(p.death_year).slice(-2)) : "";
+    return by ? (by + dy) : "";
+  }
+  function labelFor(node) {
+    // Compact label. For married nodes: "FirstName + SpouseFirst  1639–24 ◆"
+    // For single nodes: "FirstName Surname  1579–62 ◆"
+    const p = node.data;
+    if (node.spouse) {
+      const dates = shortDateSpan(p);
+      const ens = (p.is_enslaver || node.spouse.is_enslaver) ? "  ◆" : "";
+      return `${firstName(p)} + ${firstName(node.spouse)}` + (dates ? "  " + dates : "") + ens;
+    }
+    // unpaired — keep a longer name for clarity
+    const tokens = (p.name || "(?)").trim().split(/\s+/);
+    let nm = tokens[0];
+    if (tokens.length > 1 && (tokens[0] + " " + tokens[1]).length <= 20) nm += " " + tokens[1];
+    const dates = shortDateSpan(p);
+    return nm + (dates ? "  " + dates : "") + (p.is_enslaver ? "  ◆" : "");
+  }
+
+  function fit() {
+    const tw = nodeLayer.node().getBBox();
+    if (!tw.width || !tw.height) return;
+    const pad = 40;
+    const k = Math.min(
+      (W - pad * 2) / tw.width,
+      (H - pad * 2) / tw.height,
+      1
+    );
+    const tx = pad - tw.x * k + (W - tw.width * k - pad * 2) / 2;
+    const ty = pad - tw.y * k + (H - tw.height * k - pad * 2) / 2;
+    svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+  }
+
+  // --- detail card
+  function showCard(p) {
+    const card = document.getElementById("card");
+    if (!p) { card.innerHTML = `<p class="empty-hint">Click a person.</p>`; return; }
+    const pidChips = [];
+    if (p.fam_pid) pidChips.push(`<span class="pid-chip">${p.fam_pid}</span>`);
+    if (p.ens_pid && p.ens_pid !== p.fam_pid) pidChips.push(`<span class="pid-chip">${p.ens_pid}</span>`);
+    const wikitree = p.wikitree_url ? `<a href="${p.wikitree_url}" target="_blank" rel="noopener">${p.wikitree_id || "WikiTree profile"}</a>` : (p.wikitree_id || "");
+    let h = `<h2>${escapeHtml(p.name || "(unnamed)")}${p.is_enslaver ? '<span class="e-tag">ENSLAVER</span>' : ""}</h2>`;
+    h += `<div class="subline">${pidChips.join(" ")}${p.sex ? "  ·  " + escapeHtml(p.sex) : ""}${p.residence_bucket ? "  ·  " + (RES_LABELS[p.residence_bucket] || p.residence_bucket) : ""}</div>`;
+
+    // Enslaved-persons section, surfaced first when present so the project's subjects lead the card.
+    const named = p.enslaved_persons || [];
+    const unnamed = p.unnamed_groups || [];
+    if (p.is_enslaver && (named.length || unnamed.length)) {
+      const total = (p.enslaved_total_count || 0);
+      h += `<div class="ep-section">`;
+      h += `<h3>People enslaved by this person  ·  ${total} ${total === 1 ? "person" : "people"} matched</h3>`;
+      if (named.length) {
+        h += `<ul class="ep-list">`;
+        for (const e of named) {
+          const yr = e.year ? `b. ${e.year}` : "";
+          const meta = [e.role, e.event_type, e.location, e.date_of_record, e.race, e.age].filter(s => s && String(s).trim()).join(" · ");
+          let nameHtml;
+          if (e.profile_url && e.profile_url.startsWith("http")) {
+            nameHtml = `<a href="${escapeHtml(e.profile_url)}" target="_blank" rel="noopener">${escapeHtml(e.name)}</a>`;
+          } else {
+            nameHtml = escapeHtml(e.name);
+          }
+          let tag = "";
+          if (e.linkage_kind === "subsequent" && e.primary_enslaver_id) {
+            tag = `<span class="ep-tag ep-tag-sub">inherited from ${e.primary_enslaver_id}</span>`;
+          } else if (e.subsequent_enslaver_id) {
+            tag = `<span class="ep-tag ep-tag-passed">later passed to ${e.subsequent_enslaver_id}</span>`;
+          }
+          h += `<li><div class="ep-name">${nameHtml}<span class="ep-pid">${e.person_id}</span>${tag}</div>`;
+          if (meta || yr) h += `<span class="ep-meta">${escapeHtml([yr, meta].filter(s => s).join("  ·  "))}</span>`;
+          h += `</li>`;
+        }
+        h += `</ul>`;
+      } else {
+        h += `<p class="ep-empty">No individually named persons matched yet — see unnamed group(s) below.</p>`;
+      }
+      if (unnamed.length) {
+        h += `<ul class="ug-list">`;
+        for (const g of unnamed) {
+          const detail = [g.record_type, g.event_date || g.document_date, g.grouping_language].filter(s => s).join(" · ");
+          h += `<li><span class="ug-num">+ ${g.total} unnamed</span> in ${escapeHtml(detail || g.group_id)} <span class="ep-pid">${g.group_id}</span></li>`;
+        }
+        h += `</ul>`;
+      }
+      h += `</div>`;
+    } else if (p.is_enslaver) {
+      h += `<div class="ep-section"><h3>People enslaved by this person</h3><p class="ep-empty">No matched persons attached yet — names are added as Active-sheet linkages are confirmed.</p></div>`;
+    }
+
+    h += "<dl>";
+    h += dlPair("Birth", joinNonempty([p.birth_date, p.birth_place]));
+    h += dlPair("Baptism", joinNonempty([p.baptism_date, p.baptism_place]));
+    h += dlPair("Marriage", joinNonempty([p.marriage_date, p.marriage_place]));
+    h += dlPair("Death", joinNonempty([p.death_date, p.death_place]));
+    h += dlPair("Burial", joinNonempty([p.burial_date, p.burial_place, p.burial_location]));
+    h += dlPair("Residence", p.residence_primary);
+    h += dlPair("Occupation", p.occupation);
+    h += dlPair("Father", p.father_text);
+    h += dlPair("Mother", p.mother_text);
+    h += dlPair("Spouse", p.spouse_text);
+    h += dlPair("Children (text)", p.children_summary);
+    h += dlPair("WikiTree", wikitree);
+    if (p.is_enslaver) {
+      h += dlPair("Notable records", p.notable_records);
+      h += dlPair("Will / probate", p.will_probate);
+    }
+    h += dlPair("Notes", p.notes);
+    h += dlPair("Sources", p.sources);
+    h += "</dl>";
+    card.innerHTML = h;
+  }
+
+  function dlPair(k, v) {
+    if (!v || !String(v).trim()) return "";
+    return `<dt>${k}</dt><dd>${escapeHtml(String(v))}</dd>`;
+  }
+
+  function joinNonempty(parts) { return parts.filter(p => p && String(p).trim()).join(", "); }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+  // --- toolbar wiring
+  document.getElementById("btn-expand").addEventListener("click", () => {
+    function expand(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) d.children.forEach(expand); }
+    expand(root);
+    update(root);
+  });
+  document.getElementById("btn-collapse").addEventListener("click", () => {
+    if (root.children) root.children.forEach(c => collapseToDepth(c, 3));
+    update(root);
+  });
+  document.getElementById("btn-fit").addEventListener("click", fit);
+  const btnEns = document.getElementById("btn-only-enslavers");
+  btnEns.addEventListener("click", () => {
+    onlyEnslaverFilter = !onlyEnslaverFilter;
+    btnEns.classList.toggle("active", onlyEnslaverFilter);
+    update(root);
+  });
+  document.getElementById("search").addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    nodeLayer.selectAll("g.node").classed("search-hit", false);
+    if (!q) return;
+    // Expand any collapsed branches that contain hits
+    function expandToHit(d) {
+      const p = d.data.data;
+      const hit = (p.name || "").toLowerCase().includes(q) || (p.id || "").toLowerCase().includes(q);
+      let childHit = false;
+      const kids = d.children || d._children || [];
+      kids.forEach(c => { if (expandToHit(c)) childHit = true; });
+      if ((hit || childHit) && d._children) { d.children = d._children; d._children = null; }
+      return hit || childHit;
+    }
+    expandToHit(root);
+    update(root);
+    setTimeout(() => {
+      nodeLayer.selectAll("g.node").each(function (d) {
+        const p = d.data.data;
+        const hit = (p.name || "").toLowerCase().includes(q) || (p.id || "").toLowerCase().includes(q);
+        if (hit) d3.select(this).classed("search-hit", true);
+      });
+    }, 50);
+  });
+
+  update(root);
+  setTimeout(fit, 80);
+})();
+</script>
+</body>
+</html>
