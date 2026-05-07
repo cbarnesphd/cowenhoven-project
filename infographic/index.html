@@ -27,14 +27,18 @@
   .cwi .cwi-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
   .cwi .cwi-panel { background: #8E3825; border: 1px solid #B05040; border-radius: 4px; padding: 28px 24px; }
 
-  /* -- TIMELINE CHART -- */
+  /* -- TIMELINE CHART (stacked by record type, v3.2) -- */
   .cwi .cwi-timeline-panel { background: #8E3825; border: 1px solid #B05040; border-radius: 4px; padding: 28px 24px 20px; margin-bottom: 28px; }
-  .cwi .cwi-bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 160px; margin-top: 20px; padding-bottom: 28px; position: relative; border-bottom: 1px solid #C07858; border-left: 1px solid #C07858; }
+  .cwi .cwi-bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 380px; margin-top: 20px; padding-bottom: 28px; position: relative; border-bottom: 1px solid #C07858; border-left: 1px solid #C07858; }
   .cwi .cwi-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; position: relative; }
-  .cwi .cwi-bar { width: 100%; background: linear-gradient(180deg, #FFD166 0%, #FF9F43 100%); border-radius: 2px 2px 0 0; transition: opacity 0.2s; position: relative; }
-  .cwi .cwi-bar:hover { opacity: 0.8; }
-  .cwi .cwi-bar-count { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #FFFFFF; font-weight: 700; white-space: nowrap; }
+  .cwi .cwi-bar { width: 100%; display: flex; flex-direction: column-reverse; border-radius: 2px 2px 0 0; overflow: hidden; position: relative; }
+  .cwi .cwi-bar-seg { width: 100%; transition: opacity 0.2s; }
+  .cwi .cwi-bar-seg:hover { opacity: 0.78; }
+  .cwi .cwi-bar-count { position: absolute; left: 50%; transform: translateX(-50%); font-size: 12px; color: #FFFFFF; font-weight: 700; white-space: nowrap; }
   .cwi .cwi-bar-label { position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #FFFFFF; white-space: nowrap; font-style: italic; }
+  .cwi .cwi-decade-legend { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 22px; padding-top: 16px; border-top: 1px solid #A04030; }
+  .cwi .cwi-decade-legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #FFFFFF; }
+  .cwi .cwi-decade-legend-dot { width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0; }
 
   /* -- DONUT -- */
   .cwi .cwi-donut-container { display: flex; align-items: center; gap: 24px; margin-top: 12px; }
@@ -55,8 +59,10 @@
 
   /* -- ENSLAVERS -- */
   .cwi .cwi-enslaver-list { margin-top: 12px; }
-  .cwi .cwi-enslaver-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
-  .cwi .cwi-enslaver-name { font-family: 'EB Garamond', serif; font-size: 15px; color: #FFF5E8; width: 210px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cwi .cwi-enslaver-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cwi .cwi-enslaver-name { font-family: 'EB Garamond', serif; font-size: 15px; color: #FFF5E8; width: 240px; flex-shrink: 0; display: flex; flex-direction: column; line-height: 1.2; }
+  .cwi .cwi-enslaver-name-main { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cwi .cwi-enslaver-name-dates { font-size: 12px; color: #EAB48A; font-style: italic; margin-top: 2px; }
   .cwi .cwi-enslaver-track { flex: 1; background: #5A1E0E; border-radius: 2px; height: 14px; overflow: hidden; }
   .cwi .cwi-enslaver-fill { height: 100%; background: linear-gradient(90deg, #C07040, #FFB347); border-radius: 2px; }
   .cwi .cwi-enslaver-num { font-size: 13px; color: #FFFFFF; font-weight: 700; width: 24px; text-align: right; flex-shrink: 0; }
@@ -138,16 +144,16 @@
 
   <!-- CONTEXT QUOTE -->
   <div class="cwi-quote-panel">
-    <p>These 246 records represent individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them.</p>
+    <p>These 253 records represent named individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them. A further 102 unnamed individuals are referenced in the same records, listed as "a black man," "four children," or simply tallied as a number in a census column.</p>
     <div class="cwi-quote-credit">Cowenhoven Project Research Overview</div>
   </div>
 
   <!-- STAT CARDS -->
   <div class="cwi-stat-grid">
     <div class="cwi-stat-card">
-      <div class="cwi-number">246</div>
-      <div class="cwi-label">Documented Individuals</div>
-      <div class="cwi-sub">identified to date</div>
+      <div class="cwi-number">253</div>
+      <div class="cwi-label">Named Individuals</div>
+      <div class="cwi-sub">documented to date</div>
     </div>
     <div class="cwi-stat-card">
       <div class="cwi-number">100+</div>
@@ -155,29 +161,37 @@
       <div class="cwi-sub">1736 - 1840</div>
     </div>
     <div class="cwi-stat-card">
-      <div class="cwi-number">47</div>
-      <div class="cwi-label">Documented Enslavers</div>
-      <div class="cwi-sub">Cowenhoven / Conover family</div>
+      <div class="cwi-number">53</div>
+      <div class="cwi-label">Enslavers Identified</div>
+      <div class="cwi-sub">throughout the family</div>
     </div>
     <div class="cwi-stat-card">
-      <div class="cwi-number">8</div>
+      <div class="cwi-number">7</div>
       <div class="cwi-label">Counties</div>
-      <div class="cwi-sub">3 in New York / 5 in New Jersey</div>
+      <div class="cwi-sub">2 in New York / 5 in New Jersey</div>
     </div>
   </div>
 
   <!-- TIMELINE -->
   <div class="cwi-timeline-panel">
     <div class="cwi-section-title">Individuals by Decade</div>
-    <div class="cwi-section-desc">All 246 individuals carry datable events; peak documentation falls in the 1800s-1810s, reflecting the abolition-era record-keeping that followed New York's Gradual Emancipation Act of 1799 and New Jersey's Act of 1804.</div>
+    <div class="cwi-section-desc">All 253 individuals carry datable events; peak documentation falls in the 1800s-1810s, reflecting the abolition-era record-keeping that followed New York's Gradual Emancipation Act of 1799 and New Jersey's Act of 1804. The shift from Legal/Estate (orange) in the 1700s to Birth Records (blue) in the 1800s and Freedom Documents (green) in the 1810s-1820s shows how abolition-era statutes reshaped the documentary record.</div>
     <div class="cwi-bar-chart" id="cwiBarChart"></div>
+    <div class="cwi-decade-legend">
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#56CCF2;"></div>Birth Records (child role)</div>
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#E07AAA;"></div>Family / Kin (parent role)</div>
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#6FC473;"></div>Freedom Documents</div>
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#FFB347;"></div>Legal / Estate</div>
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#A78BFA;"></div>Church Membership</div>
+      <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#FF5A5A;"></div>Resistance / Flight</div>
+    </div>
   </div>
 
   <!-- ROW 2: EVENT TYPES + GENDER -->
   <div class="cwi-two-col">
     <div class="cwi-panel">
       <div class="cwi-section-title">How We Know These People</div>
-      <div class="cwi-section-desc">Type of historical record documenting each individual; some appear in multiple records (246 records, 246 individuals)</div>
+      <div class="cwi-section-desc">Type of historical record documenting each individual; some appear in multiple records (253 records, 253 individuals)</div>
       <div class="cwi-donut-container">
         <svg class="cwi-donut" id="cwiDonutSvg" width="130" height="130" viewBox="0 0 130 130"></svg>
         <div class="cwi-donut-legend" id="cwiDonutLegend"></div>
@@ -186,27 +200,27 @@
 
     <div class="cwi-panel">
       <div class="cwi-section-title">Sex, As Recorded</div>
-      <div class="cwi-section-desc">All 246 individuals have sex recorded in source documents</div>
+      <div class="cwi-section-desc">All 253 individuals have sex recorded in source documents</div>
 
       <div class="cwi-gender-row" style="margin-top:20px;">
         <div class="cwi-gender-label">Male</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:51.6%;background:linear-gradient(90deg,#2E86AB,#56CCF2);">51.6%</div></div>
-        <div class="cwi-gender-count">127</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:51.0%;background:linear-gradient(90deg,#2E86AB,#56CCF2);">51.0%</div></div>
+        <div class="cwi-gender-count">129</div>
       </div>
       <div class="cwi-gender-row">
         <div class="cwi-gender-label">Female</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:48.4%;background:linear-gradient(90deg,#9B2335,#E05C7A);">48.4%</div></div>
-        <div class="cwi-gender-count">119</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:49.0%;background:linear-gradient(90deg,#9B2335,#E05C7A);">49.0%</div></div>
+        <div class="cwi-gender-count">124</div>
       </div>
 
       <hr class="cwi-divider" style="margin:20px 0 16px;">
       <div class="cwi-section-title" style="font-size:16px; margin-bottom:4px;">Ages at Time of Record</div>
-      <div class="cwi-section-desc" style="margin-bottom:12px;">Age recorded for 166 of 246 individuals</div>
+      <div class="cwi-section-desc" style="margin-bottom:12px;">Age category recorded for 173 of 253 individuals</div>
 
       <div class="cwi-gender-row">
         <div class="cwi-gender-label" style="width:80px; font-size:13px;">Under 14</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:90%;background:linear-gradient(90deg,#3A7D44,#6FC473);">Children</div></div>
-        <div class="cwi-gender-count" style="font-size:13px;color:#FFFFFF;">89</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:96%;background:linear-gradient(90deg,#3A7D44,#6FC473);">Children</div></div>
+        <div class="cwi-gender-count" style="font-size:13px;color:#FFFFFF;">96</div>
       </div>
       <div class="cwi-gender-row">
         <div class="cwi-gender-label" style="width:80px; font-size:13px;">Adult (14-39)</div>
@@ -225,24 +239,24 @@
   <!-- ROW 3: ENSLAVERS + GEOGRAPHY -->
   <div class="cwi-two-col">
     <div class="cwi-panel">
-      <div class="cwi-section-title">Top Enslavers by Record Count</div>
-      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 47 distinct enslavers across the Van Kouwenhoven-Conover family).</div>
+      <div class="cwi-section-title">Top 17 Enslavers by Record Count</div>
+      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 53 distinct enslavers across the Van Kouwenhoven-Conover family).</div>
       <div class="cwi-enslaver-list" id="cwiEnslaverList"></div>
     </div>
 
     <div class="cwi-panel">
       <div class="cwi-section-title">Geographic Reach</div>
-      <div class="cwi-section-desc">Enslaved people documented across 8 counties in New York and New Jersey</div>
+      <div class="cwi-section-desc">Enslaved people documented across 7 counties in New York and New Jersey</div>
       <div class="cwi-geo-row">
         <div class="cwi-geo-card">
           <div class="cwi-geo-num">76</div>
-          <div class="cwi-geo-label">New York / 3 counties</div>
-          <div class="cwi-geo-detail">Kings (Brooklyn / New Utrecht / Flatlands) / New York (Manhattan) / Albany</div>
+          <div class="cwi-geo-label">New York / 2 counties</div>
+          <div class="cwi-geo-detail">Kings (Brooklyn / New Utrecht / Flatlands) / New York (Manhattan)</div>
         </div>
         <div class="cwi-geo-card">
-          <div class="cwi-geo-num">170</div>
+          <div class="cwi-geo-num">177</div>
           <div class="cwi-geo-label">New Jersey / 5 counties</div>
-          <div class="cwi-geo-detail">Monmouth (Freehold / Middletown / Manalapan) / Middlesex (West Windsor / South Amboy) / Somerset (Franklin / Montgomery) / Bergen / Hunterdon</div>
+          <div class="cwi-geo-detail">Monmouth (Freehold / Middletown / Manalapan) / Middlesex (South Brunswick / South Amboy / West Windsor) / Somerset (Franklin / Montgomery) / Bergen / Hunterdon</div>
         </div>
       </div>
 
@@ -266,11 +280,64 @@
       <hr class="cwi-divider" style="margin:20px 0 16px;">
       <div class="cwi-section-title" style="font-size:16px; margin-bottom:8px;">Abolition Context</div>
       <div style="font-size:14px; color:#F0C8A0; line-height:1.7;">
+        <span style="color:#FFD166; font-weight:700;">1780</span> -- Pennsylvania passes first Gradual Abolition law<br>
+        <span style="color:#FFD166; font-weight:700;">1785</span> -- New York Manumission Society founded<br>
         <span style="color:#FFD166; font-weight:700;">1799</span> -- New York Gradual Emancipation Act<br>
         <span style="color:#FFD166; font-weight:700;">1804</span> -- New Jersey Act for Gradual Abolition<br>
-        <span style="color:#FFD166; font-weight:700;">1827</span> -- Full abolition in New York<br>
-        <span style="color:#FFD166; font-weight:700;">1865</span> -- 13th Amendment, U.S. abolition
+        <span style="color:#FFD166; font-weight:700;">1817</span> -- New York legislates end to slavery in 1827<br>
+        <span style="color:#FFD166; font-weight:700;">1827</span> -- Full abolition in New York on July 4th<br>
+        <span style="color:#FFD166; font-weight:700;">1850</span> -- Passage of the Fugitive Slave Act<br>
+        <span style="color:#FFD166; font-weight:700;">1865</span> -- 13th Amendment ends slavery in New Jersey
       </div>
+    </div>
+  </div>
+
+  <!-- MULTI-EVENT PEOPLE (NEW v3.2) -->
+  <div class="cwi-timeline-panel">
+    <div class="cwi-section-title">Lives Documented Across Multiple Records</div>
+    <div class="cwi-section-desc">17 individuals appear in two or more documentary events, allowing a partial life-trajectory to surface -- a child's birth registered alongside her later manumission, an enslaved man inventoried at probate then freed nine years later, or a mother whose successive births were each separately recorded under New Jersey's 1804 gradual-abolition statute.</div>
+  </div>
+
+  <div class="cwi-two-col">
+    <div class="cwi-panel">
+      <div class="cwi-section-title" style="font-size:17px;">Dated Life Trajectories</div>
+      <div class="cwi-section-desc">8 individuals documented through more than one kind of record</div>
+      <div style="font-size:13px; color:#FFF5E8; line-height:1.65;">
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Cezar</strong> &mdash; Probate Inventory 1803 &rarr; Manumission 1812</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Rachel</strong> &mdash; Child 1815 &rarr; Child 1816 &rarr; Manumission 1822</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Oliver Walters</strong> &mdash; Probate Inventory 1815 &rarr; Manumission 1832</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Elias</strong> &mdash; Birth 1810 &rarr; Will 1815</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Robert Conover</strong> &mdash; Manumission 1810 &rarr; Indenture 1810</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Frank</strong> &mdash; Will 1803 &rarr; Will 1807 &rarr; Probate Inventory 1811</div>
+        <div style="margin-bottom:9px;"><strong style="color:#FFD166;">Jack</strong> &mdash; Will 1803 &rarr; Probate Inventory 1811</div>
+        <div style="margin-bottom:0;"><strong style="color:#FFD166;">Bet</strong> &mdash; Will 1803 &rarr; Probate Inventory 1811</div>
+      </div>
+    </div>
+
+    <div class="cwi-panel">
+      <div class="cwi-section-title" style="font-size:17px;">Mothers with Multiple Children</div>
+      <div class="cwi-section-desc">9 mothers had multiple children registered under abolition-era statutes</div>
+      <div class="cwi-enslaver-list" style="margin-top:6px;">
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Matt</strong> <span style="color:#F0C8A0; font-size:13px;">(1805&ndash;1811)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:100%"></div></div><div class="cwi-enslaver-num">4</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Betty</strong> <span style="color:#F0C8A0; font-size:13px;">(1815&ndash;1822)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:100%"></div></div><div class="cwi-enslaver-num">4</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Lucy</strong> <span style="color:#F0C8A0; font-size:13px;">(1812&ndash;1815)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:75%"></div></div><div class="cwi-enslaver-num">3</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Rose</strong> <span style="color:#F0C8A0; font-size:13px;">(1806&ndash;1808)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Ann</strong> <span style="color:#F0C8A0; font-size:13px;">(1808&ndash;1810)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Rachel</strong> <span style="color:#F0C8A0; font-size:13px;">(1807&ndash;1808)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Sarah</strong> <span style="color:#F0C8A0; font-size:13px;">(1808&ndash;1811)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Maria</strong> <span style="color:#F0C8A0; font-size:13px;">(1814&ndash;1816)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+        <div class="cwi-enslaver-row"><div class="cwi-enslaver-name" style="width:170px; font-family:'EB Garamond',serif;"><strong style="color:#FFD166;">Kate</strong> <span style="color:#F0C8A0; font-size:13px;">(1811&ndash;1813)</span></div><div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:50%"></div></div><div class="cwi-enslaver-num">2</div></div>
+      </div>
+      <div style="font-size:12px; color:#FFFFFF; font-style:italic; margin-top:10px;">Number of recorded children per mother. Each child's birth had to be registered under New York's 1799 or New Jersey's 1804 gradual-abolition statute.</div>
+    </div>
+  </div>
+
+  <!-- CENSUS SNAPSHOT 1790 (NEW v3.2) -->
+  <div class="cwi-quote-panel" style="display:flex; gap:24px; align-items:center; padding:22px 28px;">
+    <div style="font-family:'EB Garamond', serif; font-size:64px; color:#FFD166; font-weight:700; line-height:1; flex-shrink:0;">60</div>
+    <div style="flex:1;">
+      <p style="margin:0;">In a single moment in 1790 -- at the first U.S. Federal Census -- Cowenhoven family heads enslaved <strong style="color:#FFD166;">60 people in Kings County, New York alone</strong>, distributed across <strong>9 households</strong> in New Utrecht, Brooklyn, and Flatlands. Most of these 60 are not among the 253 named individuals on this page; the census schedule lists them only by tally under each enslaver's name. The 253 documented above are individuals whose names survive in <em>other</em> records -- wills, manumissions, birth registrations, court files. The 60 of 1790 are a reminder that for every named person, many more were often held in the same households whose names history has not preserved.</p>
+      <div class="cwi-quote-credit" style="margin-top:10px;">Census Snapshot &mdash; 1790 U.S. Federal Census, Kings County, New York</div>
     </div>
   </div>
 
@@ -302,8 +369,8 @@
     <p>
       The Cowenhoven Project | <a href="https://cowenhoven.org">cowenhoven.org</a><br>
       Data drawn from the Cowenhoven Project Active Data Set | New York &amp; New Jersey | Pre-1865<br>
-      This infographic represents 246 documented individuals. Many more remain unrecorded.<br>
-      Version 3.1 &mdash; 5 May 2026
+      This infographic represents 253 named individuals. A further 102 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
+      Version 3.2 &mdash; 7 May 2026
     </p>
   </div>
 
@@ -311,49 +378,72 @@
 
 <script>
 (function() {
-  // -- BAR CHART --
+  // -- BAR CHART (stacked by record type, with min-segment-px floor) --
   var decades = [
-    { label: "1730s", count: 6 },
-    { label: "1740s", count: 4 },
-    { label: "1750s", count: 2 },
-    { label: "1770s", count: 7 },
-    { label: "1780s", count: 19 },
-    { label: "1790s", count: 22 },
-    { label: "1800s", count: 93 },
-    { label: "1810s", count: 64 },
-    { label: "1820s", count: 19 },
-    { label: "1830s", count: 9 },
-    { label: "1840s", count: 1 }
+    { label:"1730s", birth:0,  family:0,  freedom:0,  legal:5,  church:1, resistance:0, total:6  },
+    { label:"1740s", birth:0,  family:0,  freedom:0,  legal:1,  church:3, resistance:0, total:4  },
+    { label:"1750s", birth:0,  family:0,  freedom:0,  legal:2,  church:0, resistance:0, total:2  },
+    { label:"1770s", birth:0,  family:0,  freedom:1,  legal:5,  church:0, resistance:1, total:7  },
+    { label:"1780s", birth:0,  family:0,  freedom:5,  legal:13, church:0, resistance:1, total:19 },
+    { label:"1790s", birth:0,  family:0,  freedom:1,  legal:20, church:0, resistance:1, total:22 },
+    { label:"1800s", birth:40, family:20, freedom:7,  legal:25, church:0, resistance:1, total:93 },
+    { label:"1810s", birth:25, family:6,  freedom:21, legal:16, church:0, resistance:0, total:68 },
+    { label:"1820s", birth:2,  family:2,  freedom:15, legal:1,  church:0, resistance:2, total:22 },
+    { label:"1830s", birth:1,  family:1,  freedom:5,  legal:1,  church:0, resistance:1, total:9  },
+    { label:"1840s", birth:0,  family:0,  freedom:1,  legal:0,  church:0, resistance:0, total:1  }
   ];
-  var maxCount = Math.max.apply(null, decades.map(function(d){ return d.count; }));
-  var chartHeight = 140;
+  var SEG_COLORS = { birth:"#56CCF2", family:"#E07AAA", freedom:"#6FC473", legal:"#FFB347", church:"#A78BFA", resistance:"#FF5A5A" };
+  var SEG_LABELS = { birth:"Birth Records (child role)", family:"Family / Kin (parent role)", freedom:"Freedom Documents", legal:"Legal / Estate", church:"Church Membership", resistance:"Resistance / Flight" };
+  var SEG_ORDER  = ["legal","church","resistance","family","birth","freedom"];
+  var PX_PER_RECORD = 3.5;
+  var MIN_SEG_PX    = 14;
   var barChart = document.getElementById('cwiBarChart');
   decades.forEach(function(d) {
-    var barHeight = Math.round((d.count / maxCount) * chartHeight);
     var group = document.createElement('div');
     group.className = 'cwi-bar-group';
     var bar = document.createElement('div');
     bar.className = 'cwi-bar';
-    bar.style.height = barHeight + 'px';
+    var totalH = 0;
+    var segHeights = {};
+    SEG_ORDER.forEach(function(key) {
+      var v = d[key];
+      if (!v) return;
+      var h = Math.max(v * PX_PER_RECORD, MIN_SEG_PX);
+      segHeights[key] = h;
+      totalH += h;
+    });
+    bar.style.height = totalH + 'px';
+    SEG_ORDER.forEach(function(key) {
+      var h = segHeights[key];
+      if (!h) return;
+      var seg = document.createElement('div');
+      seg.className = 'cwi-bar-seg';
+      seg.style.background = SEG_COLORS[key];
+      seg.style.height = h + 'px';
+      var pct = Math.round((d[key] / d.total) * 100);
+      seg.title = SEG_LABELS[key] + '\n' + d.label + ': ' + d[key] + ' of ' + d.total + ' records (' + pct + '%)';
+      bar.appendChild(seg);
+    });
     var count = document.createElement('div');
     count.className = 'cwi-bar-count';
-    count.textContent = d.count;
+    count.textContent = d.total;
+    count.style.bottom = (totalH + 2) + 'px';
     var label = document.createElement('div');
     label.className = 'cwi-bar-label';
     label.textContent = d.label;
-    bar.appendChild(count);
     group.appendChild(bar);
+    group.appendChild(count);
     group.appendChild(label);
     barChart.appendChild(group);
   });
 
   // -- DONUT CHART --
   var eventGroups = [
-    { label: "Birth Records",       count: 62, color: "#56CCF2", detail: "birth + birth & abandonment (child role)" },
-    { label: "Family / Kin",        count: 28, color: "#E07AAA", detail: "parent / mother role in birth records" },
+    { label: "Birth Records",       count: 68, color: "#56CCF2", detail: "birth + birth & abandonment (child role)" },
+    { label: "Family / Kin",        count: 29, color: "#E07AAA", detail: "parent / mother role in birth records" },
     { label: "Freedom Documents",   count: 56, color: "#6FC473", detail: "manumission, manumitted in will, agreement, registration" },
     { label: "Legal / Estate",      count: 89, color: "#FFB347", detail: "transfer, sale, legal proceeding, probate inventory, debt" },
-    { label: "Baptism Records",     count: 4,  color: "#A78BFA", detail: "baptism" },
+    { label: "Church Membership",   count: 4,  color: "#A78BFA", detail: "Old Tennent congregation membership rolls" },
     { label: "Resistance / Flight", count: 7,  color: "#FF5A5A", detail: "disappearance (runaway role), runaway & capture" }
   ];
   var total = eventGroups.reduce(function(s, g){ return s + g.count; }, 0);
@@ -381,7 +471,7 @@
   ct.setAttribute('x', cx); ct.setAttribute('y', cy - 6); ct.setAttribute('text-anchor', 'middle');
   ct.setAttribute('fill', '#FFD166'); ct.setAttribute('font-size', '18');
   ct.setAttribute('font-family', 'EB Garamond, Georgia, serif'); ct.setAttribute('font-weight', '700');
-  ct.textContent = '246';
+  ct.textContent = '253';
   svgEl.appendChild(ct);
   var cs = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   cs.setAttribute('x', cx); cs.setAttribute('y', cy + 10); cs.setAttribute('text-anchor', 'middle');
@@ -403,16 +493,23 @@
 
   // -- ENSLAVER BARS --
   var enslavers = [
-    { name: "Nicholas Cowenhoven (NY)",        count: 11 },
-    { name: "John Covenhoven (NJ)",            count: 10 },
-    { name: "Rem Cowenhoven (NY)",             count: 9  },
-    { name: "Cornelius A. Couwenhoven (NJ)",   count: 8  },
-    { name: "Garrett Cowenhoven (NY)",         count: 7  },
-    { name: "William Kouwenhoven (NY)",        count: 7  },
-    { name: "John R. Couwenhoven (NY)",        count: 7  },
-    { name: "Col Elias Covenhoven (NJ)",       count: 7  },
-    { name: "Garret Cowenhoven (NY)",          count: 6  },
-    { name: "Cornelius C. Covenhoven (NJ)",    count: 6  }
+    { name: "Nicholas Cowenhoven (NY)",         dates: "1768-1809", count: 11 },
+    { name: "John Covenhoven (NJ)",             dates: "1734-1803", count: 10 },
+    { name: "Rem Cowenhoven (NY)",              dates: "1734-1783", count: 9  },
+    { name: "William Kouwenhoven (NY)",         dates: "1758-1825", count: 8  },
+    { name: "Cornelius A. Couwenhoven (NJ)",    dates: "1728-1802", count: 8  },
+    { name: "Johnson Cownover (NJ)",            dates: "1781-1849", count: 8  },
+    { name: "Garrett Cowenhoven (NY)",          dates: "1774-1840", count: 7  },
+    { name: "John R. Couwenhoven (NY)",         dates: "1761-1811", count: 7  },
+    { name: "Col Elias Covenhoven (NJ)",        dates: "1757-1820", count: 7  },
+    { name: "John P. Covenhoven (NJ)",          dates: "1740-1811", count: 7  },
+    { name: "Garret Cowenhoven (NY)",           dates: "1783-1823", count: 6  },
+    { name: "Cornelius C. Covenhoven (NJ)",     dates: "1760-1815", count: 6  },
+    { name: "Jacob Cowenhoven (NY)",            dates: "1750-1826", count: 5  },
+    { name: "Johannes Van Couwenhoven (NY)",    dates: "1746-1823", count: 5  },
+    { name: "Cornelis W. van Couwenhoven (NJ)", dates: "1672-1736", count: 5  },
+    { name: "John Cowenhoven (NY)",             dates: "1707-1778", count: 5  },
+    { name: "Garret Janse Covenhoven (NJ)",     dates: "1726-1812", count: 5  }
   ];
   var maxE = enslavers[0].count;
   var listEl = document.getElementById('cwiEnslaverList');
@@ -420,14 +517,17 @@
     var pct = Math.round((e.count / maxE) * 100);
     var row = document.createElement('div');
     row.className = 'cwi-enslaver-row';
-    row.innerHTML = '<div class="cwi-enslaver-name">'+e.name+'</div>'
+    row.innerHTML = '<div class="cwi-enslaver-name">'
+      + '<span class="cwi-enslaver-name-main">'+e.name+'</span>'
+      + (e.dates ? '<span class="cwi-enslaver-name-dates">'+e.dates+'</span>' : '')
+      + '</div>'
       + '<div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:'+pct+'%"></div></div>'
       + '<div class="cwi-enslaver-num">'+e.count+'</div>';
     listEl.appendChild(row);
   });
   var note = document.createElement('div');
   note.style.cssText = 'font-size:13px;color:#FFFFFF;font-style:italic;margin-top:12px;';
-  note.textContent = 'Counts reflect records linked to each enslaver (cp_ens_001-047). 33 of the 47 have been formally identified; 14 not yet wired to specific Active records.';
+  note.textContent = 'Counts reflect records linked to each enslaver (cp_ens_001-052). 13 enslavers are yet to be disambiguated from others with the same name.';
   listEl.appendChild(note);
 })();
 </script>
