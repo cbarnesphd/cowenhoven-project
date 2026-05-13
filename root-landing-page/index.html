@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Cowenhoven Project — Data Tools</title>
+<style>
+  :root {
+    --brick: #945446;
+    --brick-shadow: #8D5341;
+    --mortar: #B2AA99;
+    --door-green: #4F7451;
+    --slate-blue: #738C8F;
+    --paper: #FAF7F2;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #6B5C50;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.55; }
+  header { padding: 36px 28px 22px; border-bottom: 1px solid #E5DED2; }
+  header h1 { margin: 0 0 6px; font-size: 28px; font-weight: normal; letter-spacing: 0.3px; }
+  header p.subtitle { margin: 0; font-size: 14px; font-style: italic; color: var(--ink-soft); }
+  main { max-width: 880px; margin: 0 auto; padding: 28px; }
+  .intro { font-size: 15px; color: var(--ink-soft); margin: 0 0 28px; }
+  .intro a { color: var(--brick); }
+  .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .tool { display: block; padding: 22px 24px; background: #fff; border: 1px solid #E5DED2; border-radius: 6px; text-decoration: none; color: var(--ink); transition: border-color 0.2s, transform 0.15s; }
+  .tool:hover { border-color: var(--brick); transform: translateY(-1px); }
+  .tool h2 { margin: 0 0 8px; font-size: 18px; font-weight: normal; color: var(--brick-shadow); }
+  .tool p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+  footer { text-align: center; padding: 28px; font-size: 12px; color: var(--ink-mute); border-top: 1px solid #E5DED2; margin-top: 32px; }
+  footer a { color: var(--brick); }
+  @media (max-width: 640px) {
+    .tools { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Cowenhoven Project — Data Tools</h1>
+  <p class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</p>
+</header>
+<main>
+  <p class="intro">
+    This is the data subdomain of <a href="https://cowenhoven.org">cowenhoven.org</a>. The project documents people of African descent enslaved in New York and New Jersey by the Van Kouwenhoven-Conover family. The tools below give different views of the underlying dataset.
+  </p>
+  <div class="tools">
+    <a class="tool" href="/family-tree/family-tree.html">
+      <h2>Live Family Tree</h2>
+      <p>An interactive descent tree from Wolphert Gerritsz van Couwenhoven (1579–1662) through nine generations, color-coded by branch and showing enslaved persons matched to each enslaver.</p>
+    </a>
+    <a class="tool" href="/infographic/">
+      <h2>Project Infographic</h2>
+      <p>A one-page visual overview of the project&rsquo;s scope, dataset, and findings to date.</p>
+    </a>
+    <a class="tool" href="/index-of-individuals/">
+      <h2>Index of Individuals</h2>
+      <p>Every named individual identified in archival documents and public records, with filters by county, event type, age category, and date range.</p>
+    </a>
+    <a class="tool" href="/cluster-map/">
+      <h2>Enslaver Cluster Map</h2>
+      <p>A geographic map of the Cowenhoven enslaver clusters across New York and New Jersey, organized by branch and migration pattern.</p>
+    </a>
+  </div>
+</main>
+<footer>
+  Main project site: <a href="https://cowenhoven.org">cowenhoven.org</a>
+</footer>
+</body>
+</html>
