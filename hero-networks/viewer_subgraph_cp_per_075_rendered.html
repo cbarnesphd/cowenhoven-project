@@ -554,9 +554,9 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     max-width: calc(100vw - 40px);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 4px 10px;
+    gap: 4px 22px;
     align-items: center;
     justify-content: center;
     overflow-x: visible;
@@ -2059,6 +2059,17 @@ const Graph = ForceGraph3D()
     );
   })
   .graphData(GRAPH);
+
+// ---- Bind canvas size to #graph container (2026-05-27) — fixes empty space
+// on the right when the iframe is wider than the graph's init width (wide
+// monitors / embedded contexts). ----
+(function(){
+  var graphEl = document.getElementById('graph');
+  function fitGraph(){ if (graphEl) { Graph.width(graphEl.clientWidth); Graph.height(graphEl.clientHeight); } }
+  fitGraph();
+  if (window.ResizeObserver) { new ResizeObserver(fitGraph).observe(graphEl); }
+  window.addEventListener('resize', fitGraph);
+})();
 
 // Force-layout tuning — DEFENSIVE v2 2026-05-23 PM2.
 // v1 crashed the 3d-force-graph render when we called
