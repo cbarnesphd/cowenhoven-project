@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>cp_ens_006 Subgraph — Cocheu Discrepancy Workflow Step 7 QC View</title>
+<title>Hero Network — cp_ens_006 — Cowenhoven Project</title>
 <style>
   /* Styling vocabulary borrowed from Cytoscape_Knowledge_Graph.html prototype
      per KnowledgeGraph_LOD_Strategy_2026-05-22.md "what to keep from 2D experiment" */
@@ -39,6 +39,8 @@
     --kin-sibling: rgb(155, 105, 175);   /* violet — replaces amber 2026-05-23 PM4 (amber clashed with warm-tan enslaved/family palette); placeholder until full color redesign */
     --kin-grandparent: rgb(95, 60, 120); /* deep aubergine — darker than parent's amethyst (older-generation gradient); placeholder 2026-05-23 PM4 */
     --kin-grandchild: rgb(220, 175, 215);/* pale orchid — lighter than child's orchid (younger-generation gradient); placeholder 2026-05-23 PM4 */
+    --uei-amber: rgb(252, 184, 80);    /* UEI anchor (unidentified enslaver) */
+    --hypothesis: rgb(252, 184, 80);   /* hypothesis edge color */
   }
   * { box-sizing: border-box; }
   body {
@@ -67,6 +69,108 @@
     letter-spacing: 0.5px;
   }
   #header h1 .pid { font-family: 'Courier New', monospace; font-size: 16px; color: var(--ink); }
+
+  /* Collapsible-menu buttons in the header — added 2026-05-24 PM-evening for
+     embedded-iframe contexts where the left/right panels crowd out the graph.
+     Default state: both panels collapsed; click button to drop the panel down
+     from below the header where the button is anchored. */
+  #header-toggles {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .menu-btn {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--brick);
+    font-family: Georgia, serif;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.12s ease, color 0.12s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.2;
+    user-select: none;
+  }
+  .menu-btn:hover { background: var(--cream); }
+  .menu-btn.active {
+    background: var(--brick);
+    color: var(--cream);
+    border-color: var(--brick);
+  }
+  .menu-btn .chev {
+    display: inline-block;
+    transition: transform 0.15s ease;
+    font-size: 9px;
+  }
+  .menu-btn.active .chev { transform: rotate(180deg); }
+
+  /* Collapsed-by-default state for the dropdown panels */
+  #toggles.collapsed,
+  #side.collapsed { display: none; }
+
+  /* Header-mounted search bar + reset button — promoted out of the Filters
+     dropdown 2026-05-24 PM-evening per Chris's UX feedback (they should be
+     always-visible, not buried in a menu). Sits between #header-toggles and
+     #stats. The IDs (#search-box, #reset-view, #search-result) are preserved
+     so the existing JS event listeners continue to work without modification. */
+  #header-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+  }
+  #header-search input[type=text] {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 4px;
+    width: 160px;
+    height: 24px;
+    box-sizing: border-box;
+  }
+  #header-search input[type=text]:focus {
+    outline: none;
+    border-color: var(--brick);
+  }
+  /* Reset button — standalone in the header (moved out of #header-search 2026-05-24
+     PM-evening so it sits LEFT of the Filters/Info buttons per Chris UX). */
+  .header-reset-btn {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    padding: 4px 12px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--brick);
+    border-radius: 14px;
+    cursor: pointer;
+    height: 24px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .header-reset-btn:hover { background: var(--cream); }
+  /* Search result message — small absolute-positioned text BELOW the search
+     input, so it doesn't expand the header height when populated. */
+  #header-search .search-result {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    font-size: 10.5px;
+    color: var(--ink);
+    opacity: 0.75;
+    background: var(--cream);
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  #header-search .search-result:empty { display: none; }
   #stats {
     font-size: 13px;
     color: var(--ink);
@@ -220,37 +324,264 @@
     opacity: 0.6;
   }
   #side .field-value { color: var(--ink); }
+
+  /* ===== UEI anchor side-panel styles (v3.8 enslaved-hero workflow) =====
+     Applied when a uei_anchor node is clicked. Layout ported from
+     UEI_Side_Panel_Mockup_v1.html (2026-05-24 PM-evening).
+     Renders inside the project's existing cream-paper #side container, so
+     palette uses cream/brick/amber instead of the mockup's dark theme. */
+  #side .uei-anchor-header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+  }
+  #side .uei-type-pill {
+    display: inline-block;
+    background: rgba(252, 184, 80, 0.18);
+    color: rgb(180, 110, 30);
+    border: 1px dashed var(--uei-amber);
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  #side .uei-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 4px 0 6px 0;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  #side .uei-name .glyph {
+    display: inline-block;
+    width: 28px; height: 28px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px dashed var(--uei-amber);
+    color: rgb(180, 110, 30);
+    font-size: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+  #side .uei-descriptor {
+    color: var(--ink);
+    opacity: 0.7;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  #side .uei-event-count {
+    color: var(--ink);
+    opacity: 0.7;
+    font-size: 12px;
+  }
+  #side .uei-event-count .ev-pid {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  #side .uei-event-count .ev-type-note {
+    color: rgb(180, 110, 30);
+    font-size: 11.5px;
+    font-style: italic;
+    margin-left: 4px;
+  }
+  #side .uei-candidates-header {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.6;
+    margin: 14px 0 6px 0;
+  }
+  #side .uei-candidates-intro {
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0.8;
+    margin-bottom: 12px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  #side .uei-candidate-card {
+    background: var(--paper);
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rule);
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: border-left-color 0.15s ease;
+  }
+  #side .uei-candidate-card.expanded { border-left-color: var(--uei-amber); }
+  #side .uei-card-header {
+    padding: 10px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  #side .uei-card-header:hover { background: rgba(252,184,80,0.07); }
+  #side .uei-rank {
+    display: inline-block;
+    width: 20px; height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  #side .uei-cand-name {
+    flex: 1;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  #side .uei-cand-id {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    opacity: 0.6;
+    margin-right: 6px;
+  }
+  #side .uei-conf-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  #side .uei-conf-WEAK   { background: rgba(252,184,80,0.18); color: rgb(180,110,30); border: 1px solid rgba(252,184,80,0.5); }
+  #side .uei-conf-MEDIUM { background: rgba(252,184,80,0.35); color: rgb(140,80,20);  border: 1px solid rgba(252,184,80,0.7); }
+  #side .uei-conf-STRONG { background: rgba(255,122,89,0.35); color: rgb(140,40,20);  border: 1px solid rgba(255,122,89,0.7); }
+  #side .uei-chevron {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+    color: var(--ink);
+    opacity: 0.5;
+    transition: transform 0.15s ease;
+  }
+  #side .uei-candidate-card.expanded .uei-chevron { transform: rotate(90deg); }
+  #side .uei-card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+    padding: 0 12px;
+  }
+  #side .uei-candidate-card.expanded .uei-card-body {
+    max-height: 2000px;
+    padding-bottom: 12px;
+  }
+  #side .uei-evidence-block { margin-top: 10px; }
+  #side .uei-evidence-block h4 {
+    margin: 0 0 5px 0;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  #side .uei-evidence-block.for h4     { color: rgb(70,130,80); }
+  #side .uei-evidence-block.against h4 { color: rgb(160,60,55); }
+  #side .uei-evidence-block ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0.92;
+  }
+  #side .uei-evidence-block li { margin-bottom: 3px; line-height: 1.35; }
+  #side .uei-notes-block {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--rule);
+    font-size: 11.5px;
+    color: var(--ink);
+    opacity: 0.75;
+    font-style: italic;
+  }
+  #side .uei-notes-block strong {
+    color: var(--ink);
+    opacity: 0.9;
+    font-style: normal;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 3px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* UEI anchor label in the 3D graph — italicized + name in quotation marks
+     (label text format set in labelFor). Color inherits the warm cream-white
+     of the default .node-label (no amber tint per Chris 2026-05-24 PM-evening
+     — the quotation marks + italics carry the uncertainty signal). */
+  .node-label.uei_anchor {
+    font-style: italic;
+    font-weight: 600;
+  }
+
   #legend {
-    /* v2 2026-05-23 PM2 — horizontal compact strip, centered at bottom.
-       Iteration log: bottom-left (obscured Reset View) → bottom-right
-       (obscured side panel) → bottom-center horizontal strip (clear). */
+    /* Bottom-centered horizontal strip. Updated 2026-05-24 PM-evening per
+       Chris: single row by default for iframe-embedded contexts where the
+       2-row layout took too much vertical space. Stacks into two rows
+       (Nodes / Edges) on narrow viewports via media query below. */
     position: absolute;
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--cream);
     border: 1px solid var(--rule);
-    padding: 5px 12px;
-    font-size: 11px;
-    line-height: 1.3;
-    z-index: 5;
+    padding: 6px 14px;
+    font-size: 13px;
+    line-height: 1.35;
+    z-index: 6;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     max-width: calc(100vw - 40px);
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 4px 12px;
+    gap: 4px 22px;
     align-items: center;
     justify-content: center;
+    overflow-x: visible;
   }
   #legend .legend-section {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px 10px;
+    justify-content: center;
+    gap: 4px 8px;
+  }
+  /* On narrow viewports (mobile + tight iframe), stack the Nodes and Edges
+     sections vertically so neither truncates / horizontally scrolls. */
+  @media (max-width: 720px) {
+    #legend {
+      flex-direction: column;
+      gap: 2px;
+      overflow-x: visible;
+    }
+    #legend .legend-divider { display: none; }
+    #legend .legend-section { flex-wrap: wrap; justify-content: center; }
   }
   #legend .legend-label {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 11.5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--ink);
@@ -263,22 +594,23 @@
     white-space: nowrap;
   }
   #legend .legend-divider {
+    display: none;
     color: var(--rule);
     opacity: 0.7;
     margin: 0 2px;
   }
   #legend .swatch {
     display: inline-block;
-    width: 9px; height: 9px;
-    margin-right: 4px;
+    width: 11px; height: 11px;
+    margin-right: 5px;
     border-radius: 50%;
     vertical-align: middle;
   }
   #legend .swatch.edge {
-    width: 16px; height: 2px;
+    width: 20px; height: 3px;
     border-radius: 0;
     vertical-align: middle;
-    margin-right: 4px;
+    margin-right: 5px;
   }
   #toggles {
     position: absolute;
@@ -381,10 +713,23 @@
 
 <div id="header">
   <h1>
-    Enslaver Network Status — Visual QC for
-    <span class="pid" id="hero-pid">cp_ens_006</span>
-    <span id="hero-date"></span>
+    Network Visualization for
+    <span id="hero-name">…</span>
+    (<span class="pid" id="hero-pid">cp_ens_032</span>)<span id="hero-date"></span>
   </h1>
+  <button id="reset-view" class="header-reset-btn" title="Reframe the whole subgraph and recenter on the hero">Reset</button>
+  <div id="header-toggles">
+    <button class="menu-btn" id="btn-toggle-filters" title="Show / hide filters">
+      Filters <span class="chev">▾</span>
+    </button>
+    <button class="menu-btn" id="btn-toggle-info" title="Show / hide details panel (also opens automatically when you click a node)">
+      Info <span class="chev">▾</span>
+    </button>
+  </div>
+  <div id="header-search">
+    <input type="text" id="search-box" placeholder="Search nodes…" autocomplete="off">
+    <div class="search-result" id="search-result"></div>
+  </div>
   <div id="stats">
     <span class="badge"><b id="node-count">—</b> nodes</span>
     <span class="badge"><b id="edge-count">—</b> edges</span>
@@ -393,9 +738,9 @@
   </div>
 </div>
 
-<div id="toggles">
+<div id="toggles" class="collapsed">
   <label><input type="checkbox" id="toggle-labels" checked> Show node labels</label>
-  <label><input type="checkbox" id="toggle-anomalies-only"> Anomalies only</label>
+  <label title="Hide everything except the hero, items that need disambiguation (unidentified enslavers), and any workbook anomalies (asymmetric / inferred / missing-target edges)."><input type="checkbox" id="toggle-anomalies-only"> Anomalies only</label>
   <!-- Edge-label persistent overlay removed 2026-05-23 PM5 — hover tooltip
        (3d-force-graph linkLabel) now provides the relation text on edge
        hover, which sidesteps the depth/occlusion overlap with opaque nodes
@@ -407,6 +752,9 @@
   <label><input type="checkbox" class="type-toggle" data-type="enslaved_person" checked>
     <span class="type-swatch" style="background:rgb(252,132,24)"></span>Enslaved persons
     <span class="type-count" data-count-type="enslaved_person">(0)</span></label>
+  <label><input type="checkbox" class="type-toggle" data-type="indentured_person" checked>
+    <span class="type-swatch" style="background:rgb(255,180,120)"></span>Indentured persons
+    <span class="type-count" data-count-type="indentured_person">(0)</span></label>
   <label><input type="checkbox" class="type-toggle" data-type="event" checked>
     <span class="type-swatch" style="background:rgb(250,204,21)"></span>Events
     <span class="type-count" data-count-type="event">(0)</span></label>
@@ -422,18 +770,18 @@
   <label><input type="checkbox" class="type-toggle" data-type="unnamed_group" checked>
     <span class="type-swatch" style="background:rgb(74,122,140)"></span>Unnamed
     <span class="type-count" data-count-type="unnamed_group">(0)</span></label>
-  <hr>
-  <div class="group-label">Find / navigate</div>
-  <input type="text" id="search-box" placeholder="Search by keyword" autocomplete="off">
-  <div class="search-result" id="search-result"></div>
-  <button id="reset-view" title="Reframe whole subgraph and recenter on hero">Reset view</button>
+  <label title="Both verified cp_ens enslavers and unidentified UEI anchor nodes are toggled together — they're conceptually one bucket (the document's named enslaver, identified or pending)."><input type="checkbox" class="type-toggle" data-type="enslaver" checked>
+    <span class="type-swatch" style="background:rgb(139,58,47); border:1px dashed rgb(252,184,80)"></span>Enslavers
+    <span class="type-count" data-count-type="enslaver">(0)</span></label>
+  <!-- Search box + Reset view moved to header bar 2026-05-24 PM-evening
+       (Chris UX: always-visible, not buried in Filters dropdown) -->
 </div>
 
 <div id="graph"></div>
 <div id="label-overlay"></div>
 
-<div id="side">
-  <h2>cp_ens_006</h2>
+<div id="side" class="collapsed">
+  <h2>Hero Network</h2>
   <div class="pid">click any node for detail</div>
   <p style="margin-top:10px; font-style:italic; opacity:0.7;">
     The hero node sits in the center. White edges are verified
@@ -443,10 +791,11 @@
   </p>
 </div>
 
-<!-- Legend reshaped 2026-05-23 PM2 v2 into a compact horizontal strip
-     centered at the bottom. Previous bottom-left position obscured the
-     toggles' Reset View button; bottom-right intermediate obscured the
-     side panel. Centered-bottom strip touches neither side panel. -->
+<!-- Legend (enslaver hero variant 2026-05-27): polished cp_per chrome +
+     the FAMILY kin section + "Other enslaver" swatch + "Inferred" edge that
+     enslaver networks need. Mirrors the Chris-approved enslaver legend. The
+     FAMILY section is hidden until first-degree kin appear (auto-shown by JS
+     below). Compact horizontal strip centered at the bottom. -->
 <div id="legend">
   <div id="legend-kin" class="legend-section" style="display:none">
     <span class="legend-label">Family:</span>
@@ -500,15 +849,15 @@ function showError(msg) {
 }
 window.addEventListener('error', e => showError(e.message + ' @ ' + (e.filename || '') + ':' + (e.lineno || '')));
 
-// Inline JSON — produced by `export_subgraph.py cp_ens_006`.
+// Inline JSON — produced by `export_subgraph.py cp_ens_032`.
 // Re-run that script after any workbook edit to refresh.
 const GRAPH = {
   "metadata": {
     "hero_pid": "cp_ens_006",
-    "generated": "2026-05-24T06:08:11",
+    "generated": "2026-05-28T04:04:58",
     "workbook": "Project Data Sets/Cowenhoven Project Data Set.xlsx",
-    "node_count": 43,
-    "edge_count": 66,
+    "node_count": 42,
+    "edge_count": 65,
     "asymmetric_count": 0,
     "verification_legend": {
       "verified": "Bidirectional reciprocal present on counterpart row",
@@ -522,7 +871,7 @@ const GRAPH = {
     {
       "id": "cp_ens_006",
       "type": "enslaver",
-      "label": "Rem Cowenhoven",
+      "label": "Rem Cowenhoven (1734-1783)",
       "birth_date": "1734-07-13",
       "baptism_date": "",
       "marriage_date": "1760-02-01",
@@ -538,7 +887,7 @@ const GRAPH = {
     {
       "id": "cp_ens_007",
       "type": "enslaver",
-      "label": "John Cowenhoven",
+      "label": "John Cowenhoven (1709-1778)",
       "birth_date": "1709-05-01",
       "baptism_date": "",
       "marriage_date": "abt. 1730",
@@ -555,7 +904,7 @@ const GRAPH = {
     {
       "id": "cp_fam_332",
       "type": "family",
-      "label": "Catharina Remsen",
+      "label": "Catharina Remsen (d. 1786)",
       "birth_date": "",
       "baptism_date": "1716-03-13",
       "marriage_date": "abt. 1730",
@@ -572,7 +921,7 @@ const GRAPH = {
     {
       "id": "cp_fam_333",
       "type": "family",
-      "label": "Magdalene (Van Vechten) Cowenhoven",
+      "label": "Magdalene (Van Vechten) Cowenhoven (1739-1771)",
       "birth_date": "1739-01-27",
       "baptism_date": "",
       "marriage_date": "1760-02-01",
@@ -589,7 +938,7 @@ const GRAPH = {
     {
       "id": "cp_fam_334",
       "type": "family",
-      "label": "Ida (Lefferts) Cowenhoven",
+      "label": "Ida (Lefferts) Cowenhoven (1751-1777)",
       "birth_date": "1751-09-15",
       "baptism_date": "",
       "marriage_date": "1773-06-18",
@@ -606,7 +955,7 @@ const GRAPH = {
     {
       "id": "cp_ens_005",
       "type": "enslaver",
-      "label": "Nicholas Cowenhoven",
+      "label": "Nicholas Cowenhoven (1768-1809)",
       "birth_date": "1768-04-14",
       "baptism_date": "",
       "marriage_date": "1793-11-14",
@@ -623,7 +972,7 @@ const GRAPH = {
     {
       "id": "cp_ens_008",
       "type": "enslaver",
-      "label": "John R. Couwenhoven",
+      "label": "John R. Couwenhoven (1761-1811)",
       "birth_date": "1761-02-28",
       "baptism_date": "",
       "marriage_date": "",
@@ -640,7 +989,7 @@ const GRAPH = {
     {
       "id": "cp_fam_055",
       "type": "enslaver",
-      "label": "Cornelia (Cowenhoven) Cornell",
+      "label": "Cornelia (Cowenhoven) Cornell (b. 1764)",
       "birth_date": "1764-10-05",
       "baptism_date": "",
       "marriage_date": "",
@@ -657,7 +1006,7 @@ const GRAPH = {
     {
       "id": "cp_fam_056",
       "type": "enslaver",
-      "label": "Sarah (Cowenhoven) Lefferts",
+      "label": "Sarah (Cowenhoven) Lefferts (1775-1856)",
       "birth_date": "1775-01-28",
       "baptism_date": "",
       "marriage_date": "1790-04-25",
@@ -674,7 +1023,7 @@ const GRAPH = {
     {
       "id": "cp_ens_001",
       "type": "enslaver",
-      "label": "Nicholas Cowenhoven",
+      "label": "Nicholas Cowenhoven (1744-1793)",
       "birth_date": "circa September 1744 (calculated from gravestone 'aged 48 years and 6 months' on death 1793-03-07 \u2014 primary by inference; precision month-only as gravestone gives years+months without days; SUPERSEDES prior WikiTree-asserted 1744-04-18 which conflicted by ~5 months)",
       "baptism_date": "",
       "marriage_date": "1763-09-24",
@@ -691,7 +1040,7 @@ const GRAPH = {
     {
       "id": "cp_ens_034",
       "type": "enslaver",
-      "label": "John Cowenhoven",
+      "label": "John Cowenhoven (1752-1805)",
       "birth_date": "1752 (per FS G9DJ-8D1; primary baptism record from Brooklyn or Flatbush DRC pending)",
       "baptism_date": "",
       "marriage_date": "",
@@ -708,7 +1057,7 @@ const GRAPH = {
     {
       "id": "cp_fam_326",
       "type": "family",
-      "label": "Dorothea Cowenhoven (m. Leffert Lefferts)",
+      "label": "Dorothea Cowenhoven (m. Leffert Lefferts) (1738-1816)",
       "birth_date": "1738-02-08",
       "baptism_date": "",
       "marriage_date": "1756-08-05",
@@ -725,7 +1074,7 @@ const GRAPH = {
     {
       "id": "cp_fam_327",
       "type": "family",
-      "label": "Dinah Cowenhoven (m. Robert Benson)",
+      "label": "Dinah Cowenhoven (m. Robert Benson) (1741-1827)",
       "birth_date": "1741-11-15",
       "baptism_date": "",
       "marriage_date": "1785-03-27",
@@ -844,6 +1193,7 @@ const GRAPH = {
       "label": "Will 1782-01-12",
       "event_type": "Will",
       "document_date": "1782-01-12",
+      "source_quotation": "",
       "source_sheet": "EVENT"
     },
     {
@@ -913,11 +1263,19 @@ const GRAPH = {
       "source_sheet": "PLACE"
     },
     {
-      "id": "cp_pla_039",
-      "type": "place",
-      "label": "State of New York",
-      "place_type": "State",
-      "source_sheet": "PLACE"
+      "id": "cp_sou_009",
+      "type": "source",
+      "label": "Rem Cowenhoven 1782 Will + 1783 Probate Inventory",
+      "title": "Will and Probate Inventory of Rem Cowenhoven of the Township of Brooklyn, Kings County, deceased (will executed 12 January 1782; proved 10 February 1783; letters issued 1 March 1783; inventory taken 10 February 1783)",
+      "source_type": "Probate file (manuscript) \u2014 composite of (1) will text 12 Jan 1782, (2) subscribing-witness deposition 10 Jan 1783, (3) probate cover sheet from Lt. Gov. James Robertson + Surrogate Cary Ludlow + Sec'y Samuel Bayard Jr. with prerogative seal 1 Mar 1783, (4) inventory of personal estate 10 Feb 1783; 14 pages",
+      "date": "Will executed 12 Jan 1782; deponents' affidavit before Surrogate Cary Ludlow 10 Jan 1783 (4 days before Rem's death 14 Jan 1783); will proved + inventory taken 10 Feb 1783; letters of administration issued 1 March 1783 under prerogative seal of Province of New York",
+      "author": "Rem Cowenhoven (testator, signed with mark X 'with the assistance of Nicholas Cowenhoven'); James Robertson Esq. Lt. Governor of NY (issuing authority on probate cover sheet); Cary Ludlow Esq. (Surrogate, City and Province of NY); Samuel Bayard Jr. (Secretary); Nicholas Cowenhoven cp_ens_001 + Peter Lefferts + John R. Cowenhoven cp_ens_008 (subscribing witnesses to will, deponents 10 Jan 1783); John Cowenhoven [likely cp_ens_034 brother of testator] + Leffert Lefferts Esq. (inventory appraisers 10 Feb 1783)",
+      "url": "",
+      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, Capt. Rem'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): finding-aid label 'Capt. Rem' indicates Rem held a captain's commission \u2014 historical context flag for cp_ens_006 occupation field (likely Loyalist militia given his December 1776 oath of loyalty to British Crown, but possibly pre-Revolutionary Kings County militia rank; primary commission record needed).",
+      "citation": "Will of Rem Cowenhoven of the Township of Brooklyn, Kings County, NY, executed 12 January 1782 (Rem signed by mark X, assisted by his brother Nicholas, being 'very sick in body'). Three executors named: brother Nicholas Cowenhoven (cp_ens_001), son John R. Cowenhoven (cp_ens_008), and Peter Lefferts. Subscribing-witness deposition taken before Cary Ludlow Esq., Surrogate of the City and Province of New York, 10 January 1783, four days before Rem's death of 14 January 1783. Will proved 10 February 1783. Letters of administration issued 1 March 1783 under prerogative seal of Province of New York, signed by Samuel Bayard Jr., Secretary, by authority of Lt. Gov. James Robertson Esq. Companion inventory of personal estate taken 10 February 1783 by John Cowenhoven and Leffert Lefferts Esqrs as appraisers; total goods+chattels \u00a31,412-2-0 (8 enslaved persons valued at \u00a3275, plus livestock, farm tools, household goods, books, silver); separate bonds-and-notes inventory totaling \u00a33,565-13-4, including a sub-section of bonds Rem inherited from his father John Cowenhoven Sr. (cp_ens_007)'s 1778 estate distribution. Closing line of inventory (page 14): 'This what Leffert Lefferts Esq & John Cowenhoven have appraised Amt to \u00a31412-2-0. John R. Cowenhoven Son of the Testator is willing to take and takes it at the appraisement & acknowledges himself indebted to the Estate thereon' \u2014 entire personal estate (incl. all 8 enslaved persons: Sam cp_per_236, Oldest Harry cp_per_237, Young Jack cp_per_238, Old Jack cp_per_239, Tom cp_per_057, small-boy Harry cp_per_240, Sare cp_per_241, Sare's child Tom cp_per_242) passed to son John R. Couwenhoven cp_ens_008 at appraisement value, charged against his eventual inheritance share. 14-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, Capt. Rem' (provenance confirmed 2026-04-28 per Chris's finding-aid lookup). Local copy: /Source Documents/[filing location TBD]/ErasmusHall_RemCowenhoven.pdf.",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
     },
     {
       "id": "cp_sou_079",
@@ -930,20 +1288,7 @@ const GRAPH = {
       "url": "(pending \u2014 Chris-supplied PDF.)",
       "archive": "Original: The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), Monday May 25, 1778. Local: Source Documents/Rem Cowenhoven 1778 Sale Ad of Woman and Child/.",
       "citation": "\"A likely NEGRO WENCH, To be SOLD, for CASH. SHE is about 28 years old, has lived chiefly in the city of New-York, is well acquainted with all sorts of house-work, particularly washing and ironing, is brisk and active, and has had the small-pox; she has a healthy female child about 7 months old. Apply to Captain REM COWENHOVEN, about two miles from Brooklyn-Ferry.\" The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), May 25, 1778.",
-      "verification_status": "verified",
-      "source_sheet": "SOURCE"
-    },
-    {
-      "id": "cp_sou_009",
-      "type": "source",
-      "label": "Rem Cowenhoven 1782 Will + 1783 Probate Inventory",
-      "title": "Will and Probate Inventory of Rem Cowenhoven of the Township of Brooklyn, Kings County, deceased (will executed 12 January 1782; proved 10 February 1783; letters issued 1 March 1783; inventory taken 10 February 1783)",
-      "source_type": "Probate file (manuscript) \u2014 composite of (1) will text 12 Jan 1782, (2) subscribing-witness deposition 10 Jan 1783, (3) probate cover sheet from Lt. Gov. James Robertson + Surrogate Cary Ludlow + Sec'y Samuel Bayard Jr. with prerogative seal 1 Mar 1783, (4) inventory of personal estate 10 Feb 1783; 14 pages",
-      "date": "Will executed 12 Jan 1782; deponents' affidavit before Surrogate Cary Ludlow 10 Jan 1783 (4 days before Rem's death 14 Jan 1783); will proved + inventory taken 10 Feb 1783; letters of administration issued 1 March 1783 under prerogative seal of Province of New York",
-      "author": "Rem Cowenhoven (testator, signed with mark X 'with the assistance of Nicholas Cowenhoven'); James Robertson Esq. Lt. Governor of NY (issuing authority on probate cover sheet); Cary Ludlow Esq. (Surrogate, City and Province of NY); Samuel Bayard Jr. (Secretary); Nicholas Cowenhoven cp_ens_001 + Peter Lefferts + John R. Cowenhoven cp_ens_008 (subscribing witnesses to will, deponents 10 Jan 1783); John Cowenhoven [likely cp_ens_034 brother of testator] + Leffert Lefferts Esq. (inventory appraisers 10 Feb 1783)",
-      "url": "",
-      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, Capt. Rem'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): finding-aid label 'Capt. Rem' indicates Rem held a captain's commission \u2014 historical context flag for cp_ens_006 occupation field (likely Loyalist militia given his December 1776 oath of loyalty to British Crown, but possibly pre-Revolutionary Kings County militia rank; primary commission record needed).",
-      "citation": "Will of Rem Cowenhoven of the Township of Brooklyn, Kings County, NY, executed 12 January 1782 (Rem signed by mark X, assisted by his brother Nicholas, being 'very sick in body'). Three executors named: brother Nicholas Cowenhoven (cp_ens_001), son John R. Cowenhoven (cp_ens_008), and Peter Lefferts. Subscribing-witness deposition taken before Cary Ludlow Esq., Surrogate of the City and Province of New York, 10 January 1783, four days before Rem's death of 14 January 1783. Will proved 10 February 1783. Letters of administration issued 1 March 1783 under prerogative seal of Province of New York, signed by Samuel Bayard Jr., Secretary, by authority of Lt. Gov. James Robertson Esq. Companion inventory of personal estate taken 10 February 1783 by John Cowenhoven and Leffert Lefferts Esqrs as appraisers; total goods+chattels \u00a31,412-2-0 (8 enslaved persons valued at \u00a3275, plus livestock, farm tools, household goods, books, silver); separate bonds-and-notes inventory totaling \u00a33,565-13-4, including a sub-section of bonds Rem inherited from his father John Cowenhoven Sr. (cp_ens_007)'s 1778 estate distribution. Closing line of inventory (page 14): 'This what Leffert Lefferts Esq & John Cowenhoven have appraised Amt to \u00a31412-2-0. John R. Cowenhoven Son of the Testator is willing to take and takes it at the appraisement & acknowledges himself indebted to the Estate thereon' \u2014 entire personal estate (incl. all 8 enslaved persons: Sam cp_per_236, Oldest Harry cp_per_237, Young Jack cp_per_238, Old Jack cp_per_239, Tom cp_per_057, small-boy Harry cp_per_240, Sare cp_per_241, Sare's child Tom cp_per_242) passed to son John R. Couwenhoven cp_ens_008 at appraisement value, charged against his eventual inheritance share. 14-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, Capt. Rem' (provenance confirmed 2026-04-28 per Chris's finding-aid lookup). Local copy: /Source Documents/[filing location TBD]/ErasmusHall_RemCowenhoven.pdf.",
+      "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
     },
@@ -953,6 +1298,7 @@ const GRAPH = {
       "label": "Probate Inventory 1783-02-10",
       "event_type": "Probate Inventory",
       "document_date": "1783-02-10",
+      "source_quotation": "",
       "source_sheet": "EVENT"
     },
     {
@@ -961,6 +1307,7 @@ const GRAPH = {
       "label": "Disappearance ",
       "event_type": "Disappearance",
       "document_date": "",
+      "source_quotation": "",
       "source_sheet": "EVENT"
     },
     {
@@ -974,6 +1321,7 @@ const GRAPH = {
       "url": "",
       "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, John R.'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): the Erasmus Hall records collection's date range is 1325\u20131989 (bulk circa 1775\u20131975), and contains the records of Erasmus Hall Academy (1787\u20131896) and its successor Erasmus Hall High School at 911 Flatbush Avenue, Brooklyn. The 1778 inventory of cp_ens_007 ended up in this collection presumably via the school's connections to the Cowenhoven family \u2014 likely descended through grandson John R. Couwenhoven (cp_ens_008). NOTE: not to be confused with the Brooklyn-side John R. Couwenhoven account book at Center for Brooklyn History (cp_sou_005, BHS arms_1973_167) \u2014 different physical document at a different archive.",
       "citation": "Inventory of the Monies, Goods & Chattles belonging to the Estate of the Late John Cowenhoven of the Township of Broockhlin, in Kings County, On the Island Nassau in the Province of New York, Deceased. Taken and Appraised by Engelbert Lott and Engelbert Lott Junr. on the First day of June, in the Year of Our Lord, One Thousand Seven Hundred and Seventy Eight. 11-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, John R.' (provenance updated 2026-04-28 per Chris's finding-aid lookup; earlier 'John R. Cowenhoven Papers' attribution was an inaccurate local label). Local copy: /Source Documents/Brooklyn Cowenhoven Land Agreements/ErasmusHall_JohnRCowenhoven-1.pdf (filename internal labeling \u2014 content is the 1778 inventory of patriarch John Cowenhoven cp_ens_007, NOT of his grandson John R.). Names five enslaved persons (Frederick, Tom, Ben, Anthony, Mary) appraised at total \u00a3225, plus full estate inventory totaling \u00a315,699.16 including ~\u00a38,200 in bonds/mortgages receivable, NYC real estate near the New Sugar House (\u00a3900), off-site valuables held during British occupation, and three executor sons drawing inheritance portions by consent of widow Catharina Remsen.",
+      "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
     },
@@ -1310,13 +1658,6 @@ const GRAPH = {
       "note": "PLACE.parent_place_id (hierarchy)"
     },
     {
-      "source": "cp_pla_011",
-      "target": "cp_pla_039",
-      "relation": "part_of",
-      "verification_status": "verified",
-      "note": "PLACE.parent_place_id (hierarchy)"
-    },
-    {
       "source": "cp_eve_030",
       "target": "cp_pla_002",
       "relation": "located_at",
@@ -1324,13 +1665,13 @@ const GRAPH = {
     },
     {
       "source": "cp_eve_030",
-      "target": "cp_sou_079",
+      "target": "cp_sou_009",
       "relation": "documented_by",
       "verification_status": "verified"
     },
     {
       "source": "cp_eve_030",
-      "target": "cp_sou_009",
+      "target": "cp_sou_079",
       "relation": "documented_by",
       "verification_status": "verified"
     },
@@ -1422,12 +1763,6 @@ const GRAPH = {
     },
     {
       "source": "cp_ens_006",
-      "target": "cp_sou_079",
-      "relation": "cited_in",
-      "verification_status": "verified"
-    },
-    {
-      "source": "cp_ens_006",
       "target": "cp_sou_008",
       "relation": "cited_in",
       "verification_status": "verified"
@@ -1435,6 +1770,12 @@ const GRAPH = {
     {
       "source": "cp_ens_006",
       "target": "cp_sou_009",
+      "relation": "cited_in",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_006",
+      "target": "cp_sou_079",
       "relation": "cited_in",
       "verification_status": "verified"
     },
@@ -1567,6 +1908,20 @@ const NODE_BY_ID = new Map(GRAPH.nodes.map(n => [n.id, n]));
 function compactLabel(s, maxLen) {
   if (!s) return '';
   if (typeof maxLen !== 'number') maxLen = 38;
+
+  // Preserve a trailing year-suffix parenthetical: (NNNN), (NNNN-NNNN),
+  // (b. NNNN), (d. NNNN), (c. NNNN) — emitted by enslaver_display_label()
+  // and the cohort/spouse event labels. Strip every OTHER parenthetical.
+  // Chris 2026-05-26 evening: years are diagnostic for kin-disambiguation
+  // and should remain visible on every enslaver/event node label.
+  let yearSuffix = '';
+  const yearMatch = String(s).match(
+    /\s*(\((?:[bdc]\.\s*)?1[6-9]\d{2}(?:\s*[-–]\s*(?:1[6-9]\d{2}|20\d{2}|\?)?)?\))\s*$/
+  );
+  if (yearMatch) {
+    yearSuffix = ' ' + yearMatch[1];
+  }
+
   let out = String(s)
     .replace(/\s*\([^)]*\)/g, '')   // remove all balanced parentheticals
     .replace(/\s*\([^)]*$/g, '')    // remove a trailing unclosed paren run
@@ -1576,10 +1931,13 @@ function compactLabel(s, maxLen) {
     // Defensive: if stripping nuked everything, fall back to text-before-first-paren
     out = String(s).split('(')[0].trim();
   }
-  if (out.length > maxLen) {
-    out = out.slice(0, maxLen - 1).trimEnd() + '…';
+  // Reserve space for year suffix when truncating so the years aren't lost.
+  const reservedForYears = yearSuffix.length;
+  const nameCap = Math.max(8, maxLen - reservedForYears);
+  if (out.length > nameCap) {
+    out = out.slice(0, nameCap - 1).trimEnd() + '…';
   }
-  return out;
+  return out + yearSuffix;
 }
 function compactDate(s) {
   if (!s) return '';
@@ -1745,12 +2103,22 @@ function formatPersonEvents(node) {
 const NODE_COLOR = {
   enslaver: 'rgb(139,58,47)',          // brick — ENSLAVER sheet, including hero
   family: 'rgb(166,135,93)',           // darker tan — readable against backdrop
-  enslaved_person: 'rgb(252,132,24)',  // bright orange (kept in sync with --enslaved CSS var; shifted from terracotta 2026-05-23 PM4 for visibility)
+  enslaved_person: 'rgb(252,132,24)',  // bright orange (kept in sync with --enslaved CSS var)
+  indentured_person: 'rgb(255,180,120)', // peach — NJ 1804 Act children (born to enslaved mother post-1804-07-04, indentured until 21M/25F). Distinct legal status from enslaved; same hue family signals lineage from enslaved mother
   unnamed_group: 'rgb(74,122,140)',    // teal
-  event: 'rgb(250,204,21)',            // saffron #FACC15 (shifted from mustard 2026-05-23 PM2 v3 — sibling-amber still too close)
+  event: 'rgb(250,204,21)',            // saffron #FACC15
   place: 'rgb(92,138,71)',             // moss green
-  source: 'rgb(80,95,125)',            // muted slate — manuscript ink. Both primary cp_sou AND secondary cp_famsou render in this single color (Chris 2026-05-23 PM2 v3.1: same QC purpose, no need to distinguish visually).
+  source: 'rgb(80,95,125)',            // muted slate — manuscript ink
+  uei_anchor: 'rgb(139,58,47)',        // brick — SAME as enslaver (Chris 2026-05-24: future-minted enslavers transition cleanly from "brick + dashed + ?" to "brick + solid"; uncertainty signal carried by dashed border + ? glyph + amber label, NOT by sphere color)
   unknown: 'rgb(110,98,88)',           // warm gray
+};
+// person_status (Active.Person Status) → node color for cp_per nodes.
+// "Enslaved Person" stays the bright orange of NODE_COLOR.enslaved_person;
+// "Indentured Person" gets the peach NODE_COLOR.indentured_person.
+// Other / unrecognized statuses fall through to the default enslaved orange.
+const PERSON_STATUS_COLOR = {
+  'Enslaved Person':   NODE_COLOR.enslaved_person,
+  'Indentured Person': NODE_COLOR.indentured_person,
 };
 // Kin-aware palette — applies only to first-degree neighbors when the hero
 // is a person. Drives nodeColor + label color class. Per evening-9 handoff
@@ -1772,6 +2140,10 @@ const PRETTY_RELATIONS = {
   documented_in: 'involved in',
   cited_in:      'mentioned in',
   baptised_at:   'baptized at',
+  // 'concerns' renamed to 'involves' project-wide 2026-05-24 PM-evening per
+  // Chris. directionalEdgeLabel in the side panel already routes this via
+  // RELATION_LABEL.concerns.out; PRETTY_RELATIONS handles the edge-hover label.
+  concerns:      'involves',
 };
 
 function prettyEdgeLabel(rel) {
@@ -1791,7 +2163,7 @@ function prettyEdgeLabel(rel) {
 // Falls back to prettyEdgeLabel for any relation not in the table.
 const RELATION_LABEL = {
   // EVENT-centric edges
-  concerns:            { out: 'concerns',          in:  'mentioned in' },
+  concerns:            { out: 'involves',          in:  'mentioned in' },
   located_at:          { out: 'happened in',       in:  'location of' },
   documented_by:       { out: 'documented in',     in:  'documents' },
   documents_group:     { out: 'documents group',   in:  'documented in' },
@@ -1802,6 +2174,23 @@ const RELATION_LABEL = {
   enslaved_subsequent: { out: 'subsequently enslaved', in: 'subsequently enslaved by' },
   enslaved_group:      { out: 'enslaved group',    in:  'group enslaved by' },
   asserted_by:         { out: 'asserted by',       in:  'asserts' },
+  // Event-type-aware enslaver-edge labels (Chris 2026-05-25): replaces the
+  // generic 'asserted_by' with verbs that reflect the enslaver's actual role
+  // per event type. Read as "[subject] was [out-verb] by [enslaver]" for the
+  // event-side display, and "[enslaver] [in-verb] [subject]" for the enslaver
+  // side. Exporter selects the relation per EVENT.event_type.
+  manumitted_by:           { out: 'manumitted by',           in: 'manumitted' },
+  manumitted_by_executor:  { out: 'manumitted by executor',  in: 'manumitted as executor' },
+  registered_by:           { out: 'registered by',           in: 'registered' },
+  sold_by:                 { out: 'sold by',                 in: 'sold' },
+  devised_by:              { out: 'devised by',              in: 'devised' },
+  probated_by:             { out: 'probated by',             in: 'probated' },
+  sponsored_by:            { out: 'sponsored by',            in: 'sponsored' },
+  // Enslaved-hero workflow edges (v3.8 + v3.9) — UEI anchor relations
+  appears_in:             { out: 'appears in',         in:  'involves' },
+  named_enslaver:         { out: 'names enslaver',     in:  'named in' },
+  enslaved_unidentified:  { out: 'enslaved (unidentified)', in: 'enslaved by (unidentified)' },
+  indentured_unidentified:{ out: 'indentured (unidentified)', in: 'indentured by (unidentified)' },
   // PLACE relations (person → place)
   born_at:             { out: 'born in',           in:  'birthplace of' },
   died_at:             { out: 'died in',           in:  'place of death of' },
@@ -1823,8 +2212,25 @@ const RELATION_LABEL = {
   grandchild:  { out: 'grandchild',  in: 'grandparent' },
 };
 
-function directionalEdgeLabel(relation, isOutgoing) {
+function directionalEdgeLabel(relation, isOutgoing, sourceNode, targetNode) {
   if (!relation) return '';
+  // Sex-aware kin labels (Chris 2026-05-25): "child" edges use source-role
+  // convention — source has Active.Relationships "Parent|X" token, so source
+  // is the parent and target is the child. Display "mother of" / "father of"
+  // (or "mother" / "father" on the incoming side) based on the PARENT's sex,
+  // which is always the source for this relation.
+  if (relation === 'child') {
+    const parentSex = sourceNode && sourceNode.sex;
+    if (isOutgoing) {
+      if (parentSex === 'Female') return 'mother of';
+      if (parentSex === 'Male')   return 'father of';
+      return 'parent of';
+    } else {
+      if (parentSex === 'Female') return 'mother';
+      if (parentSex === 'Male')   return 'father';
+      return 'parent';
+    }
+  }
   const entry = RELATION_LABEL[relation];
   if (entry) return isOutgoing ? entry.out : entry.in;
   return prettyEdgeLabel(relation);  // fallback for any relation we missed
@@ -1836,6 +2242,7 @@ const LABEL_COLOR = {
   unnamed_group: 'rgb(220,240,245)',
   event: 'rgb(255,245,210)',
   place: 'rgb(225,245,220)',
+  uei_anchor: 'rgb(252,184,80)',       // amber — matches sphere color
   unknown: 'rgb(240,235,225)',
 };
 
@@ -1845,27 +2252,43 @@ const EDGE_STYLE = {
   asymmetric:       { color: 'rgb(199,62,58)',  dashed: true,  opacity: 0.95 },
   inferred_from_text:{color: 'rgb(184,101,30)', dashed: true,  opacity: 0.90 },
   target_missing:   { color: 'rgb(110,98,88)',  dashed: true,  opacity: 0.70 },
+  hypothesis:       { color: 'rgb(252,184,80)', dashed: true,  opacity: 0.85 },  // amber — unidentified enslaver edges (event→UEI, UEI→hero) per Enslaved_Hero_Network_Workflow.md Step 5
+  hero:             { color: 'rgb(255,255,255)',dashed: false, opacity: 0.55 },  // hero self-edges (none currently; alias for verified)
 };
 
 // Update header
 document.getElementById('hero-pid').textContent = GRAPH.metadata.hero_pid;
 
-// Append the ISO date the subgraph was generated (Chris 2026-05-23 PM4)
+// Populate hero name in the title (Chris 2026-05-24 PM-evening — title was
+// just "Enslaved Hero Network — cp_per_153"; now reads "Hero Network for
+// Matt (cp_per_153) on May 25, 2026").
+(function setHeroName() {
+  const el = document.getElementById('hero-name');
+  if (!el) return;
+  const hero = GRAPH.nodes.find(n => n.is_hero);
+  el.textContent = (hero && hero.label) ? hero.label : GRAPH.metadata.hero_pid;
+})();
+
+// Format the generated date as "Month Day, Year" (Chris 2026-05-24 PM-evening).
 (function setHeaderDate() {
   const iso = String(GRAPH.metadata.generated || '').split('T')[0];
   const el = document.getElementById('hero-date');
-  if (el && iso) el.textContent = ' on ' + iso;
+  if (!el || !iso) return;
+  // Parse YYYY-MM-DD safely (timezone-neutral; avoid Date(iso) UTC pitfall)
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) { el.textContent = ' on ' + iso; return; }
+  const months = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  const monthName = months[parseInt(m[2], 10) - 1] || m[2];
+  const day = parseInt(m[3], 10);
+  el.textContent = ` on ${monthName} ${day}, ${m[1]}`;
 })();
 
-// Side panel initial H2: show the hero's full name (instead of just the
-// PID). Must run BEFORE INITIAL_SIDE_HTML is captured below, so Reset View
-// restores the name too. Falls back gracefully to the substituted PID if
-// the hero node or its label is missing.
-(function setSideHeroName() {
-  const hero = GRAPH.nodes.find(n => n.is_hero);
-  const h2 = document.querySelector('#side h2');
-  if (h2 && hero && hero.label) h2.textContent = hero.label;
-})();
+// Initial side-panel H2 is now the static "Hero Network" string (set in
+// the HTML above). Per Chris 2026-05-24 PM-evening — the hero's name
+// appears in the top-bar title; the side panel's default H2 should describe
+// what the panel IS, not duplicate the hero's name. When a node is clicked,
+// showSidePanel rewrites the H2 to that node's label.
 document.getElementById('node-count').textContent = GRAPH.metadata.node_count;
 document.getElementById('edge-count').textContent = GRAPH.metadata.edge_count;
 if (GRAPH.metadata.asymmetric_count > 0) {
@@ -1961,11 +2384,28 @@ function _nonKinPhrase(rel, direction, name, nodeType) {
     }
   } else {
     switch (rel) {
-      case 'concerns': return `Concerns ${name}`;
+      case 'concerns': return `Involves ${name}`;
       case 'documented_by': return `Documents ${name}`;
+      case 'enslaved': return `Enslaved ${name}`;
+      case 'enslaved_subsequent': return `Subsequently enslaved ${name}`;
+      case 'enslaved_unidentified': return `Enslaved ${name}`;
+      case 'indentured_unidentified': return `Indentured ${name}`;
     }
   }
-  return `${prettyEdgeLabel(rel)} ${name}`;
+  // Capitalize the prettyEdgeLabel fallback so phrases read like "Enslaved
+  // Rachel" rather than "enslaved Rachel" (Chris 2026-05-25).
+  return `${_capRelation(prettyEdgeLabel(rel))} ${name}`;
+}
+
+// Type-aware fallback phrasing for nodes that are connected to the hero only
+// indirectly (via events). Replaces the generic "Indirectly connected to X"
+// per Chris 2026-05-24 PM-evening. For cp_per heroes, places and sources are
+// always 2-hop (hero → event → place/source) so this branch fires often.
+function _indirectPhraseForType(nodeType, heroFirst) {
+  if (nodeType === 'place')  return `Place from ${heroFirst}'s life`;
+  if (nodeType === 'source') return `Source for ${heroFirst}'s record(s)`;
+  if (nodeType === 'event')  return `Event in ${heroFirst}'s life`;
+  return `Indirectly connected to ${heroFirst}`;
 }
 
 function relationshipToHero(node) {
@@ -1984,7 +2424,7 @@ function relationshipToHero(node) {
     if (!direction) continue;
     return { text: _nonKinPhrase(ed.relation, direction, HERO_FIRST_NAME, node.type), kinRelation: null };
   }
-  return { text: `Indirectly connected to ${HERO_FIRST_NAME}`, kinRelation: null };
+  return { text: _indirectPhraseForType(node.type, HERO_FIRST_NAME), kinRelation: null };
 }
 
 // Build force-graph
@@ -1997,7 +2437,20 @@ const Graph = ForceGraph3D()
   .nodeRelSize(6)
   .nodeVal(n => n.is_hero ? 14 : (n.type === 'place' ? 4 : (n.type === 'event' ? 6 : 6)))
   .nodeColor(n => {
-    if (n.is_hero) return NODE_COLOR[n.type] || NODE_COLOR.enslaver;
+    // Hero: use type-based color (cp_per hero stays bright orange via NODE_COLOR.enslaved_person)
+    if (n.is_hero) {
+      if (n.type === 'enslaved_person' && n.person_status && PERSON_STATUS_COLOR[n.person_status]) {
+        return PERSON_STATUS_COLOR[n.person_status];
+      }
+      return NODE_COLOR[n.type] || NODE_COLOR.enslaver;
+    }
+    // For cp_per nodes (enslaved_person type), check Person Status BEFORE kin palette.
+    // The legal-status distinction (enslaved vs indentured) is more informative
+    // than kin coloring for this hero type — readers need to see at a glance which
+    // children were born under the 1804 Gradual Abolition Act.
+    if (n.type === 'enslaved_person' && n.person_status && PERSON_STATUS_COLOR[n.person_status]) {
+      return PERSON_STATUS_COLOR[n.person_status];
+    }
     if (n.hero_relation && KIN_PALETTE[n.hero_relation]) return KIN_PALETTE[n.hero_relation];
     return NODE_COLOR[n.type] || NODE_COLOR.unknown;
   })
@@ -2006,33 +2459,66 @@ const Graph = ForceGraph3D()
   // always-on HTML label overlay (see below); the overlay shows a compact
   // label only, the hover tooltip shows full detail.
   .nodeLabel(n => {
-    // Hover tooltip — compact card. Annotation-stripped versions of date
-    // fields so the SUPERSEDES/research-provenance prose doesn't blow up
+    // UEI anchor: dedicated hover format per Chris 2026-05-24 PM-evening.
+    // Format:
+    //   Enslaver of {hero_first_name}      (relationship line in brick color)
+    //   "Peter Covenhoven"                  (name in quotes + italics, bold)
+    //   uei_001                             (PID in monospace)
+    //   Unidentified Enslaver               (type label, italic)
+    if (n.type === 'uei_anchor') {
+      const name = n.named_as || n.label || n.id;
+      return `<div style="font-family:Georgia,serif;background:#FDF8EE;border:1px solid #C9B79C;padding:8px 12px;color:#2A1810;font-size:13px;max-width:340px;">
+        <div style="color:#5a3d2e;font-weight:bold;margin-bottom:4px;font-size:12px;">Enslaver of ${escapeHtml(HERO_FIRST_NAME)}</div>
+        <b style="font-style:italic">"${escapeHtml(name)}"</b><br>
+        <span style="font-family:Courier New;font-size:11px;opacity:0.7">${escapeHtml(n.id)}</span><br>
+        <i>Unidentified Enslaver</i>
+      </div>`;
+    }
+    // Default hover tooltip — compact card. Annotation-stripped versions of
+    // date fields so the SUPERSEDES/research-provenance prose doesn't blow up
     // the popup. Full annotated values are available in the side panel.
     // Relationship-to-hero line added 2026-05-23 PM4 — sits above the name
     // so the first thing a hovered node tells you is how it connects to the
     // hero, color-coded by kin palette when applicable.
     const cleanName = compactLabel(n.label || n.id, 60);
     const rel = relationshipToHero(n);
-    const relColor = (rel && rel.kinRelation && KIN_PALETTE[rel.kinRelation]) || '#5a3d2e';
+    // Uniform brick color for hover relationship line — kin-palette override
+    // removed 2026-05-24 PM-evening per Chris (the children's "Child of Matt"
+    // text was reading orchid/pink; should match other nodes' brick color).
+    const relColor = '#5a3d2e';
     const relLine = rel
       ? `<div style="color:${relColor};font-weight:bold;margin-bottom:4px;font-size:12px;">${escapeHtml(rel.text)}</div>`
       : '';
+    // For enslaved_person nodes, use the legally-correct Person Status label
+    // ("Enslaved Person" / "Indentured Person") instead of the raw type name.
+    // Chris 2026-05-24 PM-evening: "indentured_person" / "enslaved_person"
+    // are internal type labels; users should see the documented status.
+    let _typeLabel = n.type;
+    if (n.type === 'enslaved_person') {
+      _typeLabel = n.person_status || 'Enslaved Person';
+    }
     const parts = [
       `<div style="font-family:Georgia,serif;background:#FDF8EE;border:1px solid #C9B79C;padding:8px 12px;color:#2A1810;font-size:13px;max-width:340px;">`,
       relLine,
       `<b>${escapeHtml(cleanName)}</b><br>`,
       `<span style="font-family:Courier New;font-size:11px;opacity:0.7">${n.id}</span><br>`,
-      `<i>${n.type}</i>`,
+      `<i>${escapeHtml(_typeLabel)}</i>`,
     ];
     const b = compactDate(n.birth_date);
     const d = compactDate(n.death_date);
     if (b) parts.push(`<br>b. ${escapeHtml(b)}`);
     if (d) parts.push(` &nbsp; d. ${escapeHtml(d)}`);
-    const ev = compactDate(n.event_date);
-    if (ev) parts.push(`<br>${escapeHtml(ev)}`);
-    const et = compactLabel(n.event_type, 50);
-    if (et) parts.push(`<br>${escapeHtml(et)}`);
+    // Skip event_date + event_type rows for enslaved_person nodes:
+    //  - Hero (multi-event person like Matt): showing one event date misleads
+    //  - Children: event_date == birth_date when role=Child, so the row was
+    //    a redundant duplicate of "b. YYYY-MM-DD" above
+    // The relationship-to-hero line ("Child of Matt") already conveys context.
+    if (n.type !== 'enslaved_person') {
+      const ev = compactDate(n.event_date);
+      if (ev) parts.push(`<br>${escapeHtml(ev)}`);
+      const et = compactLabel(n.event_type, 50);
+      if (et) parts.push(`<br>${escapeHtml(et)}`);
+    }
     const pt = compactLabel(n.place_type, 50);
     if (pt) parts.push(`<br>${escapeHtml(pt)}`);
     parts.push('</div>');
@@ -2046,11 +2532,14 @@ const Graph = ForceGraph3D()
   .linkDirectionalParticleColor(e => (EDGE_STYLE[e.verification_status] || EDGE_STYLE.verified).color)
   .linkDirectionalParticleWidth(2)
   .linkLabel(e => {
+    // Edge hover popup. Relation label + verification badge only — the
+    // developer note (e.g., "Active.Relationships (cp_per kin token,
+    // source-role convention)") was visible to users 2026-05-24 PM-evening
+    // and Chris asked to hide it. Notes remain on edges in the JSON for
+    // debugging / future QC tooling.
     const verif = e.verification_status;
-    const note = e.note ? `<br><i>${escapeHtml(e.note)}</i>` : '';
     return `<div style="font-family:Georgia,serif;background:#FDF8EE;border:1px solid #C9B79C;padding:6px 10px;color:#2A1810;font-size:12px;">
       <b>${escapeHtml(prettyEdgeLabel(e.relation))}</b> &nbsp; <span style="color:${(EDGE_STYLE[verif]||EDGE_STYLE.verified).color}">[${verif}]</span>
-      ${note}
     </div>`;
   })
   .linkDirectionalArrowLength(2)
@@ -2067,6 +2556,17 @@ const Graph = ForceGraph3D()
     );
   })
   .graphData(GRAPH);
+
+// ---- Bind canvas size to #graph container (2026-05-27) — fixes empty space
+// on the right when the iframe is wider than the graph's init width (wide
+// monitors / embedded contexts). ----
+(function(){
+  var graphEl = document.getElementById('graph');
+  function fitGraph(){ if (graphEl) { Graph.width(graphEl.clientWidth); Graph.height(graphEl.clientHeight); } }
+  fitGraph();
+  if (window.ResizeObserver) { new ResizeObserver(fitGraph).observe(graphEl); }
+  window.addEventListener('resize', fitGraph);
+})();
 
 // Force-layout tuning — DEFENSIVE v2 2026-05-23 PM2.
 // v1 crashed the 3d-force-graph render when we called
@@ -2116,32 +2616,42 @@ function labelFor(n) {
   const cap = n.is_hero ? 60 : 34;
   switch (n.type) {
     case 'event': {
-      // "YYYY EventType" format per Chris 2026-05-23 PM2 v3 — was bare date
-      // (e.g. "1792-08-25"); now "1792 Sale" reads at-a-glance during QC.
-      const dateStr = String(n.document_date || n.event_date || '');
+      // Use the exporter-emitted descriptive label ("Birth of Luis") directly
+      // when present — Chris 2026-05-24 PM-evening asked for hover popup and
+      // info pane to read "Birth of [Child]" instead of "Birth 1805-08-17".
+      // The label IS the descriptive form when subject can be identified
+      // (Birth events with a Child role). Fallback for events with no
+      // subject: compose year + type as before.
+      if (n.label) return compactLabel(n.label, cap);
+      const dateStr = String(n.event_date || n.document_date || '');
       const yearMatch = dateStr.match(/\b(1[6-9]\d{2}|20\d{2})\b/);
       const year = yearMatch ? yearMatch[1] : '';
       const type = compactLabel(n.event_type, 30);
       const combined = [year, type].filter(Boolean).join(' ').trim();
-      return compactLabel(combined || n.label || n.id, cap);
+      return compactLabel(combined || n.id, cap);
     }
     case 'source':
-      // For cp_sou nodes, source_type tends to be the most readable label
-      // ("Bill of Sale (Receipt)"). For cp_famsou nodes (which also render
-      // as type=source per Chris 2026-05-23 PM2 v3.1) the Abbreviation/Short
-      // Title is better — "Cocheu (1989)" rather than a verbose source_type.
-      // Heuristic: if `label` is short (likely an Abbreviation/Short Title)
-      // and source_type is long, prefer label.
-      {
-        const lab = n.label || '';
-        const st  = n.source_type || '';
-        if (lab && lab.length <= 30 && st.length > 30) {
-          return compactLabel(lab, cap);
-        }
-        return compactLabel(st || lab || n.id, cap);
-      }
+      // v3.10 fix #4 (Chris 2026-05-25 PM3): prefer label (Abbreviation/Short
+      // Title) over source_type. Earlier heuristic preferred source_type for
+      // cp_sou nodes — that produced "Probate file" on Frank's cp_sou_031 even
+      // though Short Title "Nicholas Covenhoven 1802 Will + 1803 Probate (...)"
+      // was both populated and dramatically more informative. compactLabel
+      // truncates if needed; verbosity not a concern.
+      return compactLabel(n.label || n.source_type || n.id, cap);
     case 'place':
       return compactLabel(n.label || n.id, cap);
+    case 'uei_anchor': {
+      // "{Name}" (N candidates) — quotation marks around the name signal that
+      // the name is what the document says, not a verified identification.
+      // Italics applied via .node-label.uei_anchor CSS class. Replaced earlier
+      // "? glyph + amber" treatment per Chris 2026-05-24 PM-evening.
+      const name = n.named_as || n.label || n.id;
+      const candCount = Array.isArray(n.candidates) ? n.candidates.length : 0;
+      const suffix = candCount > 0
+        ? ` (${candCount} candidate${candCount !== 1 ? 's' : ''})`
+        : '';
+      return compactLabel(`"${name}"${suffix}`, cap);
+    }
     case 'enslaved_person':
     case 'unnamed_group':
     case 'enslaver':
@@ -2425,7 +2935,10 @@ try {
   console.warn('[labels] init failed (graph render unaffected):', err);
 }
 
-// Show hero-kin legend section if any first-degree kin appears in this subgraph.
+// Show hero-kin legend section if any first-degree kin appears in this
+// subgraph. Restored 2026-05-27 for enslaver heroes: enslaver networks carry
+// a FAMILY layer (spouse / children / siblings / etc.), so the kin swatches
+// are meaningful here (unlike cp_per person heroes, where it was removed).
 try {
   const hasKin = GRAPH.nodes.some(n => n.hero_relation && KIN_PALETTE[n.hero_relation]);
   const lk = document.getElementById('legend-kin');
@@ -2555,23 +3068,49 @@ function applyFilters() {
   let visibleLinks = GRAPH.links;
 
   // (1) Anomalies-only filter
+  // Includes asymmetric/inferred/missing-target edges PLUS UEI anchors and
+  // their connected edges — Chris 2026-05-24 PM-evening asked for unidentified
+  // enslavers to appear in the anomalies-only view as another way to draw
+  // attention to them. UEIs aren't data errors but they ARE items that need
+  // research/disambiguation, which fits the spirit of the toggle.
   if (_filterState.anomaliesOnly) {
     const anomalous = GRAPH.links.filter(
       ed => !['verified','sibling_derivable'].includes(ed.verification_status)
     );
+    const ueiIds = new Set(GRAPH.nodes.filter(n => n.type === 'uei_anchor').map(n => n.id));
+    const ueiEdges = GRAPH.links.filter(ed => {
+      const s = ed.source.id || ed.source;
+      const t = ed.target.id || ed.target;
+      return ueiIds.has(s) || ueiIds.has(t);
+    });
+    const combinedLinks = Array.from(new Set([...anomalous, ...ueiEdges]));
     const keep = new Set([heroId]);
-    anomalous.forEach(ed => {
+    ueiIds.forEach(id => keep.add(id));
+    combinedLinks.forEach(ed => {
       keep.add(ed.source.id || ed.source);
       keep.add(ed.target.id || ed.target);
     });
     visibleNodes = GRAPH.nodes.filter(n => keep.has(n.id));
-    visibleLinks = anomalous;
+    visibleLinks = combinedLinks;
   }
 
   // (2) Type-hiding filter (additive on top of anomalies-only)
   if (_filterState.hiddenTypes.size > 0) {
+    const heroIsEnslavedPerson = (GRAPH.metadata && GRAPH.metadata.hero_type === 'enslaved_person');
     visibleNodes = visibleNodes.filter(n => {
       if (n.id === heroId) return true;
+      // cp_per hero: resolve effective type via Person Status (so the
+      // "Indentured persons" toggle actually hides indentured nodes whose
+      // raw type is still 'enslaved_person').
+      if (heroIsEnslavedPerson && n.type === 'enslaved_person') {
+        const effectiveType = (n.person_status === 'Indentured Person')
+          ? 'indentured_person' : 'enslaved_person';
+        return !_filterState.hiddenTypes.has(effectiveType);
+      }
+      // The "Enslavers" toggle combines uei_anchor with enslaver (one bucket).
+      if (n.type === 'uei_anchor') {
+        return !_filterState.hiddenTypes.has('enslaver');
+      }
       if (n.hero_relation && PROTECTED_KIN.has(n.hero_relation)) return true;
       return !_filterState.hiddenTypes.has(n.type);
     });
@@ -2627,42 +3166,65 @@ function updateTypeBreakdown(visibleNodes) {
   const el = document.getElementById('type-breakdown');
   if (!el) return;
   // Order: kin types first (matches the legend's Hero-kin section), then
-  // non-kin types, in workflow-relevance order.
+  // non-kin types, in workflow-relevance order. v3.9: added indentured_person
+  // bucket between enslaved_person and event (legal-status distinct from
+  // enslaved per NJ 1804 Gradual Abolition Act).
   const order = ['spouse', 'parent', 'grandparent', 'child', 'grandchild', 'sibling',
-                 'enslaved_person', 'event', 'place', 'source',
+                 'enslaved_person', 'indentured_person', 'event', 'place', 'source',
                  'unnamed_group', 'family', 'enslaver'];
-  // Singular labels — plurals are derived per-count
   const singular = {
     spouse: 'spouse', parent: 'parent', grandparent: 'grandparent',
     child: 'child', grandchild: 'grandchild', sibling: 'sibling',
     enslaved_person: 'enslaved person',
+    indentured_person: 'indentured person',
     event: 'event',
     place: 'place',
     source: 'source',
     unnamed_group: 'unnamed',
-    family: 'family',  // FAMILY-sheet non-kin; "1 family / 2 family" reads fine
+    family: 'family',
     enslaver: 'enslaver',
   };
   const plural = {
     spouse: 'spouses', parent: 'parents', grandparent: 'grandparents',
     child: 'children', grandchild: 'grandchildren', sibling: 'siblings',
     enslaved_person: 'enslaved',
+    indentured_person: 'indentured',
     event: 'events',
     place: 'places',
     source: 'sources',
     unnamed_group: 'unnamed',
-    family: 'family',  // mass noun in this UI context
+    family: 'family',
     enslaver: 'enslavers',
   };
+  // For cp_per heroes (hero_type === 'enslaved_person'), kin-who-are-also-enslaved
+  // count by Person Status instead of by kin role. The legal-status distinction
+  // (enslaved vs indentured) is more useful here than the kin distinction (which
+  // is already visible in the side-panel "Relationship to Matt" field).
+  // Hero is now INCLUDED in the breakdown so the total node count matches the
+  // sum of itemized categories (Chris 2026-05-24 PM-evening: was "12 nodes" but
+  // breakdown showed only 10 — missing the hero and the UEI anchor).
+  // UEI anchors fold into the 'enslaver' bucket — parallel to the Filters
+  // toggle behavior, where the Enslavers checkbox combines both.
+  const heroIsEnslavedPerson = (GRAPH.metadata && GRAPH.metadata.hero_type === 'enslaved_person');
   const counts = {};
   for (const n of visibleNodes) {
-    if (n.is_hero) continue;  // hero never appears in breakdown
-    if (n.hero_relation && PROTECTED_KIN.has(n.hero_relation)) {
+    // cp_per hero: enslaved_person nodes count by Person Status, NOT by kin role.
+    if (heroIsEnslavedPerson && n.type === 'enslaved_person') {
+      const ps = n.person_status;
+      const bucket = (ps === 'Indentured Person') ? 'indentured_person' : 'enslaved_person';
+      counts[bucket] = (counts[bucket] || 0) + 1;
+      continue;
+    }
+    // Default (cp_ens hero) rule: kin bucket wins over sheet type.
+    // Hero is exempted from this since the hero has no hero_relation set on
+    // itself — falls through to the type-based bucket below.
+    if (!n.is_hero && n.hero_relation && PROTECTED_KIN.has(n.hero_relation)) {
       counts[n.hero_relation] = (counts[n.hero_relation] || 0) + 1;
-      continue;  // kin: counted in its kin bucket only, NOT in its sheet type
+      continue;
     }
     if (!n.type) continue;
-    counts[n.type] = (counts[n.type] || 0) + 1;
+    const bucket = (n.type === 'uei_anchor') ? 'enslaver' : n.type;
+    counts[bucket] = (counts[bucket] || 0) + 1;
   }
   const parts = [];
   for (const k of order) {
@@ -2709,16 +3271,48 @@ document.querySelectorAll('.type-toggle').forEach(cb => {
 // Run once on load to populate the per-type breakdown
 try { updateTypeBreakdown(GRAPH.nodes); } catch (err) { console.warn(err); }
 
+// ============================================================================
+// Collapsible header buttons — Filters / Info (added 2026-05-24 PM-evening for
+// embed contexts where the panels crowd out the graph). Both panels are
+// collapsed by default; user clicks the button to drop the panel down from
+// below the header where the button is anchored. Info also auto-opens via
+// _openInfoPanel() helper when any node is clicked.
+// ============================================================================
+function _setupCollapsibleToggle(buttonId, panelId) {
+  const btn = document.getElementById(buttonId);
+  const panel = document.getElementById(panelId);
+  if (!btn || !panel) return;
+  btn.addEventListener('click', () => {
+    const willOpen = panel.classList.contains('collapsed');
+    panel.classList.toggle('collapsed');
+    btn.classList.toggle('active', willOpen);
+  });
+}
+_setupCollapsibleToggle('btn-toggle-filters', 'toggles');
+_setupCollapsibleToggle('btn-toggle-info', 'side');
+
 // Compute per-toggle counts ONCE from the full graph (not from the filtered
 // view). Same kin/hero exclusion as updateTypeBreakdown so the counts answer
 // "how many nodes would this toggle affect?". Family count excludes kin.
 try {
   const toggleCounts = {};
+  const _heroIsEnslavedPerson = (GRAPH.metadata && GRAPH.metadata.hero_type === 'enslaved_person');
   for (const n of GRAPH.nodes) {
     if (n.is_hero) continue;
+    // cp_per hero: enslaved_person nodes count by Person Status (same as breakdown)
+    if (_heroIsEnslavedPerson && n.type === 'enslaved_person') {
+      const ps = n.person_status;
+      const bucket = (ps === 'Indentured Person') ? 'indentured_person' : 'enslaved_person';
+      toggleCounts[bucket] = (toggleCounts[bucket] || 0) + 1;
+      continue;
+    }
     if (n.hero_relation && PROTECTED_KIN.has(n.hero_relation)) continue;
     if (!n.type) continue;
-    toggleCounts[n.type] = (toggleCounts[n.type] || 0) + 1;
+    // Combine uei_anchor under the "enslaver" toggle bucket — the toggle UI
+    // treats verified enslavers and unidentified UEI anchors as one switch
+    // (Chris 2026-05-24 PM-evening).
+    const bucket = (n.type === 'uei_anchor') ? 'enslaver' : n.type;
+    toggleCounts[bucket] = (toggleCounts[bucket] || 0) + 1;
   }
   document.querySelectorAll('.type-count').forEach(span => {
     const t = span.dataset.countType;
@@ -2733,14 +3327,24 @@ try {
 } catch (err) { console.warn('[toggle-counts] init failed:', err); }
 
 // Populate the Family-toggle count with the transitive-kin size.
+// v3.9: For cp_per heroes the Family toggle is meaningless — no cp_fam nodes
+// exist in an enslaved-hero network, and the kin who DO exist are already
+// counted (and individually toggleable) as Enslaved/Indentured persons.
+// Hide the whole toggle row to avoid the double-count confusion Chris
+// flagged 2026-05-24 PM-evening.
 try {
   const span = document.getElementById('family-count');
   if (span) {
-    const c = _transitiveKinSet.size;
-    span.textContent = `(${c})`;
-    span.classList.toggle('zero', c === 0);
-    const row = span.closest('label');
-    if (row) row.classList.toggle('empty', c === 0);
+    if (GRAPH.metadata && GRAPH.metadata.hero_type === 'enslaved_person') {
+      const row = span.closest('label');
+      if (row) row.style.display = 'none';
+    } else {
+      const c = _transitiveKinSet.size;
+      span.textContent = `(${c})`;
+      span.classList.toggle('zero', c === 0);
+      const row = span.closest('label');
+      if (row) row.classList.toggle('empty', c === 0);
+    }
   }
 } catch (err) { console.warn('[family-count] init failed:', err); }
 
@@ -2803,11 +3407,30 @@ function fadeRgb(rgbStr, alpha) {
   return `rgba(${m[1]}, ${m[2]}, ${m[3]}, ${alpha})`;
 }
 
-// Color accessor that respects highlight state
+// Color accessor that respects highlight state. v3.9 parity with the
+// initial nodeColor callback: person_status takes precedence for
+// enslaved_person nodes so indentured persons render in their peach
+// color (NJ 1804 Gradual Abolition Act distinction) instead of falling
+// through to the kin palette.
 function nodeColorAccessor(n) {
-  const base = n.is_hero ? (NODE_COLOR[n.type] || NODE_COLOR.enslaver)
-    : (n.hero_relation && KIN_PALETTE[n.hero_relation]) ? KIN_PALETTE[n.hero_relation]
-    : (NODE_COLOR[n.type] || NODE_COLOR.unknown);
+  let base;
+  if (n.is_hero) {
+    if (n.type === 'enslaved_person' && n.person_status && PERSON_STATUS_COLOR[n.person_status]) {
+      base = PERSON_STATUS_COLOR[n.person_status];
+    } else {
+      base = NODE_COLOR[n.type] || NODE_COLOR.enslaver;
+    }
+  } else if (n.type === 'enslaved_person' && n.person_status && PERSON_STATUS_COLOR[n.person_status]) {
+    // Person Status (enslaved vs indentured) is the primary identity signal
+    // for cp_per nodes — takes precedence over kin palette. Kin relation
+    // shown by label color via labelClassFor's "kin-child" etc. classes
+    // and in the side panel "Relationship to [hero]" field.
+    base = PERSON_STATUS_COLOR[n.person_status];
+  } else if (n.hero_relation && KIN_PALETTE[n.hero_relation]) {
+    base = KIN_PALETTE[n.hero_relation];
+  } else {
+    base = NODE_COLOR[n.type] || NODE_COLOR.unknown;
+  }
   if (_highlightSet && !_highlightSet.has(n.id)) {
     return fadeRgb(base, 0.18);
   }
@@ -2931,29 +3554,213 @@ if (searchBox) {
   });
 }
 
-function showSidePanel(node) {
+// Compute the "(all Births)" / "(3 Births, 1 Sale)" parenthetical for a UEI's
+// event list. Pulls event_type from each cp_eve_NNN node in GRAPH.
+function _formatUEIEventTypes(eventIds) {
+  const types = [];
+  for (const ev of eventIds) {
+    const evNode = NODE_BY_ID.get(ev);
+    if (evNode && evNode.event_type) types.push(String(evNode.event_type));
+  }
+  if (types.length === 0) return '';
+  const unique = [...new Set(types)];
+  // Pluralize: Birth → Births
+  const pluralize = (t) => t.endsWith('s') ? t : t + 's';
+  if (unique.length === 1) {
+    return types.length === 1 ? `(${unique[0]})` : `(all ${pluralize(unique[0])})`;
+  }
+  // Mixed types: count each
+  const counts = {};
+  types.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+  const parts = unique.map(t => `${counts[t]} ${counts[t] === 1 ? t : pluralize(t)}`);
+  return `(${parts.join(', ')})`;
+}
+
+function showUEISidePanel(node) {
+  _openInfoPanel();
   const side = document.getElementById('side');
+  const eventIds = (node.event_ids || '').split(/[;,]\s*/).filter(Boolean);
+  const eventTypeNote = _formatUEIEventTypes(eventIds);
+  const candidates = Array.isArray(node.candidates) ? node.candidates : [];
+  const eventCountWord = eventIds.length === 1 ? 'event' : 'events';
+
+  // Anchor header
+  let html = `
+    <div class="uei-anchor-header">
+      <span class="uei-type-pill">Unidentified enslaver</span>
+      <div class="uei-name"><span class="glyph">?</span>${escapeHtml(node.named_as || node.label || node.id)}</div>
+      ${node.descriptor ? `<div class="uei-descriptor">${escapeHtml(node.descriptor)}</div>` : ''}
+      <div class="uei-event-count">
+        Named across ${eventIds.length} ${eventCountWord}:
+        ${eventIds.map(e => `<span class="ev-pid">${escapeHtml(e)}</span>`).join(' · ')}
+        ${eventTypeNote ? `<span class="ev-type-note">${escapeHtml(eventTypeNote)}</span>` : ''}
+      </div>
+    </div>
+  `;
+
+  // Candidates section
+  html += `<div class="uei-candidates-header">${candidates.length} candidate${candidates.length !== 1 ? 's' : ''}</div>`;
+  html += `<div class="uei-candidates-intro">
+    The archive names this person but we have not yet resolved which historical
+    ${escapeHtml(node.named_as || 'individual')} he is. Click a candidate to see
+    the evidence for and against.
+  </div>`;
+
+  const chevronSvg = '<svg class="uei-chevron" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l4 4-4 4V4z"/></svg>';
+
+  candidates.forEach((c, idx) => {
+    // Strip leading "- " or "• " from bullets (some authoring may include the marker)
+    const stripBullet = s => String(s || '').replace(/^[\s\-•·]+\s*/, '');
+    const forBullets = (c.evidence_for || []).map(stripBullet).filter(Boolean);
+    const againstBullets = (c.evidence_against || []).map(stripBullet).filter(Boolean);
+
+    html += `
+      <div class="uei-candidate-card" data-idx="${idx}">
+        <div class="uei-card-header">
+          <span class="uei-rank">${c.rank ?? '?'}</span>
+          <div class="uei-cand-name">
+            <span class="uei-cand-id">${escapeHtml(c.candidate_id || '')}</span>${escapeHtml(c.candidate_name || '')}
+          </div>
+          <span class="uei-conf-badge uei-conf-${escapeHtml(c.confidence || 'WEAK')}">${escapeHtml(c.confidence || 'WEAK')}</span>
+          ${chevronSvg}
+        </div>
+        <div class="uei-card-body">
+          ${forBullets.length ? `<div class="uei-evidence-block for">
+            <h4>Evidence for</h4>
+            <ul>${forBullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>
+          </div>` : ''}
+          ${againstBullets.length ? `<div class="uei-evidence-block against">
+            <h4>Evidence against</h4>
+            <ul>${againstBullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>
+          </div>` : ''}
+          ${c.notes ? `<div class="uei-notes-block"><strong>Resolution path</strong>${escapeHtml(c.notes)}</div>` : ''}
+        </div>
+      </div>
+    `;
+  });
+
+  side.innerHTML = html;
+
+  // Wire click-to-expand on each card
+  side.querySelectorAll('.uei-candidate-card').forEach(card => {
+    const header = card.querySelector('.uei-card-header');
+    if (header) {
+      header.addEventListener('click', () => card.classList.toggle('expanded'));
+    }
+  });
+}
+
+// Helper: ensure the Info side panel is visible (called whenever a node click
+// would put new content into it). Added 2026-05-24 PM-evening with the
+// collapsible-menus refactor — if the user has the panel collapsed, clicking
+// a node should open it automatically so they see the detail.
+function _openInfoPanel() {
+  const side = document.getElementById('side');
+  if (side && side.classList.contains('collapsed')) {
+    side.classList.remove('collapsed');
+    const btn = document.getElementById('btn-toggle-info');
+    if (btn) btn.classList.add('active');
+  }
+}
+
+function showSidePanel(node) {
+  _openInfoPanel();
+  // Dispatch: UEI anchor nodes get the custom candidate-list side panel.
+  if (node.type === 'uei_anchor') {
+    showUEISidePanel(node);
+    return;
+  }
+  const side = document.getElementById('side');
+  // Hero's role in this event (only meaningful when viewing an event node).
+  // Reads Active.Role within Event from the hero node — for Matt across her 4
+  // birth events that's "Parent". For complex cases where a person plays
+  // different roles in different events, the workbook would need per-event
+  // role storage; for now we assume role is consistent across the hero's events.
+  const _heroNode = GRAPH.nodes.find(n => n.is_hero);
+  // Per-event hero role (Chris 2026-05-25 fix): use node.hero_role from the
+  // EVENT itself, not the propagated Active.Role-within-Event from the hero's
+  // row. The propagated value only captures the role for the PRIMARY EventID;
+  // for additional_events the role may differ (e.g., Rachel is "Parent" in her
+  // children's Birth events but "Subject" in her own Manumission event).
+  // Falls back to _heroNode.role_within_event for backward compatibility with
+  // older JSON exports that don't carry per-event hero_role yet.
+  const _heroRoleInEvent = (node.type === 'event'
+                             && (node.hero_role || (_heroNode && _heroNode.role_within_event)))
+    ? (node.hero_role || _heroNode.role_within_event)
+    : null;
+
+  // TYPE row: hidden for events (EVENT TYPE field below is more informative)
+  // and for enslaved_person nodes (the bare "enslaved_person" label is
+  // redundant with the sphere color, and the legal-status distinction lives
+  // in the separate STATUS row added 2026-05-24 PM-evening — "Indentured
+  // Person" is a status, not a type, per Chris).
+  // STATUS row: only for enslaved_person nodes. Shows Active.Person Status
+  // verbatim ("Enslaved Person" / "Indentured Person").
   const fields = [
-    ['Type', node.type],
+    // TYPE row hidden for events (EVENT TYPE row is more informative), for
+    // enslaved_person nodes (the bare "enslaved_person" is redundant with the
+    // sphere color + STATUS row), and for source nodes (the SOURCE TYPE row
+    // below carries the meaningful type — extended 2026-05-25 per Chris).
+    ['Type', (node.type === 'event' || node.type === 'enslaved_person' || node.type === 'source') ? null : node.type],
+    ['Status', node.type === 'enslaved_person' ? node.person_status : null],
+    // v3.10 fix #2 (Chris 2026-05-25 PM3): biographical density on enslaved-person
+    // panels. Race + Age category come from Active.G + Active.J; Date of record
+    // surfaces Active.L when the record isn't a Birth (Birth dates already
+    // render in the Birth row below via compute_active_birth_date). Profile URL
+    // is the public-facing cowenhoven.org calling-card link.
+    ['Race', node.type === 'enslaved_person' ? node.race : null],
+    ['Age category', node.type === 'enslaved_person' ? node.age_category : null],
+    ['Date of record', (node.type === 'enslaved_person' && node.event_date && node.event_type !== 'Birth') ? displayDateField(node.event_date) : null],
+    ['Profile on Cowenhoven.org', (node.type === 'enslaved_person' && node.profile_url && /^https?:\/\//.test(node.profile_url)) ? `<a href="${node.profile_url}" target="_blank">${node.profile_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>` : null],
+    [`${HERO_FIRST_NAME}'s role in Event`, _heroRoleInEvent],
     ['Birth', displayDateField(node.birth_date)],
     ['Baptism', displayDateField(node.baptism_date)],
     ['Marriage', displayDateField(node.marriage_date)],
     ['Death', displayDateField(node.death_date)],
     ['Sex', node.sex],
-    // Age is embedded in each Events line for enslaved_person nodes
-    // (per Chris 5/24 PM12). For other person types we don't track Age
-    // as a node attribute, so the standalone row is removed.
-    ['Events', node.type === 'enslaved_person' ? formatPersonEvents(node) : null],
+    // Events row REMOVED for enslaved_person nodes 2026-05-24 PM-evening per
+    // Chris: each event is already shown as an "appears in" entry in the
+    // Edges section below — listing them twice was redundant.
     ['Branch', node.branch],
     ['Generation', node.generation],
     ['WikiTree', (node.wikitree_url && /^https?:\/\//.test(node.wikitree_url)) ? `<a href="${node.wikitree_url}" target="_blank">link</a>` : null],
     ['Wikidata QID', node.wikidata_qid],
     // Event type + Document date shown for cp_eve_NNN nodes (when an event
     // node is clicked).  For enslaved_person nodes, this info is rendered
-    // by the Events row above in sentence form — suppress here to avoid
+    // by the Edges section in sentence form — suppress here to avoid
     // the duplication Chris flagged 5/24 PM12.
     ['Event type', node.type === 'enslaved_person' ? null : node.event_type],
-    ['Document date', node.type === 'enslaved_person' ? null : node.document_date],
+    // Event date = when the thing actually happened (the birth, the sale, etc.)
+    // Document date = when the document was filed/recorded — often months later.
+    // Both shown for events so the temporal gap is visible (Chris 2026-05-24
+    // PM-evening: NJ 1804 Act birth registrations are filed 5-9 months after
+    // the actual birth — showing only document_date hid the real birth date).
+    ['Event date', node.type === 'event' ? displayDateField(node.event_date) : null],
+    // When event_date == document_date on an event, that's almost always a
+    // placeholder — archival filing rarely happens same-day as the event
+    // itself. Surface a ⚠ glyph + italic explanatory line so visitors see the
+    // uncertainty (Chris 2026-05-25 polish item #6; cf. memory rule
+    // [[feedback-event-doc-date-identity-is-verification-trigger]]). Workbook
+    // data unchanged; only display layer flags.
+    ['Document date', (() => {
+      if (node.type !== 'event') return null;
+      const docDateHtml = displayDateField(node.document_date);
+      if (!docDateHtml) return null;
+      const isPlaceholder = node.event_date && node.document_date && node.event_date === node.document_date;
+      if (isPlaceholder) {
+        return `${docDateHtml} <span title="Event date and document date match — likely a placeholder pending primary-source verification." style="color:rgb(180,110,30);font-weight:bold;cursor:help;margin-left:4px">⚠</span><div style="font-size:11px;font-style:italic;color:rgb(110,98,88);margin-top:4px;line-height:1.35">Filing date is likely a placeholder pending primary-source verification — archival records rarely report same-day filing.</div>`;
+      }
+      return docDateHtml;
+    })()],
+    // Source quotation = verbatim excerpt from EVENT.source_quotation OR
+    // SOURCE.Source_Quotation column. Added 2026-05-25 per Chris: surfaces a
+    // primary-source quote in the event/source side panel when the field is
+    // populated; absent otherwise (no half-empty section). Rendered as italic
+    // block-quote with left border to read as a proper pull-quote. Extended
+    // 2026-05-25 from event-only to event+source after cp_sou_084 review.
+    ['Source quotation', node.source_quotation
+      ? `<em style="display:block;border-left:3px solid var(--rule);padding:8px 12px;margin:6px 0 2px 0;line-height:1.45;color:var(--ink);font-size:13px;background:rgba(201,183,156,0.12)">${escapeHtml(node.source_quotation)}</em>`
+      : null],
     ['Place type', node.place_type],
     ['Source title', node.title],
     ['Source type', node.source_type],
@@ -2961,31 +3768,149 @@ function showSidePanel(node) {
     ['Author', node.author],
     ['Source URL', node.url ? `<a href="${node.url}" target="_blank">link</a>` : null],
     ['Archive', node.archive],
-    ['Citation', node.citation ? escapeHtml(node.citation.slice(0,180)) + (node.citation.length>180?'…':'') : null],
-    ['Verification', node.verification_status],
+    // Citation shown in full (no truncation) per Chris 2026-05-25 — was
+    // previously truncated at 180 chars with '…', which cut citations
+    // mid-sentence. Full bibliographic citations are valuable to surface
+    // completely for visitors who want to track down primary sources.
+    ['Citation', node.citation ? escapeHtml(node.citation) : null],
+    // Verification row REMOVED 2026-05-24 PM-evening per Chris: internal QC
+    // metadata, not user-facing. Edge-level verification still appears as
+    // [verified] / [asymmetric] tags in each edge of the Edges section.
     ['Source sheet', node.source_sheet],
   ];
-  // Find edges involving this node
+  // Find edges involving this node.
+  // Sort by relation type so similar edges cluster together in the side panel
+  // (Chris 2026-05-24 PM-evening — "enslaved by" was sandwiched between two
+  // "appears in" edges because traversal order in the exporter interleaved
+  // them). Within each relation group, sort by other-node label (which for
+  // events sorts by "Birth YYYY-MM-DD" date string, lexicographic = chrono).
+  const EDGE_RELATION_ORDER = [
+    'appears_in',        // events the hero appears in
+    'enslaved_unidentified', 'indentured_unidentified', 'enslaved', 'enslaved_subsequent',  // enslavement / indenture
+    'named_enslaver',    // event→UEI (rarely on hero side)
+    // event-centric (rare on hero) — event-type-aware enslaver verbs sort
+    // together with the generic asserted_by fallback
+    'asserted_by', 'manumitted_by', 'manumitted_by_executor', 'registered_by',
+    'sold_by', 'devised_by', 'probated_by', 'sponsored_by',
+    'concerns', 'documented_by', 'located_at',
+    'spouse',            // 1st-degree kin
+    'parent', 'father', 'mother',
+    'child',
+    'sibling',
+    'grandparent', 'grandchild',
+    'aunt', 'uncle', 'niece', 'nephew', 'cousin',
+    'documented_in', 'cited_in',  // misc
+  ];
+  const _relOrderIdx = new Map(EDGE_RELATION_ORDER.map((r, i) => [r, i]));
   const myEdges = GRAPH.links.filter(e => {
     const s = e.source.id || e.source;
     const t = e.target.id || e.target;
     return s === node.id || t === node.id;
+  }).sort((a, b) => {
+    const ai = _relOrderIdx.has(a.relation) ? _relOrderIdx.get(a.relation) : 999;
+    const bi = _relOrderIdx.has(b.relation) ? _relOrderIdx.get(b.relation) : 999;
+    if (ai !== bi) return ai - bi;
+    // Secondary sort: by the OTHER node's label (or PID fallback) — lexico
+    const aOther = (a.source.id || a.source) === node.id ? (a.target.id || a.target) : (a.source.id || a.source);
+    const bOther = (b.source.id || b.source) === node.id ? (b.target.id || b.target) : (b.source.id || b.source);
+    const aLab = (NODE_BY_ID.get(aOther) || {}).label || aOther;
+    const bLab = (NODE_BY_ID.get(bOther) || {}).label || bOther;
+    return String(aLab).localeCompare(String(bLab));
   });
 
+  // Derive 2-hop SOURCE entries for person nodes (Chris 2026-05-24 PM-evening):
+  // sources cited in the events the person appears in are surfaced as virtual
+  // "documented in — [source]" rows in the Edges section. They aren't real
+  // edges in the graph topology (no line drawn), but pedagogically the
+  // source-of-the-event-they-appear-in IS one of the documents that names
+  // this person, so it belongs in their Edges list.
+  const _derivedSourceEdges = [];
+  if (node.type === 'enslaved_person' || node.type === 'indentured_person') {
+    // Collect event IDs this person is connected to (either direction).
+    const eventIds = new Set();
+    for (const e of myEdges) {
+      const s = e.source.id || e.source;
+      const t = e.target.id || e.target;
+      const otherId = (s === node.id) ? t : s;
+      const otherN = NODE_BY_ID.get(otherId);
+      if (otherN && otherN.type === 'event') eventIds.add(otherId);
+    }
+    // For each connected event, find its documented_by edges to source nodes.
+    const sourceVia = new Map();  // source_pid -> Set of event_pids
+    for (const e of GRAPH.links) {
+      if (e.relation !== 'documented_by') continue;
+      const s = e.source.id || e.source;
+      const t = e.target.id || e.target;
+      if (!eventIds.has(s)) continue;
+      if (!sourceVia.has(t)) sourceVia.set(t, new Set());
+      sourceVia.get(t).add(s);
+    }
+    for (const [sourcePid, viaEventSet] of sourceVia) {
+      _derivedSourceEdges.push({
+        sourcePid,
+        sourceNode: NODE_BY_ID.get(sourcePid),
+        viaCount: viaEventSet.size,
+      });
+    }
+    // Sort derived sources alphabetically by label
+    _derivedSourceEdges.sort((a, b) => {
+      const aL = (a.sourceNode && a.sourceNode.label) || a.sourcePid;
+      const bL = (b.sourceNode && b.sourceNode.label) || b.sourcePid;
+      return String(aL).localeCompare(String(bL));
+    });
+  }
+
   // Relationship to hero — derived from hero_relation (kin) or direct edge
-  // (non-kin). Title bar tints to the kin color when 1st-degree kin.
+  // (non-kin). Title bar tints by, in order of precedence:
+  //   1. person_status (enslaved_person nodes)
+  //   2. kin palette (any node with hero_relation)
+  //   3. NODE_COLOR by type (event/source/place — Chris 2026-05-24 PM-evening
+  //      extended H2 coloring to all node types for visual consistency
+  //      between the sphere color and the side-panel header)
+  // Text color on the colored H2 is luma-aware (light bg → dark ink, dark bg
+  // → cream) so contrast remains readable across the full palette.
   const rel = relationshipToHero(node);
   let titleStyle = '';
-  if (rel && rel.kinRelation && KIN_PALETTE[rel.kinRelation]) {
-    const c = KIN_PALETTE[rel.kinRelation];
-    titleStyle = ` style="background:${c};color:rgb(255,232,215);padding:6px 10px;margin:-14px -16px 8px;border-bottom:none;text-shadow:0 1px 2px rgba(0,0,0,0.6)"`;
+  let relColor = 'var(--brick)';
+  const _psColor = (node.type === 'enslaved_person' && node.person_status && PERSON_STATUS_COLOR[node.person_status])
+    ? PERSON_STATUS_COLOR[node.person_status]
+    : null;
+  // Decide which color drives the H2 background
+  let _titleBg = null;
+  if (_psColor) {
+    _titleBg = _psColor;
+    relColor = (node.person_status === 'Indentured Person')
+      ? 'rgb(180,110,30)'   // darker amber for peach indentured
+      : 'rgb(200,80,10)';   // darker orange for enslaved
+  } else if (rel && rel.kinRelation && KIN_PALETTE[rel.kinRelation]) {
+    _titleBg = KIN_PALETTE[rel.kinRelation];
+    relColor = _titleBg;
+  } else if (NODE_COLOR[node.type] && node.type !== 'unknown' && node.type !== 'uei_anchor') {
+    // Event / source / place / unnamed_group / etc. get their sphere color
+    // as the H2 background. uei_anchor handled by separate showUEISidePanel.
+    _titleBg = NODE_COLOR[node.type];
+  }
+  if (_titleBg) {
+    // Luma-aware text color: bright backgrounds get dark ink, dark backgrounds
+    // get cream. Threshold ~170 keeps orange (luma 155) on cream text but
+    // pushes yellow (197) and peach (196) to dark text.
+    const _lumaMatch = String(_titleBg).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    let _textColor = 'rgb(255,232,215)';
+    let _shadow = 'text-shadow:0 1px 2px rgba(0,0,0,0.6);';
+    if (_lumaMatch) {
+      const _luma = 0.299 * +_lumaMatch[1] + 0.587 * +_lumaMatch[2] + 0.114 * +_lumaMatch[3];
+      if (_luma > 170) {
+        _textColor = 'rgb(42,24,16)';   // ink
+        _shadow = '';                    // shadow not needed on light bg
+      }
+    }
+    titleStyle = ` style="background:${_titleBg};color:${_textColor};padding:6px 10px;margin:-14px -16px 8px;border-bottom:none;${_shadow}"`;
   }
 
   let html = `<h2${titleStyle}>${escapeHtml(node.label || node.id)}</h2><div class="pid">${node.id}</div>`;
 
   // Relationship field — first field after title, prominent.
   if (rel) {
-    const relColor = (rel.kinRelation && KIN_PALETTE[rel.kinRelation]) || 'var(--brick)';
     html += `<div class="field" style="margin-top:8px"><div class="field-label">Relationship to ${escapeHtml(HERO_FIRST_NAME)}</div><div class="field-value" style="color:${relColor};font-weight:bold;font-size:14px">${escapeHtml(rel.text)}</div></div>`;
   }
 
@@ -2994,26 +3919,70 @@ function showSidePanel(node) {
       html += `<div class="field"><div class="field-label">${label}</div><div class="field-value">${val}</div></div>`;
     }
   }
-  if (myEdges.length) {
-    html += `<div class="field"><div class="field-label">Edges (${myEdges.length})</div><div class="field-value">`;
-    for (const e of myEdges) {
-      const s = e.source.id || e.source;
-      const t = e.target.id || e.target;
-      const isOutgoing = (s === node.id);
-      const other = isOutgoing ? t : s;
-      const style = EDGE_STYLE[e.verification_status] || EDGE_STYLE.verified;
-      // Display: "RELATION — NAME [verified]" per Chris 5/24 PM12.  Relation
-      // verb is direction-aware (so the event side reads "involves Jacob"
-      // while Jacob's side reads "involved in event").  Direction arrow
-      // dropped since the relation verb now conveys direction.  Falls back
-      // to PID only when the other node isn't in the graph.
+  // Group parallel-direct edges by (direction, relation, other-node) — Chris
+  // 2026-05-25 polish item #1. Common case: hero has 3 "enslaved" edges from
+  // the same enslaver (one per event the hero appears in) — should render as
+  // one row with "(via 3 events)" suffix, mirroring the source-edge collapse
+  // logic below. Sort order is preserved by inserting in pre-sorted-myEdges
+  // order; Map iteration order matches insertion order.
+  const _groupedEdges = new Map();
+  for (const e of myEdges) {
+    const _s = e.source.id || e.source;
+    const _t = e.target.id || e.target;
+    const _isOut = (_s === node.id);
+    const _other = _isOut ? _t : _s;
+    const _key = `${_isOut ? 'OUT' : 'IN'}|${e.relation}|${_other}`;
+    if (!_groupedEdges.has(_key)) {
+      _groupedEdges.set(_key, { e, isOutgoing: _isOut, other: _other, count: 1 });
+    } else {
+      _groupedEdges.get(_key).count += 1;
+    }
+  }
+  const totalEdgeCount = _groupedEdges.size + _derivedSourceEdges.length;
+  if (totalEdgeCount) {
+    html += `<div class="field"><div class="field-label">Edges (${totalEdgeCount})</div><div class="field-value">`;
+    // Side-panel arrow colors — readable on cream background. The graph uses
+    // white for verified edges (visible on the dark 3D scene); white on cream
+    // is invisible, so the side panel maps verified → dark ink. Other
+    // verification colors (red, burnt-orange, etc.) are already readable.
+    const SIDE_ARROW_COLOR = {
+      verified:           'rgb(60,55,50)',     // dark warm gray on cream
+      sibling_derivable:  'rgb(142,128,104)',  // muted tan
+      asymmetric:         'rgb(199,62,58)',    // anomaly red
+      inferred_from_text: 'rgb(184,101,30)',   // burnt orange
+      target_missing:     'rgb(110,98,88)',    // warm gray
+      hypothesis:         'rgb(180,110,30)',   // darker amber for cream contrast
+      hero:               'rgb(60,55,50)',
+    };
+    for (const { e, isOutgoing, other, count } of _groupedEdges.values()) {
+      const arrowColor = SIDE_ARROW_COLOR[e.verification_status] || SIDE_ARROW_COLOR.verified;
       const otherNode = NODE_BY_ID.get(other);
       const otherDisplay = (otherNode && otherNode.label) ? otherNode.label : other;
-      const relLabel = directionalEdgeLabel(e.relation, isOutgoing);
+      // Pass source + target nodes to directionalEdgeLabel for sex-aware kin
+      // labels (Chris 2026-05-25 polish item #2): "child" → "mother of" /
+      // "father of" based on the parent (source) node's sex.
+      const sourceNode = NODE_BY_ID.get(e.source.id || e.source);
+      const targetNode = NODE_BY_ID.get(e.target.id || e.target);
+      const relLabel = directionalEdgeLabel(e.relation, isOutgoing, sourceNode, targetNode);
+      // Directional arrow — → outgoing, ← incoming.
+      const arrow = isOutgoing ? '→' : '←';
+      const viaSuffix = count > 1 ? ` <i style="opacity:0.55;font-size:11px">(via ${count} events)</i>` : '';
       html += `<div style="font-size:12px;margin:3px 0">
-        <span style="color:${style.color}">●</span>
-        ${escapeHtml(relLabel)} — <span>${escapeHtml(otherDisplay)}</span>
+        <span style="color:${arrowColor};font-weight:bold;font-size:14px;margin-right:2px">${arrow}</span>
+        ${escapeHtml(relLabel)} — <span>${escapeHtml(otherDisplay)}</span>${viaSuffix}
         <i style="opacity:0.7">[${e.verification_status}]</i>
+      </div>`;
+    }
+    // Derived source entries (2-hop via events the person appears in).
+    // Slate grey readable on cream. Conceptually outgoing (the person is
+    // documented IN the source). The [via N events] suffix appears only when > 1.
+    for (const ds of _derivedSourceEdges) {
+      const lbl = (ds.sourceNode && ds.sourceNode.label) || ds.sourcePid;
+      const viaSuffix = ds.viaCount > 1 ? ` <i style="opacity:0.55;font-size:11px">(via ${ds.viaCount} events)</i>` : '';
+      html += `<div style="font-size:12px;margin:3px 0">
+        <span style="color:rgb(80,95,125);font-weight:bold;font-size:14px;margin-right:2px">→</span>
+        documented in — <span>${escapeHtml(lbl)}</span>${viaSuffix}
+        <i style="opacity:0.7">[verified]</i>
       </div>`;
     }
     html += '</div></div>';
