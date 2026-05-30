@@ -48,7 +48,7 @@ The project draws on primary documentation including, but not limited to:
 - New Jersey Supreme Court Case Files (1704–1844)
 - New York Court of General Sessions Files (1704–1844)
 - Family papers held at the Center for Brooklyn History (CBH), New-York Historical Society (NYHS), New York Public Library (NYPL), New York State Archives (NYSA), New York City Municipal Archives (NYCMA), Monmouth County Historical Association (MCHA), New Jersey State Archives (NJSA), and Rutgers University Special Collections (RUSC)
--- Dutch Reformed Church baptism, marriage, and burial records
+- Dutch Reformed Church baptism, marriage, and burial records
 - Newspaper advertisements
 
 A complete bibliography is maintained in the project's public Zotero library.
