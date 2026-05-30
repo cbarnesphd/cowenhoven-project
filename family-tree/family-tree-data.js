@@ -1,6 +1,6 @@
 window.FAMILY_TREE_DATA = {
   "metadata": {
-    "generated_at": "2026-05-30T03:44:44+00:00",
+    "generated_at": "2026-05-30T04:18:38+00:00",
     "source_workbook": "Cowenhoven Project Data Set.xlsx",
     "family_rows": 359,
     "enslaver_rows": 84,
