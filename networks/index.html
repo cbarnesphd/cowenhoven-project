@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOD Network Visualizations — The Cowenhoven Project</title>
+<style>
+  :root {
+    --red: #913831;
+    --slate: #738C8F;
+    --parchment: #F1EADC;
+    --ink: #2A1F18;
+    --ink-soft: #6B5C50;
+    --mortar: #B2AA99;
+    --cream: #FBF6E8;
+    --tan: #EAE0CB;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: var(--ink); background: var(--parchment); }
+
+  header { padding: 20px 24px 0 24px; background: var(--parchment); color: var(--ink); border-top: 3px solid var(--red); }
+  header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate); font-weight: bold; margin: 0 0 8px 0; }
+  header h1 { margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: var(--ink); letter-spacing: 0.2px; }
+  header .subtitle { font-size: 13px; color: var(--ink-soft); font-style: italic; margin: 0; }
+  header .meta { font-size: 11.5px; color: var(--ink-soft); font-family: "Courier New", monospace; margin: 8px 0 0 0; padding-bottom: 16px; }
+
+  .body-wrap { max-width: 1100px; margin: 0 auto; padding: 18px 24px 0 24px; }
+
+  .intro { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 4px 0 22px 0; }
+  .intro a { color: var(--red); }
+
+  .selectors { display: flex; flex-wrap: wrap; gap: 22px; margin-bottom: 18px; }
+  .selector-col { flex: 1 1 320px; min-width: 280px; }
+  .selector-col label { display: block; font-weight: bold; margin-bottom: 7px; font-size: 13.5px; color: var(--ink); }
+  .selector-col select {
+    width: 100%; padding: 0.6em 0.7em; font-size: 14px; font-family: Georgia, serif;
+    color: var(--ink); border: 1px solid var(--mortar); background: var(--cream); border-radius: 3px;
+  }
+  .selector-col select:focus { outline: 2px solid var(--slate); outline-offset: 1px; }
+
+  .meta-line { margin: 2px 0 14px 0; font-size: 12.5px; min-height: 1.3em; }
+  .meta-line a { color: var(--red); text-decoration: none; }
+  .meta-line a:hover { text-decoration: underline; }
+
+  #frame-wrapper { margin-bottom: 22px; }
+  #placeholder {
+    padding: 3.5em 2em; background: var(--tan); border: 1px solid var(--mortar);
+    text-align: center; color: var(--ink-soft); font-style: italic; font-size: 15px; border-radius: 3px;
+  }
+  iframe.hero-frame {
+    border: 1px solid var(--mortar); display: block; width: 100%; height: 80vh;
+    min-height: 600px; background: var(--cream); border-radius: 3px;
+  }
+
+  footer { padding: 12px 24px; background: var(--parchment); color: var(--ink-soft); font-size: 10.5px; text-align: center; border-top: 1px solid #dcd2bb; margin-top: 10px; }
+  footer a { color: var(--red); }
+
+  @media (max-width: 640px) {
+    .selectors { flex-direction: column; gap: 14px; }
+    iframe.hero-frame { height: 70vh; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">The Cowenhoven Project</div>
+  <h1>LOD Network Visualizations</h1>
+  <div class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</div>
+  <div class="meta">Four persons of color &middot; twelve enslavers &middot; Data Set 5.30.26</div>
+</header>
+
+<div class="body-wrap">
+
+  <p class="intro">
+    These interactive networks are one way into the project&rsquo;s data &mdash; the same people,
+    families, places, and documents you can explore in the
+    <a href="https://data.cowenhoven.org/family-tree/" target="_blank" rel="noopener">Live Family Tree</a>
+    and the
+    <a href="https://data.cowenhoven.org/cluster-map/" target="_blank" rel="noopener">Cluster Map</a>,
+    here re-arranged around a single individual. Each network assembles what the archive currently
+    records about one person &mdash; either a person of African descent enslaved by the
+    Van&nbsp;Kouwenhoven&ndash;Conover family, or one of the family members who enslaved them &mdash;
+    together with their kin, the people tied to them through bondage, the places they lived, and the
+    wills, manumissions, birth registries, and church records that preserve these names. Choose a name
+    from either menu to load a network; click any node to open source-level detail. The
+    <a href="https://cowenhoven.org/methodology" target="_blank" rel="noopener">Methodology</a>
+    page explains how the data is assembled, what the visual conventions mean, and what we know we don&rsquo;t know.
+  </p>
+
+  <div class="selectors">
+    <div class="selector-col">
+      <label for="cp-person-select">Choose a person of color to view their network:</label>
+      <select id="cp-person-select">
+        <option value="" selected>&mdash; Select a person &mdash;</option>
+        <option value="cp_per_075">Catharine &mdash; manumitted 1829, Freehold / Woodville, NJ</option>
+        <option value="cp_per_208">Rachel &mdash; manumitted 1822, Freehold, NJ</option>
+        <option value="cp_per_153">Matt &mdash; b. 1805, Monmouth Co., NJ</option>
+        <option value="cp_per_123">Frank &mdash; enslaved 1803, Franklin Twp., Somerset Co., NJ</option>
+      </select>
+    </div>
+
+    <div class="selector-col">
+      <label for="cp-enslaver-select">Choose an enslaver to view their network:</label>
+      <select id="cp-enslaver-select">
+        <option value="" selected>&mdash; Select an enslaver &mdash;</option>
+        <optgroup label="Generation 4 (born 1670s)">
+          <option value="cp_ens_004">Cornelis Willemse van Couwenhoven (1672&ndash;1736)</option>
+          <option value="cp_ens_002">Albert Willemse Couwenhoven (1676&ndash;1748)</option>
+          <option value="cp_ens_009">Jacob Willemse van Couwenhoven (1679&ndash;1744)</option>
+        </optgroup>
+        <optgroup label="Generation 5 (born 1700s&ndash;1720s)">
+          <option value="cp_ens_011">William Albertse Couwenhoven (1702&ndash;1790)</option>
+          <option value="cp_ens_007">John Cowenhoven (1709&ndash;1778)</option>
+          <option value="cp_ens_010">Roelof Couwenhoven (1712&ndash;1746)</option>
+          <option value="cp_ens_003">Cornelius Albertse Couwenhoven (1728&ndash;1802)</option>
+        </optgroup>
+        <optgroup label="Generation 6 (born 1730s&ndash;1750s)">
+          <option value="cp_ens_020">John Covenhoven (1733&ndash;1803)</option>
+          <option value="cp_ens_006">Rem Cowenhoven (1734&ndash;1783)</option>
+          <option value="cp_ens_001">Nicholas Cowenhoven (ca. 1744&ndash;1793)</option>
+          <option value="cp_ens_032">Jacob (Van Couwenhoven) Covenhoven (1751&ndash;1815)</option>
+        </optgroup>
+        <optgroup label="Generation 7 (born 1760s)">
+          <option value="cp_ens_005">Nicholas Cowenhoven (1768&ndash;1809)</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+  <p class="meta-line">
+    <a id="fullscreen-link" href="#" target="_blank" rel="noopener" style="display:none;">
+      &#8599; Open this network in its own tab (full screen)
+    </a>
+  </p>
+
+  <div id="frame-wrapper">
+    <div id="placeholder">
+      Select a person or an enslaver from a menu above to load their network visualization.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Cowenhoven Project &middot; <a href="https://cowenhoven.org" target="_blank" rel="noopener noreferrer">cowenhoven.org</a> &middot; Locates, digitizes, and shares information about people of African descent enslaved in New York and New Jersey by the Van&nbsp;Kouwenhoven&ndash;Conover family.
+</footer>
+
+<script>
+(function () {
+  var BASE = "https://data.cowenhoven.org/hero-networks/viewer_subgraph_";
+  var SUFFIX = "_rendered.html";
+
+  var personSel  = document.getElementById("cp-person-select");
+  var enslaverSel = document.getElementById("cp-enslaver-select");
+  var wrap = document.getElementById("frame-wrapper");
+  var fullscreen = document.getElementById("fullscreen-link");
+  var placeholderHTML = document.getElementById("placeholder").outerHTML;
+
+  function labelFor(pid) {
+    var opt = document.querySelector('option[value="' + pid + '"]');
+    return opt ? opt.textContent.trim() : pid;
+  }
+
+  function showPlaceholder() {
+    wrap.innerHTML = placeholderHTML;
+    fullscreen.style.display = "none";
+  }
+
+  function load(pid, pushHash) {
+    if (!pid) {
+      showPlaceholder();
+      if (pushHash) history.replaceState(null, "", location.pathname + location.search);
+      return;
+    }
+    var url = BASE + pid + SUFFIX;
+    wrap.innerHTML =
+      '<iframe class="hero-frame" src="' + url + '" ' +
+      'loading="lazy" allowfullscreen ' +
+      'title="Network for ' + labelFor(pid) + '"></iframe>';
+    fullscreen.href = url;
+    fullscreen.style.display = "inline";
+    if (pushHash) history.replaceState(null, "", "#" + pid);
+  }
+
+  // Only one network shows at a time: selecting from one menu resets the other.
+  personSel.addEventListener("change", function () {
+    if (personSel.value) enslaverSel.value = "";
+    load(personSel.value, true);
+  });
+  enslaverSel.addEventListener("change", function () {
+    if (enslaverSel.value) personSel.value = "";
+    load(enslaverSel.value, true);
+  });
+
+  // Deep-link support: #cp_per_NNN, #cp_ens_NNN, or #cp_eve_NNN on page load.
+  var hash = (location.hash || "").replace("#", "");
+  if (/^cp_(per|ens|eve)_\d{3}$/.test(hash)) {
+    var inPerson = personSel.querySelector('option[value="' + hash + '"]');
+    var inEnslaver = enslaverSel.querySelector('option[value="' + hash + '"]');
+    if (inPerson) { personSel.value = hash; load(hash, false); }
+    else if (inEnslaver) { enslaverSel.value = hash; load(hash, false); }
+    else { load(hash, false); } // e.g. an event network reachable only by deep link
+  }
+})();
+</script>
+
+</body>
+</html>
