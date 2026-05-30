@@ -16,7 +16,7 @@ The project spans multiple platforms:
 - **Website** — [cowenhoven.org](https://cowenhoven.org) (in development)
 - **Active dataset** — a working spreadsheet tracking 442 Van Kouwenhoven-Conover family members across 9 generations (1584–1840s), 68 enslavers, and 230 named + 89 unnamed individuals enslaved or indentured, together with their associated events, sources, locations, and enslavers
 - **WikiTree profiles** — public genealogical profiles for each named individual
-- **Public Zotero library** — [link] (https://www.zotero.org/groups/6078740/cowenhoven_project/library) primary and secondary source bibliography
+- **Public Zotero library** — [link](https://www.zotero.org/groups/6078740/cowenhoven_project/library) primary and secondary source bibliography
 - **Google Map** — geographic project locations
 - **GitHub Pages (this repository)** — interactive visualizations, an index of individuals, geographic mapping, and (over time) downloadable data and methodology notes
 
