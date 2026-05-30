@@ -43,6 +43,19 @@
     --br-pieter: #8B4A4A;           /* Pieter branch, burgundy */
     --br-in_law: #9C9384;           /* spouse marrying in, warm gray */
     --br-unknown: #C9C2B5;          /* untagged */
+
+    /* 2026-05-29 Stage 7 — per-generation band palette, drawn from the
+       earth-tone branch family but distinct per G so the columns read at
+       a glance. Used at low alpha (~7%) behind the tree. */
+    --gen-1: #4A6B7A;  /* slate blue — patriarch */
+    --gen-2: #4F8A8B;  /* teal */
+    --gen-3: #7AA0A0;  /* light teal */
+    --gen-4: #7F8B47;  /* olive */
+    --gen-5: #C2A578;  /* warm tan */
+    --gen-6: #C77B40;  /* warm orange */
+    --gen-7: #B05540;  /* terracotta */
+    --gen-8: #8B4A4A;  /* burgundy */
+    --gen-9: #6B4570;  /* deep plum */
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
@@ -53,9 +66,24 @@
 
   #toolbar { padding: 10px 28px; border-bottom: 1px solid #E5DED2; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 12px; }
   #toolbar input[type="search"] { padding: 5px 8px; border: 1px solid var(--cool-trim); border-radius: 4px; min-width: 220px; font: 12px Georgia, serif; }
+  /* 2026-05-29 Stage 4: search hit-count + prev/next nav UI. */
+  #toolbar .search-group { display: inline-flex; align-items: center; gap: 4px; }
+  #toolbar .hit-count { font: 11px "Courier New", monospace; color: var(--ink-mute); min-width: 78px; text-align: center; padding: 0 4px; }
+  #toolbar .hit-count.has-hits { color: var(--brick); font-weight: 700; }
+  #toolbar .hit-count.no-hits { color: #B05540; font-weight: 700; }
+  #toolbar .nav-btn { padding: 3px 8px; border: 1px solid var(--cool-trim); border-radius: 3px; background: #fff; cursor: pointer; font: 12px Georgia, serif; color: var(--ink); min-width: 26px; }
+  #toolbar .nav-btn:hover:not(:disabled) { background: #F2EBDD; }
+  #toolbar .nav-btn:disabled { color: #C9C2B5; cursor: not-allowed; }
   #toolbar button { padding: 5px 11px; border: 1px solid var(--cool-trim); border-radius: 4px; background: #fff; cursor: pointer; font: 12px Georgia, serif; color: var(--ink); }
   #toolbar button:hover { background: #F2EBDD; }
   #toolbar button.active { background: var(--brick); color: #fff; border-color: var(--brick-shadow); }
+  /* 2026-05-29 Stage 9: view-mode toggle pair sits as one visual unit. */
+  #toolbar .view-toggle { display: inline-flex; border: 1px solid var(--brick); border-radius: 6px; overflow: hidden; }
+  #toolbar .view-toggle .view-btn { border: 0; border-radius: 0; padding: 6px 12px; font: 600 12px Georgia, serif; }
+  #toolbar .view-toggle .view-btn.active { background: var(--brick); color: #fff; }
+  #toolbar .view-toggle .view-btn:not(.active) { background: #fff; color: var(--brick); }
+  #toolbar .view-toggle .view-btn:not(.active):hover { background: #F8E8E2; }
+  #toolbar .view-toggle .view-btn:first-child { border-right: 1px solid var(--brick); }
   #toolbar .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; align-items: center; font-size: 11px; }
   #toolbar .legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -2px; margin-right: 3px; }
   #toolbar .legend .badge-demo { display: inline-block; padding: 1px 5px; background: var(--brick); color: #fff; font: 700 9.5px "Courier New", monospace; border-radius: 6px; vertical-align: 1px; margin-right: 3px; }
@@ -70,9 +98,14 @@
   #side dl { margin: 0; font-size: 12.5px; }
   #side dt { font-weight: 600; color: var(--ink-mute); margin-top: 9px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
   #side dd { margin: 2px 0 0; line-height: 1.4; }
-  #side .empty-hint { color: var(--ink-mute); font-style: italic; font-size: 12px; }
+  /* 2026-05-29: bumped from 12px so first-time visitors notice the hint
+     and the chevron affordance it describes. */
+  #side .empty-hint { color: var(--ink-mute); font-style: italic; font-size: 15px; line-height: 1.5; }
+  #side .empty-hint .chev { font-family: "Apple Symbols", "Segoe UI Symbol", sans-serif; color: var(--brick); font-style: normal; font-weight: 700; }
   #side a { color: var(--brick); }
   #side .e-tag { display: inline-block; padding: 2px 7px; border-radius: 10px; background: var(--brick); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; margin-left: 6px; vertical-align: 1px; }
+  /* 2026-05-29 Stage 3: inheritance-chain variant — outlined, not solid. */
+  #side .e-tag.e-tag-inheritance { background: transparent; color: var(--brick); border: 1px solid var(--brick); }
   #side .pid-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #F2EBDD; color: var(--ink-mute); font: 10px "Courier New", monospace; margin-right: 4px; }
   #side .ep-section { margin: 14px 0 6px; padding: 10px 12px; background: #FFF6E5; border-left: 3px solid var(--brick); border-radius: 4px; }
   #side .ep-section h3 { margin: 0 0 8px; font-size: 13px; color: var(--brick-shadow); }
@@ -91,9 +124,52 @@
   #side .ug-list li { padding: 3px 0; color: var(--ink-soft); }
   #side .ug-list .ug-num { font-weight: 700; color: var(--brick); }
   #side .ep-empty { font-style: italic; color: var(--ink-mute); font-size: 11.5px; }
-  /* count badge on tree node */
-  .ens-badge { font: 700 9.5px "Courier New", monospace; fill: #fff; pointer-events: none; }
-  .ens-badge-bg { fill: var(--brick); }
+  /* Enslaver count rendered INSIDE the descendant or spouse circle.
+     Inverse-scaled so digits stay readable at every zoom level. */
+  /* Higher-specificity selector — wins against `.node text` below.  Bug fix
+     2026-05-29: previously `.ens-count-inside` was overridden by the more-
+     specific source-order tie with `.node text`. */
+  .node text.ens-count-inside {
+    font: 700 13px "Helvetica Neue", Arial, sans-serif;
+    fill: #fff;
+    pointer-events: none;
+  }
+  /* 2026-05-29 Stage 8.3: REVERSED back to opaque per Chris's stacked-label
+     design. The stacked couple box (descendant + spouses, vertical) now
+     serves the function of occluding line crossings beneath. Box uses
+     paper with a faint outline so the boundary is just visible. */
+  .label-bg {
+    fill: var(--paper);
+    stroke: var(--cool-trim);
+    stroke-width: 0.5;
+    fill-opacity: 0.94;
+  }
+  /* 2026-05-29 Stage 7 — generation bands. Drawn behind links + nodes;
+     each band fills a vertical strip behind one generation column.
+     Low alpha so node colors + labels stay primary. */
+  .gen-band { opacity: 0.07; }
+  .gen-band-1 { fill: var(--gen-1); }
+  .gen-band-2 { fill: var(--gen-2); }
+  .gen-band-3 { fill: var(--gen-3); }
+  .gen-band-4 { fill: var(--gen-4); }
+  .gen-band-5 { fill: var(--gen-5); }
+  .gen-band-6 { fill: var(--gen-6); }
+  .gen-band-7 { fill: var(--gen-7); }
+  .gen-band-8 { fill: var(--gen-8); }
+  .gen-band-9 { fill: var(--gen-9); }
+  /* Time-strip header sitting above the tree — labels each generation
+     column with G-id + approximate year range. */
+  .time-strip text {
+    font: 600 13px Georgia, serif;
+    fill: var(--ink-mute);
+    text-anchor: middle;
+  }
+  /* 2026-05-29 Stage 8.2: bigger time-strip labels per Chris's feedback.
+     2026-05-30: bumped again per Chris + counter-scale on zoom to enforce
+     12pt viewport floor (see updateTimeStripScale() in JS). */
+  .time-strip .gen-id { font: 700 36px Georgia, serif; fill: var(--ink); }
+  .time-strip .gen-years { font: italic 22px Georgia, serif; fill: var(--ink-mute); }
+  .time-strip line { stroke: var(--cool-trim); stroke-width: 0.7; opacity: 0.55; }
   #unlinked { margin-top: 22px; padding-top: 14px; border-top: 1px dashed #E5DED2; }
   #unlinked h3 { margin: 0 0 6px; font-size: 13px; color: var(--ink-mute); }
   #unlinked ul { margin: 0; padding: 0; list-style: none; font-size: 12px; }
@@ -104,15 +180,83 @@
   /* SVG node styling */
   .node .descendant-circle { stroke: #fff; stroke-width: 1.5; cursor: pointer; }
   .node.enslaver .descendant-circle { stroke: #1a1a1a; stroke-width: 2; }
-  .node.has-children .descendant-circle { stroke-width: 2.2; }
-  .node.collapsed .descendant-circle { fill-opacity: 0.85; }
-  .node.search-hit .descendant-circle { stroke: #C8A437; stroke-width: 3.2; }
-  .node.selected .descendant-circle { stroke: var(--brick-shadow); stroke-width: 3; }
+  /* has-children = the dot's underlying state matters; the visible affordance
+     is the ▼/▶ expander chevron below the node, NOT a subtle stroke change. */
+  .node.collapsed .descendant-circle { fill-opacity: 0.9; }
+  /* Bolder, high-contrast indicators for selected + search-hit so they
+     remain visible at every zoom level. */
+  /* 2026-05-29 Stage 4: split into all-hits (subtle) vs current-hit (loud).
+     All hits get a gold ring so you can see the cohort; current hit gets a
+     thicker ring + larger drop-shadow + always-visible label override. */
+  .node.search-hit .descendant-circle {
+    stroke: #C8A437; stroke-width: 3.5;
+    filter: drop-shadow(0 0 3px #C8A437);
+  }
+  .node.search-hit-current .descendant-circle {
+    stroke: #C8A437; stroke-width: 6;
+    filter: drop-shadow(0 0 10px #C8A437) drop-shadow(0 0 18px rgba(200,164,55,0.55));
+  }
+  /* Force the label group visible on the current hit even at low zoom where
+     it would otherwise be truncated/hidden by the regular label gating. */
+  .node.search-hit-current .label-group { opacity: 1 !important; visibility: visible !important; }
+  /* 2026-05-29 Stage 4 fix #4: current-hit label-bg gets a gold stroke +
+     bumped opacity so when sibling labels overlap it (z-order tie),
+     the focused-hit label visually wins. The .raise() call also ensures
+     SVG document-order paints this node's label last. */
+  .node.search-hit-current .label-bg {
+    fill: var(--paper);
+    stroke: #C8A437;
+    stroke-width: 1.4;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.18));
+  }
+  .node.selected .descendant-circle {
+    stroke: var(--brick); stroke-width: 4.5;
+  }
   .node .spouse-circle { stroke: var(--ink-mute); stroke-width: 1.5; cursor: pointer; }
   .node .spouse-circle.enslaver { stroke: #1a1a1a; stroke-width: 2; }
   .node .marriage-line { stroke: var(--ink-mute); stroke-width: 1.4; }
-  .node text { font: 13.5px Georgia, serif; fill: var(--ink); pointer-events: none; }
+  /* Larger base text. Labels are wrapped in a .label-group whose transform
+     also applies an inverse-zoom scale, so labels stay constant size
+     regardless of how far the user zooms in or out. */
+  .node text { font: 16px Georgia, serif; fill: var(--ink); pointer-events: none; }
   .node text.spouse-name { font-style: italic; fill: var(--ink-soft); }
+  /* 2026-05-29 click separation: name tspans are individually clickable
+     (each line = one person). Circle still toggles expand/collapse.
+     pointer-events:auto reverses the parent .node text "none" so just the
+     name spans are interactive — the rest of the text element remains
+     transparent to clicks so they pass through to the label-bg rect. */
+  .node text tspan.clickable-name {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .node text tspan.clickable-name:hover {
+    fill: var(--brick);
+    text-decoration: underline;
+  }
+  /* 2026-05-29 endogamous-spouse ghost line: when a spouse walks their own
+     descent elsewhere in the tree (endogamous marriage), surface the
+     marriage as a muted italic "↗ Name dates" line under the descendant
+     label. Click navigates to the partner's profile. */
+  .node text tspan.endogamous-spouse-line {
+    fill: var(--ink-mute);
+    font-style: italic;
+    font-size: 14px;
+  }
+  .node text tspan.endogamous-spouse-line.clickable-name:hover {
+    fill: var(--brick);
+    text-decoration: underline;
+  }
+  /* Expand/collapse affordance — ▼ when descendants visible, ▶ when hidden.
+     Click target gets pointer-events:auto explicitly since .node text has
+     pointer-events:none for label readability. */
+  .node .expander {
+    font: 700 14px "Apple Symbols", "Segoe UI Symbol", sans-serif;
+    fill: var(--brick);
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+  }
+  .node .expander:hover { fill: var(--brick-shadow); }
 
   .link { fill: none; stroke: var(--mortar); stroke-width: 1.2; }
 </style>
@@ -125,12 +269,30 @@
 </header>
 
 <div id="toolbar">
-  <input type="search" id="search" placeholder="Search by name or PID…" autocomplete="off" />
+  <span class="search-group">
+    <input type="search" id="search" placeholder="Search by name or PID…" autocomplete="off" />
+    <button id="hit-prev" class="nav-btn" title="Previous match (Shift+Enter)" disabled>←</button>
+    <span id="hit-count" class="hit-count"></span>
+    <button id="hit-next" class="nav-btn" title="Next match (Enter)" disabled>→</button>
+  </span>
+  <!-- 2026-05-29 Stage 9: view-mode toggle. Family = traditional descent
+       tree. Enslaved = same layout but boxes carry the names of people
+       each enslaver held.
+       2026-05-30 (Chris pre-launch): hidden until refined. Logic stays; only
+       the buttons themselves are hidden via style="display:none". To re-enable,
+       remove the inline style. -->
+  <span class="view-toggle" style="display:none">
+    <button id="btn-view-family" class="view-btn active">Family view</button>
+    <button id="btn-view-enslaved" class="view-btn">Enslaved-person view</button>
+  </span>
   <button id="btn-expand">Expand all</button>
   <button id="btn-collapse">Reset view</button>
   <button id="btn-fit">Fit all to screen</button>
   <button id="btn-only-enslavers">Only enslavers</button>
-  <button id="btn-color-mode" title="Toggle node color between branch and residence">Color: Branch</button>
+  <!-- 2026-05-30 (Chris pre-launch): Color: Residence toggle hidden until
+       refined (46% of nodes are residence_bucket=unknown, so the residence
+       view renders mostly gray). To re-enable: remove style="display:none". -->
+  <button id="btn-color-mode" title="Toggle node color between branch and residence" style="display:none">Color: Branch</button>
   <span class="legend" id="legend"></span>
 </div>
 
@@ -140,7 +302,7 @@
   </div>
   <aside id="side">
     <div id="card">
-      <p class="empty-hint">Click any person to see their details. Click a circle with a thick edge to expand or collapse their descendants.</p>
+      <p class="empty-hint">Click any <strong>name</strong> in the tree to see that person's details here. Click the <span class="chev">▶</span> chevron to expand a branch, or <span class="chev">▼</span> to collapse it.</p>
     </div>
     <div id="unlinked"></div>
   </aside>
@@ -170,13 +332,13 @@
   };
 
   const BRANCH_LABELS = {
-    pre_branch: "Wolphert + Neeltje (root)",
-    gerrit_willem: "Gerrit / Willem",
-    gerrit_jan: "Gerrit / Jan",
-    gerrit_other: "Gerrit (unspecified)",
+    pre_branch: "Wolphert + Neeltje",
+    gerrit_other: "Gerrit branch",
+    gerrit_willem: "Gerrit → Willem sub-branch",
+    gerrit_jan: "Gerrit → Jan sub-branch",
     jacob: "Jacob branch",
     pieter: "Pieter branch",
-    in_law: "In-law (married in)",
+    in_law: "In-law",
     unknown: "Unattributed",
   };
 
@@ -214,6 +376,12 @@
     legendEl.innerHTML = "";
     if (colorMode === "branch") {
       for (const [bucket, label] of Object.entries(BRANCH_LABELS)) {
+        // 2026-05-30 (Chris pre-launch): skip 'unknown' bucket in the legend.
+        // The bucket is currently empty (all nodes attributed); future-mint
+        // policy is "only attribute notes that are attributed", so this entry
+        // shouldn't be advertised. The CSS variable + code paths stay so the
+        // bucket can still receive a node if needed.
+        if (bucket === "unknown") continue;
         const span = document.createElement("span");
         span.innerHTML = `<i class="swatch" style="background: var(--br-${bucket})"></i>${label}`;
         legendEl.appendChild(span);
@@ -226,8 +394,18 @@
       }
     }
     const badgeHint = document.createElement("span");
-    badgeHint.innerHTML = `<span class="badge-demo">N</span>= matched enslaved persons`;
+    badgeHint.innerHTML = `<span class="badge-demo">N</span>= Enslaved person count`;
     legendEl.appendChild(badgeHint);
+    // ◆ enslaver indicator (appended to any label whose person OR spouse is
+    // documented as an enslaver). Added 2026-05-29.
+    const diamondHint = document.createElement("span");
+    diamondHint.innerHTML = `<span style="font-size:13px;vertical-align:-1px">◆</span>= documented enslaver`;
+    legendEl.appendChild(diamondHint);
+    // ◇ inheritance-chain variant (descendants documented; primary source
+    // for this person not yet recovered). Added 2026-05-29 Stage 3.
+    const openDiamondHint = document.createElement("span");
+    openDiamondHint.innerHTML = `<span style="font-size:13px;vertical-align:-1px">◇</span>= inheritance-chain (descendants documented)`;
+    legendEl.appendChild(openDiamondHint);
   }
   renderLegend();
 
@@ -248,22 +426,27 @@
   const people = payload.people;
   const byId = Object.fromEntries(people.map(p => [p.id, p]));
   const md = payload.metadata;
+  // 2026-05-30 (Chris): simplified header. Strip the time portion of the
+  // generated_at timestamp (keep just the date), rename "people" → "family
+  // members", show identified + unidentified enslaver counts on the same line,
+  // drop the FAMILY/ENSLAVER row breakdown + branch breakdown + G1-G9 spans.
+  const genDate = (md.generated_at || "").split("T")[0];
   const parts = [
-    `Generated ${md.generated_at} from ${md.source_workbook}`,
-    `${md.node_count} people`,
-    `${md.family_rows} FAMILY + ${md.enslaver_rows} ENSLAVER rows`,
+    `Generated ${genDate} from ${md.source_workbook}`,
+    `${md.node_count} family members`,
   ];
-  if (md.branch_counts) {
-    const bp = Object.entries(md.branch_counts).map(([k, v]) => `${k} ${v}`).join(", ");
-    if (bp) parts.push(`branches: ${bp}`);
-  }
-  if (md.generation_min != null && md.generation_max != null) {
-    parts.push(`G${md.generation_min}–G${md.generation_max}`);
-  }
   if (md.enslaver_count != null) {
+    // 2026-05-30 (Chris): collapse enslaver_count + UEI count into a single
+    // "N enslavers" total. uei_001 has been disambiguated to cp_ens_079 in the
+    // workbook (Peters Stage 6 commit 2026-05-28) but the 3D hero network on
+    // the site still treats it as separate, so the public-facing total is the
+    // sum until the hero-network update lands. When uei_001 is later removed
+    // from Unidentified_Enslaver_Instances, the count drops automatically.
+    const total = md.enslaver_count + (md.unidentified_enslaver_count || 0);
+    parts.push(`${total} enslavers`);
     const matched = md.enslaved_named_total || 0;
     const unnamed = md.enslaved_unnamed_total || 0;
-    parts.push(`${md.enslaver_count} enslavers · ${matched} named + ${unnamed} unnamed enslaved persons matched`);
+    parts.push(`${matched} named + ${unnamed} unnamed individuals enslaved or indentured`);
   }
   if (md.hypothesis_dropped) {
     parts.push(`${md.hypothesis_dropped} HYPOTHESIS rows hidden`);
@@ -273,10 +456,71 @@
   // --- build the hierarchy from Wolphert (cp_fam_001), greedy/visited
   const visited = new Set();
 
+  // 2026-05-29 Stage 5: canonical-parent selection + orphan rescue.
+  // The workbook contains a recurring data error where grandparents are
+  // wrongly listed in a person's parent_ids array (and the same grandparents
+  // wrongly list the grandchild in their child_ids). E.g. cp_ens_031
+  // Jacob of Brooklyn (G6) lists cp_ens_009 Jacob Willemse (G4, his
+  // grandfather) as a parent. Pre-fix this caused buildNode to:
+  //   (a) place cp_ens_031 at depth 7 under cp_ens_066 (his uncle's branch)
+  //       via cascading "co-parent as spouse" inference
+  //   (b) absorb cp_ens_009 and cp_fam_132 (Jacob's actual father) as
+  //       spurious spouses, removing them from the tree as primary nodes
+  //
+  // Fix has three parts:
+  //   1. For each multi-parent child, pick a CANONICAL parent — the one
+  //      closest in generation, with ties broken in favor of parents who
+  //      themselves have ancestors (filters out in-laws with no upstream).
+  //   2. walkChild only recurses if THIS p.id is the child's canonical
+  //      parent — wrong-generation edges never fire.
+  //   3. Co-parent (spouse) inference still allows ±1 generation tolerance
+  //      so legitimate same-gen / off-by-one cases work, but rejects
+  //      grandparents (gen-distance 2+).
+  //   4. After main walk, an orphan-rescue pass attaches any unvisited
+  //      node via any of its parents already in the tree (valid by ±1).
+  //      Recovers nodes whose canonical parent itself was unreachable.
+  function genDist(parentId, childId) {
+    const pg = byId[parentId] ? byId[parentId].generation : null;
+    const cg = byId[childId]  ? byId[childId].generation  : null;
+    if (pg == null || cg == null) return 0;  // unknown — treat as perfect
+    return Math.abs(pg - (cg - 1));
+  }
+  function isValidParent(parentId, childId) {
+    return genDist(parentId, childId) <= 1;
+  }
+  // Precompute canonical parent for every person.
+  const canonicalParent = {};
+  for (const p of people) {
+    const pids = p.parent_ids || [];
+    if (pids.length === 0) continue;
+    if (pids.length === 1) { canonicalParent[p.id] = pids[0]; continue; }
+    // Score (gen-distance, no-ancestry, position) — lower is better.
+    let bestScore = [999, true, 999]; let best = pids[0];
+    pids.forEach((parId, i) => {
+      if (!byId[parId]) return;
+      const par = byId[parId];
+      const d = genDist(parId, p.id);
+      const hasAncestry = (par.parent_ids || []).length > 0;
+      const score = [d, !hasAncestry, i];
+      if (score[0] < bestScore[0] ||
+          (score[0] === bestScore[0] && score[1] < bestScore[1]) ||
+          (score[0] === bestScore[0] && score[1] === bestScore[1] && score[2] < bestScore[2])) {
+        bestScore = score; best = parId;
+      }
+    });
+    canonicalParent[p.id] = best;
+  }
+
   function buildNode(id) {
-    // Only blood descendants become tree-hierarchy nodes. Spouses are attached
-    // to their descendant partner as a `.spouse` property and rendered as a
-    // paired circle next to the descendant, not as a separate tree leaf.
+    // Only blood descendants become tree-hierarchy nodes. Spouses (including
+    // 2nd+ marriages and extramarital partners) are attached to their
+    // descendant partner as a `.spouses` array and rendered as paired circles
+    // next to the descendant, not as separate tree leaves.
+    //
+    // 2026-05-29 multi-spouse refactor (Chris): collect ALL spouse_ids, then
+    // also infer additional partners from children whose other parent is not
+    // already in spouses (handles cp_fam_021 Maria du Trieux — Pieter's
+    // extramarital partner, linked only via shared child cp_fam_022).
     if (visited.has(id)) return null;
     visited.add(id);
     const p = byId[id];
@@ -285,28 +529,74 @@
       id: p.id,
       name: p.name || "(unnamed)",
       data: p,
-      spouse: null,        // person record of the paired spouse, if any
+      spouses: [],         // array of person records (0..N)
       children: [],
     };
-    // Pick the first spouse in our data (descendants of in-laws aren't traversed).
-    for (const spId of (p.spouse_ids || [])) {
-      if (!visited.has(spId) && byId[spId]) {
-        n.spouse = byId[spId];
-        visited.add(spId);
-        break;
+    // Collect ALL spouse_ids (not just the first) — multi-marriage support.
+    // Also recursively collect "spouses of spouses" so 2nd-husband-via-widow
+    // chains land too. E.g. Aeltje Cool (cp_fam_006) is Gerrit's wife AND
+    // Stoothoff's wife (cp_fam_025); Stoothoff enters via Aeltje's 2nd-marriage
+    // chain. Bounded to one extra hop — sufficient for all observed cases.
+    function addSpouseChain(spId, depth) {
+      if (!byId[spId] || visited.has(spId)) return;
+      // 2026-05-29 spouse-poach fix: if this "spouse" has any parent in our
+      // data, they have their own canonical-parent walk pending. Pre-emptively
+      // marking them visited here would short-circuit that walk and strand
+      // their descendants. Bug: cp_fam_347 (3rd wife of cp_ens_032) was
+      // pulling cp_ens_032 into her spouse-chain via cp_fam_193's branch,
+      // turning cp_fam_133's later walkChild(cp_ens_032) into a visited-no-op
+      // — cp_ens_073 + cp_ens_033 never got walked. Same pattern stranded
+      // cp_ens_046 + cp_ens_047 via cp_ens_021. Skipping endogamous spouses
+      // here lets them walk their own line; pure in-laws (no parent_ids
+      // resolving in byId) still attach via spouse-chain — preserves the
+      // Aeltje Cool → Stoothoff (cp_fam_006 → cp_fam_025) 2nd-marriage case.
+      const spParents = (byId[spId].parent_ids || []);
+      if (spParents.some(par => byId[par])) return;
+      n.spouses.push(byId[spId]);
+      visited.add(spId);
+      if (depth > 0) {
+        for (const sp2 of (byId[spId].spouse_ids || [])) {
+          addSpouseChain(sp2, depth - 1);
+        }
       }
     }
-    // Children: union of descendant's child_ids + spouse's child_ids,
-    // de-duplicated by the shared `visited` set.
-    for (const ch of (p.child_ids || [])) {
+    for (const spId of (p.spouse_ids || [])) addSpouseChain(spId, 1);
+    // Children: own + each spouse's child_ids. De-duplicated by visited.
+    // While walking, ALSO pick up any "other parent" that isn't already a
+    // spouse — this links extramarital partners via their shared child.
+    function walkChild(ch) {
+      // 2026-05-29 Stage 5: only walk if THIS p is the child's canonical
+      // parent. For multi-parent children, canonicalParent is the closest
+      // gen-match with a preference for in-tree ancestry. For single-parent
+      // children, it's just that one parent.
+      if (canonicalParent[ch] !== p.id && (byId[ch].parent_ids || []).length > 0) {
+        return;
+      }
+      const childPerson = byId[ch];
+      if (childPerson) {
+        for (const parId of (childPerson.parent_ids || [])) {
+          // 2026-05-29 Stage 5 refinement: co-parent must be an EXACT
+          // gen match for child (genDist === 0). Looser ±1 tolerance
+          // let grandparents through as spurious co-parents — e.g.
+          // cp_ens_048 Hendrick (G8) lists his grandfather cp_ens_012
+          // (G6, gen-dist 1) and great-grandfather cp_fam_151 (G5,
+          // gen-dist 2) as parents. Without strict zero-tolerance,
+          // cp_ens_012 was being absorbed as Tunis's "spouse", removing
+          // William Jr. from the tree as his own primary node.
+          // Off-by-one gen-tag noise still gets a chance via orphan-rescue.
+          if (parId !== p.id && !visited.has(parId) && byId[parId]
+              && genDist(parId, ch) === 0) {
+            n.spouses.push(byId[parId]);
+            visited.add(parId);
+          }
+        }
+      }
       const child = buildNode(ch);
       if (child) n.children.push(child);
     }
-    if (n.spouse) {
-      for (const ch of (n.spouse.child_ids || [])) {
-        const child = buildNode(ch);
-        if (child) n.children.push(child);
-      }
+    for (const ch of (p.child_ids || [])) walkChild(ch);
+    for (const sp of n.spouses) {
+      for (const ch of (sp.child_ids || [])) walkChild(ch);
     }
     return n;
   }
@@ -316,6 +606,61 @@
     document.getElementById("meta").textContent += "  · ERROR: cp_fam_001 (Wolphert) not found in JSON.";
     return;
   }
+
+  // 2026-05-29 Stage 5: orphan-rescue pass.
+  // If a node's canonical parent was itself unreachable (e.g., the canonical
+  // parent is an in-law whose ancestry isn't in the tree), the strict walk
+  // would leave the node orphaned. Rescue: graft the orphan onto any of
+  // its parent_ids that IS in the tree AND passes the ±1 gen check.
+  // Iterate until no progress (handles chains of orphans). Walks via the
+  // saved parent_ids ensure the rescued node gets its full spouse/child
+  // subtree built out under the new parent.
+  function rescueOrphans(rootData) {
+    function findInTree(node, id) {
+      if (node.id === id) return node;
+      for (const ch of node.children || []) {
+        const found = findInTree(ch, id);
+        if (found) return found;
+      }
+      return null;
+    }
+    let changed = true;
+    let rescued = 0;
+    while (changed) {
+      changed = false;
+      for (const cand of people) {
+        if (visited.has(cand.id)) continue;
+        for (const parId of (cand.parent_ids || [])) {
+          if (!visited.has(parId)) continue;
+          if (!isValidParent(parId, cand.id)) continue;
+          const parentNode = findInTree(rootData, parId);
+          if (!parentNode) continue;
+          // Temporarily override canonical-parent so walkChild's gate passes.
+          const origCanon = canonicalParent[cand.id];
+          canonicalParent[cand.id] = parId;
+          // Re-enter the original buildNode against the rescued node directly.
+          // The simplest expression: call buildNode(cand.id) — but it would
+          // be a top-level child without a parent context. Instead, attach
+          // by running the same walk logic inline. The cleanest path here
+          // is to call buildNode and graft the returned node onto parentNode.
+          const child = buildNode(cand.id);
+          if (child) {
+            parentNode.children.push(child);
+            rescued += 1;
+            changed = true;
+          }
+          canonicalParent[cand.id] = origCanon;
+          break;
+        }
+      }
+    }
+    return rescued;
+  }
+  const rescued = rescueOrphans(rootData);
+  if (rescued > 0) {
+    console.log(`[buildNode] orphan-rescue grafted ${rescued} node(s) onto the main tree`);
+  }
+
   // unlinked = anyone the recursive walk didn't reach
   const unlinked = people.filter(p => !visited.has(p.id));
 
@@ -347,31 +692,241 @@
   const wrap = document.getElementById("tree-wrap");
   const W = wrap.clientWidth, H = wrap.clientHeight;
   const g = svg.append("g");
+  // 2026-05-29 Stage 7: bandLayer + timeStripLayer sit BEHIND links so the
+  // tree's parent-child curves and node circles draw over them.
+  const bandLayer = g.append("g").attr("class", "gen-bands");
+  const timeStripLayer = g.append("g").attr("class", "time-strip");
   const linkLayer = g.append("g").attr("class", "links");
   const nodeLayer = g.append("g").attr("class", "nodes");
 
+  // Current zoom scale, tracked so newly-rendered labels can inverse-scale
+  // themselves on initial draw too. Updated by the zoom handler below.
+  let currentScale = 1;
+
+  // Position + inverse-zoom-scale for label and expander groups.
+  // The translate keeps the element at a fixed offset relative to the node,
+  // while scale(1/k) keeps the text the same screen size at every zoom level.
+  // LTR: labels sit to the RIGHT of the node footprint, vertically centered;
+  // expander chevrons sit just to the LEFT of the descendant circle.
+  // 2026-05-29 Stage 8.7 (refined Stage 9.1): clamp inverse-zoom so chevrons
+  // + labels stop growing once zoom drops below MIN_INVERSE_SCALE.
+  //
+  // Math: at zoom k, inverse-scaled labels appear in SVG-space at
+  //   width = natural_width / max(k, MIN_INVERSE_SCALE)
+  // For labels to stay within GENERATION_HEIGHT, we need:
+  //   max_natural_width * (1/MIN_INVERSE_SCALE) + label_pad < GENERATION_HEIGHT
+  //   500 * (1/MIN_INVERSE_SCALE) + 50 < 900
+  //   MIN_INVERSE_SCALE > 500 / 850 ≈ 0.59
+  // Setting 0.6 keeps labels inside their column at any zoom.
+  // Tradeoff: at fit-all-to-screen the labels are slightly smaller (text
+  // scales by 1.67x natural, not 2.85x), but the layout stays clean.
+  const MIN_INVERSE_SCALE = 0.6;
+  function inverseZoom() {
+    return 1 / Math.max(currentScale, MIN_INVERSE_SCALE);
+  }
+  function labelTransform(d) {
+    const x = rightEdgeOf(d.data) + 18;
+    return `translate(${x}, 0) scale(${inverseZoom()})`;
+  }
+  function expanderTransform(d) {
+    return `translate(${-(DESCENDANT_R + 10)}, 0) scale(${inverseZoom()})`;
+  }
+  function countTransformDescendant() {
+    return `translate(0, 0) scale(${inverseZoom()})`;
+  }
+  function countTransformSpouseAt(i) {
+    return `translate(${SPOUSE_OFFSET_X * (i + 1)}, 0) scale(${inverseZoom()})`;
+  }
+
   const zoom = d3.zoom()
     .scaleExtent([0.15, 3])
-    .on("zoom", (e) => g.attr("transform", e.transform));
+    .on("zoom", (e) => {
+      g.attr("transform", e.transform);
+      currentScale = e.transform.k;
+      nodeLayer.selectAll("g.label-group").attr("transform", labelTransform);
+      nodeLayer.selectAll("g.expander-group").attr("transform", expanderTransform);
+      nodeLayer.selectAll("g.ens-count-group.descendant").attr("transform", countTransformDescendant);
+      nodeLayer.selectAll("g.ens-count-group.spouse").attr("transform", function() {
+        const i = +this.getAttribute("data-spouse-i") || 0;
+        return countTransformSpouseAt(i);
+      });
+      // 2026-05-30 (Chris): re-scale time-strip labels too so the 12pt floor
+      // is enforced live as the user zooms.
+      if (typeof updateTimeStripScale === "function") updateTimeStripScale();
+      // Fix 1 (2026-05-29): hide labels below zoom threshold. Below threshold
+      // only circles + connecting lines render; hover tooltip still works.
+      const showLabels = currentScale >= LABEL_ZOOM_THRESHOLD;
+      nodeLayer.selectAll("g.label-group").style("display", showLabels ? null : "none");
+      // Fix 3: relabel everything as the truncation threshold may have crossed
+      nodeLayer.selectAll("g.label-group").each(function(d) {
+        const g = d3.select(this);
+        const t = g.select("text");
+        if (!t.empty()) renderTspans(t, labelFor(d.data));
+        // Refit the bg-rect
+        const bbox = t.empty() ? null : t.node().getBBox();
+        if (bbox) {
+          g.select("rect.label-bg")
+            .attr("x", bbox.x - 4).attr("y", bbox.y - 1)
+            .attr("width", bbox.width + 8).attr("height", bbox.height + 2);
+        }
+      });
+    });
   svg.call(zoom);
 
-  // Vertical orientation: root at top, generations stacked downward.
-  // Wider sibling spacing because each node may render as a husband+wife pair.
-  const GENERATION_HEIGHT = 140;
-  const tree = d3.tree().nodeSize([240, GENERATION_HEIGHT]);
-  const SPOUSE_OFFSET_X = 38;   // horizontal gap from descendant circle to spouse circle
-  const PAIR_MID_X = SPOUSE_OFFSET_X / 2;  // midpoint x for label centering + child link origin
+  // Horizontal (left-to-right) orientation: root at left, generations laid
+  // out as columns extending rightward; siblings stack vertically within
+  // each column. This handles the project's dense generations (Gen 5 has
+  // 122 people) gracefully — they become a tall column rather than an
+  // unreadable overlapping row. We let d3.tree compute its native vertical
+  // layout (sibling axis = x, depth axis = y) and swap at render time:
+  //     canvas-x ← d.y       (depth)
+  //     canvas-y ← d.x       (sibling)
+  // Fix 2 (2026-05-29): wider layout to reduce collisions across generations.
+  // Each generation gets more horizontal room; siblings in dense columns
+  // (e.g. Cornelius⁵ with 8 children, Tunis with 10) breathe vertically too.
+  // 2026-05-29 Stage 8.5: GENERATION_HEIGHT bumped 460→720 to accommodate
+  // the wider full-surname stacked-label boxes. Long Dutch given+patronymic+
+  // toponymic-surname strings like "Pieter Wolphertsen van Couwenhoven" need
+  // ~600px alone; the old 460 had them crowding the next column.
+  // Stage 8.8: SIBLING_SPACING dropped 96→80 since the adaptive separation
+  // multiplier (linesFor()×0.5) already handles tall stacks; the 96 baseline
+  // bloated single-line rows for no benefit.
+  // Stage 9: bumped 720→900 because full-surname stacked-label boxes are
+  // routinely 700-800px wide ("Pieter Wolphertsen van Couwenhoven ~1614–
+  // aft. 1699"). At 720 they overlap the next generation's labels.
+  const GENERATION_HEIGHT = 900;  // horizontal space per generation column
+  const SIBLING_SPACING   = 80;   // vertical space per sibling within a column
+  // Fix 1 (2026-05-29): label visibility threshold. Below this zoom scale,
+  // labels hide and only circles + lines render. Hovering any circle still
+  // shows a tooltip with the name. Zooming in past the threshold restores
+  // full labels.
+  // 2026-05-29 Stage 8.7: drop label hide-threshold from 0.6 → 0.15 so
+  // labels remain visible at fit-all-to-screen (they cap at 2.85x natural
+  // via inverseZoom() so they're never unreadably huge).
+  const LABEL_ZOOM_THRESHOLD = 0.15;
+  // Fix 3 (2026-05-29): label-truncation tiers.  At low zoom (< THRESHOLD)
+  // labels are hidden entirely (Fix 1). Between THRESHOLD and FULL_ZOOM
+  // labels are truncated to LABEL_MAX_SHORT chars.  Above FULL_ZOOM, full
+  // labels render.
+  const LABEL_FULL_ZOOM = 1.1;
+  const LABEL_MAX_SHORT = 22;
+  // 2026-05-29 Stage 8.4: adaptive sibling separation for tall stacked
+  // labels. A multi-spouse node (descendant + N spouses) renders N+1 lines
+  // of label text; at SIBLING_SPACING=72 this overflows into the next
+  // sibling row, causing the Elizabeth/Eleanor+Jacob+Ari collision Chris
+  // flagged. The separation function returns a multiplier such that each
+  // line beyond the first adds ~0.5 to the row gap.
+  //
+  // Counts d3-hierarchy nodes' spouses array length (set by buildNode) so
+  // it sees the same line count as labelFor/renderTspans.
+  // 2026-05-29: also counts endogamous-spouse ghost lines — partners whose
+  // canonical walk happened elsewhere and so don't appear in node.spouses
+  // but DO show up as italic "↗" lines in the stacked label.
+  function linesFor(d) {
+    const sp = (d && d.data && d.data.spouses) || [];
+    const stackedIds = new Set(sp.map(s => s.id));
+    const own = d && d.data && d.data.data;
+    let endoCount = 0;
+    if (own) {
+      for (const spId of (own.spouse_ids || [])) {
+        if (!stackedIds.has(spId) && byId[spId]) endoCount += 1;
+      }
+    }
+    return 1 + sp.length + endoCount;
+  }
+  const tree = d3.tree()
+    .nodeSize([SIBLING_SPACING, GENERATION_HEIGHT])
+    .separation((a, b) => {
+      const base = a.parent === b.parent ? 1 : 1.5;
+      // Each extra line of the taller sibling adds 0.5 to the spacing.
+      const extra = Math.max(linesFor(a), linesFor(b)) - 1;
+      return base + extra * 0.5;
+    });
+  const SPOUSE_OFFSET_X = 44;   // horizontal gap from descendant circle to spouse circle
+  const PAIR_MID_X = SPOUSE_OFFSET_X / 2;  // midpoint x for couple's center
   const DESCENDANT_R = 10;
+  const DESCENDANT_R_ENS = 14;  // larger circle for enslavers so the in-dot count fits
   const SPOUSE_R = 8.5;
+  const SPOUSE_R_ENS = 12;      // larger spouse circle when she's an enslaver
+  // Pick the radius for a person record based on enslaver status.
+  function radiusFor(p, kind) {
+    if (kind === "spouse") return p && p.is_enslaver ? SPOUSE_R_ENS : SPOUSE_R;
+    return p && p.is_enslaver ? DESCENDANT_R_ENS : DESCENDANT_R;
+  }
+  // Right edge of a node's drawn footprint (used as link source x-offset).
+  // Spouse position itself accounts for the larger radius when she's an enslaver.
+  function rightEdgeOf(p) {
+    const n = (p && p.spouses && p.spouses.length) || 0;
+    if (n > 0) {
+      // Use the LAST spouse's circle as the rightmost point.
+      return SPOUSE_OFFSET_X * n + radiusFor(p.spouses[n - 1], "spouse");
+    }
+    return radiusFor(p, "descendant");
+  }
 
-  // Override the d3.tree y-coordinate with a generation-tier-based y so the
-  // tree reads literally G1 at the top, G2 below it, etc. Falls back to the
-  // d3-computed depth-based y when generation is unset.
+  // 2026-05-29 Stage 8.1: precompute offsetByGen ONCE from all people in
+  // the dataset (not just visible nodes), so generation bands and the time
+  // strip can always render all 9 columns regardless of which subtrees are
+  // currently expanded. Without this, collapsing to G1-G3 made the G4-G9
+  // bands disappear, leaving white space to the right of the tree.
+  const GLOBAL_OFFSET_BY_GEN = (() => {
+    // Pass 1: max spouses per generation across ALL people in the dataset.
+    const maxSpouseByGen = {};
+    for (const p of people) {
+      const gen = p.generation;
+      if (gen == null || !Number.isFinite(gen)) continue;
+      const ns = (p.spouse_ids || []).length;
+      if (ns > (maxSpouseByGen[gen] || 0)) maxSpouseByGen[gen] = ns;
+    }
+    // Pass 2: cumulative offset per generation.
+    const off = {};
+    let cumulative = 0;
+    const gens = Object.keys(maxSpouseByGen).map(Number).sort((a, b) => a - b);
+    for (const g of gens) {
+      off[g] = cumulative;
+      const extraSpouseCols = Math.max(0, (maxSpouseByGen[g] || 1) - 1);
+      cumulative += GENERATION_HEIGHT + extraSpouseCols * SPOUSE_OFFSET_X;
+    }
+    return off;
+  })();
+  const GLOBAL_GENS = Object.keys(GLOBAL_OFFSET_BY_GEN).map(Number).sort((a, b) => a - b);
+
+  // Override the d3.tree depth-axis coordinate (d.y) with a generation-
+  // tier-based value so the tree reads literally G1 → G2 → G3 left to right.
+  // In LTR render, d.y becomes the canvas-x coordinate, so this pins each
+  // generation to its own column.
+  // Uses GLOBAL_OFFSET_BY_GEN so collapsing doesn't shift other generations.
   function applyGenerationTiers(nodes) {
     for (const d of nodes) {
       const gen = d.data.data ? d.data.data.generation : null;
       if (gen != null && Number.isFinite(gen)) {
-        d.y = (gen - 1) * GENERATION_HEIGHT;
+        d.y = GLOBAL_OFFSET_BY_GEN[gen] != null ? GLOBAL_OFFSET_BY_GEN[gen] : (gen - 1) * GENERATION_HEIGHT;
+      }
+    }
+  }
+
+  // Fix 5 (2026-05-29): vertical stagger pass for label collisions.
+  // After d3.tree() lays out, find pairs of siblings in the same column
+  // whose labels would overlap, and offset their d.x by ±a few pixels so
+  // labels can clear each other without breaking parent-child connections.
+  // Pure-display offset (link curves still target the staggered position).
+  function staggerLabels(nodes) {
+    // Group by depth-axis y, then within each y find tight clusters.
+    const byColumn = {};
+    for (const d of nodes) {
+      const key = Math.round(d.y);
+      (byColumn[key] = byColumn[key] || []).push(d);
+    }
+    for (const col of Object.values(byColumn)) {
+      col.sort((a, b) => a.x - b.x);
+      // Within a column, if two siblings are < SIBLING_SPACING * 0.9 apart,
+      // nudge alternating nodes by ±8 horizontally so labels stop colliding.
+      let alt = 0;
+      for (let i = 1; i < col.length; i++) {
+        if (Math.abs(col[i].x - col[i - 1].x) < SIBLING_SPACING * 0.9) {
+          col[i].x += (alt % 2 === 0 ? 6 : -6);
+          alt += 1;
+        }
       }
     }
   }
@@ -399,20 +954,237 @@
   let root = d3.hierarchy(rootData);
   root.x0 = 0;
   root.y0 = 0;
-  // start collapsed to depth 2 (Wolphert + sons + grandchildren) so labels stay readable
-  const DEFAULT_COLLAPSE_DEPTH = 2;
-  if (root.children) root.children.forEach(c => collapseToDepth(c, DEFAULT_COLLAPSE_DEPTH));
+  // 2026-05-29 default-view policy (Chris): under root, expand Gerrit's
+  // branch to depth 2 (his G3 sub-branches Willem/Jan/Marretje/Neeltje
+  // visible) but collapse Jacob's + Pieter's branches at depth 1
+  // (patriarchs visible, click ▶ to dive in). Surfaces the 277-vs-49-vs-28
+  // branch asymmetry on initial load without dumping all 277 Gerrit
+  // descendants on the user at once.
+  const DEFAULT_COLLAPSE_DEPTH = 2;            // Gerrit + most others
+  const COLLAPSED_BRANCH_DEPTH = 1;            // Jacob + Pieter
+  const COLLAPSED_BRANCH_PIDS = new Set(["cp_fam_004", "cp_fam_005"]);
+  function applyDefaultCollapse(rootNode) {
+    if (!rootNode.children) return;
+    rootNode.children.forEach(c => {
+      const pid = c.data && c.data.id;
+      const depth = COLLAPSED_BRANCH_PIDS.has(pid)
+        ? COLLAPSED_BRANCH_DEPTH
+        : DEFAULT_COLLAPSE_DEPTH;
+      collapseToDepth(c, depth);
+    });
+  }
+  applyDefaultCollapse(root);
 
   let onlyEnslaverFilter = false;
+  // 2026-05-29 Stage 9: view-mode state. "family" = traditional descent tree
+  // (enslaver+spouse name boxes). "enslaved" = same tree skeleton, but every
+  // enslaver-node's box contains the names of the people they enslaved,
+  // sorted chronologically by event. Toggleable from toolbar.
+  let viewMode = "family";
+
+  // 2026-05-29 Stage 7: per-generation year-range lookup. Computed once
+  // from people[] — survives across update() calls.
+  const GEN_YEAR_RANGES = (() => {
+    const buckets = {};
+    for (const p of people) {
+      const g = p.generation, by = p.birth_year;
+      if (g != null && by) {
+        (buckets[g] = buckets[g] || []).push(by);
+      }
+    }
+    const out = {};
+    for (const g of Object.keys(buckets)) {
+      const ys = buckets[g].sort((a, b) => a - b);
+      const mn = ys[0], mx = ys[ys.length - 1];
+      // 2026-05-30 (Chris): always use decade-rounded range — no more
+      // "~midpoint" approximations for tightly-clustered early generations.
+      // Single-year generations (mn===mx, e.g. G1 where everyone is b.1584)
+      // still render as just "1584" — no synthetic decade fanning out.
+      let label;
+      if (mn === mx) {
+        label = String(mn);
+      } else {
+        const dec_lo = Math.floor(mn / 10) * 10;
+        const dec_hi = Math.ceil(mx / 10) * 10;
+        label = dec_lo + "–" + dec_hi;
+      }
+      out[g] = { min: mn, max: mx, label };
+    }
+    return out;
+  })();
+
+  // 2026-05-29 Stage 8.1: render all 9 generation bands always, sized from
+  // the global precomputed positions. Vertical extent stretches FAR beyond
+  // any plausible tree height so bands fill the viewport at any zoom level.
+  // Per-update call, only the time-strip y-position adjusts to follow the
+  // current tree's top edge (so labels don't disappear off-screen).
+  let bandsInitialized = false;
+  function renderGenerationBands(nodes) {
+    // Compute current vertical extent of laid-out nodes for tick positioning.
+    let yMin = Infinity, yMax = -Infinity;
+    for (const d of nodes) {
+      if (d.x < yMin) yMin = d.x;
+      if (d.x > yMax) yMax = d.x;
+    }
+    if (yMin === Infinity) yMin = -200;
+    if (yMax === -Infinity) yMax = 200;
+    // Bands extend FAR vertically — covers any zoom-out scenario including
+    // the full vertical extent of a deeply-branched tree. 80000px = ±40000
+    // from origin, comfortably larger than the d3.tree() output for any
+    // plausible Cowenhoven dataset growth.
+    const BAND_VERTICAL_EXTENT = 80000;
+    const yTop = -BAND_VERTICAL_EXTENT / 2;
+    const bandHeight = BAND_VERTICAL_EXTENT;
+
+    // 2026-05-29 Stage 8.2: shift band x-positions so the node sits near
+    // the LEFT of its band (with a small padding) and the band extends
+    // RIGHTWARD to cover the label width. Previously the node was at the
+    // center of the band and long labels (e.g. "Nicholas Covenhoven of ...")
+    // overflowed past the band's right edge into white space.
+    //
+    // Each band now runs: [node_center − 40, next_node_center − 40].
+    // For the last gen, extends one full GENERATION_HEIGHT to the right.
+    const xByGen = {};
+    const LEFT_PAD = 40;  // small space to the left of each node within its band
+    for (let i = 0; i < GLOBAL_GENS.length; i++) {
+      const g = GLOBAL_GENS[i];
+      const myY = GLOBAL_OFFSET_BY_GEN[g];
+      const nextY = i < GLOBAL_GENS.length - 1
+        ? GLOBAL_OFFSET_BY_GEN[GLOBAL_GENS[i + 1]]
+        : myY + GENERATION_HEIGHT;
+      xByGen[g] = {
+        left: myY - LEFT_PAD,
+        right: nextY - LEFT_PAD,
+        center: myY,
+      };
+    }
+    // Extend the first band leftward so G1's color doesn't end at Wolphert's
+    // circle, and the last band rightward by a full column to handle long
+    // labels at the rightmost generation.
+    if (GLOBAL_GENS.length > 0) {
+      xByGen[GLOBAL_GENS[0]].left -= GENERATION_HEIGHT * 0.6;
+      xByGen[GLOBAL_GENS[GLOBAL_GENS.length - 1]].right += GENERATION_HEIGHT * 0.6;
+    }
+
+    // Bands — render once on first call, then never touch (geometry is
+    // global). The transform/zoom group above handles pan/zoom for them.
+    if (!bandsInitialized) {
+      const bandSel = bandLayer.selectAll("rect.gen-band").data(GLOBAL_GENS, g => g);
+      bandSel.enter().append("rect")
+        .attr("class", g => `gen-band gen-band-${g}`)
+        .attr("x", g => xByGen[g].left)
+        .attr("y", yTop)
+        .attr("width", g => xByGen[g].right - xByGen[g].left)
+        .attr("height", bandHeight);
+      bandsInitialized = true;
+
+      // 2026-05-30 (Chris): restrict pan so the user can't scroll past the
+      // tree content into the page background. Bounds match the gen-band
+      // extents (which already include LEFT_PAD + the rightmost-gen extension
+      // for long labels). Vertical bound is the 80000px band height — that's
+      // way bigger than any plausible tree height, so it never feels
+      // restrictive vertically; it just prevents seeing white space when
+      // the user pans up/down off the visible band region.
+      if (GLOBAL_GENS.length > 0) {
+        const leftBound = xByGen[GLOBAL_GENS[0]].left;
+        const rightBound = xByGen[GLOBAL_GENS[GLOBAL_GENS.length - 1]].right;
+        zoom.translateExtent([[leftBound, yTop], [rightBound, yTop + bandHeight]]);
+        // Re-call zoom on svg to apply the new extent immediately to the
+        // current transform (otherwise the user has to pan once for the
+        // extent to take effect).
+        svg.call(zoom.transform, d3.zoomTransform(svg.node()));
+      }
+    }
+
+    // Time-strip header — re-anchor to the top of currently-visible tree
+    // so labels track the data even if you've panned vertically.
+    // 2026-05-30: tickY1/tickY2/yearY no longer used here — moved into the
+    // gen-marker group's local coords (see TICK_Y1/TICK_Y2/YEAR_REL_Y below).
+    const stripY = (yMin - 140) + 22;
+
+    // Center time-strip labels on the visual midpoint of each band.
+    const bandMid = g => (xByGen[g].left + xByGen[g].right) / 2;
+    const stripGroup = timeStripLayer.selectAll("g.gen-marker").data(GLOBAL_GENS, g => g);
+    stripGroup.exit().remove();
+    const enter = stripGroup.enter().append("g").attr("class", "gen-marker");
+    enter.append("line").attr("class", "gen-tick").attr("vector-effect", "non-scaling-stroke");
+    enter.append("text").attr("class", "gen-id");
+    enter.append("text").attr("class", "gen-years");
+    const merged = enter.merge(stripGroup);
+
+    // 2026-05-30 (Chris): refactored so each gen-marker is a SINGLE scaled
+    // group. Tick + gen-id + gen-years sit in LOCAL coords relative to
+    // (bandMid, stripY). The whole group is then scaled in
+    // updateTimeStripScale(), which keeps the relative spacing between the
+    // labels intact at any zoom level (previous bug: gen-years was at fixed
+    // y-offset 28 SVG-px below gen-id, but when each text was independently
+    // boosted to 16px viewport at extreme zoom-out, the labels grew taller
+    // than the offset and visually collided).
+    //
+    // Local coords inside the gen-marker group:
+    //   tick: x=0, y1=-14, y2=-26  (above the gen-id)
+    //   gen-id text: x=0, y=0      (centered on origin)
+    //   gen-years text: x=0, y=24  (24 SVG-px below origin in unscaled space)
+    const TICK_Y1 = -14, TICK_Y2 = -26;
+    const YEAR_REL_Y = 24;
+    merged
+      .attr("data-tx", bandMid)
+      .attr("data-ty", stripY)
+      .attr("data-css-px", 36);  // use largest contained text for scale calc
+    merged.select("line.gen-tick")
+      .attr("x1", 0).attr("x2", 0)
+      .attr("y1", TICK_Y1).attr("y2", TICK_Y2);
+    merged.select("text.gen-id")
+      .attr("x", 0).attr("y", 0)
+      .text(g => "G" + g);
+    merged.select("text.gen-years")
+      .attr("x", 0).attr("y", YEAR_REL_Y)
+      .text(g => GEN_YEAR_RANGES[g] ? GEN_YEAR_RANGES[g].label : "");
+
+    // Apply initial transforms (also called from zoom handler on every zoom).
+    updateTimeStripScale();
+  }
+
+  // 2026-05-30 (Chris): keep time-strip labels at ≥12pt (16px) viewport at
+  // any zoom level. We counter-scale the whole gen-marker GROUP (so tick +
+  // gen-id + gen-years stay correctly spaced relative to each other):
+  //   • zoomed in (k≥1): scale=1/k → text appears at natural CSS size
+  //   • normal zoom: scale=1
+  //   • zoomed out (k<1): scale=1 down to the point where the gen-id text
+  //     drops below TIME_STRIP_MIN_VIEWPORT_PX viewport-px, then scale boosts
+  //     to floor the text at that minimum.
+  const TIME_STRIP_MIN_VIEWPORT_PX = 16;
+  function updateTimeStripScale() {
+    const k = currentScale || 1;
+    timeStripLayer.selectAll("g.gen-marker").attr("transform", function() {
+      const tx = +this.getAttribute("data-tx") || 0;
+      const ty = +this.getAttribute("data-ty") || 0;
+      const cssPx = +this.getAttribute("data-css-px") || 36;
+      const naturalViewport = cssPx * k;
+      // desiredViewport = clamp(naturalViewport, MIN, cssPx)
+      // — cap at cssPx so zoom-in doesn't inflate beyond natural
+      // — floor at MIN so zoom-out doesn't shrink below 12pt
+      const desired = Math.min(cssPx, Math.max(TIME_STRIP_MIN_VIEWPORT_PX, naturalViewport));
+      const s = desired / naturalViewport;
+      return `translate(${tx}, ${ty}) scale(${s})`;
+    });
+  }
 
   function update(source) {
     const treeData = tree(root);
     const nodes = treeData.descendants();
     applyGenerationTiers(nodes);
+    staggerLabels(nodes);  // Fix 5
+    renderGenerationBands(nodes);  // Stage 7
     let links = treeData.descendants().slice(1);
 
+    // 2026-05-29 Stage 9: enslaved-person view auto-engages the enslaver
+    // filter (the family tree's structure is irrelevant when each box
+    // displays the people held by an enslaver — non-enslaver siblings
+    // would be empty boxes).
+    const effectiveEnslaverFilter = onlyEnslaverFilter || viewMode === "enslaved";
     // optional: filter to only enslavers (still show ancestors of enslavers)
-    if (onlyEnslaverFilter) {
+    if (effectiveEnslaverFilter) {
       const keep = new Set();
       nodes.forEach(d => {
         if (d.data.data.is_enslaver) {
@@ -444,31 +1216,56 @@
         return cls.join(" ");
       })
       .attr("data-id", d => d.data.id)
-      .attr("transform", d => `translate(${source.x0},${source.y0})`);
+      // LTR: swap to (d.y, d.x) so generations extend rightward.
+      .attr("transform", d => `translate(${source.y0},${source.x0})`);
 
-    // Marriage line + spouse circle (drawn first so descendant circle sits on top of line ends)
-    nodeEnter.filter(d => d.data.spouse).each(function (d) {
+    // Marriage line(s) + spouse circle(s). Multi-spouse renders each partner
+    // as an additional circle at SPOUSE_OFFSET_X * (i+1), with a connecting
+    // line from the previous circle's right edge. 2026-05-29 multi-spouse fix.
+    // Stage 9: skipped entirely in enslaved-person view (no spouses shown).
+    nodeEnter.filter(d => viewMode !== "enslaved" && d.data.spouses && d.data.spouses.length).each(function (d) {
       const g = d3.select(this);
-      g.append("line").attr("class", "marriage-line")
-        .attr("x1", DESCENDANT_R).attr("y1", 0)
-        .attr("x2", SPOUSE_OFFSET_X - SPOUSE_R).attr("y2", 0);
-      g.append("circle")
-        .attr("class", "spouse-circle" + (d.data.spouse.is_enslaver ? " enslaver" : ""))
-        .attr("cx", SPOUSE_OFFSET_X).attr("cy", 0).attr("r", SPOUSE_R)
-        .style("fill", nodeColorVar(d.data.spouse))
-        .on("click", (event) => {
-          event.stopPropagation();
-          showCard(d.data.spouse);
-          nodeLayer.selectAll("g.node").classed("selected", false);
-          d3.select(this.parentNode).classed("selected", true);
+      const descR = radiusFor(d.data.data, "descendant");
+      let prevCx = 0;        // descendant center
+      let prevR  = descR;
+      d.data.spouses.forEach((sp, i) => {
+        const spR = radiusFor(sp, "spouse");
+        const cx  = SPOUSE_OFFSET_X * (i + 1);
+        g.append("line").attr("class", "marriage-line")
+          .attr("x1", prevCx + prevR).attr("y1", 0)
+          .attr("x2", cx - spR).attr("y2", 0);
+        const spCircle = g.append("circle")
+          .attr("class", "spouse-circle" + (sp.is_enslaver ? " enslaver" : ""))
+          .attr("data-spouse-i", i)
+          .attr("cx", cx).attr("cy", 0).attr("r", spR)
+          .style("fill", nodeColorVar(sp));
+        // 2026-05-29 click separation: spouse-circle click no longer opens
+        // the profile — that's the name's job now. Spouse circles have no
+        // toggle (no subtree from that position), so they're inert.
+        // Hover tooltip still identifies them; click their name for details.
+        // Hover tooltip on spouse circle (Fix 1 companion)
+        spCircle.append("title").text(() => {
+          const dates = shortDateSpan(sp) || "";
+          const glyph = enslaverGlyph(sp);
+          const tag = glyph ? "  " + glyph + " " + (sp.evidence_status === "inheritance-chain" ? "INHERITANCE-CHAIN" : "ENSLAVER") : "";
+          return (sp.name || "(?)") + (dates ? "  (" + dates + ")" : "") + tag;
         });
+        prevCx = cx;
+        prevR  = spR;
+      });
     });
 
-    // Descendant circle (always)
-    nodeEnter.append("circle")
+    // Descendant circle (always). Larger radius for enslavers so the in-dot
+    // count fits. Native <title> child = hover tooltip (Fix 1: useful at low
+    // zoom when labels are hidden).
+    const descCircle = nodeEnter.append("circle")
       .attr("class", "descendant-circle")
-      .attr("r", DESCENDANT_R)
+      .attr("r", d => radiusFor(d.data.data, "descendant"))
       .style("fill", d => nodeColorVar(d.data.data))
+      // 2026-05-29 click separation: descendant-circle click toggles
+      // expand/collapse only. To see the profile card, click the person's
+      // NAME — each line in the stacked label is independently clickable
+      // (renderTspans wires per-tspan click handlers when person is set).
       .on("click", (event, d) => {
         event.stopPropagation();
         if (d.children || d._children) {
@@ -476,50 +1273,101 @@
           else { d.children = d._children; d._children = null; }
           update(d);
         }
-        showCard(d.data.data);
-        nodeLayer.selectAll("g.node").classed("selected", false);
-        d3.select(event.currentTarget.parentNode).classed("selected", true);
       });
+    // Hover tooltip — uses unabridged labelFor (full name + dates + ◆/◇) so
+    // even at low zoom you can mouse-over to identify any person.
+    descCircle.append("title").text(d => {
+      const node = d.data;
+      const p = node.data;
+      const sps = (node.spouses || []).map(s => s.name || "?").join(", ");
+      const dates = shortDateSpan(p) || "";
+      const glyph = enslaverGlyph(p);
+      const tag = glyph ? "  " + glyph + " " + (p.evidence_status === "inheritance-chain" ? "INHERITANCE-CHAIN" : "ENSLAVER") : "";
+      return (p.name || "(?)") + (dates ? "  (" + dates + ")" : "")
+           + (sps ? "\n   married: " + sps : "") + tag;
+    });
 
-    // Count badge on enslaver descendant circles (anchored upper-right of descendant)
+    // Enslaved count rendered INSIDE the descendant circle (white digits
+    // centered on the dot). Inverse-scaled so it stays readable at zoom.
     nodeEnter.filter(d => (d.data.data.enslaved_total_count || 0) > 0)
-      .append("g").attr("class", "ens-badge-group")
-      .attr("transform", "translate(8,-10)")
-      .call(g => {
-        g.append("rect").attr("class", "ens-badge-bg")
-          .attr("x", -1).attr("y", -7)
-          .attr("width", d => (String(d.data.data.enslaved_total_count).length * 6) + 6)
-          .attr("height", 12).attr("rx", 6);
-        g.append("text").attr("class", "ens-badge")
-          .attr("x", d => ((String(d.data.data.enslaved_total_count).length * 6) + 6) / 2 - 1)
-          .attr("y", 2.5).attr("text-anchor", "middle")
-          .text(d => d.data.data.enslaved_total_count);
+      .append("g").attr("class", "ens-count-group descendant")
+      .attr("transform", countTransformDescendant)
+      .append("text")
+      .attr("class", "ens-count-inside")
+      .attr("text-anchor", "middle")
+      .attr("dy", "0.35em")
+      .text(d => d.data.data.enslaved_total_count);
+    // Same treatment for each spouse circle when she/he is independently an
+    // enslaver. Multi-spouse: one ens-count-group per spouse, indexed.
+    // Stage 9: skipped in enslaved-person view (no spouse circles to badge).
+    nodeEnter.filter(d => viewMode !== "enslaved" && d.data.spouses && d.data.spouses.length).each(function (d) {
+      const g = d3.select(this);
+      d.data.spouses.forEach((sp, i) => {
+        if ((sp.enslaved_total_count || 0) > 0) {
+          g.append("g").attr("class", "ens-count-group spouse")
+            .attr("data-spouse-i", i)
+            .attr("transform", countTransformSpouseAt(i))
+            .append("text")
+            .attr("class", "ens-count-inside")
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .text(sp.enslaved_total_count);
+        }
       });
-    // Count badge on spouse circle when she's an enslaver in her own right
-    nodeEnter.filter(d => d.data.spouse && (d.data.spouse.enslaved_total_count || 0) > 0)
-      .append("g").attr("class", "ens-badge-group")
-      .attr("transform", `translate(${SPOUSE_OFFSET_X + 8},-10)`)
-      .call(g => {
-        g.append("rect").attr("class", "ens-badge-bg")
-          .attr("x", -1).attr("y", -7)
-          .attr("width", d => (String(d.data.spouse.enslaved_total_count).length * 6) + 6)
-          .attr("height", 12).attr("rx", 6);
-        g.append("text").attr("class", "ens-badge")
-          .attr("x", d => ((String(d.data.spouse.enslaved_total_count).length * 6) + 6) / 2 - 1)
-          .attr("y", 2.5).attr("text-anchor", "middle")
-          .text(d => d.data.spouse.enslaved_total_count);
+    });
+
+    // Label — wrapped in a label-group so we can apply inverse-zoom scale
+    // (so labels stay readable at every zoom level). LTR: left-anchored,
+    // vertically centered on the node row.
+    //
+    // A paper-colored rect is INSERTED behind the text after measuring its
+    // bounding box, so connecting lines that route past the label don't
+    // visually slice through name text.
+    // 2026-05-29 Stage 8.3: multi-line stacked labels.
+    // Each line is a <tspan> with x=0 reset + dy=1.2em to drop a line.
+    // First line's dy offsets vertically so the stack centers on the node row.
+    nodeEnter.append("g")
+      .attr("class", "label-group")
+      .attr("transform", labelTransform)
+      .each(function (d) {
+        const g = d3.select(this);
+        const lines = labelFor(d.data);
+        const text = g.append("text").attr("text-anchor", "start");
+        renderTspans(text, lines);
+        // Insert bg rect behind text after measuring final bbox.
+        const bbox = text.node().getBBox();
+        g.insert("rect", "text")
+          .attr("class", "label-bg")
+          .attr("x", bbox.x - 5)
+          .attr("y", bbox.y - 3)
+          .attr("width", bbox.width + 10)
+          .attr("height", bbox.height + 6)
+          .attr("rx", 3);
       });
 
-    // Label — centered under the pair midpoint (or under the single circle if no spouse)
-    nodeEnter.append("text")
-      .attr("x", d => d.data.spouse ? PAIR_MID_X : 0)
-      .attr("y", 26)
+    // Expand/collapse chevron for nodes that have descendants.
+    // ▶ = collapsed (click to expand), ▼ = currently expanded (click to collapse).
+    // LTR: positioned to the LEFT of the descendant circle.
+    nodeEnter.filter(d => d.children || d._children)
+      .append("g")
+      .attr("class", "expander-group")
+      .attr("transform", expanderTransform)
+      .append("text")
+      .attr("class", "expander")
       .attr("text-anchor", "middle")
-      .text(d => labelFor(d.data));
+      .attr("dy", "0.32em")
+      .text(d => d._children ? "▶" : "▼")
+      .on("click", (event, d) => {
+        event.stopPropagation();
+        if (d.children) { d._children = d.children; d.children = null; }
+        else if (d._children) { d.children = d._children; d._children = null; }
+        update(d);
+      });
 
     const nodeUpdate = nodeEnter.merge(node);
     nodeUpdate.transition().duration(400)
-      .attr("transform", d => `translate(${d.x},${d.y})`)
+      // LTR: swap to (d.y, d.x) so generations extend rightward.
+      .attr("transform", d => `translate(${d.y},${d.x})`)
       .attr("class", d => {
         const cls = ["node"];
         if (d.data.data.is_enslaver) cls.push("enslaver");
@@ -527,101 +1375,315 @@
         else if (d.children) cls.push("has-children");
         return cls.join(" ");
       });
-    nodeUpdate.select("text").text(d => labelFor(d.data));
+    // Re-render label tspans + resize bg rect on update (e.g. zoom change).
+    nodeUpdate.select(".label-group").each(function(d) {
+      const grp = d3.select(this);
+      const t = grp.select("text");
+      if (!t.empty()) renderTspans(t, labelFor(d.data));
+      const bb = t.empty() ? null : t.node().getBBox();
+      if (bb) {
+        grp.select("rect.label-bg")
+          .attr("x", bb.x - 5).attr("y", bb.y - 3)
+          .attr("width", bb.width + 10).attr("height", bb.height + 6);
+      }
+    });
+    nodeUpdate.select(".label-group").attr("transform", labelTransform);
+    nodeUpdate.select(".expander-group").attr("transform", expanderTransform);
+    nodeUpdate.select(".expander").text(d => {
+      if (d.children) return "▼";
+      if (d._children) return "▶";
+      return "";
+    });
 
     node.exit().transition().duration(400)
-      .attr("transform", d => `translate(${source.x},${source.y})`)
+      // LTR: swap to (source.y, source.x) so exits fly toward the new origin.
+      .attr("transform", d => `translate(${source.y},${source.x})`)
       .remove();
   }
 
   function renderLinks(links, source) {
     const link = linkLayer.selectAll("path.link").data(links, d => d.data.id);
 
-    // Vertical S-curve: parent at (s.x, s.y), child at (t.x, t.y), curve through midpoint.
+    // Horizontal S-curve (LTR layout): parent on the left, child on the right.
+    // s and t are CANVAS coords {x, y}. Smooth axis is x; control points
+    // share the midpoint x. Returns a Bezier that bends gracefully.
     function diag(s, t) {
-      return `M${s.x},${s.y}C${s.x},${(s.y + t.y) / 2} ${t.x},${(s.y + t.y) / 2} ${t.x},${t.y}`;
+      return `M${s.x},${s.y}C${(s.x + t.x) / 2},${s.y} ${(s.x + t.x) / 2},${t.y} ${t.x},${t.y}`;
+    }
+
+    // Canvas source/target coords. d.parent.y / d.y are depth-axis (→ canvas x);
+    // d.parent.x / d.x are sibling-axis (→ canvas y). Source x is bumped to the
+    // right edge of the parent's drawn footprint so the line doesn't visually
+    // start inside the circle.
+    function sourceXY(d) {
+      return {
+        x: d.parent.y + rightEdgeOf(d.parent.data),
+        y: d.parent.x,
+      };
+    }
+    function targetXY(d) {
+      return {
+        x: d.y - DESCENDANT_R,   // stop just shy of the child's circle
+        y: d.x,
+      };
     }
 
     const linkEnter = link.enter().insert("path", "g")
       .attr("class", "link")
-      .attr("d", d => diag({x: source.x0, y: source.y0}, {x: source.x0, y: source.y0}));
-
-    // When the parent has a spouse, drop the line from the midpoint between
-    // the two circles rather than from the descendant circle's center.
-    function parentOriginX(d) {
-      return d.parent.x + (d.parent.data.spouse ? PAIR_MID_X : 0);
-    }
+      .attr("d", d => diag({x: source.y0, y: source.x0}, {x: source.y0, y: source.x0}));
 
     linkEnter.merge(link).transition().duration(400)
-      .attr("d", d => diag({x: parentOriginX(d), y: d.parent.y}, {x: d.x, y: d.y}));
+      .attr("d", d => diag(sourceXY(d), targetXY(d)));
 
     link.exit().transition().duration(400)
-      .attr("d", d => diag({x: source.x, y: source.y}, {x: source.x, y: source.y}))
+      .attr("d", d => diag({x: source.y, y: source.x}, {x: source.y, y: source.x}))
       .remove();
   }
 
   function firstName(p) {
     return (p && p.name ? p.name : "?").trim().split(/\s+/)[0];
   }
+  // 2026-05-29 Stage 6: detect qualifiers in birth_date / death_date strings
+  // so dates like "before 1753-02-01" don't render as a confident "1753".
+  //   "before" / "bef." / "<" → "bef. "  (Stage 8.7: was "<", changed for clarity)
+  //   "after" / "aft." / ">"  → "aft. "
+  //   "circa" / "abt." / "ca." / "~" → "~"
+  // Triggered by the cp_fam_029 John (Jan) Cowenhoven 9-children cluster
+  // where all 9 children's birth_date is "before 1753-02-01" (the date of
+  // their father's will, which names them all). All 9 were rendering as
+  // identical "1753" births when they were actually born at any time
+  // before that.
+  function dateQualifier(dateStr) {
+    if (!dateStr) return "";
+    const s = String(dateStr).trim().toLowerCase();
+    if (s.startsWith("before") || s.startsWith("bef.") || s.startsWith("bef ") || s.startsWith("<")) return "bef. ";
+    if (s.startsWith("after") || s.startsWith("aft.") || s.startsWith("aft ") || s.startsWith(">")) return "aft. ";
+    if (s.startsWith("circa") || s.startsWith("abt.") || s.startsWith("ca.") || s.startsWith("~") || s.startsWith("c. ")) return "~";
+    return "";
+  }
   function shortDateSpan(p) {
     if (!p) return "";
     const by = p.birth_year || "";
-    const dy = p.death_year ? ("–" + String(p.death_year).slice(-2)) : "";
-    return by ? (by + dy) : "";
+    // 2026-05-29 Stage 8.6: full 4-digit death year per Chris's feedback —
+    // the prior 2-digit abbreviation ("1742–03") was ambiguous between
+    // "died 1803" and "died at age 3". Always show the complete year.
+    const dy = p.death_year ? String(p.death_year) : "";
+    const bq = dateQualifier(p.birth_date);
+    const dq = dateQualifier(p.death_date);
+    if (!by) return "";
+    return bq + by + (dy ? "–" + dq + dy : "");
+  }
+  // 2026-05-29 Stage 3: enslaver glyph dispatcher. Returns "◆" for documented,
+  // "◇" for inheritance-chain (descendants documented; primary source pending),
+  // "" for non-enslavers. Reads evidence_status set by export-script Stage 3.
+  // Falls back to "◆" if is_enslaver=true but evidence_status not present
+  // (transitional defensive default for any legacy data without the column).
+  function enslaverGlyph(p) {
+    if (!p || !p.is_enslaver) return "";
+    if (p.evidence_status === "inheritance-chain") return "◇";
+    return "◆";
+  }
+  // 2026-05-29 Stage 8.3: stacked couple labels.
+  //   Single:    [ "FirstName Surname  1639–24 ◆" ]
+  //   Married:   [ "Peter Van Couwenhoven  1614–55 ◆",
+  //                "Hester Symons         1620–?" ]
+  //   Multi:     [ descendant, spouse1, spouse2, ... ]
+  // Convention: descendant (Cowenhoven blood-line) is ALWAYS top.
+  // Each line uses the workbook's full name so surname morph is visible
+  // (van Couwenhoven → Couwenhoven → Cowenhoven → Conover across the tree).
+  function nameForLabel(person) {
+    // Use the workbook's full name as the display, stripping:
+    //   (a) marriage-shorthand parens like "(m. ...)"
+    //   (b) Cocheu cross-reference parens like "(#262)" or "(Cocheu #264)"
+    //       — these are research metadata, still visible in the profile card,
+    //       but visually noisy in the tree.
+    const raw = (person && person.name) || "(?)";
+    return raw
+      .replace(/\(\s*[^)]*\bm\.\s+[^)]*\)/g, "")
+      .replace(/\(\s*(?:Cocheu\s+)?#\s*\d+\s*\)/gi, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  function lineFor(person, isDescendant) {
+    if (!person) return "";
+    const nm = nameForLabel(person);
+    const dates = shortDateSpan(person);
+    const glyph = enslaverGlyph(person);
+    return nm + (dates ? "  " + dates : "") + (glyph ? "  " + glyph : "");
+  }
+  // 2026-05-29 Stage 9: labelFor dispatches by viewMode.
+  //   "family"   → descendant + spouses stacked (the original behavior)
+  //   "enslaved" → enslaved-person rows: full name + event date + event_type,
+  //                one line per (person, event). For non-enslaver nodes
+  //                kept on the tree as ancestors-of-enslavers, just shows
+  //                the descendant's name (so you can navigate the path).
+  // 2026-05-29 click separation: labels now return [{text, person}, …] so
+  // each tspan can carry a click handler that opens the right person's
+  // profile card. `person` may be null for non-personal lines (placeholders,
+  // unnamed-group counts) — those render without a click handler.
+  function labelForFamily(node) {
+    const p = node.data;
+    const spouses = node.spouses || [];
+    const lines = [{ text: lineFor(p, true), person: p }];
+    for (const sp of spouses) lines.push({ text: lineFor(sp, false), person: sp });
+    // 2026-05-29 endogamous-spouse ghost line: surface marriages where the
+    // partner walks their own descent line elsewhere in the tree (cousin
+    // marriages, etc.). Without this, e.g. Jan Roelofse Schenck (cp_fam_070)
+    // appears as an unmarried node — his wife Sara (cp_fam_071) walks her
+    // own paternal line and is not pulled into his .spouses via addSpouseChain.
+    // The line is muted italic, clickable, and uses "↗" to indicate "see
+    // partner's primary node elsewhere in tree."
+    const stackedIds = new Set(spouses.map(s => s.id));
+    for (const spId of (p.spouse_ids || [])) {
+      if (stackedIds.has(spId)) continue;
+      const sp = byId[spId];
+      if (!sp) continue;
+      lines.push({
+        text: "↗ " + lineFor(sp, false),
+        person: sp,
+        kind: "endogamous",
+      });
+    }
+    return lines;
+  }
+  function labelForEnslaved(node) {
+    const p = node.data;
+    const enslaved = p.enslaved_persons || [];
+    const unnamed  = p.unnamed_groups   || [];
+    // Non-enslaver ancestor: just show the family name so the path is
+    // navigable. Faded styling via CSS class .non-enslaver-row.
+    if (!p.is_enslaver) {
+      return [{ text: nameForLabel(p), person: p }];
+    }
+    // Enslaver, no attached people yet → name + "(no documented persons yet)"
+    if (enslaved.length === 0 && unnamed.length === 0) {
+      return [
+        { text: nameForLabel(p), person: p },
+        { text: "(no named persons documented)", person: null },
+      ];
+    }
+    // Sort records by date (year-ish). Records without dates go last.
+    const records = [...enslaved];
+    records.sort((a, b) => {
+      const ya = a.year || 9999, yb = b.year || 9999;
+      if (ya !== yb) return ya - yb;
+      return (a.name || "").localeCompare(b.name || "");
+    });
+    const lines = records.map(r => {
+      const nm = r.name || "(unnamed)";
+      const dt = (r.date_of_record || "").trim();
+      const ev = (r.event_type || "").trim();
+      const parts = [nm];
+      if (dt) parts.push(dt);
+      if (ev) parts.push(ev);
+      // Enslaved persons live on the Active sheet, not in the tree node
+      // index — their profile pane isn't reachable via showCard yet, so
+      // their tspans are non-clickable for now. Later: route to the
+      // person's cowenhoven.org page if profile_url is set.
+      return { text: parts.join(" · "), person: null };
+    });
+    // Append unnamed group counts as compact tail lines.
+    for (const g of unnamed) {
+      const detail = [g.record_type, g.event_date || g.document_date].filter(s => s).join(" ");
+      lines.push({ text: `+${g.total} unnamed${detail ? " · " + detail : ""}`, person: null });
+    }
+    return lines;
   }
   function labelFor(node) {
-    // Compact label. For married nodes: "FirstName + SpouseFirst  1639–24 ◆"
-    // For single nodes: "FirstName Surname  1579–62 ◆"
-    const p = node.data;
-    if (node.spouse) {
-      const dates = shortDateSpan(p);
-      const ens = (p.is_enslaver || node.spouse.is_enslaver) ? "  ◆" : "";
-      return `${firstName(p)} + ${firstName(node.spouse)}` + (dates ? "  " + dates : "") + ens;
-    }
-    // unpaired — keep a longer name for clarity
-    const tokens = (p.name || "(?)").trim().split(/\s+/);
-    let nm = tokens[0];
-    if (tokens.length > 1 && (tokens[0] + " " + tokens[1]).length <= 20) nm += " " + tokens[1];
-    const dates = shortDateSpan(p);
-    return nm + (dates ? "  " + dates : "") + (p.is_enslaver ? "  ◆" : "");
+    return viewMode === "enslaved" ? labelForEnslaved(node) : labelForFamily(node);
+  }
+  // Render an array of line records as stacked tspans inside a <text> element.
+  // Each line is either a string (legacy) or {text, person}. When `person`
+  // is set, the tspan gets a click handler that opens that person's card
+  // and is styled as a clickable name (cursor + hover via CSS).
+  // First line dy positions the stack vertically so the whole block centers
+  // on the node row (a 2-line stack means each line offsets by ~0.6em from
+  // center; 3-line by 1.2em, etc.).
+  function renderTspans(textSel, lines) {
+    textSel.selectAll("tspan").remove();
+    const n = lines.length;
+    // Vertically center the stack on the node's y=0 baseline. Each line
+    // is 1.15em tall; first line baseline is shifted up by ((n-1)/2)*1.15em.
+    const firstDy = -((n - 1) / 2 * 1.15) + 0.32;  // 0.32em recenters a single-line
+    lines.forEach((line, i) => {
+      const text   = typeof line === "string" ? line : line.text;
+      const person = typeof line === "string" ? null : line.person;
+      const kind   = typeof line === "string" ? null : line.kind;
+      const tspan = textSel.append("tspan")
+        .attr("x", 0)
+        .attr("dy", i === 0 ? `${firstDy}em` : "1.15em")
+        .text(text);
+      if (kind === "endogamous") {
+        tspan.classed("endogamous-spouse-line", true);
+      }
+      if (person) {
+        tspan.classed("clickable-name", true)
+          .on("click", (event) => {
+            event.stopPropagation();
+            showCard(person);
+            nodeLayer.selectAll("g.node").classed("selected", false);
+            // The clicked tspan lives inside a <text> inside a .label-group
+            // inside the .node <g>. Walk up three parents to mark selected.
+            const nodeG = event.currentTarget.parentNode.parentNode.parentNode;
+            d3.select(nodeG).classed("selected", true);
+          });
+      }
+    });
   }
 
   function fit() {
     const tw = nodeLayer.node().getBBox();
     if (!tw.width || !tw.height) return;
     const pad = 40;
-    const k = Math.min(
+    // 2026-05-29 Stage 8.8: clamp minimum fit-zoom to 0.25. If the tree
+    // doesn't fit at that scale, center it and let the user pan rather
+    // than zooming out to an unreadable speck-level overview.
+    const MIN_FIT_ZOOM = 0.25;
+    const k = Math.max(MIN_FIT_ZOOM, Math.min(
       (W - pad * 2) / tw.width,
       (H - pad * 2) / tw.height,
       1
-    );
+    ));
     const tx = pad - tw.x * k + (W - tw.width * k - pad * 2) / 2;
     const ty = pad - tw.y * k + (H - tw.height * k - pad * 2) / 2;
     svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
   }
-  // Place the root pair near upper-center at zoom 1.0 — used on initial load
+  // Place the root pair near left-center at zoom 1.0 — used on initial load
   // and when collapsing back to default, so labels render at natural size.
-  function centerRootAtTop() {
-    const tx = W / 2;       // root.x is 0 in the layout, so just center to viewport
-    const ty = 70;          // top padding
+  // (Renamed from centerRootAtTop after the 2026-05-28 LTR switch.)
+  function centerRootAtLeft() {
+    const tx = 70;          // left padding
+    const ty = H / 2;       // vertically centered (root.x = 0 in the layout)
     svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(1));
   }
+  // Backward-compat alias so any remaining call sites still work.
+  const centerRootAtTop = centerRootAtLeft;
 
   // --- detail card
   function showCard(p) {
     const card = document.getElementById("card");
-    if (!p) { card.innerHTML = `<p class="empty-hint">Click a person.</p>`; return; }
+    if (!p) {
+      card.innerHTML = `<p class="empty-hint">Click any <strong>name</strong> in the tree to see that person's details here. Click the <span class="chev">▶</span> chevron to expand a branch, or <span class="chev">▼</span> to collapse it.</p>`;
+      return;
+    }
     const pidChips = [];
     if (p.fam_pid) pidChips.push(`<span class="pid-chip">${p.fam_pid}</span>`);
     if (p.ens_pid && p.ens_pid !== p.fam_pid) pidChips.push(`<span class="pid-chip">${p.ens_pid}</span>`);
     const wikitree = p.wikitree_url ? `<a href="${p.wikitree_url}" target="_blank" rel="noopener">${p.wikitree_id || "WikiTree profile"}</a>` : (p.wikitree_id || "");
-    let h = `<h2>${escapeHtml(p.name || "(unnamed)")}${p.is_enslaver ? '<span class="e-tag">ENSLAVER</span>' : ""}</h2>`;
+    // 2026-05-29 Stage 3: distinct ENSLAVER vs INHERITANCE-CHAIN tag.
+    const eTag = (() => {
+      if (!p.is_enslaver) return "";
+      if (p.evidence_status === "inheritance-chain")
+        return '<span class="e-tag e-tag-inheritance" title="Descendants documented as enslavers; primary source for this person not yet recovered.">INHERITANCE CHAIN</span>';
+      return '<span class="e-tag">ENSLAVER</span>';
+    })();
+    let h = `<h2>${escapeHtml(p.name || "(unnamed)")}${eTag}</h2>`;
     h += `<div class="subline">${pidChips.join(" ")}${p.sex ? "  ·  " + escapeHtml(p.sex) : ""}${p.residence_bucket ? "  ·  " + (RES_LABELS[p.residence_bucket] || p.residence_bucket) : ""}${p.generation != null ? "  ·  G" + p.generation : ""}</div>`;
 
     // Branch / sub-branch / lineage line — surfaces the new ANCESTRY structure.
     const branchParts = [];
     if (p.branch) {
-      const subPart = p.sub_branch ? ` / ${escapeHtml(p.sub_branch)}` : "";
+      const subPart = p.sub_branch ? ` → ${escapeHtml(p.sub_branch)}` : "";
       branchParts.push(`<strong>${escapeHtml(p.branch)}${subPart}</strong> branch`);
     }
     if (p.lineage) branchParts.push(escapeHtml(p.lineage));
@@ -671,7 +1733,13 @@
       }
       h += `</div>`;
     } else if (p.is_enslaver) {
-      h += `<div class="ep-section"><h3>People enslaved by this person</h3><p class="ep-empty">No matched persons attached yet — names are added as Active-sheet linkages are confirmed.</p></div>`;
+      // 2026-05-29 Stage 3: distinguish inheritance-chain copy from
+      // standard "no matched persons yet" empty state.
+      if (p.evidence_status === "inheritance-chain") {
+        h += `<div class="ep-section"><h3>Inheritance chain</h3><p class="ep-empty">Primary source for this person's own enslaved persons not yet recovered. Documented via descendants' records — see the linked sons / heirs on the tree.</p></div>`;
+      } else {
+        h += `<div class="ep-section"><h3>People enslaved by this person</h3><p class="ep-empty">No matched persons attached yet — names are added as Active-sheet linkages are confirmed.</p></div>`;
+      }
     }
 
     h += "<dl>";
@@ -706,15 +1774,30 @@
   function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
   // --- toolbar wiring
+  // 2026-05-29 Stage 9: expand-all extracted to a reusable helper so the
+  // Only-Enslavers filter + Enslaved-view toggle can call it. Without
+  // expansion, the d3.tree layout doesn't include enslavers (they live
+  // inside collapsed subtrees by default) and the filter would hide them.
+  function expandAll(d) {
+    if (d._children) { d.children = d._children; d._children = null; }
+    if (d.children) d.children.forEach(expandAll);
+  }
   document.getElementById("btn-expand").addEventListener("click", () => {
-    function expand(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) d.children.forEach(expand); }
-    expand(root);
+    expandAll(root);
     update(root);
   });
   document.getElementById("btn-collapse").addEventListener("click", () => {
-    if (root.children) root.children.forEach(c => collapseToDepth(c, DEFAULT_COLLAPSE_DEPTH));
+    applyDefaultCollapse(root);
     update(root);
-    centerRootAtTop();
+    // 2026-05-29: Reset view fits the default-collapsed tree to the viewport.
+    // 2026-05-30 (Chris): bumped from 50ms → 450ms. The 50ms timeout fired
+    // while D3's exit transitions (duration: 400ms) were still in flight, so
+    // nodeLayer.getBBox() inside fit() returned the bounding box of the FULL
+    // expanded tree (including the just-collapsed descendants animating
+    // toward their parents before removal). Result: viewport sized for the
+    // old expanded tree, then the smaller post-reset tree ended up
+    // off-screen. Wait for the exit transitions to complete before measuring.
+    setTimeout(fit, 450);
   });
   document.getElementById("btn-fit").addEventListener("click", fit);
 
@@ -727,9 +1810,12 @@
     nodeLayer.selectAll("g.node").each(function (d) {
       const sel = d3.select(this);
       sel.select("circle.descendant-circle").style("fill", nodeColorVar(d.data.data));
-      if (d.data.spouse) {
-        sel.select("circle.spouse-circle").style("fill", nodeColorVar(d.data.spouse));
-      }
+      // Recolor every spouse circle (multi-spouse support 2026-05-29)
+      const spouses = d.data.spouses || [];
+      sel.selectAll("circle.spouse-circle").each(function() {
+        const i = +this.getAttribute("data-spouse-i") || 0;
+        if (spouses[i]) d3.select(this).style("fill", nodeColorVar(spouses[i]));
+      });
     });
   });
 
@@ -737,35 +1823,306 @@
   btnEns.addEventListener("click", () => {
     onlyEnslaverFilter = !onlyEnslaverFilter;
     btnEns.classList.toggle("active", onlyEnslaverFilter);
+    // Stage 9: when turning the filter ON, expand all subtrees so the
+    // filter can find enslavers hidden under collapsed branches.
+    if (onlyEnslaverFilter) expandAll(root);
     update(root);
-  });
-  document.getElementById("search").addEventListener("input", (e) => {
-    const q = e.target.value.trim().toLowerCase();
-    nodeLayer.selectAll("g.node").classed("search-hit", false);
-    if (!q) return;
-    // Expand any collapsed branches that contain hits
-    function expandToHit(d) {
-      const p = d.data.data;
-      const hit = (p.name || "").toLowerCase().includes(q) || (p.id || "").toLowerCase().includes(q);
-      let childHit = false;
-      const kids = d.children || d._children || [];
-      kids.forEach(c => { if (expandToHit(c)) childHit = true; });
-      if ((hit || childHit) && d._children) { d.children = d._children; d._children = null; }
-      return hit || childHit;
-    }
-    expandToHit(root);
-    update(root);
-    setTimeout(() => {
-      nodeLayer.selectAll("g.node").each(function (d) {
-        const p = d.data.data;
-        const hit = (p.name || "").toLowerCase().includes(q) || (p.id || "").toLowerCase().includes(q);
-        if (hit) d3.select(this).classed("search-hit", true);
-      });
-    }, 50);
   });
 
+  // 2026-05-29 Stage 9: view-mode toggle wiring.
+  const btnViewFamily = document.getElementById("btn-view-family");
+  const btnViewEnslaved = document.getElementById("btn-view-enslaved");
+  function setViewMode(mode) {
+    if (viewMode === mode) return;
+    viewMode = mode;
+    btnViewFamily.classList.toggle("active", mode === "family");
+    btnViewEnslaved.classList.toggle("active", mode === "enslaved");
+    // Update search-box placeholder so the corpus switch is discoverable.
+    searchInput.placeholder = mode === "enslaved"
+      ? "Search enslaved-person names…"
+      : "Search by name or PID…";
+    // Stage 9 fix: expand-all on entry into Enslaved view so the filter
+    // can find enslavers across collapsed subtrees. On return to Family
+    // view, collapse back to the default depth so the user gets a clean
+    // starting view rather than an unwieldy fully-expanded tree.
+    if (mode === "enslaved") {
+      expandAll(root);
+    } else {
+      applyDefaultCollapse(root);
+    }
+    // Re-render labels — the rect.label-bg also resizes on update.
+    nodeLayer.selectAll("g.label-group").remove();
+    // Trigger a full re-enter of nodes (so spouses/labels rebuild per mode).
+    nodeLayer.selectAll("g.node").remove();
+    clearSearchHits();
+    searchInput.value = "";
+    update(root);
+  }
+  btnViewFamily.addEventListener("click", () => setViewMode("family"));
+  btnViewEnslaved.addEventListener("click", () => setViewMode("enslaved"));
+  // 2026-05-29 Stage 4: search with hit array, prev/next nav, auto-pan to hit.
+  // Replaces the previous "highlight everything matching + hope user finds it"
+  // pattern that was useless at low zoom or when the hit was off-screen.
+  let currentHits = [];        // array of node-tree-data objects (d.data) that matched
+  let currentHitIndex = -1;
+  const searchInput = document.getElementById("search");
+  const hitCountEl  = document.getElementById("hit-count");
+  const hitPrevBtn  = document.getElementById("hit-prev");
+  const hitNextBtn  = document.getElementById("hit-next");
+
+  function clearSearchHits() {
+    currentHits = [];
+    currentHitIndex = -1;
+    hitCountEl.textContent = "";
+    hitCountEl.classList.remove("has-hits", "no-hits");
+    hitPrevBtn.disabled = true;
+    hitNextBtn.disabled = true;
+    nodeLayer.selectAll("g.node").classed("search-hit", false).classed("search-hit-current", false);
+  }
+
+  function updateHitCountUI() {
+    if (currentHits.length === 0) {
+      hitCountEl.textContent = searchInput.value.trim() ? "no matches" : "";
+      hitCountEl.classList.toggle("no-hits", !!searchInput.value.trim());
+      hitCountEl.classList.remove("has-hits");
+      hitPrevBtn.disabled = true;
+      hitNextBtn.disabled = true;
+    } else {
+      hitCountEl.textContent = `${currentHitIndex + 1} of ${currentHits.length}`;
+      hitCountEl.classList.add("has-hits");
+      hitCountEl.classList.remove("no-hits");
+      hitPrevBtn.disabled = currentHits.length < 2;
+      hitNextBtn.disabled = currentHits.length < 2;
+    }
+  }
+
+  // Pan + zoom the SVG so the given node's screen position is centered.
+  // Uses d3.zoom transform animation. Pulls the current x/y from the rendered
+  // <g.node> via its data layout coords (d.x, d.y in tree-layout space → mapped
+  // by the LTR transform into screen space). Target zoom = 1.4 (close enough
+  // to read the label + immediate kin).
+  function panToTreeNode(treeNode) {
+    if (!treeNode) return;
+    const TARGET_K = 1.4;
+    // tree layout uses (d.x, d.y) but the rendered SVG translates them as
+    // (d.y, d.x) in LTR mode (see renderNodes — translate(d.y, d.x)).
+    const nodeScreenX = treeNode.y;
+    const nodeScreenY = treeNode.x;
+    const W = svg.node().clientWidth;
+    const H = svg.node().clientHeight;
+    const tx = W / 2 - nodeScreenX * TARGET_K;
+    const ty = H / 2 - nodeScreenY * TARGET_K;
+    svg.transition().duration(450)
+      .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(TARGET_K));
+  }
+
+  // After a render, find the d3-hierarchy node whose data.id matches the
+  // payload-person id. Used by jumpToHit so we can map currentHits (which
+  // hold payload-people) to laid-out tree nodes.
+  function findTreeNodeById(id) {
+    let found = null;
+    nodeLayer.selectAll("g.node").each(function (d) {
+      if (!found && d.data && d.data.id === id) found = d;
+    });
+    return found;
+  }
+
+  function highlightCurrentHit() {
+    nodeLayer.selectAll("g.node").classed("search-hit-current", false);
+    if (currentHitIndex < 0 || !currentHits[currentHitIndex]) return;
+    const hitId = currentHits[currentHitIndex].id;
+    // Locate the rendered tree-node for the current hit
+    const treeNode = findTreeNodeById(hitId);
+    nodeLayer.selectAll("g.node").classed("search-hit-current", function (d) {
+      return d.data && d.data.id === hitId;
+    });
+    // 2026-05-29 Stage 4 fix #4: raise the current-hit <g.node> to last in
+    // SVG document order so its label paints over any colliding neighbor
+    // labels. SVG has no z-index; raise() = appendChild = paints last = on top.
+    nodeLayer.selectAll("g.node.search-hit-current").raise();
+    panToTreeNode(treeNode);
+    // Also surface its detail card so the researcher gets full context
+    if (currentHits[currentHitIndex].data) showCard(currentHits[currentHitIndex].data);
+  }
+
+  function jumpToHit(idx) {
+    if (currentHits.length === 0) return;
+    // wrap-around
+    currentHitIndex = ((idx % currentHits.length) + currentHits.length) % currentHits.length;
+    updateHitCountUI();
+    highlightCurrentHit();
+  }
+
+  // 2026-05-29 Stage 4 fix: name match is WHOLE-WORD (regex \bQ\b, case-i).
+  // Previously substring .includes() leaked: searching "william" matched names
+  // like "Cornelius Couwenhoven (#318; m. Helena Williamson)" because
+  // "William" is a prefix of "Williamson". Whole-word match treats each
+  // name as a sequence of words and the query must match a complete word.
+  // PIDs (e.g. cp_ens_059) stay substring — they aren't natural language
+  // and partial-PID lookup ("059") is a useful researcher shortcut.
+  function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  // 2026-05-29 Stage 4 fix #2: strip (m. ...) marriage-shorthand paren groups
+  // from the search corpus so "william" doesn't surface spouses.
+  // Preserved: nicknames like "Hermanus (Harmen)" / "Matthias (Martin)",
+  // location tags like "(of NJ)", disambiguators like "(Sr., of South Brunswick)".
+  // Only paren groups containing the literal "m. " (m, period, space — the
+  // genealogical marriage abbreviation) get stripped.
+  //
+  // 2026-05-29 Stage 4 fix #3: search corpus now includes the workbook's
+  // name_variations field (236 of 415 nodes carry one) so cross-spellings
+  // like "Wolphert Gerritsen" find the canonical "Wolphert Gerritsz".
+  function nameSearchCorpus(name, variations) {
+    let s = (name || "") + " " + (variations || "");
+    return s.replace(/\(\s*[^)]*\bm\.\s+[^)]*\)/g, "").replace(/\s+/g, " ").trim();
+  }
+  // 2026-05-29 Stage 4 fix #3: Dutch/English given-name equivalences.
+  // Every list is a single equivalence-class — any member matches any other.
+  // Curated for the Cowenhoven NJ corpus; extend conservatively, only
+  // include pairs that are TRUE given-name equivalents (not patronymics,
+  // not coincidental phonetic similarity). Researchers can add pairs by
+  // editing this list — no other code change required.
+  const NAME_EQUIVS = [
+    ["william", "willem", "wilhelmus"],
+    ["john", "jan", "johannes", "johan", "hans", "johanes"],
+    ["peter", "pieter", "petrus"],
+    ["jacob", "jacobus", "james"],
+    ["cornelius", "cornelis"],
+    ["garret", "garrett", "gerret", "gerrit", "gerard", "gerardus", "garrit"],
+    ["catherine", "catharine", "catharina", "catryntje", "katherine", "katrina"],
+    ["elizabeth", "elisabeth", "lysbeth", "lijsbeth", "lijsbet", "lizzie", "betty"],
+    ["mary", "maria", "marytje", "marretje", "maritje"],
+    ["anne", "ann", "anna", "antje", "annetje", "anneken"],
+    ["margaret", "margaretha", "margriet", "margaretta", "margreta", "margrietje"],
+    ["sarah", "sara"],
+    ["hendrick", "henry", "hendrik", "henrick"],
+    ["roelof", "ralph", "roloff", "ruliff", "roeloff", "rulif"],
+    ["lewis", "lodewyck", "lodewyk", "louis"],
+    ["nicholas", "nicolaas", "nicolaes", "klaas", "niclaes", "claes"],
+    ["george", "joris", "jorus"],
+    ["joseph", "joost"],
+    ["eleanor", "helena", "lena", "elnore", "ellinor"],
+    ["daniel", "daniël"],
+    ["albert", "albertus"],
+    ["hester", "esther"],
+    ["adriaen", "adrian", "ariaen"],
+    ["christine", "christina", "stijntje", "styntje"],
+    ["jannetje", "janneke", "jannitje", "jane", "janet"],
+    ["aeltje", "altje", "adelaide"],
+    ["frans", "francis", "francois", "frank", "frances"],
+    ["thomas", "tomas"],
+    ["elias", "elyas"],
+    ["benjamin", "benjamen"],
+    ["isaac", "izaak"],
+    ["abraham", "abram"],
+    ["neeltje", "nelly", "nellie", "nellitje"],
+    ["arent", "aaron", "arnt"],
+    ["matthew", "mattheus", "matthys"],
+    ["barbara", "barbe"],
+    ["rachel", "rachael"],
+    ["abigail", "abagail"],
+  ];
+  const NAME_EQUIV_INDEX = (() => {
+    const idx = {};
+    for (const group of NAME_EQUIVS) {
+      for (const n of group) idx[n.toLowerCase()] = group;
+    }
+    return idx;
+  })();
+  function expandToken(tok) {
+    return NAME_EQUIV_INDEX[tok.toLowerCase()] || [tok.toLowerCase()];
+  }
+  function nameWholeWordMatch(name, variations, q) {
+    const corpus = nameSearchCorpus(name, variations);
+    if (!corpus || !q) return false;
+    const tokens = q.split(/\s+/).filter(t => t.length > 0);
+    if (tokens.length === 0) return false;
+    // Per-token AND: every token must match (any of its given-name variants).
+    // Word-boundary \b only applied on edges that are word-characters.
+    return tokens.every(tok => {
+      const variants = expandToken(tok);
+      const pre  = /\w/.test(tok[0])             ? "\\b" : "";
+      const post = /\w/.test(tok[tok.length-1])  ? "\\b" : "";
+      const alt = variants.map(escapeRegex).join("|");
+      const re = new RegExp(pre + "(?:" + alt + ")" + post, "i");
+      return re.test(corpus);
+    });
+  }
+  // 2026-05-29 Stage 9: in enslaved-person view the search corpus is the
+  // names of the people each enslaver held. A hit returns the ENSLAVER's
+  // node (not the enslaved person — they don't have nodes of their own),
+  // with their box visually highlighted.
+  function enslavedPersonHit(p, q) {
+    const list = p.enslaved_persons || [];
+    for (const ep of list) {
+      if (nameWholeWordMatch(ep.name || "", "", q)) return true;
+    }
+    return false;
+  }
+  function runSearch(q) {
+    if (!q) { clearSearchHits(); return; }
+    // Walk root recursively, collect all hits + expand collapsed ancestors.
+    const hits = [];
+    function walk(d) {
+      const p = d.data && d.data.data;
+      if (!p) return false;
+      const id   = (p.id || "").toLowerCase();
+      let hit;
+      if (viewMode === "enslaved") {
+        hit = enslavedPersonHit(p, q) || id.includes(q);
+      } else {
+        hit = nameWholeWordMatch(p.name || "", p.name_variations || "", q) || id.includes(q);
+      }
+      let childHit = false;
+      const kids = d.children || d._children || [];
+      kids.forEach(c => { if (walk(c)) childHit = true; });
+      if ((hit || childHit) && d._children) { d.children = d._children; d._children = null; }
+      if (hit) hits.push(d.data);  // d.data is the tree-stratify wrapper holding {id, data, spouses, ...}
+      return hit || childHit;
+    }
+    walk(root);
+    update(root);
+    // After re-render: stable hit ordering by generation → birth_year → id.
+    hits.sort((a, b) => {
+      const ga = (a.data.generation ?? 99), gb = (b.data.generation ?? 99);
+      if (ga !== gb) return ga - gb;
+      const ya = (a.data.birth_year ?? 9999), yb = (b.data.birth_year ?? 9999);
+      if (ya !== yb) return ya - yb;
+      return String(a.id).localeCompare(String(b.id));
+    });
+    currentHits = hits;
+    currentHitIndex = hits.length ? 0 : -1;
+    // Paint subtle ring on all hits
+    setTimeout(() => {
+      const hitIds = new Set(hits.map(h => h.id));
+      nodeLayer.selectAll("g.node").classed("search-hit", function (d) {
+        return d.data && hitIds.has(d.data.id);
+      });
+      updateHitCountUI();
+      if (currentHitIndex >= 0) highlightCurrentHit();
+    }, 60);
+  }
+
+  searchInput.addEventListener("input", (e) => {
+    runSearch(e.target.value.trim().toLowerCase());
+  });
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (e.shiftKey) jumpToHit(currentHitIndex - 1);
+      else            jumpToHit(currentHitIndex + 1);
+    } else if (e.key === "Escape") {
+      searchInput.value = "";
+      clearSearchHits();
+    }
+  });
+  hitPrevBtn.addEventListener("click", () => jumpToHit(currentHitIndex - 1));
+  hitNextBtn.addEventListener("click", () => jumpToHit(currentHitIndex + 1));
+
   update(root);
-  setTimeout(centerRootAtTop, 80);
+  // 2026-05-29: initial load now fits the default-collapsed tree to the
+  // viewport — at scale 1.0 the G3 column would extend past the right edge
+  // (GENERATION_HEIGHT=900 × 2 generations from root = 1800px).
+  setTimeout(fit, 80);
 })();
 </script>
 </body>
