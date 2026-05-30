@@ -39,15 +39,17 @@ More visualizations and downloadable data assets will be added over time.
 
 The project draws on primary documentation including, but not limited to:
 
-- Monmouth County Birth Records (Black Birth Book of Monmouth County, NJ)
-- Town of Brooklyn and Town of New Utrecht Manumission Records
+- Birth and Manumission Records for Monmouth and Middlesex Counties 
+- Town of Brooklyn and Town of New Utrecht Manumission Records, Brooklyn Old Town Records Collection
+- Town of Flatlands Birth and Abandonment Records, Brooklyn Old Town Records Collection
 - Probate records, wills, and inventories (NY and NJ)
-- 1790 US Federal Census, Kings County, NY
+- 1790, 1800, 1810, 1820, 1830, 1840, 1850, 1860, 1870 US Federal Census for New York
+- 1830, 1840, 1850, 1860, 1870 US Federal Census for New Jersey
 - New Jersey Supreme Court Case Files (1704–1844)
 - New York Court of General Sessions Files (1704–1844)
 - Family papers held at the Center for Brooklyn History (CBH), New-York Historical Society (NYHS), New York Public Library (NYPL), New York State Archives (NYSA), New York City Municipal Archives (NYCMA), Monmouth County Historical Association (MCHA), New Jersey State Archives (NJSA), and Rutgers University Special Collections (RUSC)
-- Dutch Reformed Church baptism and membership records
-- Newspaper notices
+-- Dutch Reformed Church baptism, marriage, and burial records
+- Newspaper advertisements
 
 A complete bibliography is maintained in the project's public Zotero library.
 
