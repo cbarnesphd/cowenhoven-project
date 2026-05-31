@@ -1,27 +1,27 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap');
 
-  .cwi { box-sizing: border-box; background: #7B2D1A; font-family: 'Lato', Georgia, sans-serif; color: #FFF5E8; padding: 48px 32px 64px; border-radius: 6px; }
+  .cwi { box-sizing: border-box; background: #913831; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #F1EADC; padding: 48px 32px 64px; border-radius: 6px; }
   .cwi *, .cwi *::before, .cwi *::after { box-sizing: border-box; }
 
   /* -- HEADER -- */
   .cwi .cwi-header { text-align: center; border-bottom: 1px solid #C87050; padding-bottom: 36px; margin-bottom: 44px; }
-  .cwi .cwi-eyebrow { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FFFFFF; margin-bottom: 14px; }
-  .cwi .cwi-header h1 { font-family: 'EB Garamond', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.15; color: #FFF5E8; margin-bottom: 12px; }
-  .cwi .cwi-header h1 em { font-style: italic; color: #FFD166; }
-  .cwi .cwi-subtitle { font-family: 'EB Garamond', serif; font-size: 18px; font-style: italic; color: #FFFFFF; margin-bottom: 18px; }
+  .cwi .cwi-eyebrow { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #FFFFFF; margin-bottom: 14px; }
+  .cwi .cwi-header h1 { font-family: 'Cardo', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.15; color: #F1EADC; margin-bottom: 12px; }
+  .cwi .cwi-header h1 em { font-style: italic; color: #EFC44C; }
+  .cwi .cwi-subtitle { font-family: 'Cardo', Georgia, serif; font-size: 18px; font-style: italic; color: #FFFFFF; margin-bottom: 18px; }
   .cwi .cwi-tagline { font-size: 14px; color: #EAB48A; letter-spacing: 0.5px; }
 
   /* -- STAT CARDS -- */
   .cwi .cwi-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 44px; }
-  .cwi .cwi-stat-card { background: #9E4230; border: 1px solid #B55A40; border-top: 3px solid #FFD166; border-radius: 4px; padding: 22px 16px 20px; text-align: center; }
-  .cwi .cwi-stat-card .cwi-number { font-family: 'EB Garamond', serif; font-size: 48px; font-weight: 700; color: #FFD166; line-height: 1; margin-bottom: 8px; }
+  .cwi .cwi-stat-card { background: #9E4230; border: 1px solid #B55A40; border-top: 3px solid #EFC44C; border-radius: 4px; padding: 22px 16px 20px; text-align: center; }
+  .cwi .cwi-stat-card .cwi-number { font-family: 'Cardo', Georgia, serif; font-size: 48px; font-weight: 700; color: #EFC44C; line-height: 1; margin-bottom: 8px; }
   .cwi .cwi-stat-card .cwi-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #FFFFFF; line-height: 1.4; }
-  .cwi .cwi-stat-card .cwi-sub { font-family: 'EB Garamond', serif; font-size: 14px; font-style: italic; color: #FFFFFF; margin-top: 5px; }
+  .cwi .cwi-stat-card .cwi-sub { font-family: 'Cardo', Georgia, serif; font-size: 14px; font-style: italic; color: #FFFFFF; margin-top: 5px; }
 
   /* -- SECTION TITLES -- */
-  .cwi .cwi-section-title { font-family: 'EB Garamond', serif; font-size: 20px; font-weight: 600; color: #FFD166; letter-spacing: 0.5px; margin-bottom: 6px; }
-  .cwi .cwi-section-desc { font-size: 14px; color: #FFFFFF; margin-bottom: 20px; font-style: italic; }
+  .cwi .cwi-section-title { font-family: 'Cardo', Georgia, serif; font-size: 20px; font-weight: 600; color: #EFC44C; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .cwi .cwi-section-desc { font-size: 14px; color: #FFFFFF; margin-bottom: 20px; font-style: italic; line-height: 1.65; }
 
   /* -- TWO-COLUMN LAYOUT -- */
   .cwi .cwi-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
@@ -47,23 +47,23 @@
   .cwi .cwi-legend-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 9px; }
   .cwi .cwi-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
   .cwi .cwi-legend-text { font-size: 13px; color: #FFFFFF; line-height: 1.4; }
-  .cwi .cwi-legend-text strong { display: block; font-size: 14px; font-weight: 700; color: #FFF5E8; }
+  .cwi .cwi-legend-text strong { display: block; font-size: 14px; font-weight: 700; color: #F1EADC; }
 
   /* -- GENDER / AGE BARS -- */
   .cwi .cwi-gender-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
   .cwi .cwi-gender-label { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #FFFFFF; width: 60px; flex-shrink: 0; }
   .cwi .cwi-gender-track { flex: 1; background: #5A1E0E; border-radius: 3px; height: 24px; overflow: hidden; }
   .cwi .cwi-gender-fill { height: 100%; border-radius: 3px; display: flex; align-items: center; padding-left: 8px; font-size: 12px; font-weight: 700; color: #FFFFFF; }
-  .cwi .cwi-gender-count { font-size: 20px; font-family: 'EB Garamond', serif; color: #FFFFFF; width: 32px; text-align: right; flex-shrink: 0; }
+  .cwi .cwi-gender-count { font-size: 20px; font-family: 'Cardo', Georgia, serif; color: #FFFFFF; width: 32px; text-align: right; flex-shrink: 0; }
   .cwi .cwi-gender-note { font-size: 13px; color: #FFFFFF; font-style: italic; margin-top: 10px; }
 
   /* -- ENSLAVERS -- */
   .cwi .cwi-enslaver-list { margin-top: 12px; }
   .cwi .cwi-enslaver-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .cwi .cwi-enslaver-name { font-family: 'EB Garamond', serif; font-size: 17px; color: #FFF5E8; width: 230px; flex-shrink: 0; display: flex; flex-direction: column; line-height: 1.25; }
+  .cwi .cwi-enslaver-name { font-family: 'Cardo', Georgia, serif; font-size: 17px; color: #F1EADC; width: 230px; flex-shrink: 0; display: flex; flex-direction: column; line-height: 1.25; }
   .cwi .cwi-enslaver-name-main { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cwi .cwi-enslaver-name-dates { font-size: 14px; color: #EAB48A; font-style: italic; margin-top: 2px; }
-  .cwi .cwi-enslaver-name-place { font-size: 14px; color: #FFF5E8; margin-top: 1px; }
+  .cwi .cwi-enslaver-name-place { font-size: 14px; color: #F1EADC; margin-top: 1px; }
   .cwi .cwi-enslaver-track { flex: 1; background: #5A1E0E; border-radius: 2px; height: 14px; overflow: hidden; }
   .cwi .cwi-enslaver-fill { height: 100%; background: linear-gradient(90deg, #C07040, #FFB347); border-radius: 2px; }
   .cwi .cwi-enslaver-num { font-size: 13px; color: #FFFFFF; font-weight: 700; width: 24px; text-align: right; flex-shrink: 0; }
@@ -71,21 +71,21 @@
   /* -- SOURCE PANEL -- */
   .cwi .cwi-source-panel { background: #8E3825; border: 1px solid #B05040; border-radius: 4px; padding: 28px 24px; margin-bottom: 28px; }
   .cwi .cwi-source-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .cwi .cwi-chip { background: #6A2818; border: 1px solid #A04030; border-radius: 20px; padding: 6px 15px; font-size: 13px; color: #FFFFFF; font-family: 'EB Garamond', serif; font-style: italic; }
+  .cwi .cwi-chip { background: #6A2818; border: 1px solid #A04030; border-radius: 20px; padding: 6px 15px; font-size: 13px; color: #FFFFFF; font-family: 'Cardo', Georgia, serif; font-style: italic; }
 
   /* -- GEOGRAPHY -- */
   .cwi .cwi-geo-row { display: flex; gap: 16px; margin-top: 14px; }
   .cwi .cwi-geo-card { flex: 1; background: #6A2818; border: 1px solid #A04030; border-radius: 4px; padding: 16px; text-align: center; }
-  .cwi .cwi-geo-card .cwi-geo-num { font-family: 'EB Garamond', serif; font-size: 30px; color: #FFD166; font-weight: 700; }
+  .cwi .cwi-geo-card .cwi-geo-num { font-family: 'Cardo', Georgia, serif; font-size: 30px; color: #EFC44C; font-weight: 700; }
   .cwi .cwi-geo-card .cwi-geo-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #FFFFFF; margin-top: 4px; }
-  .cwi .cwi-geo-card .cwi-geo-detail { font-family: 'EB Garamond', serif; font-size: 15px; color: #FFFFFF; font-style: italic; margin-top: 4px; line-height: 1.45; }
+  .cwi .cwi-geo-card .cwi-geo-detail { font-family: 'Cardo', Georgia, serif; font-size: 15px; color: #FFFFFF; font-style: italic; margin-top: 4px; line-height: 1.45; }
 
   /* -- DIVIDER -- */
   .cwi .cwi-divider { border: none; border-top: 1px solid #A04030; margin: 28px 0; }
 
   /* -- QUOTE -- */
-  .cwi .cwi-quote-panel { background: linear-gradient(135deg, #5A1A0A, #6A2810); border-left: 3px solid #FFD166; border-radius: 0 4px 4px 0; padding: 20px 24px; margin-bottom: 28px; }
-  .cwi .cwi-quote-panel p { font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic; color: #FFF0DC; line-height: 1.7; }
+  .cwi .cwi-quote-panel { background: linear-gradient(135deg, #5A1A0A, #6A2810); border-left: 3px solid #EFC44C; border-radius: 0 4px 4px 0; padding: 20px 24px; margin-bottom: 28px; }
+  .cwi .cwi-quote-panel p { font-family: 'Cardo', Georgia, serif; font-size: 17px; font-style: italic; color: #FFF0DC; line-height: 1.75; }
   .cwi .cwi-quote-credit { font-size: 13px; color: #FFFFFF; margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
 
   /* -- FOOTER -- */
@@ -140,21 +140,21 @@
   <!-- HEADER -->
   <div class="cwi-header">
     <div class="cwi-eyebrow">The Cowenhoven Project</div>
-    <h1>Enslaved by the <em>Cowenhoven</em> Family</h1>
-    <p class="cwi-subtitle">New York &amp; New Jersey | 1736-1840</p>
+    <h1>By the Numbers</h1>
+    <p class="cwi-subtitle">New York &amp; New Jersey &middot; 1736&ndash;1840</p>
     <p class="cwi-tagline">A digital humanities project documenting the lives of people enslaved by the Van Kouwenhoven-Conover Family</p>
   </div>
 
   <!-- CONTEXT QUOTE -->
   <div class="cwi-quote-panel">
-    <p>These 261 records represent named individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them. A further 118 unnamed individuals are referenced in the same records, listed as "a black man," "four children," or simply tallied as a number in a census column.</p>
+    <p>These 271 records represent named individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them. A further 118 unnamed individuals are referenced in the same records, listed as "a black man," "four children," or simply tallied as a number in a census column.</p>
     <div class="cwi-quote-credit">Cowenhoven Project Research Overview</div>
   </div>
 
   <!-- STAT CARDS -->
   <div class="cwi-stat-grid">
     <div class="cwi-stat-card">
-      <div class="cwi-number">261</div>
+      <div class="cwi-number">271</div>
       <div class="cwi-label">Named Individuals</div>
       <div class="cwi-sub">documented to date</div>
     </div>
@@ -164,9 +164,9 @@
       <div class="cwi-sub">1736 - 1840</div>
     </div>
     <div class="cwi-stat-card">
-      <div class="cwi-number">74</div>
+      <div class="cwi-number">67</div>
       <div class="cwi-label">Enslavers Identified</div>
-      <div class="cwi-sub">throughout the family</div>
+      <div class="cwi-sub">documented evidence</div>
     </div>
     <div class="cwi-stat-card">
       <div class="cwi-number">18</div>
@@ -187,14 +187,14 @@
       <div class="cwi-decade-legend-item"><div class="cwi-decade-legend-dot" style="background:#FF5A5A;"></div>Resistance / Flight</div>
     </div>
     <div class="cwi-bar-chart" id="cwiBarChart"></div>
-    <div class="cwi-section-desc" style="margin-top:32px;">All 261 individuals carry datable events; peak documentation falls in the 1800s-1810s, reflecting the abolition-era record-keeping that followed New York's Gradual Emancipation Act of 1799 and New Jersey's Act of 1804. The shift from Legal/Estate (orange) in the 1700s to Birth Records (blue) in the 1800s and Freedom Documents (green) in the 1810s-1820s shows how abolition-era statutes reshaped the documentary record.</div>
+    <div class="cwi-section-desc" style="margin-top:32px;">All 271 individuals carry datable events; peak documentation falls in the 1800s-1810s, reflecting the abolition-era record-keeping that followed New York's Gradual Emancipation Act of 1799 and New Jersey's Act of 1804. The shift from Legal/Estate (orange) in the 1700s to Birth Records (blue) in the 1800s and Freedom Documents (green) in the 1810s-1820s shows how abolition-era statutes reshaped the documentary record.</div>
   </div>
 
   <!-- ROW 2: EVENT TYPES + GENDER -->
   <div class="cwi-two-col">
     <div class="cwi-panel">
       <div class="cwi-section-title">How We Know These People</div>
-      <div class="cwi-section-desc">Type of historical record documenting each individual (261 records across 261 individuals)</div>
+      <div class="cwi-section-desc">Type of historical record documenting each individual (271 records across 271 individuals)</div>
       <div class="cwi-donut-container">
         <svg class="cwi-donut" id="cwiDonutSvg" width="130" height="130" viewBox="0 0 130 130"></svg>
         <div class="cwi-donut-legend" id="cwiDonutLegend"></div>
@@ -203,32 +203,32 @@
 
     <div class="cwi-panel">
       <div class="cwi-section-title">Sex, As Recorded</div>
-      <div class="cwi-section-desc">All 261 individuals have sex recorded in source documents</div>
+      <div class="cwi-section-desc">269 of 271 individuals have sex recorded in source documents; 2 records silent</div>
 
       <div class="cwi-gender-row" style="margin-top:20px;">
         <div class="cwi-gender-label">Male</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:51.0%;background:linear-gradient(90deg,#2E86AB,#56CCF2);">51.0%</div></div>
-        <div class="cwi-gender-count">133</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:50.6%;background:linear-gradient(90deg,#2E86AB,#56CCF2);">50.6%</div></div>
+        <div class="cwi-gender-count">136</div>
       </div>
       <div class="cwi-gender-row">
         <div class="cwi-gender-label">Female</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:49.0%;background:linear-gradient(90deg,#9B2335,#E05C7A);">49.0%</div></div>
-        <div class="cwi-gender-count">128</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:49.4%;background:linear-gradient(90deg,#9B2335,#E05C7A);">49.4%</div></div>
+        <div class="cwi-gender-count">133</div>
       </div>
 
       <hr class="cwi-divider" style="margin:20px 0 16px;">
       <div class="cwi-section-title">Ages at Time of Record</div>
-      <div class="cwi-section-desc" style="margin-bottom:12px;">Age category established for 247 of 261 individuals; 14 records silent on age</div>
+      <div class="cwi-section-desc" style="margin-bottom:12px;">Age category established for 257 of 271 individuals; 14 records silent on age</div>
 
       <div class="cwi-gender-row">
         <div class="cwi-gender-label" style="width:80px; font-size:13px;">Under 14</div>
-        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:68%;background:linear-gradient(90deg,#3A7D44,#6FC473);">Children</div></div>
-        <div class="cwi-gender-count" style="font-size:13px;color:#FFFFFF;">95</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:65%;background:linear-gradient(90deg,#3A7D44,#6FC473);">Children</div></div>
+        <div class="cwi-gender-count" style="font-size:13px;color:#FFFFFF;">96</div>
       </div>
       <div class="cwi-gender-row">
         <div class="cwi-gender-label" style="width:80px; font-size:13px;">Adult (14-39)</div>
         <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:100%;background:linear-gradient(90deg,#7D6A1A,#F0C040);">Adults</div></div>
-        <div class="cwi-gender-count" style="font-size:14px;">139</div>
+        <div class="cwi-gender-count" style="font-size:14px;">148</div>
       </div>
       <div class="cwi-gender-row">
         <div class="cwi-gender-label" style="width:80px; font-size:13px;">40 &amp; Over</div>
@@ -248,7 +248,7 @@
   <div class="cwi-two-col">
     <div class="cwi-panel">
       <div class="cwi-section-title">Largest Enslavers and the People They Enslaved</div>
-      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 74 distinct enslavers across the Van Kouwenhoven-Conover family).</div>
+      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 67 enslavers with documented or inheritance-chain evidence across the Van Kouwenhoven-Conover family (unproven and non-family figures excluded)).</div>
       <div class="cwi-enslaver-list" id="cwiEnslaverList"></div>
     </div>
 
@@ -262,7 +262,7 @@
           <div class="cwi-geo-detail">Kings (Brooklyn / New Utrecht / Flatlands) / New York (Manhattan)</div>
         </div>
         <div class="cwi-geo-card">
-          <div class="cwi-geo-num">187</div>
+          <div class="cwi-geo-num">197</div>
           <div class="cwi-geo-label">New Jersey / 5 counties</div>
           <div class="cwi-geo-detail">Monmouth (Freehold / Middletown / Manalapan) / Middlesex (South Brunswick / South Amboy / West Windsor) / Somerset (Franklin / Montgomery) / Bergen / Hunterdon</div>
         </div>
@@ -273,29 +273,29 @@
       <div class="cwi-section-desc" style="margin-bottom:14px;">7 individuals documented as having run away or been pursued</div>
 
       <div style="display:flex; gap:12px; align-items:center; background:#5A1E0E; border-radius:4px; padding:14px 16px;">
-        <div style="font-size:38px; font-family:'EB Garamond',serif; color:#FFD166; font-weight:700; line-height:1;">7</div>
+        <div style="font-size:38px; font-family:'Cardo',Georgia,serif; color:#EFC44C; font-weight:700; line-height:1;">7</div>
         <div style="font-size:14px; color:#F0C8A0; line-height:1.6;">
-          <strong style="color:#FFF5E8;">Jeffery Johnson</strong> (1777),
-          <strong style="color:#FFF5E8;">Cain</strong> (1781),
-          <strong style="color:#FFF5E8;">Anthony</strong> (1794),
-          <strong style="color:#FFF5E8;">Harry</strong> (1801),
-          <strong style="color:#FFF5E8;">Maria Philips</strong> (1827),
-          <strong style="color:#FFF5E8;">Peter</strong> (1838), and
-          <strong style="color:#FFF5E8;">Frank</strong> (1825) who was captured and imprisoned, a reminder that many self-emancipation efforts were unsuccessful and could have dire consequences.
+          <strong style="color:#F1EADC;">Jeffery Johnson</strong> (1777),
+          <strong style="color:#F1EADC;">Cain</strong> (1781),
+          <strong style="color:#F1EADC;">Anthony</strong> (1794),
+          <strong style="color:#F1EADC;">Harry</strong> (1801),
+          <strong style="color:#F1EADC;">Maria Philips</strong> (1827),
+          <strong style="color:#F1EADC;">Peter</strong> (1838), and
+          <strong style="color:#F1EADC;">Frank</strong> (1825) who was captured and imprisoned, a reminder that many self-emancipation efforts were unsuccessful and could have dire consequences.
         </div>
       </div>
 
       <hr class="cwi-divider" style="margin:20px 0 16px;">
       <div class="cwi-section-title">Abolition Context</div>
       <div style="font-size:14px; color:#F0C8A0; line-height:1.7;">
-        <span style="color:#FFD166; font-weight:700;">1780</span> -- Pennsylvania passes first Gradual Abolition law<br>
-        <span style="color:#FFD166; font-weight:700;">1785</span> -- New York Manumission Society founded<br>
-        <span style="color:#FFD166; font-weight:700;">1799</span> -- New York Gradual Emancipation Act<br>
-        <span style="color:#FFD166; font-weight:700;">1804</span> -- New Jersey Act for Gradual Abolition<br>
-        <span style="color:#FFD166; font-weight:700;">1817</span> -- New York legislates end to slavery in 1827<br>
-        <span style="color:#FFD166; font-weight:700;">1827</span> -- Full abolition in New York on July 4th<br>
-        <span style="color:#FFD166; font-weight:700;">1850</span> -- Passage of the Fugitive Slave Act<br>
-        <span style="color:#FFD166; font-weight:700;">1865</span> -- 13th Amendment ends slavery in New Jersey
+        <span style="color:#EFC44C; font-weight:700;">1780</span> -- Pennsylvania passes first Gradual Abolition law<br>
+        <span style="color:#EFC44C; font-weight:700;">1785</span> -- New York Manumission Society founded<br>
+        <span style="color:#EFC44C; font-weight:700;">1799</span> -- New York Gradual Emancipation Act<br>
+        <span style="color:#EFC44C; font-weight:700;">1804</span> -- New Jersey Act for Gradual Abolition<br>
+        <span style="color:#EFC44C; font-weight:700;">1817</span> -- New York legislates end to slavery in 1827<br>
+        <span style="color:#EFC44C; font-weight:700;">1827</span> -- Full abolition in New York on July 4th<br>
+        <span style="color:#EFC44C; font-weight:700;">1850</span> -- Passage of the Fugitive Slave Act<br>
+        <span style="color:#EFC44C; font-weight:700;">1865</span> -- 13th Amendment ends slavery in New Jersey
       </div>
     </div>
   </div>
@@ -303,7 +303,7 @@
   <!-- MULTI-EVENT PEOPLE (NEW v3.2) -->
   <div class="cwi-timeline-panel">
     <div class="cwi-section-title">Lives Documented Across Multiple Records</div>
-    <div class="cwi-section-desc">19 individuals appear in two or more documentary events, allowing a partial life-trajectory to surface -- a child's birth registered alongside her later manumission, an enslaved man inventoried at probate then freed nine years later, or a mother whose successive births were each separately recorded under New Jersey's 1804 gradual-abolition statute.</div>
+    <div class="cwi-section-desc">20 individuals appear in two or more documentary events, allowing a partial life-trajectory to surface -- a child's birth registered alongside her later manumission, an enslaved man inventoried at probate then freed nine years later, or a mother whose successive births were each separately recorded under New Jersey's 1804 gradual-abolition statute.</div>
   </div>
 
   <div class="cwi-two-col">
@@ -312,118 +312,125 @@
       <div class="cwi-section-desc">10 individuals documented through more than one kind of record</div>
       <div style="margin-top:10px; display:flex; flex-direction:column; gap:18px;">
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Harry (the elder)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Harry (the elder)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Harry (the younger)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Harry (the younger)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Cezar</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Cezar</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Frank</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Frank</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Jack</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Jack</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Bet</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Bet</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Robert Conover</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Indenture</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Robert Conover</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Indenture</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Elias</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Elias</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Oliver Walters</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1832</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Oliver Walters</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1832</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'EB Garamond',serif; font-size:12px; color:#FFF5E8; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1822</div></div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1822</div></div></div>
         </div>
       </div>
     </div>
 
     <div class="cwi-panel">
       <div class="cwi-section-title">Mothers with Multiple Children</div>
-      <div class="cwi-section-desc">9 mothers had multiple children registered under abolition-era statutes</div>
+      <div class="cwi-section-desc">10 mothers had multiple children registered under abolition-era statutes</div>
       <div style="margin-top:10px; display:flex; flex-direction:column; gap:18px;">
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Matt</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Matt</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Luis</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1805</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Elias</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1809</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Joseph</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Luis</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1805</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Elias</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1809</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Joseph</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Betty</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Betty</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">George</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Loeser</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1817</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Gerrans</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1820</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Fran</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1822</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">George</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Loeser</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1817</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Gerrans</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1820</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Fran</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1822</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Lucy</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Lucy</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Betty</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Rose</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Jude</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Betty</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Rose</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Jude</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Rose</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rose</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Samuel</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1806</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Jim</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Samuel</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1806</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Jim</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Ann</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Ann</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Charlotte</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Elias</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Charlotte</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Elias</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Tom</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Tom</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Sarah</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Sarah</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Sarah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Hannah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Sarah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Hannah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Maria</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Maria</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Susan</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1814</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">James</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Susan</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1814</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">James</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'EB Garamond',serif; font-size:16px; color:#FFF5E8; font-weight:700;">Kate</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Kate</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Cyrus</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
-            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'EB Garamond',serif; font-size:13px; color:#FFF5E8; font-weight:600; line-height:1.1;">Pamele</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Cyrus</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Pamele</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Hagar</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; gap:7px; flex-wrap:wrap;">
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Rose</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1806</div></div>
+            <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Abraham</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1809</div></div>
           </div>
         </div>
       </div>
@@ -435,11 +442,11 @@
   <!-- CENSUS SNAPSHOT 1790 (NEW v3.2) -->
   <div class="cwi-quote-panel" style="display:flex; gap:24px; align-items:center; padding:22px 28px;">
     <div style="display:flex; flex-direction:column; align-items:center; flex-shrink:0;">
-      <div style="font-family:'EB Garamond', serif; font-size:64px; color:#FFD166; font-weight:700; line-height:1;">60</div>
-      <div style="font-family:'EB Garamond', serif; font-size:18px; color:#FFD166; font-weight:400; letter-spacing:1px; margin-top:6px;">people</div>
+      <div style="font-family:'Cardo', Georgia, serif; font-size:64px; color:#EFC44C; font-weight:700; line-height:1;">60</div>
+      <div style="font-family:'Cardo', Georgia, serif; font-size:18px; color:#EFC44C; font-weight:400; letter-spacing:1px; margin-top:6px;">people</div>
     </div>
     <div style="flex:1;">
-      <p style="margin:0;">In a single moment in 1790 -- at the first U.S. Federal Census -- Cowenhoven family heads enslaved <strong style="color:#FFD166;">60 people in Kings County, New York alone</strong>, distributed across <strong>9 households</strong> in New Utrecht, Brooklyn, and Flatlands. Most of these 60 are not among the 261 named individuals on this page; the census schedule lists them only by tally under each enslaver's name. The 261 documented above are individuals whose names survive in <em>other</em> records -- wills, manumissions, birth registrations, court files. The 60 of 1790 are a reminder that for every named person, many more were often held in the same households whose names history has not preserved.</p>
+      <p style="margin:0;">In a single moment in 1790 -- at the first U.S. Federal Census -- Cowenhoven family heads enslaved <strong style="color:#EFC44C;">60 people in Kings County, New York alone</strong>, distributed across <strong>9 households</strong> in New Utrecht, Brooklyn, and Flatlands. Most of these 60 are not among the 271 named individuals on this page; the census schedule lists them only by tally under each enslaver's name. The 271 documented above are individuals whose names survive in <em>other</em> records -- wills, manumissions, birth registrations, court files. The 60 of 1790 are a reminder that for every named person, many more were often held in the same households whose names history has not preserved.</p>
       <div class="cwi-quote-credit" style="margin-top:10px;">Census Snapshot &mdash; 1790 U.S. Federal Census, Kings County, New York</div>
     </div>
   </div>
@@ -472,8 +479,8 @@
     <p>
       The Cowenhoven Project | <a href="https://cowenhoven.org">cowenhoven.org</a><br>
       Data drawn from the Cowenhoven Project Active Data Set | New York &amp; New Jersey | Pre-1865<br>
-      This infographic represents 261 named individuals. A further 118 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
-      Version 3.5 &mdash; 28 May 2026
+      This infographic represents 271 named individuals. A further 118 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
+      Version 3.6 &mdash; 31 May 2026
     </p>
   </div>
 
@@ -486,12 +493,12 @@
     { label:"1730s", birth:0,  family:0,  freedom:0,  legal:5,  church:1, resistance:0, total:6  },
     { label:"1740s", birth:0,  family:0,  freedom:0,  legal:1,  church:3, resistance:0, total:4  },
     { label:"1750s", birth:0,  family:0,  freedom:0,  legal:2,  church:0, resistance:0, total:2  },
-    { label:"1770s", birth:0,  family:0,  freedom:1,  legal:5,  church:0, resistance:1, total:7  },
-    { label:"1780s", birth:0,  family:0,  freedom:7,  legal:9,  church:0, resistance:1, total:17 },
-    { label:"1790s", birth:1,  family:0,  freedom:2,  legal:18, church:0, resistance:1, total:22 },
-    { label:"1800s", birth:39, family:20, freedom:8,  legal:27, church:0, resistance:1, total:95 },
-    { label:"1810s", birth:28, family:9,  freedom:22, legal:18, church:0, resistance:0, total:77 },
-    { label:"1820s", birth:2,  family:1,  freedom:15, legal:1,  church:0, resistance:2, total:21 },
+    { label:"1770s", birth:0,  family:0,  freedom:1,  legal:5,  church:4, resistance:1, total:11 },
+    { label:"1780s", birth:0,  family:0,  freedom:5,  legal:11, church:3, resistance:1, total:20 },
+    { label:"1790s", birth:0,  family:0,  freedom:1,  legal:20, church:2, resistance:1, total:24 },
+    { label:"1800s", birth:40, family:19, freedom:7,  legal:27, church:3, resistance:1, total:97 },
+    { label:"1810s", birth:25, family:7,  freedom:26, legal:19, church:0, resistance:0, total:77 },
+    { label:"1820s", birth:2,  family:1,  freedom:14, legal:1,  church:0, resistance:2, total:20 },
     { label:"1830s", birth:1,  family:1,  freedom:5,  legal:1,  church:0, resistance:1, total:9  },
     { label:"1840s", birth:0,  family:0,  freedom:1,  legal:0,  church:0, resistance:0, total:1  }
   ];
@@ -543,10 +550,10 @@
   // -- DONUT CHART --
   var eventGroups = [
     { label: "Birth Records",       count: 68, color: "#56CCF2", detail: "birth + birth & abandonment (child role)" },
-    { label: "Family / Kin",        count: 29, color: "#E07AAA", detail: "parent / mother role in birth records" },
-    { label: "Freedom Documents",   count: 61, color: "#6FC473", detail: "manumission, manumitted in will, agreement, registration" },
+    { label: "Family / Kin",        count: 28, color: "#E07AAA", detail: "parent / mother role in birth records" },
+    { label: "Freedom Documents",   count: 60, color: "#6FC473", detail: "manumission, manumitted in will, agreement, registration" },
     { label: "Legal / Estate",      count: 92, color: "#FFB347", detail: "transfer, sale, legal proceeding, probate inventory, debt" },
-    { label: "Church Membership",   count: 4,  color: "#A78BFA", detail: "Old Tennent congregation membership rolls" },
+    { label: "Church Membership",   count: 16, color: "#A78BFA", detail: "Dutch Reformed / Old Tennent baptism & membership records" },
     { label: "Resistance / Flight", count: 7,  color: "#FF5A5A", detail: "disappearance (runaway role), runaway & capture" }
   ];
   var total = eventGroups.reduce(function(s, g){ return s + g.count; }, 0);
@@ -565,21 +572,21 @@
     var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'M '+x1+' '+y1+' A '+r+' '+r+' 0 '+largeArc+' 1 '+x2+' '+y2+' L '+x3+' '+y3+' A '+inner+' '+inner+' 0 '+largeArc+' 0 '+x4+' '+y4+' Z');
     path.setAttribute('fill', g.color);
-    path.setAttribute('stroke', '#7B2D1A');
+    path.setAttribute('stroke', '#913831');
     path.setAttribute('stroke-width', '1.5');
     svgEl.appendChild(path);
     startAngle = endAngle;
   });
   var ct = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   ct.setAttribute('x', cx); ct.setAttribute('y', cy - 6); ct.setAttribute('text-anchor', 'middle');
-  ct.setAttribute('fill', '#FFD166'); ct.setAttribute('font-size', '18');
-  ct.setAttribute('font-family', 'EB Garamond, Georgia, serif'); ct.setAttribute('font-weight', '700');
-  ct.textContent = '261';
+  ct.setAttribute('fill', '#EFC44C'); ct.setAttribute('font-size', '18');
+  ct.setAttribute('font-family', 'Cardo, Georgia, serif'); ct.setAttribute('font-weight', '700');
+  ct.textContent = '271';
   svgEl.appendChild(ct);
   var cs = document.createElementNS('http://www.w3.org/2000/svg', 'text');
   cs.setAttribute('x', cx); cs.setAttribute('y', cy + 10); cs.setAttribute('text-anchor', 'middle');
   cs.setAttribute('fill', '#FFFFFF'); cs.setAttribute('font-size', '10');
-  cs.setAttribute('font-family', 'Lato, sans-serif');
+  cs.setAttribute('font-family', 'Inter, system-ui, sans-serif');
   cs.textContent = 'records';
   svgEl.appendChild(cs);
 
@@ -596,7 +603,7 @@
 
   // -- ENSLAVER BARS --
   var enslavers = [
-    { name: "John Covenhoven",            dates: "1733-1803", place: "Freehold, NJ",         count: 15 },
+    { name: "John Covenhoven",            dates: "1733-1803", place: "Freehold, NJ",         count: 17 },
     { name: "Nicholas Cowenhoven",        dates: "1768-1809", place: "Brooklyn, NY",         count: 11 },
     { name: "John P. Covenhoven",         dates: "1740-1811", place: "Freehold, NJ",         count: 10 },
     { name: "Garret Janse Covenhoven",    dates: "1726-1812", place: "Marlboro, NJ",         count: 9  },
