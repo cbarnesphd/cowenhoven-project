@@ -5,17 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cowenhoven Branch &amp; Enslaver Clusters — NY / NJ Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
-  body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: #2A1F18; background: #F1EADC; }
+  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #2A1F18; background: #F1EADC; }
   header { padding: 20px 24px 0 24px; background: #F1EADC; color: #2A1F18; border-top: 3px solid #913831; }
   header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #738C8F; font-weight: bold; margin: 0 0 8px 0; }
-  header h1 { margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: #2A1F18; letter-spacing: 0.2px; }
+  header h1 { font-family: 'Cardo', Georgia, serif; margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: #2A1F18; letter-spacing: 0.2px; }
   header .subtitle { font-size: 13px; color: #6B5C50; font-style: italic; margin: 0; }
   header .meta { font-size: 11.5px; color: #6B5C50; font-family: "Courier New", monospace; margin: 8px 0 0 0; padding-bottom: 16px; }
   .main { display: flex; height: calc(100vh - 160px); min-height: 600px; }
   #map { flex: 1; min-width: 0; }
   #sidebar { width: 440px; max-width: 50%; overflow-y: auto; background: #fffdf6; border-left: 1px solid #d4c89a; padding: 18px 22px; box-shadow: -3px 0 8px rgba(0,0,0,0.06); }
-  #sidebar h2 { margin: 0 0 4px 0; font-size: 19px; color: #2c2418; }
+  #sidebar h2 { font-family: 'Cardo', Georgia, serif; margin: 0 0 4px 0; font-size: 19px; color: #2c2418; }
   #sidebar .sub { font-size: 12px; color: #6b5d3f; font-style: italic; margin-bottom: 10px; }
   #sidebar .pool-tag { display:inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
   #sidebar .pool-ENSLAVER { background: #2c2418; color: #f5f1e8; }
@@ -39,7 +41,7 @@
   #legend .smallnote { color: #6b5d3f; font-style: italic; font-size: 10px; line-height: 1.4; margin-top: 4px; }
   footer { padding: 10px 24px; background: #F1EADC; color: #6B5C50; font-size: 10px; text-align: center; border-top: 1px solid #dcd2bb; }
   footer a { color: #913831; }
-  .pin-label { background: rgba(255,253,246,0.92); padding: 2px 6px; border-radius: 2px; font-size: 11px; color: #2c2418; border: 1px solid #c9a961; font-family: Georgia, serif; white-space: nowrap; }
+  .pin-label { background: rgba(255,253,246,0.92); padding: 2px 6px; border-radius: 2px; font-size: 11px; color: #2c2418; border: 1px solid #c9a961; font-family: 'Inter', system-ui, sans-serif; white-space: nowrap; }
   @media (max-width: 768px) {
     .main { flex-direction: column; height: auto; }
     #sidebar { width: auto; max-width: 100%; max-height: 50vh; }
