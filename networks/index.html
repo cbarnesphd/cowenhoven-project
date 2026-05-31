@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LOD Network Visualizations — The Cowenhoven Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
   :root {
     --red: #913831;
@@ -16,11 +18,11 @@
     --tan: #EAE0CB;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: var(--ink); background: var(--parchment); }
+  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--parchment); }
 
   header { padding: 20px 24px 0 24px; background: var(--parchment); color: var(--ink); border-top: 3px solid var(--red); }
   header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate); font-weight: bold; margin: 0 0 8px 0; }
-  header h1 { margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: var(--ink); letter-spacing: 0.2px; }
+  header h1 { font-family: 'Cardo', Georgia, serif; margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: var(--ink); letter-spacing: 0.2px; }
   header .subtitle { font-size: 13px; color: var(--ink-soft); font-style: italic; margin: 0; }
   header .meta { font-size: 11.5px; color: var(--ink-soft); font-family: "Courier New", monospace; margin: 8px 0 0 0; padding-bottom: 16px; }
 
@@ -33,7 +35,7 @@
   .selector-col { flex: 1 1 320px; min-width: 280px; }
   .selector-col label { display: block; font-weight: bold; margin-bottom: 7px; font-size: 13.5px; color: var(--ink); }
   .selector-col select {
-    width: 100%; padding: 0.6em 0.7em; font-size: 14px; font-family: Georgia, serif;
+    width: 100%; padding: 0.6em 0.7em; font-size: 14px; font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink); border: 1px solid var(--mortar); background: var(--cream); border-radius: 3px;
   }
   .selector-col select:focus { outline: 2px solid var(--slate); outline-offset: 1px; }
@@ -74,7 +76,9 @@
   <p class="intro">
     These interactive networks are one way into the project&rsquo;s data &mdash; the same people,
     families, places, and documents you can explore in the
-    <a href="https://data.cowenhoven.org/family-tree/" target="_blank" rel="noopener">Live Family Tree</a>
+    <a href="https://data.cowenhoven.org/index-of-individuals/" target="_blank" rel="noopener">Index of Individuals</a>,
+    the
+    <a href="https://data.cowenhoven.org/family-tree/" target="_blank" rel="noopener">Live Family Tree</a>,
     and the
     <a href="https://data.cowenhoven.org/cluster-map/" target="_blank" rel="noopener">Cluster Map</a>,
     here re-arranged around a single individual. Each network assembles what the archive currently
