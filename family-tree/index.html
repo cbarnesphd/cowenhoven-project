@@ -4,16 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Cowenhoven Project — Live Family Tree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
   :root {
-    --brick: #945446;
-    --brick-shadow: #8D5341;
+    --brick: #913831;
+    --brick-shadow: #7C2F29;
     --mortar: #B2AA99;
     --cool-trim: #A8A29B;
     --door-green: #4F7451;
     --slate-blue: #738C8F;
-    --paper: #FAF7F2;
-    --ink: #1a1a1a;
+    --paper: #F1EADC;
+    --ink: #2A1F18;
     --ink-soft: #4a4a4a;
     --ink-mute: #6B5C50;
 
@@ -58,9 +60,10 @@
     --gen-9: #6B4570;  /* deep plum */
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
-  header { padding: 22px 28px 14px; border-bottom: 1px solid #E5DED2; }
-  header h1 { margin: 0 0 4px; font-size: 22px; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  header { padding: 20px 28px 14px; border-top: 3px solid var(--brick); border-bottom: 1px solid #E5DED2; }
+  header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate-blue); font-weight: bold; margin: 0 0 8px; }
+  header h1 { font-family: 'Cardo', Georgia, serif; margin: 0 0 4px; font-size: 22px; color: var(--ink); }
   header p.subtitle { margin: 0; font-size: 13px; font-style: italic; color: var(--ink-soft); }
   header p.meta { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-mute); font-family: "Courier New", monospace; }
 
@@ -93,7 +96,7 @@
   #tree-svg { width: 100%; height: 100%; cursor: grab; }
   #tree-svg:active { cursor: grabbing; }
   #side { border-left: 1px solid #E5DED2; padding: 18px 20px; overflow-y: auto; background: #fff; }
-  #side h2 { margin: 0 0 4px; font-size: 16px; }
+  #side h2 { font-family: 'Cardo', Georgia, serif; margin: 0 0 4px; font-size: 16px; }
   #side .subline { color: var(--ink-mute); font-size: 11.5px; font-family: "Courier New", monospace; margin-bottom: 12px; }
   #side dl { margin: 0; font-size: 12.5px; }
   #side dt { font-weight: 600; color: var(--ink-mute); margin-top: 9px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -263,7 +266,8 @@
 </head>
 <body>
 <header>
-  <h1>The Cowenhoven Project — Live Family Tree</h1>
+  <p class="eyebrow">The Cowenhoven Project</p>
+  <h1>Live Family Tree</h1>
   <p class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</p>
   <p class="meta" id="meta">loading…</p>
 </header>
