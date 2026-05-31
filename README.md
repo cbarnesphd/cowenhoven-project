@@ -30,6 +30,7 @@ The project spans multiple platforms:
 | Live Family Tree | [data.cowenhoven.org/family-tree/](https://data.cowenhoven.org/family-tree/) | Interactive family tree of the Van Kouwenhoven-Conover family across 9 generations (1584–1840s) — 442 family members, 68 enslavers, 230 named + 89 unnamed individuals enslaved or indentured. Click any name for biographical details, sources, and external profile links. |
 | Index of Individuals | [data.cowenhoven.org/index-of-individuals/](https://data.cowenhoven.org/index-of-individuals/) | Searchable index of named individuals tracked by the project, with cross-references to WikiTree profiles and source citations. |
 | Cluster map | [data.cowenhoven.org/cluster-map/](https://data.cowenhoven.org/cluster-map/) | Geographic map of Van Kouwenhoven-Conover branch and enslaver clusters across New York and New Jersey, plotting where the documented family lived and where they held enslaved people. |
+| LOD Network Viewer | [data.cowenhoven.org/networks/](https://data.cowenhoven.org/networks/) | 3D hero networks of enslaved people of color and their enslavers.|
 
 More visualizations and downloadable data assets will be added over time.
 
