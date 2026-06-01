@@ -10595,7 +10595,7 @@ function enslaverNameHTML(p) {
   if (!p.enslaverName) return '';
   const nm = escapeHTML(p.enslaverName);
   if (p.enslaverSlug) {
-    return `<a class="enslaver-link" href="https://cowenhoven.org/enslavers/#${p.enslaverSlug}" target="_blank" rel="noopener">${nm}</a>`;
+    return `<a class="enslaver-link" href="https://cowenhoven.org/enslaver-bios/#${p.enslaverSlug}" target="_blank" rel="noopener">${nm}</a>`;
   }
   return nm;
 }
