@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Index of Enslavers — Cowenhoven Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #F1EADC;
+    --ink: #2A1F18;
+    --muted: #6b6258;
+    --rule: #d6cfc1;
+    --rule-soft: #ebe5d7;
+    --accent: #913831;
+    --accent-soft: #f3e7d8;
+    --slate-blue: #738C8F;
+    --warn: #a8410e;
+    --good: #2e6a45;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    border-top: 3px solid var(--accent);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  h1 {
+    font-family: 'Cardo', Georgia, serif;
+    font-size: 2rem;
+    margin: 0 0 0.25rem 0;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .eyebrow { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate-blue); font-weight: 700; margin: 0 0 0.5rem 0; }
+  .subtitle { font-style: italic; color: var(--muted); margin: 0 0 0.35rem 0; font-size: 0.98rem; }
+  .meta { font-family: "Courier New", monospace; font-size: 0.72rem; color: var(--muted); margin: 0 0 1.5rem 0; }
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--rule);
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.92rem;
+  }
+  .stat { display: flex; gap: 0.4rem; align-items: baseline; }
+  .stat b { font-weight: 700; color: var(--accent); }
+  .stat .dim { color: var(--muted); }
+
+  /* Controls */
+  .controls { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+  .ctl-row { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  .ctl-row label { display: flex; flex-direction: column; font-size: 0.74rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; gap: 0.2rem; }
+  input[type="text"], select {
+    font-family: inherit; font-size: 0.95rem; padding: 0.4rem 0.55rem;
+    border: 1px solid var(--rule); background: #fff; border-radius: 3px; color: var(--ink); min-width: 140px;
+  }
+  input[type="text"] { min-width: 240px; }
+  select { min-width: 170px; }
+  .toggle {
+    display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.9rem; color: var(--ink);
+    cursor: pointer; background: #fff; border: 1px solid var(--rule); padding: 0.4rem 0.7rem; border-radius: 3px;
+  }
+  .toggle input { margin: 0; }
+  button {
+    font-family: inherit; font-size: 0.9rem; padding: 0.4rem 0.85rem;
+    background: var(--accent); color: #fff; border: 0; border-radius: 3px; cursor: pointer;
+  }
+  button.secondary { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+  button:hover { opacity: 0.88; }
+
+  .results-line { margin: 0.5rem 0 1rem 0; font-size: 0.88rem; color: var(--muted); }
+  .results-line b { color: var(--ink); }
+
+  /* Table */
+  table.idx { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--rule); font-size: 0.93rem; }
+  table.idx thead th {
+    text-align: left; background: var(--accent-soft); color: var(--accent); font-weight: 600;
+    padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--rule); font-size: 0.82rem;
+    letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; user-select: none; white-space: nowrap;
+  }
+  table.idx thead th .arrow { font-size: 0.7rem; color: var(--muted); margin-left: 0.15rem; }
+  table.idx thead th.sorted .arrow { color: var(--accent); }
+  table.idx thead th.num { text-align: right; }
+  table.idx tbody tr.row { cursor: pointer; border-bottom: 1px solid var(--rule-soft); transition: background 0.1s; }
+  table.idx tbody tr.row:hover { background: #fcf7ed; }
+  table.idx tbody tr.row.expanded { background: var(--accent-soft); }
+  table.idx tbody tr.row td { padding: 0.55rem 0.7rem; vertical-align: top; }
+  td.col-name { font-weight: 600; min-width: 200px; }
+  td.col-num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pid { display: block; font-size: 0.74rem; color: var(--muted); font-weight: 400; margin-top: 0.1rem; }
+  td.col-dates { white-space: nowrap; color: var(--muted); }
+  .badge {
+    display: inline-block; padding: 0.1rem 0.45rem; border-radius: 2px; font-size: 0.74rem; line-height: 1.3;
+    border: 1px solid var(--rule); background: #fff; color: var(--muted); margin-left: 0.3rem; white-space: nowrap;
+  }
+  .badge.carded { background: var(--slate-blue); color: #fff; border-color: var(--slate-blue); }
+  .em-dash { color: var(--rule); }
+  .nonvkc-tag { display: block; margin-top: 0.2rem; font-size: 0.78rem; color: var(--muted); font-style: italic; }
+
+  /* Expand panel */
+  tr.detail { background: #fcfaf5; }
+  tr.detail td { padding: 0 !important; border-bottom: 1px solid var(--rule-soft); }
+  .detail-inner { padding: 1rem 1.25rem 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+  .detail-inner h4 { margin: 0 0 0.3rem 0; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+  .detail-inner .blk { font-size: 0.92rem; line-height: 1.55; }
+  .detail-inner .blk.full { grid-column: 1 / -1; }
+  .detail-inner a { color: var(--accent); }
+  .detail-actions { grid-column: 1 / -1; margin-top: 0.5rem; }
+  .detail-actions a {
+    display: inline-block; padding: 0.45rem 0.8rem; margin-right: 0.4rem; border: 1px solid var(--accent);
+    color: var(--accent); background: #fff; text-decoration: none; border-radius: 3px; font-size: 0.88rem;
+  }
+  .detail-actions a:hover { background: var(--accent); color: #fff; }
+  .detail-actions a.primary { background: var(--accent); color: #fff; }
+  .detail-actions a.primary:hover { opacity: 0.88; }
+  .no-data { color: var(--rule); font-style: italic; }
+
+  @media (max-width: 800px) {
+    .detail-inner { grid-template-columns: 1fr; }
+    table.idx thead th, table.idx tbody td { padding: 0.45rem; font-size: 0.85rem; }
+    td.col-name { min-width: 0; }
+    .ctl-row label { min-width: 140px; }
+  }
+  .footer-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">The Cowenhoven Project</p>
+  <h1>Index of Enslavers</h1>
+  <p class="subtitle">The documented members of the Van Kouwenhoven–Conover family who held people in bondage</p>
+  <p class="meta">Open any enslaver for their bio on the Enslavers page and the people they enslaved</p>
+
+  <div class="stats">
+    <div class="stat"><b id="stat-total">—</b><span class="dim">documented enslavers</span></div>
+    <div class="stat"><b id="stat-towns">—</b><span class="dim">towns represented</span></div>
+    <div class="stat"><b id="stat-named">—</b><span class="dim">named individuals linked</span></div>
+    <div class="stat"><b id="stat-sections">—</b><span class="dim">clusters represented</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="ctl-row">
+      <label>
+        Search
+        <input type="text" id="q" placeholder="Name, residence, town, occupation…" autocomplete="off">
+      </label>
+      <label>Cluster
+        <select id="f-cluster"><option value="">All</option></select>
+      </label>
+      <label>Town
+        <select id="f-town"><option value="">All</option></select>
+      </label>
+      <label>County
+        <select id="f-county"><option value="">All</option></select>
+      </label>
+    </div>
+    <div class="ctl-row">
+      <label class="toggle"><input type="checkbox" id="f-unnamed"> Unnamed individuals</label>
+      <button class="secondary" id="reset">Reset filters</button>
+    </div>
+  </div>
+
+  <div class="results-line">Showing <b id="result-count">—</b> of <b id="result-total">—</b> enslavers. Click any row to expand.</div>
+
+  <table class="idx" id="tbl">
+    <thead>
+      <tr>
+        <th data-sort="name">Enslaver <span class="arrow">↕</span></th>
+        <th data-sort="birthYear">Born–Died <span class="arrow">↕</span></th>
+        <th data-sort="town">Town <span class="arrow">↕</span></th>
+        <th data-sort="county">County <span class="arrow">↕</span></th>
+        <th data-sort="clusterNum">Cluster <span class="arrow">↕</span></th>
+        <th data-sort="peopleTotal">People enslaved <span class="arrow">↕</span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="footer-note">
+    Index of Enslavers · drawn from the Cowenhoven Project's ENSLAVER dataset (cp_ens / cp_fam / cp_rel PIDs).
+    Counts and details are current as of <span id="version-date">June 1, 2026</span>; many entries are works in progress.
+    To suggest a correction or add documentation, contact the project.
+  </div>
+</div>
+
+<script>
+const META = { versionDate: "June 1, 2026" };
+const ENSLAVER_CARD_BASE = "https://cowenhoven.org/enslavers/#";
+const INDIVIDUALS_BASE = "https://data.cowenhoven.org/index-of-individuals/?enslaver=";
+document.getElementById("version-date").textContent = META.versionDate;
+const DATA = [
+  {
+    "id": "cp_ens_002",
+    "name": "Albert Willemse Couwenhoven",
+    "nameFull": "Albert Willemse Couwenhoven",
+    "nameVariations": "Albert Couwenhoven; Albert Covenhoven; Albert Williamse Covenhoven; Albert Kouwenhoven; Albert Van Couwenhoven",
+    "dates": "1676–1748",
+    "birthYear": 1676,
+    "deathYear": 1748,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold, Monmouth County, New Jersey",
+    "occupation": "yeoman",
+    "generation": "4",
+    "branch": "Gerrit",
+    "cocheu": "25 · p. 21",
+    "slug": "albert-willemse-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 0,
+    "unnamedCount": 6,
+    "unnamedUnknown": false,
+    "peopleTotal": 6,
+    "notes": "Moved from Flatbush, NY to Freehold, NJ c. 1702. Member of Reformed Dutch Church, Freehold, from 1709. Possible son: Cornelius (named in will) — may be the Cornelius Albertse Couwenhoven who enslaved cp_per_174 Thomas and cp_per_175 Jude (pending confirmation). Possible brother: Cornelis Willemse van Couwenhoven (WikiTree Couwenhove-2, abt.1672-1736). Sis…"
+  },
+  {
+    "id": "cp_ens_062",
+    "name": "Anna Covenhoven",
+    "nameFull": "Anna Covenhoven (of South Amboy)",
+    "nameVariations": "Anna Conover; Anna Cowenhoven; Hannah Covenhoven (possible variant)",
+    "dates": "active 1814",
+    "birthYear": 1814,
+    "deathYear": null,
+    "town": "South Amboy",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 4,
+    "clusterLabel": "Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "cluster": "C4 · Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "South Amboy, Middlesex Co. NJ (per 1814 manumission deed)",
+    "occupation": "(pending)",
+    "generation": "6",
+    "branch": "In-law",
+    "cocheu": "",
+    "slug": "anna-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "MINTED 2026-05-10 (session: 9 (none)-bucket enslaver attribution arc). **NEW MINT — surfaced this session via workbook-wide cross-record search.** HYPOTHESIS: Anna is the widow of cp_ens_035 Lucas (Luke) Conover who died intestate by 1810-04-25 in South Amboy. Per NJ intestate succession, his 3 enslaved persons (Betty, Frank, Ben — cp_per_244/245/246) wou…"
+  },
+  {
+    "id": "cp_fam_299",
+    "name": "Benjamin Covenhoven",
+    "nameFull": "Benjamin Covenhoven",
+    "nameVariations": "Benjamin Conover; Benjamin Covenhoven; Benjamin⁶ Covenhoven #443",
+    "dates": "1726–1800",
+    "birthYear": 1726,
+    "deathYear": 1800,
+    "town": "Manalapan",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Manalapan/Freehold, Monmouth Co. NJ (per father cp_ens_011's Manalapin estate)",
+    "occupation": "Yeoman (presumed per father's class + intestate estate)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "443 · p. 47",
+    "slug": "benjamin-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "PROMOTED 2026-05-28 from cp_fam_299 (FAMILY) to ENSLAVER status via Symmes p. 224 baptism entries for Agnes (1789) and Broof (1790). Per [[feedback-enslaver-disambiguation-rules]] Rule 1 mixed-prefix-no-rename: cp_fam_299 already existed in FAMILY before being identified as enslaver, so PID stays cp_fam_299 (not renumbered to new cp_ens). Mirror precedent…"
+  },
+  {
+    "id": "cp_ens_046",
+    "name": "Col. Elias Covenhoven",
+    "nameFull": "Col Elias Covenhoven",
+    "nameVariations": "Colonel Elias Conover (1812-1816 BBB filings); Elias Conover; Col Elias Covenhoven (FS primary); Col Elias van Couvenhoven; Elias Covenhoven",
+    "dates": "1757–1820",
+    "birthYear": 1757,
+    "deathYear": 1820,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold, Monmouth County, NJ (BBB filings 1812-1816 attest 'of Freehold' / no township qualifier; 1780 marriage at Marlboro)",
+    "occupation": "Militia Colonel (per FS 'Col' honorific + 1812-1816 BBB attestations as 'Colonel Elias Conover'); civilian occupation pending verification",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "col-elias-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 7,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 7,
+    "notes": "Confirmed identification 2026-05-05 via FS KLQS-ZTM + age/rank match to cp_eve_061-066 BBB cluster. Born 1757, son of cp_ens_020 John Elias Covenhoven (1734-1803, FS GJ7Y-PV2). Married Anna Fish 1780-10-14 Marlboro NJ; 7 children. Already referenced in cp_ens_020 col R as executor of cp_ens_020's 1802 will. Militia 'Colonel' rank attested in 1812-1816 BBB…"
+  },
+  {
+    "id": "cp_ens_020",
+    "name": "Col. John Covenhoven",
+    "nameFull": "John Covenhoven",
+    "nameVariations": "John Eliase Covenhoven; John Elias Covenhoven; Col. John Covenhoven (Revolutionary War rank, used on 1803 inventory header); John Conover; Jan Covenhoven; John Cowenhoven",
+    "dates": "1734–1803",
+    "birthYear": 1733,
+    "deathYear": 1803,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, New Jersey",
+    "occupation": "Member NJ Provincial Assembly representing Monmouth Co.; member NJ Council of Safety 1775-76",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "355 · p. 37",
+    "slug": "col-john-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 17,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 17,
+    "notes": "WILL MECHANISM FOR FAMILY SEPARATION: Wife's bequest reads 'all the negroes that came by her excepting the issue thereof' (will of 1802-12-14) — i.e., second wife Neeltje inherits the dowry-enslaved adults she brought to the marriage but their children stay in the main estate to be distributed among John's heirs. This is a documented legal mechanism for s…"
+  },
+  {
+    "id": "cp_ens_004",
+    "name": "Cornelis Willemse van Couwenhoven",
+    "nameFull": "Cornelis Willemse van Couwenhoven",
+    "nameVariations": "Cornelis Couwenhove; Cornelis Willemse Couwenhove; Cornelis van Couwenhoven; Cornelius Willemse Van Kouwenhoven",
+    "dates": "1672–1736",
+    "birthYear": 1672,
+    "deathYear": 1736,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Pleasant Valley, Middletown Township, Monmouth County, New Jersey",
+    "occupation": "Yeoman (per 1735 will)",
+    "generation": "4",
+    "branch": "Gerrit",
+    "cocheu": "23 · p. 19",
+    "slug": "cornelis-willemse-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "Older brother of Albert Willemse Couwenhoven (cp_ens_002); same father (Willem Gerritsz, Couwenhoven-4 = cp_fam_007). Three-brothers cluster confirmed 2026-04-25: Cornelis (this row), Albert (cp_ens_002), and Jacob (cp_ens_009) are the three sons of cp_fam_007 who all settled Monmouth Co. NJ as enslaving yeomen. Schenck-sister marriage MATCH: wife Margare…"
+  },
+  {
+    "id": "cp_ens_003",
+    "name": "Cornelius Albertse Couwenhoven",
+    "nameFull": "Cornelius Albertse Couwenhoven",
+    "nameVariations": "Cornelius Couwenhoven; Cornelis Albertse Couwenhoven; Cornelius Covenhoven",
+    "dates": "1728–1802",
+    "birthYear": 1728,
+    "deathYear": 1802,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold, Monmouth County, New Jersey",
+    "occupation": "",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "157 · p. 53",
+    "slug": "cornelius-albertse-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 8,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 8,
+    "notes": "Son of Albert Willemse Couwenhoven (cp_ens_002) — 'possible son' hypothesis from cp_rec_001 follow-up #2 now CONFIRMED via WikiTree child-list on Van_Couwenhoven-69. Project records document him as the enslaver of Thomas (cp_per_174) and Jude (cp_per_175). Paternal uncle = Cornelis Willemse van Couwenhoven (cp_ens_004). | Wife Mary (surname not in 1793 ab…"
+  },
+  {
+    "id": "cp_ens_030",
+    "name": "Cornelius C. Covenhoven",
+    "nameFull": "Cornelius C. Covenhoven (a.k.a. Cornelius C. Conover)",
+    "nameVariations": "Cornelius C. Conover (anglicized form, used on inventory title page); Cornelius C. Covenhoven (Dutch form, used on inventory affidavit + cp_per_176 1813 transaction); the 'C.' middle initial = Cornelius-son patronymic per Monmouth Dutch convention (parallel to 'R.' Rem-son in cp_ens_005/008, 'N.' Nicholas-son, 'I.' Johannes/John-son)",
+    "dates": "1760–1815",
+    "birthYear": 1771,
+    "deathYear": 1814,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township / Monmouth County NJ — inherited home plantation from father per cp_rec_005's 1796 will provisions (will named son Cornelius as heir of home plantation after widow Jane's death/remarriage)",
+    "occupation": "Yeoman / farmer (per 1815 inventory's substantial agricultural inventory: 8 cows, 9 cattle, 7 calves, 42 sheep, 8 hogs, large grain stores corn 60+60 bu / oats 36 bu / hay $165 / rye+flax $81.90, multiple wagons + threshing-related tools — substantial Middletown Dutch yeomanry operation)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "485 · p. 53",
+    "slug": "cornelius-c-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 6,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 6,
+    "notes": "Mint 2026-04-27 from MCHA 1815 probate inventory + cross-event MATCH sweep against Active. PARENTAGE REVISION 2026-05-29: prior 4-generation Roelof-line lineage attribution (cp_ens_004 → Roelof cp_fam_104 → cp_rec_005/cp_fam_201 Cornelius R. → cp_ens_030) is REVERSED. Cocheu #485 explicitly identifies this person — exact-match fingerprints: (a) death date…"
+  },
+  {
+    "id": "cp_ens_024",
+    "name": "Cornelius Covenhoven",
+    "nameFull": "Cornelius Covenhoven",
+    "nameVariations": "Cornelius Covenhoven; Cornelius Conover (post-Anglicization possible — eldest son uses Conover variant per FS); patronymic / middle initial unknown in Active rows attributed to him (no 'C.' or 'A.' or 'N.' qualifier in source); Cornelis (Dutch form)",
+    "dates": "1768–1822",
+    "birthYear": 1768,
+    "deathYear": 1822,
+    "town": "Franklin",
+    "section": "Franklin",
+    "sectionFull": "Franklin Township, Somerset County, New Jersey",
+    "clusterNum": 11,
+    "clusterLabel": "Somerset Co. — Jan-line outpost",
+    "cluster": "C11 · Somerset Co. — Jan-line outpost",
+    "county": "Somerset",
+    "state": "NJ",
+    "countyFull": "Somerset County, NJ",
+    "residence": "Franklin Township, Somerset County, New Jersey (per SCHQ 1.4 manumissions of Eve 1814, Jack 1819, Dinah 1820 + 1802 will testator's plantation residence inherited as SW half)",
+    "occupation": "Yeoman / Farmer (HYPOTHESIS per inheritance of SW half of 280-ac plantation in 1802 + farm-economy manumission profile; primary occupation declaration pending)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "cornelius-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 4,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 4,
+    "notes": "STUB row pending primary expansion. Sourced from FS L9CF-Z4B kin-anchor + cp_ens_023's 1802 manuscript will + SCHQ 1.4 manumissions sweep. Five-of-five sibling-name-and-birth-order match (Catherine 1759, Elizabeth 1761, Peter 1766 d.1802 predeceased per will, Cornelius 1768, Nicholas 1772 d.1807) + father's 1803 death year + widow Catryna's 1815 death yea…"
+  },
+  {
+    "id": "cp_ens_072",
+    "name": "Daniel Covenhoven (of Middletown)",
+    "nameFull": "Daniel Covenhoven (of Middletown)",
+    "nameVariations": "Daniel Covenhoven; Daniel Couwenhoven; Daniel Conover (no middle initial attested in any source)",
+    "dates": "1746–1821",
+    "birthYear": 1746,
+    "deathYear": 1821,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, NJ (presumed lifelong; anchored by Schenck-Couwenhoven Cemetery burial + father's lifelong Middletown residence)",
+    "occupation": "(pending — likely yeoman/farmer for Middletown Dutch landholder of his generation)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "daniel-covenhoven-of-middletown",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "## Identification Cocheu 81:3 #360 (1950) recorded \"Daniel⁶ bap. Aug. 3, 1746; no further record.\" 2026-05-15 (Chris) supplied Find a Grave Memorial #39831878 from Schenck-Couwenhoven Cemetery Holmdel: Daniel Covenhoven b. 1742, d. 18 Feb 1821, aged 78–79. Identification ANCHOR: same family burial ground as father Elias⁵ (cp_ens_044), mother Williampe, un…"
+  },
+  {
+    "id": "cp_ens_043",
+    "name": "Daniel D. Conover",
+    "nameFull": "Daniel D. Conover",
+    "nameVariations": "Daniel D. Conover (deed body form on cp_eve_087 + cp_eve_088); D. D. Conover (signature seal block on cp_eve_088). Distinct from 'David D. Conover' typo in pre-correction Active R79 col M. Middle-initial 'D.' classification not yet determined.",
+    "dates": "1837–1840",
+    "birthYear": 1800,
+    "deathYear": 1861,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Township of Middletown, Monmouth County, New Jersey (per cp_eve_087 + cp_eve_088 1837-1840 deeds — both list 'Township of Middletown' as residence)",
+    "occupation": "(pending — likely yeoman/farmer for Monmouth Dutch landholder)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "daniel-d-conover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-05 PM (this session) inline per Chris approval, on a 2-record manuscript evidence chain (cp_eve_087 1837 + cp_eve_088 1840 — both Township of Middletown, same manumitter signature, with Charles Conover as kin-signal across both deeds). Per project precedent, 2-record manuscript chain is sufficient for inline cp_ens mint without external bio…"
+  },
+  {
+    "id": "cp_ens_042",
+    "name": "Daniel G. Conover",
+    "nameFull": "Daniel G. Conover",
+    "nameVariations": "Daniel G. Conover (deed body form on cp_eve_085 + cp_eve_086 + signature seal block — consistent across both 9 Aug 1828 deeds; clerk's marginal index identical 'Daniel G. Conover / [Manumission] of Slave / [Subject Name]'). Middle-initial 'G.' classification not yet determined (could be patronymic OR maternal-surname per project rule).",
+    "dates": "1750–1823",
+    "birthYear": 1750,
+    "deathYear": 1823,
+    "town": "Marlboro",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Marlboro / Monmouth County, NJ",
+    "occupation": "(pending — likely yeoman/farmer for Monmouth Dutch landholder)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "daniel-g-conover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-05 PM (this session) inline per Chris approval, on a 2-record manuscript evidence chain (cp_eve_085 Frances Lane + cp_eve_086 Samuel Lane — same-day 9 Aug 1828 manumissions, same Township of Middletown, same lead witnesses William Conover + James Hopping). Per project precedent, 2-record manuscript chain is sufficient for inline cp_ens mint…"
+  },
+  {
+    "id": "cp_ens_044",
+    "name": "Elias Covenhoven",
+    "nameFull": "Elias Covenhoven",
+    "nameVariations": "Elias van Couvenhoven (FamilySearch); Elias Conover; Elias Couvenhoven",
+    "dates": "1707–1750",
+    "birthYear": 1707,
+    "deathYear": 1750,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, NJ",
+    "occupation": "Not stated in 1750 will abstract — pending verification (likely yeoman)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "elias-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 0,
+    "unnamedCount": 3,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "Confirmed identity 2026-05-05 via FS LKCH-5W3 + 1750 will abstract (Lib. E p. 478). Born 1707, son of Pieter Willemse Van Couwenhoven (1671-1751) and Patience Daws (1674-1743) in the Flatlands NY → Monmouth NJ Cowenhoven migration line. Married Willemse Wall 1729 Monmouth NJ. 12 children on FS; will (dated 1750-12-15, proved 1751-01-30 modern) names 7 + u…"
+  },
+  {
+    "id": "cp_ens_047",
+    "name": "Elias Covenhoven Jr.",
+    "nameFull": "Elias Covenhoven jr.",
+    "nameVariations": "Elias Conover (1821 manumission); Elias Covenhoven (FS primary); Elias Covenhoven jr.",
+    "dates": "1790–1826",
+    "birthYear": 1790,
+    "deathYear": 1826,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Township of Freehold, Monmouth County, NJ (per cp_eve_089 1821 manumission)",
+    "occupation": "Pending verification",
+    "generation": "8",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "elias-covenhoven-jr",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "Confirmed identification 2026-05-05 via FS KLQS-8VM + father-death-year inheritance pattern. Born 1790, son of cp_ens_046 Col Elias Covenhoven and Anna Fish. Father died 1820; Elias jr's 1821 manumission of Mary/Maria (cp_eve_089) one year later fits the typical inheritance-and-manumission pattern (deceased father's enslaved person passes to surviving son…"
+  },
+  {
+    "id": "cp_ens_045",
+    "name": "Elias Covenhoven of Middletown",
+    "nameFull": "Elias Covenhoven",
+    "nameVariations": "Elias van Couvenhoven (FamilySearch); Elias Conover; Elias Couvenhoven; Elias Covenhoven of Middletown (1772 bond signature)",
+    "dates": "1751–1786",
+    "birthYear": 1751,
+    "deathYear": 1786,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, NJ (per cp_eve_091 1772 manumission location)",
+    "occupation": "Not stated — pending verification",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "elias-covenhoven-of-middletown",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "Confirmed identification 2026-05-05 via FS LKCH-534 + Dutch naming-honor pattern. Born 1751 — the year his uncle Elias-A (cp_ens_044) died — and named for the deceased uncle by his father Peter Pieterse Covenhoven, who served as cp_ens_044's will-executor (cp_eve_010, Lib. E p. 478). Married Catherine Forman 1774-10-02; only one child (Eleanor 1776-1859).…"
+  },
+  {
+    "id": "cp_ens_070",
+    "name": "Elizabeth Aumack Covenhoven",
+    "nameFull": "Elizabeth Aumack",
+    "nameVariations": "Elisabeth Covenhoven Widow (1811-04-23 Henry Benham manumission deed verbatim); Elizabeth Conover (1811-04-24 Yaff manumission deed Anglicized form); Elizabeth Aumack (maiden name); \"Eli×abeth × [her mark] Covenhoven\" (1811 deed signature, illiterate, signed with mark); Elizabeth Aumack Covenhoven (widow of William⁶ #639, of Freehold)",
+    "dates": "born 1733",
+    "birthYear": 1733,
+    "deathYear": null,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 10,
+    "clusterLabel": "Freehold — Jan-line / Tunis stem",
+    "cluster": "C10 · Freehold — Jan-line / Tunis stem",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ",
+    "occupation": "Widow / household head (post-1810 widowhood)",
+    "generation": "6",
+    "branch": "In-law",
+    "cocheu": "",
+    "slug": "elizabeth-aumack-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-14 (this session). Identity locked via Cocheu 82:4 #639 + 7-attestation documentary consistency across the two 1811 manumission deeds (cp_eve_075 + cp_eve_074): statutory certs, deed body docket, deed body, signature line, acknowledgment block, 1814 + 1834 recording clerks — all wrote \"Elizabeth/Elisabeth\" not \"Eleanor.\" Misread-of-Eleanor…"
+  },
+  {
+    "id": "cp_ens_025",
+    "name": "Garetta Cowenhoven",
+    "nameFull": "Garetta Cowenhoven",
+    "nameVariations": "Gerritje Tiebout; Gerretta Tiebout; Garetta Tiebout; Gerretta Cowenhoven; Garetta Tiebout Cowenhoven; Garreta Cowenhoven (variant in 1827 New-York Star runaway ad)",
+    "dates": "1763–1863",
+    "birthYear": 1763,
+    "deathYear": 1863,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Bedford, Town of Brooklyn, Kings County, New York (HYPOTHESIS — based on 1827 Maria Philips runaway-ad location and shared Bedford homestead context); rental property at Maiden Lane, City of New York (per 1814-1830 receipt book)",
+    "occupation": "Widow / household manager / property owner. Receipt book 1814-1830 records household economy during widowhood: Maiden Lane rental income, household services (medical care, surveying, blacksmith, manure delivery, repairs, flour).",
+    "generation": "7",
+    "branch": "In-law",
+    "cocheu": "",
+    "slug": "garetta-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "Widow of cp_ens_008 (John R. Cowenhoven) from 1811-09-02. Continued enslaving practice into NY's gradual-abolition transition: the 1827-11-15 runaway ad for Maria Philips was filed FOUR MONTHS AFTER NY's general emancipation took effect on 1827-07-04. Maria Philips, born ~1809, would have been a \"term slave\" indentured until age 25 (1834) under the 1799 N…"
+  },
+  {
+    "id": "cp_ens_076",
+    "name": "Garret Conover",
+    "nameFull": "Garret Conover",
+    "nameVariations": "Garret I. Conover (1815 BBB self-identification + signature, cp_eve_039/059); Garret Conover (FS KHYN-Q97 canonical); Garret⁷ Conover (per Cocheu generation reading); Garret Covenhoven (Dutch surname form, alt). Patronymic I.=Iacobse (son-of-Jacob) consistent with father Jacob Gerrit Van Couwenhoven (FS LZKB-1GX, Cocheu 82:2 #506).",
+    "dates": "1775–1831",
+    "birthYear": 1775,
+    "deathYear": 1831,
+    "town": "Freehold",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth Co. NJ. Source evidence: (1) 1815-01-16 BBB filings cp_eve_039+059 self-ID \"I Garret I. Conover of Freehold in the County of Monmouth\"; (2) FS KHYN-Q97 parents marriage 1771-04-23 at \"Freehold, Freehold Township, Monmouth, New Jersey\". Generation-skipping note: paternal grandfather cp_fam_131 was \"late of Middletown\" per FaG stone, but cp_fam_131 → Jacob Gerrit branch had relocated to Freehold by 1771.",
+    "occupation": "Yeoman / farmer (presumed; Monmouth Dutch landholder generation; no direct occupational attestation in available sources — Cocheu 82:2 #506 enrichment for father Jacob Gerrit may yield more)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-conover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "NEW MINT 2026-05-26 PM (Stage 6 Garrets disambiguation commit). Evidence stack — 5 elements MATCH per strict-3+ adjudication convention (reference_adjudication_tier_convention 5/26): (1) patronymic I.=Iacobse via father Jacob Gerrit; (2) age 33 in 1808 / 36 in 1811 / 40 in 1815 filing — all plausible enslaver-of-record ages; (3) \"of Freehold\" township in…"
+  },
+  {
+    "id": "cp_fam_243",
+    "name": "Garret Covenhoven",
+    "nameFull": "Garret Covenhoven (son of Lucas Willemse, of Windsor)",
+    "nameVariations": "Garret Conover; Gerret Covenhoven; \"GARRET COWENHOVEN\" (1781 runaway ad signature spelling)",
+    "dates": "active 1750",
+    "birthYear": 1750,
+    "deathYear": null,
+    "town": "West Windsor",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 4,
+    "clusterLabel": "Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "cluster": "C4 · Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "Penn's Neck, Windsor Township, Middlesex County, New Jersey (inherited Lucas Willemse Couwenhoven's homestead per Lucas's 1777 will: \"Son, Garret, the rest of my homestead\")",
+    "occupation": "Yeoman / homestead farmer (inherited Windsor Twp homestead per father's 1777 will). The \"fond of trading\" detail in Cain's 1781 runaway ad implies the household engaged in some commercial exchange beyond subsistence farming.",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "PROMOTED 2026-05-17 from cp_fam_243 (FAMILY) to ENSLAVER status via Cain (cp_per_039) 1781 runaway notice (cp_sou_077). Per Chris-confirmed convention 2026-05-17: cp_fam_243 row MOVED from FAMILY to ENSLAVER (FAMILY row deleted), PID unchanged. Updates the prior \"add ENSLAVER, keep FAMILY\" interpretation of mixed-prefix rule. Original cp_fam_243 mint cont…"
+  },
+  {
+    "id": "cp_ens_040",
+    "name": "Garret Covenhoven of Upper Freehold",
+    "nameFull": "Garret Covenhoven",
+    "nameVariations": "Garit Covenhoven (manuscript variant on cp_eve_082 cert + deed body 1817); Garrit Covenhoven (manuscript variant on cp_eve_082 deed body 1817); Garret Cowenhoven; Garret Couwenhoven; Garret Conover (orthographic variants per Monmouth Dutch convention; Conover/Covenhoven/Cowenhoven/Couwenhoven all interchangeable for this Dutch lineage). FamilySearch profile ID: L6WR-RFL (matched 2026-05-05 via Chris's screenshot review).",
+    "dates": "1770–1851",
+    "birthYear": 1770,
+    "deathYear": 1851,
+    "town": "Upper Freehold",
+    "section": "Upper Freehold",
+    "sectionFull": "Upper Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Township of Upper Freehold, Monmouth County, New Jersey (per cp_eve_082 1817 + cp_eve_084 1826 manuscript). Note on Freehold/Upper Freehold ambiguity: his FS-recorded 1792 marriage at 'Freehold, Freehold Township' predates the formal 1798 incorporation of Upper Freehold (NJ Township Act); Upper Freehold had been a distinct geographic area since ~1731 but was administratively merged with Freehold during his early life. The 1792 marriage location is therefore consistent with continuous residence in territory later formalized as Upper Freehold; no relocation required to reconcile the two records.",
+    "occupation": "Yeoman / farmer (presumed for Monmouth Dutch landholder of his generation; FS Sources tab may confirm via census, will, or deed).",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-covenhoven-of-upper-freehold",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "MINTED 2026-05-05 PM (this session) inline per Chris approval, on the 2-record evidence chain (cp_eve_082 1817 + cp_eve_084 1826) anchoring a single Garret Covenhoven of Upper Freehold. Parallel to cp_ens_039 inline-mint precedent (John I. Covenhoven, anchored cp_eve_080 + cp_eve_081). FAMILYSEARCH PROFILE MATCHED 2026-05-05 PM (Chris's screenshot review)…"
+  },
+  {
+    "id": "cp_ens_029",
+    "name": "Garret Cowenhoven",
+    "nameFull": "Garret Cowenhoven",
+    "nameVariations": "Garret Kouwenhoven (formal Dutch); Gerrit Kouwenhoven (1815-1817 BOTR-Flatlands birth-register AKA rendering); Garret Conover (anglicized variant); Gerrit Cowenhoven; Garret W. Cowenhoven (W = William-son patronymic, parallel to brother Johanes W. Kowenhoven LVDF-2NR)",
+    "dates": "1783–1823",
+    "birthYear": 1783,
+    "deathYear": 1823,
+    "town": "Flatlands",
+    "section": "Flatlands",
+    "sectionFull": "Town of Flatlands, Kings County, New York",
+    "clusterNum": 1,
+    "clusterLabel": "Flatlands — Willem line",
+    "cluster": "C1 · Flatlands — Willem line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Flatlands, Kings County, New York (PRIMARY: Town Clerk of Flatlands 1815-1817 per BOTR-Flatlands birth-register attribution on 6 Active rows for the enslaved persons under his ownership; succeeded his father cp_ens_026 William Kouwenhoven 'Town Clerk to 1815' in the office)",
+    "occupation": "Farmer (Flatlands family farm, presumed inheritance/co-tenancy from father cp_ens_026); **Town Clerk of Flatlands 1815-1817** (succeeded father in office; succession pattern documented in feedback_flatlands_town_clerk_succession.md). Father was Town Clerk to 1815, son served 1815-1817 — possibly inheriting/passing the office on to a successor we haven't yet identified for post-1817.",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 6,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 6,
+    "notes": "STUB MINT 2026-04-26 PM via FS L638-9HN family group screenshot (Chris) + cp_ens_026 L6MR-8DT 14-children FS pull (same date). Identity confirmed via narrowing process: of cp_ens_026 William's 14 children, only Garret 1783-1823 is name-compatible AND age-compatible (32-34 yrs old in 1815-1817) for the Town Clerk Gerrit role; Johanes W. (1794), Peter (1799…"
+  },
+  {
+    "id": "cp_ens_051",
+    "name": "Garret Janse Covenhoven, Esq.",
+    "nameFull": "Garret Janse Covenhoven (Esq.)",
+    "nameVariations": "Garret Kovenhoven (NJ Wills abstractor K-variant); Garret Covenhoven Senior (project-records AKA distinguishing from son Garret Jr.); Garret Covenhoven; Garret Conover (Anglicized form on tombstone \"GARRET CONOVER ESQ\"); Esq. Garret Janse Conover (FindAGrave 232809291); Garret Janse Conover; Garret Van Covenhoven (Franklin Ellis 1885)",
+    "dates": "1726–1812",
+    "birthYear": 1726,
+    "deathYear": 1812,
+    "town": "Marlboro",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Marlboro Township (formerly Freehold Township), Monmouth County, New Jersey — old homestead per Franklin Ellis 1885 History of Monmouth County pp. 748-749",
+    "occupation": "Esquire (legal/judicial standing per tombstone inscription \"GARRET CONOVER ESQ\"); landed proprietor (per 1812 will distributing Middlesex Co. land + Monmouth homestead)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-janse-covenhoven-esq",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 9,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 9,
+    "notes": "Mint 2026-05-07 from FindAGrave Memorial 232809291 + WikiTree Van_Covenhoven-2 + FS LTK3-SJC + 1812 will abstract (NJ Wills 1670-1817, Ancestry collection 2793) + Franklin Ellis 1885 History of Monmouth County pp. 748-749. CRITICAL SPELLING NOTE: the K-spelling in \"Garret Kovenhoven\" is an NJ Wills abstractor variant; primary tombstone reads \"GARRET CONOV…"
+  },
+  {
+    "id": "cp_ens_041",
+    "name": "Garret Rezo Covenhoven",
+    "nameFull": "Garret Rezo Covenhoven",
+    "nameVariations": "Garret R. Conover (cert form on cp_eve_083 1823); Garret Rezo Conover (deed body form on cp_eve_083); Garret Rezo Covenhoven (Find A Grave canonical Memorial #252782441); Garret Rezo Cowenhoven; Garret Rezo Couwenhoven (orthographic variants per Monmouth Dutch convention). Per Chris 2026-05-05: 'Rezo' = anglicization of REZEAU / RESEAU, the French Huguenot surname carried as a middle name (mother's maiden name convention common in Dutch/Huguenot colonial NJ families). FaG canonical spelling 'Garret Rezo Covenhoven' validates 'Rezo' as a real spelling, not a manuscript misread.",
+    "dates": "1787–1861",
+    "birthYear": 1786,
+    "deathYear": 1861,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Township of Middletown, Monmouth County, New Jersey (per cp_eve_083 1823 deed; FaG burial in Colts Neck within Middletown-area)",
+    "occupation": "(pending — likely yeoman/farmer for Monmouth Dutch landholder)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garret-rezo-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "MINTED 2026-05-05 PM (this session) inline per Chris approval, on the 1-record evidence chain (cp_eve_083 1823) + Find A Grave external anchor Memorial #252782441 (matched 2026-05-05 PM via Chris's screenshot review). Confidence = HIGH. Identification anchored by: (a) name match (FaG canonical 'Garret Rezo Covenhoven' = manuscript deed-body form 'Garret R…"
+  },
+  {
+    "id": "cp_ens_014",
+    "name": "Garrett Cowenhoven",
+    "nameFull": "Garrett Cowenhoven",
+    "nameVariations": "Garret Cowenhoven (1840 will rendering); Garret Couwenhoven (Dutch); Garret J. Cowenhoven (cp_per_003 1822 manumission scribal variant — Chris confirms = this Garrett, 2026-04-25); 'Garreta Cowenhoven' (cp_per_040 1827 ad rendering — possibly different Garret, see notes)",
+    "dates": "1774–1840",
+    "birthYear": 1774,
+    "deathYear": 1840,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of New Utrecht, Kings County, New York",
+    "occupation": "(pending)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "garrett-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 7,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 7,
+    "notes": "New Utrecht / Jan-Gerretse line. Father: Nicasius Cowenhoven (1742-1793, deceased by 1781 per cp_fam_033's 1781 will — 'deceased son Necasie'); widow Nieltie = Nelly Van Pelt. **GRANDFATHER:** Gerret Van Couwenhoven (cp_fam_033) — primary kin anchor via 1781 will. **UNCLE:** Johannes Van Couwenhoven (cp_ens_013, 1746-1823) — also enslaver, also New Utrech…"
+  },
+  {
+    "id": "cp_fam_033",
+    "name": "Gerret Van Couwenhoven",
+    "nameFull": "Gerret Van Couwenhoven",
+    "nameVariations": "Garret Couwenhoven (1781 will rendering); Garret Conwenhoven (Ancestry indexer rendering); Gerret Van Couwenhoven; Gerritt (1746 will abstract)",
+    "dates": "1712–1783",
+    "birthYear": 1712,
+    "deathYear": 1783,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "New Utrecht, Kings County, Province of New York (Raritan, Somerset Co. NJ farm held as inherited landholding)",
+    "occupation": "(see FAMILY cp_fam_033)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "gerret-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 0,
+    "unnamedCount": 0,
+    "unnamedUnknown": true,
+    "peopleTotal": 0,
+    "notes": "Sparse ENSLAVER row — biographical data lives in FAMILY cp_fam_033 per project mixed-prefix convention. Bedford-Homestead branch enslaver, brother of cp_ens_007 John (1707-1778) and Nicasius (1742-1793, Van_Couwenhoven-84). The will's collective bequest of \"all my Negroes\" with no individuals named places this row firmly in the UNNAMED-group registry; fut…"
+  },
+  {
+    "id": "cp_ens_048",
+    "name": "Hendrick Covenhoven of Freehold",
+    "nameFull": "Hendrick Covenhoven (of Freehold Township)",
+    "nameVariations": "Hendrick Conover (1825 witness rendering on cp_eve_070, Anglicized form); Hendrick Covenhoven (1834 manumission rendering on cp_eve_072, Dutch-derived form)",
+    "dates": "1805–1850",
+    "birthYear": 1805,
+    "deathYear": 1850,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 10,
+    "clusterLabel": "Freehold — Jan-line / Tunis stem",
+    "cluster": "C10 · Freehold — Jan-line / Tunis stem",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, New Jersey",
+    "occupation": "Farmer (per 1850 Mortality Schedule)",
+    "generation": "8",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "hendrick-covenhoven-of-freehold",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 2,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "Minted 2026-05-06 from B-series Stage 3 follow-up to cp_ens_031 (Jacob Brooklyn) work, per To Do M3 ENSLAVER mint queue. TWO attestations across 9 years both in Freehold Township: 1825 witness (Hendrick Conover spelling on deed, cp_eve_070) + 1834 manumitter (Hendrick Covenhoven spelling, cp_eve_072). Birth-date window: must have been at least age-of-majo…"
+  },
+  {
+    "id": "cp_ens_032",
+    "name": "Jacob Covenhoven, the Miller",
+    "nameFull": "Jacob (Van Couwenhoven) Covenhoven",
+    "nameVariations": "Jacob Janse Couwenhoven; Jacob Covenhoven the Miller; Jacob Cowenhoven Sr.",
+    "dates": "1751–1815",
+    "birthYear": 1751,
+    "deathYear": 1815,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ",
+    "occupation": "Miller",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "522 · p. 60",
+    "slug": "jacob-covenhoven-the-miller",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "MINTED 2026-04-28 PM (this session, deferred to 2026-04-28 at end of work). Identity resolved: the \"Jacob Janse\" placeholder was the Miller; mint name normalized to \"Jacob (Van Couwenhoven) Covenhoven.\" Witness \"John I. Holmes\" (per will body) vs. \"John S. Holmes\" (per FamilySearch abstract) — initial visually similar in 1815 script; primary confirmation…"
+  },
+  {
+    "id": "cp_ens_031",
+    "name": "Jacob Cowenhoven",
+    "nameFull": "Jacob Cowenhoven (of Brooklyn)",
+    "nameVariations": "Jacob Cowenhoven (will signature 1823); Jacob Couwenhoven (1808 bond rendering); Jacob Covenhoven (1812/1817 manumission renderings); Jacob Conover (1826 estate-sale deed rendering, also FindaGrave page subtitle text)",
+    "dates": "1750–1826",
+    "birthYear": 1750,
+    "deathYear": 1826,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 1,
+    "clusterLabel": "Flatlands — Willem line",
+    "cluster": "C1 · Flatlands — Willem line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Brooklyn, Kings County, New York",
+    "occupation": "Farmer",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "jacob-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "Minted 2026-04-27 from Research Threads Thread 4 (Brooklyn Jacob Couwenhoven cp_ens_031+ backlog). Anchored to 5 Active rows + 1 EVENT row (cp_eve_028). DISTINCT FROM: (a) Monmouth Jacob (cordwainer per cp_per_087 1804 birth; manumits cp_per_058/064/069/075; testator of 1815 will referenced in cp_per_206) — future cp_ens_032 candidate; (b) Bergen-County J…"
+  },
+  {
+    "id": "cp_ens_073",
+    "name": "Jacob I. Covenhoven",
+    "nameFull": "Jacob I. Conover",
+    "nameVariations": "Jacob I. Conover (1811 BBB sig + 1825 will self-ID); Jacob Couwenhoven (Dutch sig 1825 + 1829 manumissions); Jacob Conover Shoemaker of Freehold (1829 manumission body); Jacob Cownover ($125 bequest in cp_ens_032 1815 will); Jacob Covenhoven of Freehold (1825 manumission body); same person operating under formal/legal \"Jacob I. Conover\" form for estate documents + trade-name \"Jacob Conover Shoemaker\" form for manumissions.",
+    "dates": "born 1773",
+    "birthYear": 1773,
+    "deathYear": 1843,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township (shop / business location per 1825 + 1829 manumissions) + Middletown Township (home per 1825 will body + 1843 probate \"late of Middletown\") — same person, dual stated residence consistent with shoemaker/cordwainer trade requiring fixed shop",
+    "occupation": "Shoemaker (= cordwainer) per 1829 manumission body \"Jacob Conover Shoemaker of the township of Freehold\"; tradesman class — DISTINCT from father cp_ens_032 the Miller. Named \"Jacob Jr. cordwainer\" in cp_ens_032 1815 will with £125 bequest.",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "jacob-i-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "Promoted from JoM_007 disambig (Jacobs_of_Monmouth_County) 2026-05-16. 'I.' middle initial = Janse-son patronymic via grandfather Jan/John Jacobse (cp_fam_133, b.1722) — DISAMBIGUATION CASE per 5/12 patronymic rule (father+son both Jacob, so 'I.' points to grandfather). Same disambig logic as half-brother cp_ens_033 Rulef I. Conover. Disambig research 202…"
+  },
+  {
+    "id": "cp_ens_009",
+    "name": "Jacob Willemse van Couwenhoven",
+    "nameFull": "Jacob Willemse van Couwenhoven",
+    "nameVariations": "Jacob Covenhoven (1743 will rendering); Jacob Couwenhoven; Jacob Willemse Couwenhoven; Jacob Cowenhoven",
+    "dates": "1679–1744",
+    "birthYear": 1679,
+    "deathYear": 1744,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, New Jersey",
+    "occupation": "Yeoman (per 1743 will)",
+    "generation": "4",
+    "branch": "Gerrit",
+    "cocheu": "26 · p. 21",
+    "slug": "jacob-willemse-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 5,
+    "unnamedUnknown": false,
+    "peopleTotal": 6,
+    "notes": "Third Willemse Couwenhoven brother NJ enslaver — sons of cp_fam_007 Willem Gerritsz Couwenhoven (1636-1728). Brothers: cp_ens_002 Albert (1676-1748, Freehold) m. Neeltje Roelofse Schenck; cp_ens_004 Cornelis (1672-1736, Pleasant Valley) m. Margaretta Schenck (cp_fam_308) (sister of Neeltje); cp_ens_009 Jacob (this row, 1679-1744, Middletown). All three li…"
+  },
+  {
+    "id": "cp_ens_015",
+    "name": "Jane (Jannetje) Lott Cowenhoven",
+    "nameFull": "Jane (Jannetje) Lott",
+    "nameVariations": "Jannetje Lott (maiden name); Jane Cowenhoven (Active sheet rendering); Jane Covenhoven; Jannetje Cowenhoven",
+    "dates": "1745–1817",
+    "birthYear": 1745,
+    "deathYear": 1817,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of New Utrecht, Kings County, New York",
+    "occupation": "(pending; widow + household manager post-1793)",
+    "generation": "6",
+    "branch": "In-law",
+    "cocheu": "p. 84",
+    "slug": "jane-jannetje-lott-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "Wife of cp_ens_001 Judge Nicholas Cowenhoven (m. 1763-09-24 NYC); survived him by 24 years as a widow (1793-1817). Brought hundreds of acres in New Utrecht as her dowry (per cp_ens_001 row notes), indicating Lott-family wealth. Jane managed the New Utrecht household and continued enslaving people post-1793; cp_per_024 Peter's 1816 birth-indenture document…"
+  },
+  {
+    "id": "cp_ens_013",
+    "name": "Johannes Van Couwenhoven",
+    "nameFull": "Johannes Van Couwenhoven",
+    "nameVariations": "Johannes Cowenhoven; John Cowenhoven; Johannes Couwenhoven (per father's 1781 will)",
+    "dates": "1746–1823",
+    "birthYear": 1746,
+    "deathYear": 1823,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of New Utrecht, Kings County, New York",
+    "occupation": "(pending)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "johannes-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 8,
+    "unnamedUnknown": false,
+    "peopleTotal": 13,
+    "notes": "Brooklyn / New Utrecht branch (Jan-Gerretse line via Wolphert → Gerrit → Jan Gerretse → Nicasius Janse → Gerret cp_fam_033 → Johannes). Inheritor of share of \"All my Negroes\" via Gerret's 1781 will (UNNAMED cp_rec_007); the 5 New Utrecht linkages 1806–1822 plausibly include descendants of those held in 1781 — births start 25 yrs after the will. KIN CONTEX…"
+  },
+  {
+    "id": "cp_rel_008",
+    "name": "John Baird",
+    "nameFull": "John Baird",
+    "nameVariations": "John Baird of Freehold Township (1828 manumission deed self-ID + marginal docket) | [PID history: previously cp_ens_077; recategorized to cp_rel_008 on 2026-05-29 per manumitter-not-enslaver rule]",
+    "dates": "",
+    "birthYear": null,
+    "deathYear": null,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold",
+    "clusterNum": null,
+    "clusterLabel": "",
+    "cluster": "",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ (per 1828-03-11 manumission deed self-ID)",
+    "occupation": "",
+    "generation": "",
+    "branch": "",
+    "cocheu": "",
+    "slug": "",
+    "onCard": false,
+    "nonVKC": true,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "NEW MINT 2026-05-26 evening as Stage D of combined Catharine + cp_ens_073 mint pass. Sparse profile by design — Baird's full biography awaits the December 1828 Baird → Lewis I. Conover land deed pull (deferred this session per 2026-05-26 scoping). Confidence MATCH on cp_eve_171 attribution: the deed body self-identifies \"John Baird of the township of Free…"
+  },
+  {
+    "id": "cp_ens_007",
+    "name": "John Cowenhoven",
+    "nameFull": "John Cowenhoven",
+    "nameVariations": "John Couwenhoven; John Covenhoven; John Van Couwenhoven; Johannes Cowenhoven; Jan Cowenhoven",
+    "dates": "1707–1778",
+    "birthYear": 1709,
+    "deathYear": 1778,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Cowenhoven Homestead, Town of Brooklyn, Kings County, New York (per project memory feedback_cowenhoven_homestead_naming.md: Bedford = neighborhood; Cowenhoven Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; per Chris's WP post #681, the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue, with the main house roughly where the Apple Store at Atlantic Terminal is today, lat 40.6855893 lng -73.9782267.)",
+    "occupation": "Merchant; wealthy landowner / farmer; head of Bedford Homestead estate",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "214 · p. 83",
+    "slug": "john-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "Bedford-Homestead-branch enslaver — paternal grandfather of cp_ens_005 (Bedford Nicholas), father of cp_ens_006 (Rem). Lineage: Wolphert → Gerrit → Jan Gerretse + Gerardina De Sille → Nicasius Janse + Elsje Jansen Staats → John (this profile). Marriage to Catharina Remsen explains the \"Rem\" patronymic carried by his son. The 1778-06-01 probate inventory d…"
+  },
+  {
+    "id": "cp_ens_034",
+    "name": "John Cowenhoven",
+    "nameFull": "John Cowenhoven",
+    "nameVariations": "John Cowenhoven Jr.; John Couwenhoven; the 'John Cowenhoven, his uncle' grantee of the 30 June 1789 Brooklyn deed (Aughtieste Kamp); the 'John' executor son of cp_ens_007's 1778 inventory who drew £723; FS G9DJ-8D1",
+    "dates": "1752–1805",
+    "birthYear": 1752,
+    "deathYear": 1805,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Brooklyn, Kings County, New York (PRIMARY: 1778 inventory of father cp_ens_007 names him as Brooklyn-resident executor son drawing £723 portion 'by Consent of his Mother'; 30 June 1789 Brooklyn deed names him as 'John Cowenhoven his uncle' grantee from nephew Nicholas R. cp_ens_005, receiving 25-acre Aughtieste Kamp + £50 + 1 acre meadow; 1790 US Census enumerates his Brooklyn household as 9 white + 7 enslaved per cp_rec_017)",
+    "occupation": "(pending — likely yeoman/farmer; heir to portion of cp_ens_007's Bedford-era credit network via £723 inheritance portion)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "john-cowenhoven-brooklyn",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 7,
+    "unnamedUnknown": false,
+    "peopleTotal": 8,
+    "notes": "Brooklyn-line; youngest of three executor sons of cp_ens_007 (birth-order: Rem b.1734 = cp_ens_006; Judge Nicholas b.1744 = cp_ens_001; John b.1752 = cp_ens_034). Identification primary-confirmed 2026-04-28 by combination of 1778 inventory (3 executor sons match FS sibling list of cp_ens_007) + 30 June 1789 Brooklyn deed naming him 'his uncle' to nephew N…"
+  },
+  {
+    "id": "cp_ens_078",
+    "name": "John G. Covenhoven",
+    "nameFull": "John G. Covenhoven",
+    "nameVariations": "John⁶ Covenhoven; John G. Conover; Pvt John G. Covenhoven",
+    "dates": "1760–1802",
+    "birthYear": 1760,
+    "deathYear": 1802,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ (1802 territory; Marlboro Twp not set off from Freehold until 1848)",
+    "occupation": "Farmer (per 1802 inventory contents: cattle, hogs, horses, 300 bushels of corn, 43 barrels of rye flour, wagongears, plow, drag, barn tools, beehives — typical mid-Monmouth farmstead)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "514 · p. (page TBD — entry #514 falls on Cocheu .md p. 58 per page-tag in canonical .md; printed NYG&BR volume:issue TBD via Cocheu_Crossref)",
+    "slug": "john-g-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-28. Identity primary-source-locked via 5-source convergence (gravestone, 1802 LOA, Cocheu #514, FS GQW4-NXB, FG #31237518 — full enumeration in `sources` field; gravestone + LOA verbatim text on cp_sou_088.Source_Quotation). Middle initial \"G.\" = father-patronymic (\"son of Garret/Gerret\"), same convention as brother Daniel G. #509 (= cp_ens…"
+  },
+  {
+    "id": "cp_ens_039",
+    "name": "John I. Covenhoven",
+    "nameFull": "John I. Covenhoven",
+    "nameVariations": "John I. Conover (manuscript Manumission Book spelling, 1823 cp_eve_080 + 1832 cp_eve_081); Col. John I. Conover (post-militia-rank, attested 1832 cp_eve_081 — rank acquired between 1823 and 1832); John I. Cowenhoven; John I. Couwenhoven (orthographic variants per Monmouth Dutch convention; Conover/Covenhoven/Cowenhoven/Couwenhoven all interchangeable for this Dutch lineage). Patronymic 'I.' = Iohannes-son convention (Latin I/J interchangeable; his father was John P. Covenhoven b. 1740, d. 1811).",
+    "dates": "1784–1871",
+    "birthYear": 1784,
+    "deathYear": 1871,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Township of Freehold, Monmouth County, New Jersey",
+    "occupation": "Yeoman/farmer (presumed for Monmouth Dutch landholder); militia Colonel by 1832 (rank acquired between 1823-12-09 and 1832-02-28)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "john-i-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-05 PM (this session). Identification anchored by Chris's 5/5 cross-reference to Find A Grave Memorial #177364299 + WikiTree Conover-140 + Genealogical Society of NJ Vol 1:419. Two-record evidence chain (cp_eve_080 1823 + cp_eve_081 1832) confirms same enslaver across both records via consistent 'I.' patronymic + Township-of-Freehold residen…"
+  },
+  {
+    "id": "cp_fam_133",
+    "name": "John Jacobse Couwenhoven",
+    "nameFull": "John Jacobse Couwenhoven",
+    "nameVariations": "John Covenhoven; John⁵ Covenhoven (Cocheu #166); 'John Covenhoven, yeoman of Middletown' (1792 will self-ID); John Jacobse Couwenhoven (workbook)",
+    "dates": "1722–1792",
+    "birthYear": 1722,
+    "deathYear": 1792,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, NJ (per 1792 will self-ID 'John Covenhoven, yeoman of Middletown, Monmouth County, N.J.')",
+    "occupation": "Yeoman (per 1792 will self-ID); middling-to-substantial Middletown farmer (inventory £472:10:6 per Cocheu #166 + NJA:37:91-92)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "166 · p. 22",
+    "slug": "john-jacobse-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "**PROMOTED 2026-05-28 from cp_fam_133 (FAMILY) to ENSLAVER status via Cocheu #166 + cp_eve_158 (1792 will) MATCH for cp_per_097 Betty. Per [[feedback-mixed-prefix-no-rename]] (5/17 convention): cp_fam_133 row MOVED from FAMILY → ENSLAVER, PID unchanged (mixed-prefix).** Identification rests on 9-point convergence: (1) testator name 'John Covenhoven yeoman…"
+  },
+  {
+    "id": "cp_ens_019",
+    "name": "John Nicholas (Major John) Cowenhoven",
+    "nameFull": "John Nicholas Cowenhoven",
+    "nameVariations": "Major John Cowenhoven; Major John Covenhoven; John N. Cowenhoven; John H. Cowenhoven (script-N misread, e.g. WikiTree Cowenhoven-72); John Covenhoven; John N. Covenhoven",
+    "dates": "1769–1806",
+    "birthYear": 1769,
+    "deathYear": 1806,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of New Utrecht, Kings County, New York (Cowenhoven-Benson mansion / future Bensonhurst — inherited from father Judge Nicholas 1793; later passed to daughter Maria Benson 1820)",
+    "occupation": "Landholder (inherited New Utrecht estate from cp_ens_001 Judge Nicholas at father's 1793 death); militia officer with rank Major (recognized in dataset framing parallel to \"Judge\" Nicholas; rank tagged in Active R6 1799 manumission AKA col); enslaver",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "john-nicholas-major-john-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "Son of Judge Nicholas (cp_ens_001) + Jane Lott (cp_ens_015); brother of George (cp_ens_018, b.1764). The \"N.\" patronymic = Nicholas-son per Brooklyn-Dutch convention (parallel to \"R.\" = Rem-son in cp_ens_005/008). Sometimes misread as \"John H. Cowenhoven\" because manuscript script-N can resemble script-H — including on his own WikiTree profile (Cowenhoven…"
+  },
+  {
+    "id": "cp_ens_050",
+    "name": "John P. Covenhoven",
+    "nameFull": "John P. Covenhoven",
+    "nameVariations": "Covenhoven, John P.; John P. Conover; John Petersen Covenhoven (Dutch patronymic interpretation)",
+    "dates": "1740–1811",
+    "birthYear": 1740,
+    "deathYear": 1811,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, New Jersey",
+    "occupation": "Yeoman (per 1811 will abstract)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "john-p-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 10,
+    "unnamedCount": 2,
+    "unnamedUnknown": false,
+    "peopleTotal": 12,
+    "notes": "Mint 2026-05-07 from FindAGrave Memorial 14358883 + WikiTree Covenhoven-41 + 1812 will abstract (NJ Wills 1670-1817, Ancestry db). The \"P.\" patronymic resolves to son of Peter Covenhoven (1712-1774). Buried at Old Tennent Churchyard, Manalapan — same churchyard as cp_eve_131/132 Old Tennent church-membership rows ingested 2026-05-07. 7 Active rows backfil…"
+  },
+  {
+    "id": "cp_ens_008",
+    "name": "John R. Couwenhoven",
+    "nameFull": "John R. Couwenhoven",
+    "nameVariations": "John R. Cowenhoven; John R. Covenhoven; Jno. R. Couwenhoven; John Remsen Cowenhoven",
+    "dates": "1761–1811",
+    "birthYear": 1761,
+    "deathYear": 1811,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Brooklyn, Kings County, New York",
+    "occupation": "BOLTER (flour-miller) of Brooklyn, Kings Co. NY — per cp_famsou_024 1797 absconding-debtor notice (\"John R. Cowenhoven now or late of Brooklyn, in Kings County, Bolter\"). Pre-1798 commercial trajectory ran flour-bolting business; debt-driven trustee-led liquidation in April 1798 (cp_famsou_001 / cp_sou_005 / cp_eve_023) ended this enterprise. Per Chris 2026-04-28: \"1798 sale by executors\" framing in prior workbook ingest was incorrect — actual structure was assignment to four trustees / Assignees (Lott, Polhemus, Vanderveer, Terhune) under NY's absconding-debtor statute, not estate executors.",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "john-r-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 6,
+    "unnamedCount": 14,
+    "unnamedUnknown": false,
+    "peopleTotal": 20,
+    "notes": "Eldest son of Rem Cowenhoven (cp_ens_006), born 1761-02-28 — 7 years before brother Nicholas R. \"Bedford\" Cowenhoven (cp_ens_005, b.1768-04-14). Lived 2 years longer than his younger brother (John R. d.1811-09-02; Nicholas d.1809-08-25). The \"R.\" middle initial = Remsen patronymic — same Remsen-naming tradition that gave Rem his given name (named via pate…"
+  },
+  {
+    "id": "cp_ens_049",
+    "name": "Johnson Cownover",
+    "nameFull": "Johnson Cownover",
+    "nameVariations": "Johnson Conover (manuscript signature on 1814-11-29 + 1825-04-09 birth certs); Johnson Covenhoven (orthographic variant); Johnson Covenhoven Conover (FS L69J-QG2 full form per 2026-05-07)",
+    "dates": "1781–1849",
+    "birthYear": 1781,
+    "deathYear": 1849,
+    "town": "South Brunswick",
+    "section": "South Brunswick",
+    "sectionFull": "South Brunswick Township, Middlesex County, New Jersey",
+    "clusterNum": 5,
+    "clusterLabel": "South Brunswick — William Albertse outpost",
+    "cluster": "C5 · South Brunswick — William Albertse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "South Brunswick Township, Middlesex County, New Jersey",
+    "occupation": "Farmer (per cert verbatim \"Johnson Conover of the township of South Brunswick in the County of Middlesex New Jersey, Farmer\")",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "johnson-cownover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 8,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 8,
+    "notes": "Stub-mint 2026-05-06. South Brunswick Twsp, Middlesex Co. NJ, Farmer. 7 enslaved people on record across 6 birth-registration events spanning 1811-1822 (filed in 2 certs 1814-11-29 + 1825-04-09). Two enslaved mothers: Kate (Cyrus 1811 + Pamele 1813) and Betty (George 1815 + Loeser 1817 + Gerrans 1820 + Fran 1822). Manuscript signature on both certs reads…"
+  },
+  {
+    "id": "cp_ens_001",
+    "name": "Judge Nicholas Cowenhoven",
+    "nameFull": "Nicholas Cowenhoven",
+    "nameVariations": "Judge Nicholas Cowenhoven; Nicholas Covenhoven; Nicholas Couwenhoven; Nicholas Kouwenhoven",
+    "dates": "1744–1793",
+    "birthYear": 1744,
+    "deathYear": 1793,
+    "town": "New Utrecht",
+    "section": "New Utrecht",
+    "sectionFull": "Town of New Utrecht, Kings County, New York",
+    "clusterNum": 9,
+    "clusterLabel": "Town of New Utrecht — Jan line",
+    "cluster": "C9 · Town of New Utrecht — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of New Utrecht (Cowenhoven-Benson mansion in present-day Bath Beach, Brooklyn)",
+    "occupation": "Chief Judge, Kings County Court of Common Pleas (post-Revolution); Colonel (Revolutionary War); landholder; enslaver",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "654 · p. 84",
+    "slug": "judge-nicholas-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 10,
+    "unnamedUnknown": false,
+    "peopleTotal": 12,
+    "notes": "Identified as the enslaver in 7 Active rows by exact-string match on 'Nicholas Covenhoven', with AKA='Judge' explicitly affixed on 3 of those rows. Three rows pass the Rule 3 three-prong test (name + dates + place all align with documented historical person) and are committed as MATCH: cp_per_041 (Jack, sold 1782 in New Utrecht), cp_per_042 (Cuffee, sold…"
+  },
+  {
+    "id": "cp_ens_069",
+    "name": "Lewis Covenhoven",
+    "nameFull": "Lewis Covenhoven (of Freehold)",
+    "nameVariations": "Lewis Conover (1800 manumission deed rendering, Cocheu #447(e) anglicized form); Lewis Covenhoven (Cocheu 82:1 spelling)",
+    "dates": "1776–1831",
+    "birthYear": 1776,
+    "deathYear": 1831,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ (1800 manumission deed identifies him as \"Lewis Covenhoven of the Township of Freehold\")",
+    "occupation": "",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "lewis-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "MINTED 2026-05-14 (this session). Identity locked via dual primary anchor: Cocheu 82:1 #447(e) \"Lewis⁷ b. Aug. 14, 1776; mar. Catharine DeNyse and d. Nov. 10, 1831\" + Find a Grave Memorial #8045727 gravestone inscription \"LEWIS CONOVER Died Nov. 10, 1831 Aged 55 years, 2 months & 27 days\" (calculates back to b. Aug 14, 1776 exactly). Brother of cp_ens_038…"
+  },
+  {
+    "id": "cp_ens_035",
+    "name": "Lucas (Luke) Conover",
+    "nameFull": "Lucas (Luke) Conover",
+    "nameVariations": "Luke Conover; Lucas Couwenhoven / Cowenhoven (Latinized form occasional in Conover branch); Lucke (per father Lucas Willemse's 1777 will: 'To each of my 3 sons, William, Rut and Luke, £200')",
+    "dates": "1745–1810",
+    "birthYear": 1745,
+    "deathYear": 1810,
+    "town": "South Amboy",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 4,
+    "clusterLabel": "Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "cluster": "C4 · Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "South Amboy, Middlesex County, New Jersey (per intestate inventory locality)",
+    "occupation": "(pending — research target)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "lucas-luke-conover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "MINTED 2026-04-30 as RESEARCH-TARGET row per feedback_dates_required_for_active_match.md. Name-only attestation from cp_eve_032 / cp_sou_011 inventory. NOT cp_ens_028 Luke Kouwenhoven (b.1766 d.1853 Flatlands NY — incompatible with 1810 intestate death + wrong locality). Distinct person; identity research pending. cp_ens_036 reservation note: cordwainer-J…"
+  },
+  {
+    "id": "cp_ens_021",
+    "name": "Neeltje Williamson Covenhoven",
+    "nameFull": "Neeltje Williamson Covenhoven",
+    "nameVariations": "Neeltje Williamson (maiden); Eleanor Covenhoven (English form used in 1802 will + 1812 + 1822 manumissions); Nelly Covenhoven; Widow Eleanor Covenhoven; Eleanor Conover (post-Anglicization). RESOLVED 2026-05-14: prior \"possibly Elizabeth Covenhoven (widow) misread of Eleanor\" speculation rejected — the 1811 Elizabeth manumitter is a separate person, cp_ens_070 Elizabeth Aumack Covenhoven (widow of William⁶ Covenhoven #639) per Cocheu 82:4 #639 + 7-attestation documentary consistency; Neeltje Field (during 1st marriage 1763-1792); Elenor Bray (during 3rd marriage ~1820-1830; name at probate per cp_sou_084)",
+    "dates": "1743–1830",
+    "birthYear": 1743,
+    "deathYear": 1830,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, New Jersey",
+    "occupation": "Widow / household head (post-1803 to ~1830); enslaver of inherited household",
+    "generation": "6",
+    "branch": "In-law",
+    "cocheu": "",
+    "slug": "neeltje-williamson-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 7,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 7,
+    "notes": "Neeltje is identifiable as the \"Eleanor Covenhoven\" of John's 1802 will by Dutch-English first-name equivalence — \"Neeltje\" = \"Nelly\" = \"Eleanor\" — plus chronological fit (John's first wife Eleanor Williams Wyckoff died 1793, before the will). Per FS KPHS-YKZ she is John's second wife, married ~1794. The 1802 will's clause \"all the negroes that came by he…"
+  },
+  {
+    "id": "cp_ens_022",
+    "name": "Nicholas Covenhoven",
+    "nameFull": "Nicholas Covenhoven",
+    "nameVariations": "Nicholas Covenhoven; possibly Nicholas Cowehoven (alternate spelling used in 1802 testator's record); patronymic / middle initial unknown — no \"R.\" or \"N.\" or \"Jr.\" in source visible",
+    "dates": "1772–1807",
+    "birthYear": 1772,
+    "deathYear": 1807,
+    "town": "Franklin",
+    "section": "Franklin",
+    "sectionFull": "Franklin Township, Somerset County, New Jersey",
+    "clusterNum": 11,
+    "clusterLabel": "Somerset Co. — Jan-line outpost",
+    "cluster": "C11 · Somerset Co. — Jan-line outpost",
+    "county": "Somerset",
+    "state": "NJ",
+    "countyFull": "Somerset County, NJ",
+    "residence": "Franklin Township, Somerset County, New Jersey (CONFIRMED via FaG #19078165 burial Covenhoven Family Burying Ground, Franklin Twsp; matches inheritance of NE half of cp_ens_023's 280-ac plantation per 1802 will).",
+    "occupation": "(pending — likely yeoman/farmer per period + presence of livestock/cash in inventory; primary pending)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "nicholas-covenhoven-franklin",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "CROSS-EVENT MATCH HYPOTHESIS (to investigate later): Frank/Jack/Bet may form the project's second traced cross-event life trajectory after Cezar (cp_per_113 ↔ cp_per_057). Per the 1802 will of Nicholas Cowehoven of Franklin Twsp Somerset (analyzed at /Source Documents/Nicholas Cowehoven 1802 Will/analysis.md), Frank was devised to son Nicholas (140-acre N…"
+  },
+  {
+    "id": "cp_ens_023",
+    "name": "Nicholas Covenhoven",
+    "nameFull": "Nicholas Covenhoven",
+    "nameVariations": "Nicholas Covenhoven (manuscript signature spelling); Nicholas Cowehoven [Covenhoven] (NJ Archives Vol. XXXIX abstract editorial bracket); Nicholas Conover (post-Anglicization possible); manuscript signature reads \"Nicholas Covenhoven {LS}\"",
+    "dates": "1735–1803",
+    "birthYear": 1735,
+    "deathYear": 1803,
+    "town": "Franklin",
+    "section": "Franklin",
+    "sectionFull": "Franklin Township, Somerset County, New Jersey",
+    "clusterNum": 11,
+    "clusterLabel": "Somerset Co. — Jan-line outpost",
+    "cluster": "C11 · Somerset Co. — Jan-line outpost",
+    "county": "Somerset",
+    "state": "NJ",
+    "countyFull": "Somerset County, NJ",
+    "residence": "Franklin Township, Somerset County, New Jersey (per will text \"Nicholas Covenhoven of Franklin Township in the county of Somerset and State of New Jersey\")",
+    "occupation": "Yeoman (per will text — testator self-styled \"yeoman\")",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "nicholas-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "KEY LEGAL MECHANISMS in this will: (1) \"in lieu of her dower\" — widow's package replaces (rather than supplements) her common-law dower right; standard elective-against-dower formula. (2) DEFERRED ENSLAVED-PERSON TRANSFER — Frank's title to son Nicholas does NOT vest until widow's death; Jack goes to Cornelius immediately. This is a structural pattern rel…"
+  },
+  {
+    "id": "cp_ens_005",
+    "name": "Nicholas R. Cowenhoven",
+    "nameFull": "Nicholas Cowenhoven",
+    "nameVariations": "Nicholas R. Covenhoven; Nicholas R. Cowenhoven; Nicholas Covenhoven; Nicholas Couwenhoven; Nicholas Kouwenhoven",
+    "dates": "1768–1809",
+    "birthYear": 1768,
+    "deathYear": 1809,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Bedford, Town of Brooklyn, Kings County, New York (Cowenhoven Homestead)",
+    "occupation": "Merchant (shop on Queen Street, lower Manhattan); Justice of the Peace, Brooklyn (1790s)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "651(c) · p. 84",
+    "slug": "nicholas-r-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 11,
+    "unnamedCount": 5,
+    "unnamedUnknown": false,
+    "peopleTotal": 16,
+    "notes": "Bedford Nicholas is — per Chris — the only Cowenhoven so far identified to have manumitted enslaved people through his will. The 'R.' in 'Nicholas R. Cowenhoven' reads as a Rem-son disambiguator; the same convention appears in the 1790 Cortelyou land sale. Burial location uncertain: Chris notes Flatbush Dutch Reformed Church Cemetery; the Vechte-Cowenhove…"
+  },
+  {
+    "id": "cp_ens_079",
+    "name": "Peter Couwenhoven",
+    "nameFull": "Peter Couwenhoven (Peter⁷ #320(f); Master of the Sloop Republican of Middletown Point; m. Sophia DuBois)",
+    "nameVariations": "Peter Conover (anglicized); Peter Covenhoven; Peter Cowvenhoven; Peter Covenhoven of Matavan Neck (cp_eve_037); Peter Covenhoven of the Township of Middletown (cp_eve_050)",
+    "dates": "born 1769",
+    "birthYear": 1769,
+    "deathYear": null,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Twp, Monmouth Co., NJ (continuous residence 1798-1821 confirmed by 9-child NJ Births & Christenings entries per FS LZ8J-9WJ; operating Sloop Republican of Middletown Point per cp_eve_050)",
+    "occupation": "Master of the Sloop Republican of Middletown Point (per cp_eve_050 first-person sworn statement); vessel master / mariner — rare among Cowenhoven enslavers (most are farmers)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "320(f) · p. 81:2",
+    "slug": "peter-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "MINTED 2026-05-28 (Peters disambiguation Stage 6 commit). Identity locked via three-prong test: NAME ✓ (Peter Covenhoven of Middletown) + DATES ✓ (alive 1797-marriage through 1821-child) + PLACE ✓ (Middletown Twp continuous residence) + fourth-prong occupational uniqueness (\"Master of the Sloop Republican of Middletown Point\" per cp_eve_050 first-person s…"
+  },
+  {
+    "id": "cp_ens_071",
+    "name": "Peter Covenhoven (of Upper Freehold)",
+    "nameFull": "Peter Covenhoven (of Upper Freehold)",
+    "nameVariations": "Peter⁶ Covenhoven Cocheu 81:3 #354 (notes-only reference)",
+    "dates": "1732–1802",
+    "birthYear": 1732,
+    "deathYear": 1802,
+    "town": "Upper Freehold",
+    "section": "Upper Freehold",
+    "sectionFull": "Upper Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Upper Freehold Township, Monmouth County, NJ",
+    "occupation": "",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "peter-covenhoven-of-upper-freehold",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-14 (this session). Cocheu 81:3 #354 + FamilySearch MJ33-KMJ confirm identity: b. 1732-12-04, d. 1802-03-03 Upper Freehold, m. Hannah Forman 1756, 11 children. Probate File 8481 M / Lib. 39 p. 519 / administrator Anthony F. Taylor of Burlington Co. uniquely matches Cocheu's \"d. in Upper Freehold, N.J., Mar. 3, 1802, in his 70th year\" — no ot…"
+  },
+  {
+    "id": "cp_ens_074",
+    "name": "Peter G. Covenhoven",
+    "nameFull": "Peter G. Covenhoven",
+    "nameVariations": "Peter G. Conover (1830 Monmouth BBB rendering); Peter G. Cowenhoven; Peter G.⁶ Covenhoven (Cocheu #565)",
+    "dates": "1797–1886",
+    "birthYear": 1797,
+    "deathYear": 1886,
+    "town": "Marlboro",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Marlboro Township, Monmouth County, NJ",
+    "occupation": "(pending — yeoman/farmer presumed for landholder of generation)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "565 · p. 70",
+    "slug": "peter-g-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "Minted 2026-05-21 via Cocheu_Crossref → Active match pipeline. Identity locked via Cocheu #565 (NYG&BR 82:3 p.70, cp_sou_056): name 'Peter G.' + middle initial 'G.' + activity-window match for 1830 Monmouth Co. BBB registrations. Cocheu is the only patriline Covenhoven Peter with middle initial 'G.' alive in 1830. Father chain established via Cocheu's tex…"
+  },
+  {
+    "id": "cp_ens_006",
+    "name": "Rem Cowenhoven",
+    "nameFull": "Rem Cowenhoven",
+    "nameVariations": "Rem Couwenhoven; Rem Covenhoven; Rem Kouwenhoven",
+    "dates": "1734–1783",
+    "birthYear": 1734,
+    "deathYear": 1783,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Brooklyn, Kings County, New York",
+    "occupation": "Landowner/farmer; Captain (rank from Loyalist or Kings County militia — see notes 2026-04-28)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "651 · p. 83",
+    "slug": "rem-cowenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 7,
+    "unnamedCount": 2,
+    "unnamedUnknown": false,
+    "peopleTotal": 9,
+    "notes": "Father of Nicholas Cowenhoven cp_ens_005. Magdalene Van Vechten (his first wife) was the conduit through which the Vechte-Cortelyou House passed to Nicholas. Loyalist alignment is relevant context for his 1777 runaway advertisement during the British occupation of Brooklyn. WikiTree profile now linked (Covenhoven-115). Father John (cp_ens_007) of the Bedf…"
+  },
+  {
+    "id": "cp_ens_010",
+    "name": "Roelof Couwenhoven",
+    "nameFull": "Roelof Couwenhoven",
+    "nameVariations": "Roeloff Couwenhoven (1743 will rendering as Jacob's executor son); Roelof Covenhoven (1746 administration); Ruloff Covenhoven; Ruleph; Rulof; \"Janitie Connover\" (widow's married name letter rendering)",
+    "dates": "1712–1746",
+    "birthYear": 1712,
+    "deathYear": 1746,
+    "town": "",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Monmouth County, New Jersey (likely Middletown Township based on father)",
+    "occupation": "(pending — likely yeoman based on father)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "161 · p. 56",
+    "slug": "roelof-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 0,
+    "unnamedCount": 2,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "Cocheu 82:2 #161 (cp_sou_055) confirms identity beyond hypothesis: birth, marriage, death, spouse, three children all primary-source documented. Death date 1746 (admin Oct 24, 1746) supersedes prior 1742 conjecture. PID consolidation 2026-05-10: cp_fam_129 (later mint, 2026-05-09) absorbed into cp_ens_010 (older PID, 2026-04-25) per single-sheet + older-P…"
+  },
+  {
+    "id": "cp_ens_068",
+    "name": "Ruliff (Ralph) Kovenhoven",
+    "nameFull": "Ruliff (Ralph) Kovenhoven (of Middlesex County, NJ; later Milton PA)",
+    "nameVariations": "Ruliff Kovenhoven (Active R196 col Z 1809 manumission); Ruliff Covenhoven (Active R196 col M); Ralph Kovenhoven (nickname per FaG gravestone + FS profile); R.K. (gravestone initials, Milton Cem PA)",
+    "dates": "1769–1854",
+    "birthYear": 1769,
+    "deathYear": 1854,
+    "town": "",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 6,
+    "clusterLabel": "Penn's Neck — Middlesex Schenck-cousin outpost",
+    "cluster": "C6 · Penn's Neck — Middlesex Schenck-cousin outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "Middlesex County, New Jersey through at least 1795 (son William Emmons Conover b. 1795-01-08 New Brunswick Middlesex per FS KZRB-4NV); 1809 manumission filed at West Windsor Township Middlesex (possibly at family's inherited Penn's Neck plantation per father's 1777 will); later migrated to Milton, Northumberland County, PA (wife buried Milton Cem 1830-11-25; Ruliff buried Milton Cem 1854-12-18)",
+    "occupation": "(pending — yeoman presumed; father William #574 was 'yeoman, of Penn's Neck, Middlesex County' per 1777 will)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "ruliff-ralph-kovenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "MINTED 2026-05-14 from Chris-shared FaG screenshot (memorial 107977825) + FS KCXV-6HK profile + FS KZRB-4NV son's record + Cocheu 82:4 #574 contextual lineage. IDENTITY-AS-MANUMITTER = MATCH-grade. Evidence chain: - FaG primary: gravestone Milton Cem PA, 'died Dec 18 1854 aged 85' (= b. ~1769) plus joint burial with wife Amy 'died Nov 25 1830 aged 60' (=…"
+  },
+  {
+    "id": "cp_ens_063",
+    "name": "Rutgert Covenhoven",
+    "nameFull": "Rutgert Covenhoven",
+    "nameVariations": "Rutes Covenhoven (per Calendar of NJ Wills 1807 will rendering); Rutgert Conover; Rut Covenhoven (per father Lucas Willemse's 1777 will); Rutgers Covenhoven",
+    "dates": "1750–1809",
+    "birthYear": 1750,
+    "deathYear": 1809,
+    "town": "East Windsor",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 4,
+    "clusterLabel": "Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "cluster": "C4 · Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "East Windsor Township, Middlesex Co. NJ (now part of Mercer Co.)",
+    "occupation": "Soldier (Middlesex County Militia, NJ Militia, American Revolution)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "rutgert-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "MINTED 2026-05-10 (session: 9 (none)-bucket enslaver attribution arc). **NEW MINT — upgraded from planned cp_fam to cp_ens after Active sheet scan revealed his 1807 will named 2 enslaved persons.** Brother of cp_ens_035 Lucas (Luke) Conover — both sons of cp_fam_143 Lucas Willemse Couwenhoven (b.1716, d.1777 Windsor NJ). Named in father's 1777 will: 'Son,…"
+  },
+  {
+    "id": "cp_fam_159",
+    "name": "Samuel Jansen Van Couwenhoven",
+    "nameFull": "Samuel⁵ Jansen Van Couwenhoven (Cocheu #264)",
+    "nameVariations": "Samuel Jansen Van Couwenhoven; Samuel Covenhoven of Hackensack (1783 BLD signature variant); Samuel Cowenhoven",
+    "dates": "1712–1783",
+    "birthYear": 1712,
+    "deathYear": 1783,
+    "town": "Hackensack",
+    "section": "Hackensack / Bergen",
+    "sectionFull": "Hackensack and Bergen County, New Jersey",
+    "clusterNum": 14,
+    "clusterLabel": "Hackensack — Jacob branch outpost",
+    "cluster": "C14 · Hackensack — Jacob branch outpost",
+    "county": "Bergen",
+    "state": "NJ",
+    "countyFull": "Bergen County, NJ",
+    "residence": "Hackensack, Bergen County, New Jersey (joined Schraalenburg DRC 1759). Parents Johannes⁴ + Rachel Benson removed from Harlem NY and joined Hackensack DRC 1718-07-06 (Cocheu 71:4) — established the Hackensack residency.",
+    "occupation": "(pending — likely yeoman/farmer; will-class wealth implied by 1781 will dated 23 months before probate)",
+    "generation": "5",
+    "branch": "Jacob",
+    "cocheu": "",
+    "slug": "samuel-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 1,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 1,
+    "notes": "PROMOTED 2026-05-17 from cp_fam_159 (FAMILY) to ENSLAVER status via Jack (cp_per_232) 1783 Black Loyalist Directory registration. Per 5/17 mixed-prefix convention: cp_fam_159 row MOVED from FAMILY to ENSLAVER, PID unchanged. Pre-move stale-ref scan identified 12 PID-based references across sibling rows (cp_fam_157, 158, 160-166) + father cp_fam_083 childr…"
+  },
+  {
+    "id": "cp_fam_056",
+    "name": "Sarah (Cowenhoven) Lefferts",
+    "nameFull": "Sarah (Cowenhoven) Lefferts",
+    "nameVariations": "Sarah Cowenhoven (maiden); Sarah Covenhoven; Sarah Lefferts (married)",
+    "dates": "1775–1856",
+    "birthYear": 1775,
+    "deathYear": 1856,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Brooklyn, Kings County, NY (inferred from Bedford-Cowenhoven family network and 1809-1810 documentary record)",
+    "occupation": "",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "651(e) · p. 83",
+    "slug": "sarah-cowenhoven-lefferts",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 0,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 0,
+    "notes": "MINTED 2026-04-28 PM. Sister of Bedford Nicholas (cp_ens_005) per the 1809 will text naming \"my sister Sarah & John Lefferts.\" Mother assumed Magdalene Van Vechten per Chris 2026-04-28 (Rem's 1st wife and documented mother of cp_ens_005); 2nd-wife identity for Rem still pending. Birth/death/marriage dates not yet sourced. Husband John Lefferts minted as c…"
+  },
+  {
+    "id": "cp_ens_075",
+    "name": "Theodorus Covenhoven",
+    "nameFull": "Theodorus⁶ Covenhoven",
+    "nameVariations": "Theodorus Covenhoven (will signature 1815/1826); Theodorus⁶ (Cocheu #340 numbering); Theodore Conover (anticipated anglicized variant on later collateral records)",
+    "dates": "1733–1825",
+    "birthYear": 1733,
+    "deathYear": 1825,
+    "town": "Englishtown",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Englishtown, Freehold Twp, Monmouth Co. NJ — joint household with brother William P. Covenhoven (cp_ens_067) on the homestead farm/plantation; jointly owned Grist Mill at Englishtown + Smock farm + livestock + household goods + the enslaved persons Lewis (cp_per_257) and George (cp_per_258)",
+    "occupation": "Co-owner of Grist Mill at Englishtown + landed proprietor (joint with brother William P. Covenhoven)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "340 · p. 34",
+    "slug": "theodorus-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "NEW MINT 2026-05-25. Previously cross-referenced only in cp_ens_067 related_enslavers as 'Sibling|#340 Theodorus⁶ (bachelor, will NJ Wills 9645M)' — now upgraded to own cp_ens_075 row. Testator + co-enslaver brother of cp_ens_067. Lived in joint household with brother William P. per Cocheu #340: 'we do know from his brother William's will that Theodorus l…"
+  },
+  {
+    "id": "cp_ens_038",
+    "name": "Thomas Covenhoven of Middletown",
+    "nameFull": "Thomas Covenhoven",
+    "nameVariations": "Thomas Covenhoven (1810 manumission deed signature, of Middletown); Thomas Covenhoven of Middletown Township (Farmer) (1806 + 1808 BBB certificates)",
+    "dates": "1767–1836",
+    "birthYear": 1767,
+    "deathYear": 1836,
+    "town": "Middletown",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Middletown Township, Monmouth County, New Jersey",
+    "occupation": "Farmer (per Slave Birth Book filings 1806 + 1808; no occupation stated on 1810 manumission deed — period-occupation rule satisfied: no conflict)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "thomas-covenhoven-of-middletown",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 4,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 4,
+    "notes": "Identified 2026-05-05 from the 1810-01-06 manumission of Joe (cp_eve_077, OPRSFile-24.pdf = Manumission Book pp. 119-120). Same-person identification with the BBB Thomas Covenhoven of Middletown (Farmer) is high-confidence: same first name, same Middletown Township, same Monmouth County, time period overlaps (1806-1810 at minimum). Period-occupation disam…"
+  },
+  {
+    "id": "cp_ens_011",
+    "name": "William Albertse Couwenhoven",
+    "nameFull": "William Albertse Couwenhoven",
+    "nameVariations": "William A. Covenhoven of Freehold (baptism record rendering); William Couwenhoven; Willem Albertse Couwenhoven; Willem Couwenhoven; Willem Albertse Van Couwenhoven (FS LT96-5F1 rendering — Chris-shared screenshot 2026-05-10)",
+    "dates": "1702–1790",
+    "birthYear": 1702,
+    "deathYear": 1790,
+    "town": "Manalapan",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Manalapan (then Manalapin), Monmouth County, NJ (per Cocheu 82:1 #146 [cp_sou_054])",
+    "occupation": "Farmer (per family records)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "146 · p. 46",
+    "slug": "william-albertse-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 4,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 4,
+    "notes": "Eldest son of cp_ens_002 Albert Willemse Couwenhoven and Neeltje Roelofse Schenck; older brother of cp_ens_003 Cornelius Albertse Couwenhoven (1728-1802) — born 26 years apart, both sons of Albert. William continues the NJ-blossoming branch of the Willem-Gerritsz line (cp_fam_007 → cp_ens_002 → cp_ens_011), in deliberate contrast to the Brooklyn/New Utrec…"
+  },
+  {
+    "id": "cp_ens_066",
+    "name": "William B. Covenhoven",
+    "nameFull": "William B. Covenhoven",
+    "nameVariations": "William B Covenhoven; William Benjamin Conover; William B.⁷ Covenhoven; Wm B Covenhoven; 'William B.' in 1805-05-10 BBB filings; Cocheu lists as 'William B.⁷' under entry #443",
+    "dates": "1752–1807",
+    "birthYear": 1752,
+    "deathYear": 1807,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Monmouth Co. NJ (Freehold area — 1805-05-10 BBB filings filed in Monmouth)",
+    "occupation": "",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "william-b-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "PROMOTED 2026-05-12 from cp_fam_229 (now retired). Cocheu 82:1 #443 primary-source identifies him as William B.⁷ b. 1752-06-03, son of Benjamin⁶ #443 (b.1726 d.1800 intestate) + Catherine Wyckoff. Workbook previously misattributed father as Peter Jacobse Couwenhoven II cp_fam_132 + mother as Catherine Schenck — both CORRECTED via primary source 2026-05-12…"
+  },
+  {
+    "id": "cp_ens_054",
+    "name": "William Covenhoven (of West Windsor)",
+    "nameFull": "William Covenhoven (of West Windsor)",
+    "nameVariations": "William Conover (Anglicized form, used in 1801 runaway ad in True American newspaper); William Covenhoven of West Windsor (project canonical, per Active R185 col Z); William Covenhoven of Middlesex County (period press style)",
+    "dates": "born 1781",
+    "birthYear": 1781,
+    "deathYear": null,
+    "town": "West Windsor",
+    "section": "Windsor & South Amboy",
+    "sectionFull": "Windsor and South Amboy, Middlesex County, New Jersey",
+    "clusterNum": 4,
+    "clusterLabel": "Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "cluster": "C4 · Windsor / South Amboy / East Windsor — Lucas Willemse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "West Windsor Township, Middlesex County, New Jersey (\"near Princeton, in Middlesex county\" per his 1801 runaway ad in True American Apr 14 1801; \"of West Windsor, Middlesex County, NJ\" per Active R185 col Z 1814 NJ Supreme Court HC case)",
+    "occupation": "(pending — likely yeoman/farmer for West Windsor landholder of his generation)",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "william-covenhoven-of-west-windsor",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 3,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "MINTED 2026-05-08 PHASE 3B per Chris approval. Defendant in 1814 NJ Supreme Court Case 34538* (Phebe + Eliza Habeas Corpus, cp_eve_148). Identification anchored by: (a) RESIDENCE — Active R185 col Z reads 'William Covenhoven of West Windsor, Middlesex County, NJ' for the 1814 HC defendant; (b) PRIOR HISTORY — same name + same county appears in 1801 True A…"
+  },
+  {
+    "id": "cp_ens_026",
+    "name": "William Kouwenhoven",
+    "nameFull": "William Kouwenhoven",
+    "nameVariations": "William Cowenhoven (1790 census rendering); William Couwenhoven; William Howenhoven (1810 census transcription drift, FS XH2T-D9D); possibly Wm Covenhwen (1820 Flatbush, FS XHGZ-X28 — pending continuity confirmation); William Kouwenhoven (FS L6MR-8DT — canonical post-1825 spelling); per feedback_kouwenhoven_no_r.md the Flatlands-branch surname is K-o-u-w-e-n-h-o-v-e-n, no R",
+    "dates": "1758–1825",
+    "birthYear": 1758,
+    "deathYear": 1825,
+    "town": "Flatlands",
+    "section": "Flatlands",
+    "sectionFull": "Town of Flatlands, Kings County, New York",
+    "clusterNum": 1,
+    "clusterLabel": "Flatlands — Willem line",
+    "cluster": "C1 · Flatlands — Willem line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Flatlands, Kings County, New York (PRIMARY: father Gerret Willemse Kouwenhoven cp_ens_027 1777 will named him as resident son and executor; own 1790 US Census attestation; FS marriage record places marriage at Flatlands 1778-12-12; lifetime Flatlands resident per FS death-place Flatlands Neck)",
+    "occupation": "Farmer (per joint inheritance of home farm \"on the South Side\" with elder brother Peter, from father Gerret Willemse Kouwenhoven cp_ens_027 1777 will; co-tenancy with mother Antie during her widowhood; \"farmer\" attribution also confirmed manuscript-direct by clerk's preamble on cp_eve_115 1800 birth cert). Town Clerk of Flatlands (per Chris's external attestation 2026-05-07 — William signed as Town Clerk on other Flatlands births/manumissions not yet ingested into this dataset; in EVERY record currently in this dataset he appears as enslaver-of-record only, with Ulpianus Vansinderen serving as the contemporaneous Town Clerk who recorded William's enslaver-signed certs cp_eve_115/117/119/121/124/126 1800-1808; succession of cp_ens_029 son Garret as Town Clerk 1815-1817 is independently manuscript-confirmed via 'Gerrit Kouwenhoven Town Clerk' enslaver designation on Garret's 6 BOTR records).",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "william-kouwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 8,
+    "unnamedCount": 10,
+    "unnamedUnknown": false,
+    "peopleTotal": 18,
+    "notes": "Identity MATCH-confirmed 2026-04-26 via father Gerret's 1777 will (NYSA J0038-92 SS2 2869) + FS L6MR-8DT cross-reference + Chris's magnified close-ups of pages 1, 4, 5-bottom. Lineage primary-confirmed: cp_fam_007 Willem Gerritsz (great-grandfather, 1636-1728) → cp_fam_054 Willem Willemse (grandfather, 1686-1769) → cp_ens_027 Gerret Willemse (father, 1726…"
+  },
+  {
+    "id": "cp_ens_067",
+    "name": "William P. Conover",
+    "nameFull": "William P. (Covenhoven) Conover",
+    "nameVariations": "William P. Covenhoven (DAR A026785; 1805 BBB filings); William P. Conover (WikiTree Covenhoven-68 canonical post-anglicization); Willem Pieterse Covenhoven (Dutch full patronymic form); William Cowenhoven (FS MN59-Y5N earlier rendering); William Kowenhoven (per brother Theodorus⁶'s 1815/1826 will)",
+    "dates": "1735–1823",
+    "birthYear": 1735,
+    "deathYear": 1823,
+    "town": "Englishtown",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William; ... owned the mill property, which he left to his son, Samuel')",
+    "occupation": "Farmer + mill-owner (Cocheu); Pvt 1st Regt Monmouth Co. Militia 1776+ (DAR)",
+    "generation": "6",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "william-p-conover",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 5,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "NEW MINT 2026-05-12. 6-source MATCH triangulation: DAR A026785 + WikiTree Covenhoven-68 + Cocheu 81:3 #341 + FS MN59-Y5N + FaG 14357159 + NJ Wills 9486M (cited but text not yet pulled). Patronymic rule: P. = Pieterse via father Willem Pieterse's hereditary patronymic-suffix (since father+son share first name 'William' the middle initial disambiguates via…"
+  },
+  {
+    "id": "cp_ens_052",
+    "name": "William W. Covenhoven Jr.",
+    "nameFull": "William W. Covenhoven Jr.",
+    "nameVariations": "William W. Conover (tombstone, FindAGrave); William W. Covenhoven (1814 cert filing); Wm. W. Conover",
+    "dates": "1783–1837",
+    "birthYear": 1783,
+    "deathYear": 1837,
+    "town": "South Brunswick",
+    "section": "South Brunswick",
+    "sectionFull": "South Brunswick Township, Middlesex County, New Jersey",
+    "clusterNum": 5,
+    "clusterLabel": "South Brunswick — William Albertse outpost",
+    "cluster": "C5 · South Brunswick — William Albertse outpost",
+    "county": "Middlesex",
+    "state": "NJ",
+    "countyFull": "Middlesex County, NJ",
+    "residence": "South Brunswick Township, Middlesex County, New Jersey (per 1814 cert filings; buried at family church Brainerd Cemetery, Cranbury)",
+    "occupation": "Farmer",
+    "generation": "7",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "william-w-covenhoven-jr",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 4,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 4,
+    "notes": "DISAMBIGUATION: Distinct from father William W. Covenhoven Sr. (1742-1803, FS G7FD-FG8). The 1814 cert post-dates Sr.'s death by 11 years, so the 'William W. Covenhoven of South Brunswick, Farmer' enslaver string on cp_eve_136/137 = Jr. by elimination (per pre-1803 → Sr. / post-1803 → Jr. discipline). Family church = First Presbyterian Cranbury (same as b…"
+  },
+  {
+    "id": "cp_ens_055",
+    "name": "Wyckoff Covenhoven",
+    "nameFull": "Wyckoff Covenhoven",
+    "nameVariations": "Wikoff Conover (cp_eve_079 1810 manumission); Wikoff Covenhoven (1784 christening, FS); Wiekoff Conover (1853 daughter Eleanor death entry); Wychoff Conover (1853 daughter Ellen death entry); Wicoff Conover (Find a Grave 14356812); Wyckoff Conover or Covenhoven (FS alternate name); Gusset Conover (probable transcription error, NJ County Marriages)",
+    "dates": "1783–1833",
+    "birthYear": 1783,
+    "deathYear": 1833,
+    "town": "Freehold",
+    "section": "Greater Freehold",
+    "sectionFull": "Greater Freehold Township, Monmouth County, New Jersey",
+    "clusterNum": 3,
+    "clusterLabel": "Freehold / Old Tennent — Albert Willemse line",
+    "cluster": "C3 · Freehold / Old Tennent — Albert Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Freehold Township, Monmouth County, NJ (per cp_eve_079 1810 manumission location; christening + burial both at Tennent / Old Tennent Churchyard)",
+    "occupation": "(pending — likely yeoman/farmer for Freehold landholder of his generation)",
+    "generation": "8",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "wyckoff-covenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "namedCount": 2,
+    "unnamedCount": 0,
+    "unnamedUnknown": false,
+    "peopleTotal": 2,
+    "notes": "Birth-date discrepancy: FS KF5G-DBD records birth 1784-08-24 with sourced christening 1784-10-31 Old Tennent (cannot post-date birth). FaG 14356812 reads birth 13 Dec 1783 (internally consistent with age-at-death 49y 4m 21d). FS-anchored 1784 held primary; FaG 1783 may reflect headstone wear or transcription. Resolve via headstone re-read if SSV/Tennent v…"
+  }
+];
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+window.__NAMED_TOTAL__ = 234;
+// === Helpers ===
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function uniqueSorted(field) {
+  return [...new Set(DATA.map(d => d[field]).filter(v => v && v !== ""))].sort((a, b) => a.localeCompare(b));
+}
+function escapeHTML(s) {
+  if (s === null || s === undefined) return "";
+  return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+}
+
+// === Populate filter dropdowns ===
+function fillSelect(id, vals) {
+  const sel = $(id);
+  for (const v of vals) {
+    const opt = document.createElement("option");
+    opt.value = v; opt.textContent = v;
+    sel.appendChild(opt);
+  }
+}
+// Cluster filter: value = cluster number, text = "C# · full label", ordered by number.
+(function fillClusterFilter() {
+  const seen = {};
+  DATA.forEach(d => { if (d.clusterNum != null) seen[d.clusterNum] = d.cluster; });
+  const sel = $("#f-cluster");
+  Object.keys(seen).map(Number).sort((a, b) => a - b).forEach(num => {
+    const opt = document.createElement("option");
+    opt.value = String(num); opt.textContent = seen[num];
+    sel.appendChild(opt);
+  });
+})();
+fillSelect("#f-town", uniqueSorted("town"));
+fillSelect("#f-county", uniqueSorted("countyFull"));
+
+// === Stats ===
+$("#stat-total").textContent = DATA.length;
+$("#stat-towns").textContent = new Set(DATA.map(d => d.town).filter(Boolean)).size;
+$("#stat-named").textContent = (window.__NAMED_TOTAL__ != null) ? window.__NAMED_TOTAL__ : DATA.reduce((a, d) => a + (d.namedCount || 0), 0);
+$("#stat-sections").textContent = new Set(DATA.map(d => d.clusterNum).filter(v => v != null)).size;
+$("#result-total").textContent = DATA.length;
+
+// === Sort state ===
+let sortKey = "name";
+let sortDir = 1;
+
+function applyFilters() {
+  const q = $("#q").value.trim().toLowerCase();
+  const fCluster = $("#f-cluster").value;
+  const fTown = $("#f-town").value;
+  const fCounty = $("#f-county").value;
+  const onlyUnnamed = $("#f-unnamed").checked;
+  return DATA.filter(e => {
+    if (q) {
+      const hay = [e.name, e.nameFull, e.nameVariations, e.residence, e.town, e.countyFull,
+                   e.occupation, e.cluster, e.notes, e.id].join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (fCluster && String(e.clusterNum) !== fCluster) return false;
+    if (fTown && e.town !== fTown) return false;
+    if (fCounty && e.countyFull !== fCounty) return false;
+    if (onlyUnnamed && !(e.unnamedCount > 0 || e.unnamedUnknown)) return false;
+    return true;
+  });
+}
+
+function sortRows(rows) {
+  return [...rows].sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (sortKey === "birthYear" || sortKey === "peopleTotal" || sortKey === "clusterNum") {
+      av = (av == null ? -Infinity : av); bv = (bv == null ? -Infinity : bv);
+      return (av - bv) * sortDir;
+    }
+    av = (av || "").toString().toLowerCase();
+    bv = (bv || "").toString().toLowerCase();
+    if (av < bv) return -1 * sortDir;
+    if (av > bv) return 1 * sortDir;
+    return 0;
+  });
+}
+
+function nameCellHTML(e) {
+  // Plain name + PID (no hyperlink) — mirrors how the Index of Individuals shows names.
+  // Navigation to the bio lives as a button in the expanded detail pane.
+  const nm = escapeHTML(e.name);
+  const bioBadge = e.onCard ? '<span class="badge carded">bio</span>' : '';
+  const tag = e.onCard ? '' : (e.nonVKC
+        ? '<span class="nonvkc-tag">(non-VKC · no bio)</span>'
+        : '<span class="nonvkc-tag">(no bio yet)</span>');
+  return `${nm}${bioBadge}<span class="pid">${e.id}</span>${tag}`;
+}
+
+function peopleEnslavedText(e) {
+  // "N named / M unnamed" from the Active sheet (named) + the UNNAMED sheet (counts).
+  // Zero counts are omitted; a record with an unrecorded total shows as "unknown".
+  const n = e.namedCount || 0;
+  const u = e.unnamedCount || 0;
+  const parts = [];
+  if (n > 0) parts.push(`${n} named`);
+  if (u > 0) parts.push(e.unnamedUnknown ? `${u}+ unnamed` : `${u} unnamed`);
+  else if (e.unnamedUnknown) parts.push("unknown unnamed");
+  return parts.join(" / ");
+}
+
+function peopleCellHTML(e) {
+  const txt = peopleEnslavedText(e);
+  return txt ? escapeHTML(txt) : '<span class="em-dash">—</span>';
+}
+
+function rowHTML(e) {
+  const dash = '<span class="em-dash">—</span>';
+  return `
+    <tr class="row" data-eid="${e.id}">
+      <td class="col-name">${nameCellHTML(e)}</td>
+      <td class="col-dates">${e.dates ? escapeHTML(e.dates) : dash}</td>
+      <td>${e.town ? escapeHTML(e.town) : dash}</td>
+      <td>${e.countyFull ? escapeHTML(e.countyFull) : dash}</td>
+      <td>${e.cluster ? escapeHTML(e.cluster) : dash}</td>
+      <td>${peopleCellHTML(e)}</td>
+    </tr>
+  `;
+}
+
+function detailHTML(e) {
+  const fld = (label, val, opts={}) => {
+    if (!val) return `<div class="blk"><h4>${label}</h4><span class="no-data">not recorded</span></div>`;
+    return `<div class="blk${opts.full ? ' full' : ''}"><h4>${label}</h4>${opts.html ? val : escapeHTML(val)}</div>`;
+  };
+  let actions = '<div class="detail-actions">';
+  if (e.onCard) {
+    actions += `<a class="primary" href="${ENSLAVER_CARD_BASE}${e.slug}" target="_blank" rel="noopener">View bio on the Enslavers page →</a>`;
+  } else {
+    actions += `<span class="no-data" style="margin-right:0.5rem;">${e.nonVKC ? 'Non-VKC — not on the Enslavers page' : 'No bio on the Enslavers page yet'}</span>`;
+  }
+  if (e.namedCount > 0) {
+    actions += `<a href="${INDIVIDUALS_BASE}${e.id}" target="_blank" rel="noopener">View the ${e.namedCount} named individual${e.namedCount === 1 ? '' : 's'} enslaved →</a>`;
+  }
+  actions += '</div>';
+  return `
+    <tr class="detail">
+      <td colspan="6">
+        <div class="detail-inner">
+          ${fld('Full name (workbook)', e.nameFull, {full: true})}
+          ${fld('Name variations', e.nameVariations, {full: true})}
+          ${fld('Town', e.town)}
+          ${fld('Residence (full)', e.residence)}
+          ${fld('Cluster', e.cluster)}
+          ${fld('Occupation', e.occupation)}
+          ${fld('Generation / branch', [e.generation, e.branch].filter(Boolean).join(' · '))}
+          ${fld('Cocheu reference', e.cocheu)}
+          ${fld('People enslaved (in dataset)', peopleEnslavedText(e))}
+          ${fld('Notes', e.notes, {full: true})}
+          ${actions}
+        </div>
+      </td>
+    </tr>
+  `;
+}
+
+function render() {
+  const filtered = sortRows(applyFilters());
+  $("#result-count").textContent = filtered.length;
+  const tbody = $("#tbody");
+  tbody.innerHTML = filtered.map(rowHTML).join("");
+  $$("th[data-sort]").forEach(th => {
+    th.classList.remove("sorted");
+    const arrow = th.querySelector(".arrow");
+    arrow.textContent = "↕";
+    if (th.dataset.sort === sortKey) {
+      th.classList.add("sorted");
+      arrow.textContent = sortDir === 1 ? "↑" : "↓";
+    }
+  });
+}
+
+// === Events ===
+["q","f-cluster","f-town","f-county","f-unnamed"].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener("input", render);
+  el.addEventListener("change", render);
+});
+$("#reset").addEventListener("click", () => {
+  $("#q").value = "";
+  ["f-cluster","f-town","f-county"].forEach(id => document.getElementById(id).value = "");
+  ["f-unnamed"].forEach(id => document.getElementById(id).checked = false);
+  sortKey = "name"; sortDir = 1;
+  render();
+});
+$$("th[data-sort]").forEach(th => {
+  th.addEventListener("click", () => {
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = -sortDir;
+    else { sortKey = k; sortDir = 1; }
+    render();
+  });
+});
+// Row expand on click (ignore clicks on links inside the row)
+document.addEventListener("click", e => {
+  if (e.target.closest("a")) return;
+  const row = e.target.closest("tr.row");
+  if (!row) return;
+  const tbody = $("#tbody");
+  const existing = tbody.querySelector("tr.detail");
+  const wasOpen = row.classList.contains("expanded");
+  if (existing) existing.remove();
+  $$("tr.row.expanded").forEach(r => r.classList.remove("expanded"));
+  if (wasOpen) return;
+  const eid = row.dataset.eid;
+  const ent = DATA.find(d => d.id === eid);
+  row.classList.add("expanded");
+  row.insertAdjacentHTML("afterend", detailHTML(ent));
+});
+
+// Initial render
+render();
+</script>
+</body>
+</html>
