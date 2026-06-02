@@ -12458,6 +12458,9 @@ let sortKey = "name";
 let sortDir = 1; // 1 asc, -1 desc
 
 // === Render ===
+// Deep-link filter: when ?person=cp_per_NNN is present, restrict to that one
+// individual (set by applyPersonFromURL below). Drives links from the infographic.
+let personFilter = "";
 function applyFilters() {
   const q = $("#q").value.trim().toLowerCase();
   const fCounty = $("#f-county").value;
@@ -12472,6 +12475,7 @@ function applyFilters() {
   const onlyUnidentified = $("#f-unidentified").checked;
 
   return DATA.filter(p => {
+    if (personFilter && p.id !== personFilter) return false;
     if (q) {
       const allEnsNames = Array.isArray(p.enslavers) ? p.enslavers.map(e => e.name).join(" ") : "";
       const hay = [p.name, p.altNames, p.locationRaw, p.locality, p.source, p.description,
@@ -12698,6 +12702,25 @@ document.addEventListener("click", e => {
   if (!pid) return;
   const sel = $("#f-enslaver");
   if ([...sel.options].some(o => o.value === pid)) sel.value = pid;
+})();
+
+// ?person=cp_per_NNN — restrict to a single individual (deep link from the
+// infographic's multi-event / resistance lists). Shows a clearable banner.
+(function applyPersonFromURL() {
+  const pid = new URLSearchParams(location.search).get("person");
+  if (!pid) return;
+  const person = DATA.find(p => p.id === pid);
+  if (!person) return;
+  personFilter = pid;
+  const banner = $("#enslaver-banner");
+  banner.innerHTML = `Showing <b>${escapeHTML(person.name)}</b> `
+    + `<span class="pid" style="display:inline">[${pid}]</span>`
+    + `<a id="clear-person">show all individuals</a>`;
+  banner.style.display = "";
+  const clr = document.getElementById("clear-person");
+  if (clr) clr.addEventListener("click", () => {
+    personFilter = ""; banner.style.display = "none"; banner.innerHTML = ""; render();
+  });
 })();
 
 // Initial render
