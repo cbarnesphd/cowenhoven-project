@@ -63,15 +63,15 @@
   /* -- ENSLAVERS -- */
   .cwi .cwi-enslaver-list { margin-top: 12px; }
   .cwi .cwi-enslaver-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .cwi .cwi-enslaver-name { font-family: 'Cardo', Georgia, serif; font-size: 17px; color: #F1EADC; width: 230px; flex-shrink: 0; display: flex; flex-direction: column; line-height: 1.25; }
-  .cwi .cwi-enslaver-name-main { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cwi .cwi-enslaver-name { font-family: 'Cardo', Georgia, serif; font-size: 17px; color: #F1EADC; width: 250px; flex-shrink: 0; display: flex; flex-direction: column; line-height: 1.25; }
+  .cwi .cwi-enslaver-name-main { }
   .cwi .cwi-enslaver-name-dates { font-size: 14px; color: #EAB48A; font-style: italic; margin-top: 2px; }
   .cwi .cwi-enslaver-name-place { font-size: 14px; color: #F1EADC; margin-top: 1px; }
   .cwi .cwi-enslaver-track { flex: 1; background: #5A1E0E; border-radius: 2px; height: 14px; overflow: hidden; }
   .cwi .cwi-enslaver-fill { height: 100%; background: linear-gradient(90deg, #C07040, #FFB347); border-radius: 2px; }
   .cwi .cwi-enslaver-link { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(241,234,220,0.35); }
   .cwi .cwi-enslaver-link:hover { border-bottom-color: #FFB347; color: #FFD89B; }
-  .cwi .cwi-enslaver-people { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0; width: 44px; text-decoration: none; color: inherit; }
+  .cwi .cwi-enslaver-people { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; text-decoration: none; color: inherit; }
   .cwi .cwi-people-circle { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #EFC44C; color: #5A1E0E; font-family: 'Cardo', Georgia, serif; font-weight: 700; font-size: 15px; line-height: 1; flex-shrink: 0; }
   .cwi .cwi-people-word { font-size: 11px; color: #F0C8A0; text-align: center; }
   .cwi .cwi-enslaver-people:hover .cwi-people-circle { background: #FFD89B; }
@@ -178,7 +178,7 @@
       <a class="cwi-stat-link" href="https://data.cowenhoven.org/index-of-enslavers/" target="_blank" rel="noopener" title="Explore the Index of Enslavers">
         <div class="cwi-number">66</div>
         <div class="cwi-label">Enslavers Identified</div>
-        <div class="cwi-sub">documented evidence</div>
+        <div class="cwi-sub">using primary source evidence</div>
       </a>
     </div>
     <div class="cwi-stat-card">
@@ -660,7 +660,6 @@
       + (e.dates ? '<span class="cwi-enslaver-name-dates">'+e.dates+'</span>' : '')
       + (e.place ? '<span class="cwi-enslaver-name-place">'+e.place+'</span>' : '')
       + '</div>'
-      + '<div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:'+pct+'%"></div></div>'
       + numCell;
     listEl.appendChild(row);
   });
