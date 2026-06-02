@@ -134,10 +134,10 @@
 </head>
 <body>
 <div class="wrap">
-  <p class="eyebrow">The Cowenhoven Project</p>
+  <p class="eyebrow"><a href="https://cowenhoven.org/enslavers/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Cowenhoven Project</a></p>
   <h1>Index of Enslavers</h1>
   <p class="subtitle">The documented members of the Van Kouwenhoven–Conover family who held people in bondage</p>
-  <p class="meta">Open any enslaver for their bio on the Enslavers page and the people they enslaved</p>
+  <p class="meta">Open any enslaver for their bio on the Enslaver Bios page and the people they enslaved</p>
 
   <div class="stats">
     <div class="stat"><b id="stat-total">—</b><span class="dim">documented enslavers</span></div>
@@ -2375,9 +2375,9 @@ function detailHTML(e) {
   };
   let actions = '<div class="detail-actions">';
   if (e.onCard) {
-    actions += `<a class="primary" href="${ENSLAVER_CARD_BASE}${e.slug}" target="_blank" rel="noopener">View bio on the Enslavers page →</a>`;
+    actions += `<a class="primary" href="${ENSLAVER_CARD_BASE}${e.slug}" target="_blank" rel="noopener">View bio on the Enslaver Bios page →</a>`;
   } else {
-    actions += `<span class="no-data" style="margin-right:0.5rem;">${e.nonVKC ? 'Non-VKC — not on the Enslavers page' : 'No bio on the Enslavers page yet'}</span>`;
+    actions += `<span class="no-data" style="margin-right:0.5rem;">${e.nonVKC ? 'Non-VKC — not on the Enslaver Bios page' : 'No bio on the Enslaver Bios page yet'}</span>`;
   }
   if (e.namedCount > 0) {
     actions += `<a href="${INDIVIDUALS_BASE}${e.id}" target="_blank" rel="noopener">View the ${e.namedCount} named individual${e.namedCount === 1 ? '' : 's'} enslaved →</a>`;
