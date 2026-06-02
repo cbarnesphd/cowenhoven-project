@@ -15,6 +15,9 @@
   /* -- STAT CARDS -- */
   .cwi .cwi-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 44px; }
   .cwi .cwi-stat-card { background: #9E4230; border: 1px solid #B55A40; border-top: 3px solid #EFC44C; border-radius: 4px; padding: 22px 16px 20px; text-align: center; }
+  .cwi .cwi-stat-link { display: block; color: inherit; text-decoration: none; }
+  .cwi .cwi-stat-link:hover .cwi-number { color: #FFD89B; }
+  .cwi .cwi-stat-link:hover .cwi-label { text-decoration: underline; }
   .cwi .cwi-stat-card .cwi-number { font-family: 'Cardo', Georgia, serif; font-size: 48px; font-weight: 700; color: #EFC44C; line-height: 1; margin-bottom: 8px; }
   .cwi .cwi-stat-card .cwi-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #FFFFFF; line-height: 1.4; }
   .cwi .cwi-stat-card .cwi-sub { font-family: 'Cardo', Georgia, serif; font-size: 14px; font-style: italic; color: #FFFFFF; margin-top: 5px; }
@@ -66,7 +69,13 @@
   .cwi .cwi-enslaver-name-place { font-size: 14px; color: #F1EADC; margin-top: 1px; }
   .cwi .cwi-enslaver-track { flex: 1; background: #5A1E0E; border-radius: 2px; height: 14px; overflow: hidden; }
   .cwi .cwi-enslaver-fill { height: 100%; background: linear-gradient(90deg, #C07040, #FFB347); border-radius: 2px; }
-  .cwi .cwi-enslaver-num { font-size: 13px; color: #FFFFFF; font-weight: 700; width: 24px; text-align: right; flex-shrink: 0; }
+  .cwi .cwi-enslaver-link { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(241,234,220,0.35); }
+  .cwi .cwi-enslaver-link:hover { border-bottom-color: #FFB347; color: #FFD89B; }
+  .cwi .cwi-enslaver-people { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0; width: 44px; text-decoration: none; color: inherit; }
+  .cwi .cwi-people-circle { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #EFC44C; color: #5A1E0E; font-family: 'Cardo', Georgia, serif; font-weight: 700; font-size: 15px; line-height: 1; flex-shrink: 0; }
+  .cwi .cwi-people-word { font-size: 11px; color: #F0C8A0; text-align: center; }
+  .cwi .cwi-enslaver-people:hover .cwi-people-circle { background: #FFD89B; }
+  .cwi .cwi-enslaver-people:hover .cwi-people-word { color: #F1EADC; text-decoration: underline; }
 
   /* -- SOURCE PANEL -- */
   .cwi .cwi-source-panel { background: #8E3825; border: 1px solid #B05040; border-radius: 4px; padding: 28px 24px; margin-bottom: 28px; }
@@ -154,9 +163,11 @@
   <!-- STAT CARDS -->
   <div class="cwi-stat-grid">
     <div class="cwi-stat-card">
-      <div class="cwi-number">271</div>
-      <div class="cwi-label">Named Individuals</div>
-      <div class="cwi-sub">documented to date</div>
+      <a class="cwi-stat-link" href="https://data.cowenhoven.org/index-of-individuals/" target="_blank" rel="noopener" title="Explore the Index of Individuals">
+        <div class="cwi-number">271</div>
+        <div class="cwi-label">Named Individuals</div>
+        <div class="cwi-sub">documented to date</div>
+      </a>
     </div>
     <div class="cwi-stat-card">
       <div class="cwi-number">100+</div>
@@ -164,14 +175,18 @@
       <div class="cwi-sub">1736 - 1840</div>
     </div>
     <div class="cwi-stat-card">
-      <div class="cwi-number">67</div>
-      <div class="cwi-label">Enslavers Identified</div>
-      <div class="cwi-sub">documented evidence</div>
+      <a class="cwi-stat-link" href="https://data.cowenhoven.org/index-of-enslavers/" target="_blank" rel="noopener" title="Explore the Index of Enslavers">
+        <div class="cwi-number">66</div>
+        <div class="cwi-label">Enslavers Identified</div>
+        <div class="cwi-sub">documented evidence</div>
+      </a>
     </div>
     <div class="cwi-stat-card">
-      <div class="cwi-number">18</div>
-      <div class="cwi-label">Towns</div>
-      <div class="cwi-sub">in 7 counties across<br>New York &amp; New Jersey</div>
+      <a class="cwi-stat-link" href="https://data.cowenhoven.org/cluster-map/" target="_blank" rel="noopener" title="Explore the Cluster Map">
+        <div class="cwi-number">18</div>
+        <div class="cwi-label">Towns</div>
+        <div class="cwi-sub">in 7 counties across<br>New York &amp; New Jersey</div>
+      </a>
     </div>
   </div>
 
@@ -215,6 +230,11 @@
         <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:49.4%;background:linear-gradient(90deg,#9B2335,#E05C7A);">49.4%</div></div>
         <div class="cwi-gender-count">133</div>
       </div>
+      <div class="cwi-gender-row">
+        <div class="cwi-gender-label">Silent</div>
+        <div class="cwi-gender-track"><div class="cwi-gender-fill" style="width:2%;background:linear-gradient(90deg,#555555,#999999);">&nbsp;</div></div>
+        <div class="cwi-gender-count">2</div>
+      </div>
 
       <hr class="cwi-divider" style="margin:20px 0 16px;">
       <div class="cwi-section-title">Ages at Time of Record</div>
@@ -248,7 +268,7 @@
   <div class="cwi-two-col">
     <div class="cwi-panel">
       <div class="cwi-section-title">Largest Enslavers and the People They Enslaved</div>
-      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 67 enslavers with documented or inheritance-chain evidence across the Van Kouwenhoven-Conover family (unproven and non-family figures excluded)).</div>
+      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 66 enslavers with documented or inheritance-chain evidence across the Van Kouwenhoven-Conover family (unproven and non-family figures excluded)).</div>
       <div class="cwi-enslaver-list" id="cwiEnslaverList"></div>
     </div>
 
@@ -275,13 +295,13 @@
       <div style="display:flex; gap:12px; align-items:center; background:#5A1E0E; border-radius:4px; padding:14px 16px;">
         <div style="font-size:38px; font-family:'Cardo',Georgia,serif; color:#EFC44C; font-weight:700; line-height:1;">7</div>
         <div style="font-size:14px; color:#F0C8A0; line-height:1.6;">
-          <strong style="color:#F1EADC;">Jeffery Johnson</strong> (1777),
-          <strong style="color:#F1EADC;">Cain</strong> (1781),
-          <strong style="color:#F1EADC;">Anthony</strong> (1794),
-          <strong style="color:#F1EADC;">Harry</strong> (1801),
-          <strong style="color:#F1EADC;">Maria Philips</strong> (1827),
-          <strong style="color:#F1EADC;">Peter</strong> (1838), and
-          <strong style="color:#F1EADC;">Frank</strong> (1825) who was captured and imprisoned, a reminder that many self-emancipation efforts were unsuccessful and could have dire consequences.
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_038" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Jeffery Johnson</a></strong> (1777),
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_039" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Cain</a></strong> (1781),
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_199" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Anthony</a></strong> (1794),
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_129" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Harry</a></strong> (1801),
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_040" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Maria Philips</a></strong> (1827),
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_198" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Peter</a></strong> (1838), and
+          <strong style="color:#F1EADC;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_186" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Frank</a></strong> (1825) who was captured and imprisoned, a reminder that many self-emancipation efforts were unsuccessful and could have dire consequences.
         </div>
       </div>
 
@@ -312,43 +332,43 @@
       <div class="cwi-section-desc">10 individuals documented through more than one kind of record</div>
       <div style="margin-top:10px; display:flex; flex-direction:column; gap:18px;">
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Harry (the elder)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_052" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Harry (the elder)</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Harry (the younger)</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_234" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Harry (the younger)</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Brooklyn, NY</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1782</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1783</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Sale</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1798</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Cezar</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_113" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Cezar</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Frank</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_123" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Frank</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Jack</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_124" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Jack</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Bet</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_125" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Bet</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Franklin, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1803</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Robert Conover</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_067" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Robert Conover</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Indenture</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Elias</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_206" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Elias</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Will</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Oliver Walters</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_077" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Oliver Walters</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Probate Inventory</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1832</div></div></div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_208" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Rachel</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;"><div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Birth</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div> <span style="color:#F0C8A0; font-size:14px;">&rarr;</span> <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:118px; min-height:38px; padding:5px 6px; background:#6A2818; border:1px solid #A04030; border-radius:5px; box-shadow:1px 1px 2px rgba(0,0,0,0.25);"><div style="font-family:'Cardo',Georgia,serif; font-size:12px; color:#F1EADC; font-weight:600; line-height:1.1; text-align:center;">Manumission</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1822</div></div></div>
         </div>
       </div>
@@ -359,7 +379,7 @@
       <div class="cwi-section-desc">10 mothers had multiple children registered under abolition-era statutes</div>
       <div style="margin-top:10px; display:flex; flex-direction:column; gap:18px;">
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Matt</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_153" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Matt</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Luis</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1805</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
@@ -368,7 +388,7 @@
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Betty</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_249" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Betty</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">George</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1815</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Loeser</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1817</div></div>
@@ -377,7 +397,7 @@
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Lucy</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_218" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Lucy</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Betty</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1812</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Rose</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
@@ -385,49 +405,49 @@
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rose</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_157" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Rose</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Middletown, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Samuel</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1806</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Jim</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Ann</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_165" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Ann</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Charlotte</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Elias</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1810</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Rachel</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_172" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Rachel</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Isaac</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1807</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Tom</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Sarah</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_213" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Sarah</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Monmouth County, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Sarah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1808</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Hannah</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Maria</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_217" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Maria</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Susan</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1814</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">James</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1816</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Kate</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_133" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Kate</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">South Brunswick, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Cyrus</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1811</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Pamele</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1813</div></div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;">Hagar</div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
+          <div style="display:flex; flex-direction:column; line-height:1.2;"><div style="font-family:'Cardo',Georgia,serif; font-size:16px; color:#F1EADC; font-weight:700;"><a href="https://data.cowenhoven.org/index-of-individuals/?person=cp_per_161" target="_blank" rel="noopener" title="See this person on the Index of Individuals" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(241,234,220,0.45); text-underline-offset:2px;">Hagar</a></div><div style="font-size:11px; color:#F0C8A0; margin-top:2px;">Freehold, NJ</div></div>
           <div style="display:flex; gap:7px; flex-wrap:wrap;">
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Rose</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1806</div></div>
             <div style="display:inline-flex; flex-direction:column; align-items:center; width:84px; padding:6px 4px; background:#6A2818; border:1px solid #A04030; border-radius:20px;"><div style="font-family:'Cardo',Georgia,serif; font-size:13px; color:#F1EADC; font-weight:600; line-height:1.1;">Abraham</div><div style="font-size:10px; color:#F0C8A0; margin-top:2px; font-style:italic;">1809</div></div>
@@ -480,7 +500,7 @@
       The Cowenhoven Project | <a href="https://cowenhoven.org">cowenhoven.org</a><br>
       Data drawn from the Cowenhoven Project Active Data Set | New York &amp; New Jersey | Pre-1865<br>
       This infographic represents 271 named individuals. A further 118 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
-      Version 3.6 &mdash; 31 May 2026
+      Version 3.8 &mdash; 1 June 2026
     </p>
   </div>
 
@@ -603,16 +623,18 @@
 
   // -- ENSLAVER BARS --
   var enslavers = [
-    { name: "John Covenhoven",            dates: "1733-1803", place: "Freehold, NJ",         count: 17 },
-    { name: "Nicholas Cowenhoven",        dates: "1768-1809", place: "Brooklyn, NY",         count: 11 },
-    { name: "John P. Covenhoven",         dates: "1740-1811", place: "Freehold, NJ",         count: 10 },
-    { name: "Garret Janse Covenhoven",    dates: "1726-1812", place: "Marlboro, NJ",         count: 9  },
-    { name: "William Kouwenhoven",        dates: "1758-1825", place: "Flatlands, NY",        count: 8  },
-    { name: "Cornelius A. Couwenhoven",   dates: "1728-1802", place: "Freehold, NJ",         count: 8  },
-    { name: "Johnson Cownover",           dates: "1781-1849", place: "South Brunswick, NJ",  count: 8  },
-    { name: "Garrett Cowenhoven",         dates: "1774-1840", place: "New Utrecht, NY",      count: 7  },
-    { name: "Rem Cowenhoven",             dates: "1734-1783", place: "Brooklyn, NY",         count: 7  },
-    { name: "Neeltje Williamson Covenhoven", dates: "1743-1830", place: "Freehold, NJ",      count: 7  }
+    { name: "John Covenhoven",            dates: "1733-1803", place: "Freehold, NJ",         count: 17, pid: "cp_ens_020", slug: "col-john-covenhoven" },
+    { name: "John R. Couwenhoven",        dates: "1761-1811", place: "Brooklyn, NY",         count: 12, pid: "cp_ens_008", slug: "john-r-couwenhoven" },
+    { name: "Nicholas Cowenhoven",        dates: "1768-1809", place: "Brooklyn, NY",         count: 11, pid: "cp_ens_005", slug: "nicholas-r-cowenhoven" },
+    { name: "John P. Covenhoven",         dates: "1740-1811", place: "Freehold, NJ",         count: 10, pid: "cp_ens_050", slug: "john-p-covenhoven" },
+    { name: "Garret Janse Covenhoven",    dates: "1726-1812", place: "Marlboro, NJ",         count: 9,  pid: "cp_ens_051", slug: "garret-janse-covenhoven-esq" },
+    { name: "William Kouwenhoven",        dates: "1758-1825", place: "Flatlands, NY",        count: 8,  pid: "cp_ens_026", slug: "william-kouwenhoven" },
+    { name: "Cornelius A. Couwenhoven",   dates: "1728-1802", place: "Freehold, NJ",         count: 8,  pid: "cp_ens_003", slug: "cornelius-albertse-couwenhoven" },
+    { name: "Johnson Cownover",           dates: "1781-1849", place: "South Brunswick, NJ",  count: 8,  pid: "cp_ens_049", slug: "johnson-cownover" },
+    { name: "Garrett Cowenhoven",         dates: "1774-1840", place: "New Utrecht, NY",      count: 7,  pid: "cp_ens_014", slug: "garrett-cowenhoven" },
+    { name: "Rem Cowenhoven",             dates: "1734-1783", place: "Brooklyn, NY",         count: 7,  pid: "cp_ens_006", slug: "rem-cowenhoven" },
+    { name: "Neeltje Williamson Covenhoven", dates: "1743-1830", place: "Freehold, NJ",      count: 7,  pid: "cp_ens_021", slug: "neeltje-williamson-covenhoven" },
+    { name: "William P. Conover",         dates: "1735-1823", place: "Englishtown, NJ",      count: 7,  pid: "cp_ens_067", slug: "william-p-conover" }
   ];
   var maxE = enslavers[0].count;
   var listEl = document.getElementById('cwiEnslaverList');
@@ -620,13 +642,26 @@
     var pct = Math.round((e.count / maxE) * 100);
     var row = document.createElement('div');
     row.className = 'cwi-enslaver-row';
+    // Name links to the enslaver's bio; the count links to the people they
+    // enslaved on the Index of Individuals. target="_blank" opens a new top-level
+    // tab (safe when this infographic is iframe-embedded on cowenhoven.org).
+    var nameMain = e.slug
+      ? '<a class="cwi-enslaver-link" href="https://cowenhoven.org/enslaver-bios/#'+e.slug+'" target="_blank" rel="noopener" title="Read the bio of '+e.name+'">'+e.name+'</a>'
+      : e.name;
+    // Count as a circular badge + the word "people" (singular "person"), the whole
+    // badge linking to the people they enslaved on the Index of Individuals.
+    var word = (e.count === 1 ? 'person' : 'people');
+    var badge = '<span class="cwi-people-circle">'+e.count+'</span><span class="cwi-people-word">'+word+'</span>';
+    var numCell = e.pid
+      ? '<a class="cwi-enslaver-people" href="https://data.cowenhoven.org/index-of-individuals/?enslaver='+e.pid+'" target="_blank" rel="noopener" title="See these people on the Index of Individuals">'+badge+'</a>'
+      : '<span class="cwi-enslaver-people">'+badge+'</span>';
     row.innerHTML = '<div class="cwi-enslaver-name">'
-      + '<span class="cwi-enslaver-name-main">'+e.name+'</span>'
+      + '<span class="cwi-enslaver-name-main">'+nameMain+'</span>'
       + (e.dates ? '<span class="cwi-enslaver-name-dates">'+e.dates+'</span>' : '')
       + (e.place ? '<span class="cwi-enslaver-name-place">'+e.place+'</span>' : '')
       + '</div>'
       + '<div class="cwi-enslaver-track"><div class="cwi-enslaver-fill" style="width:'+pct+'%"></div></div>'
-      + '<div class="cwi-enslaver-num">'+e.count+'</div>';
+      + numCell;
     listEl.appendChild(row);
   });
 })();
