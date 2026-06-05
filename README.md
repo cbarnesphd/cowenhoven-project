@@ -14,10 +14,10 @@ For each named individual identified in an archival document or public record, t
 The project spans multiple platforms:
 
 - **Website** — [cowenhoven.org](https://cowenhoven.org) (in development)
-- **Active dataset** — a working spreadsheet tracking 442 Van Kouwenhoven-Conover family members across 9 generations (1584–1840s), 68 enslavers, and 230 named + 89 unnamed individuals enslaved or indentured, together with their associated events, sources, locations, and enslavers
-- **WikiTree profiles** — public genealogical profiles for each named individual being created [here](https://www.wikitree.com/wiki/Space:Cowenhoven_Project).
-- **Public Zotero library** — primary and secondary source bibliography available [here](https://www.zotero.org/groups/6078740/cowenhoven_project/library).
-- **Google Map** — geographic project locations viewable [here](https://www.google.com/maps/d/edit?mid=1BXd52VX7vXfGuAlymoTkN9mU93AxfPw&usp=sharing).
+- **Active dataset** — a working spreadsheet tracking 442 Van Kouwenhoven-Conover family members across 9 generations (1584–1840s), 67 enslavers, and 275 named + 118 unnamed individuals enslaved or indentured, together with their associated events, sources, locations, and enslavers
+- **WikiTree profiles** — public genealogical profiles for each named individual
+- **Public Zotero library** — primary and secondary source bibliography
+- **Google Map** — geographic project locations
 - **GitHub Pages (this repository)** — interactive visualizations, an index of individuals, geographic mapping, and (over time) downloadable data and methodology notes
 
 ---
@@ -26,12 +26,12 @@ The project spans multiple platforms:
 
 | Asset | Live URL | Description |
 |---|---|---|
-| Infographic | [data.cowenhoven.org/infographic/](https://data.cowenhoven.org/infographic/) | Project-overview infographic across NY and NJ, 1736–1840 (refresh in progress to current totals) |
-| Live Family Tree | [data.cowenhoven.org/family-tree/](https://data.cowenhoven.org/family-tree/) | Interactive family tree of the Van Kouwenhoven-Conover family across 9 generations (1584–1840s) — 442 family members, 68 enslavers, 230 named + 89 unnamed individuals enslaved or indentured. Click any name for biographical details, sources, and external profile links. |
+| Infographic | [data.cowenhoven.org/infographic/](https://data.cowenhoven.org/infographic/) | Project-overview infographic across NY and NJ, 1736–1840. |
+| Live Family Tree | [data.cowenhoven.org/family-tree/](https://data.cowenhoven.org/family-tree/) | Interactive family tree of the Van Kouwenhoven-Conover family across 9 generations (1584–1840s) — 442 family members, 67 enslavers, 275 named + 118 unnamed individuals enslaved or indentured. Click any name for biographical details, sources, and external profile links. |
 | Index of Individuals | [data.cowenhoven.org/index-of-individuals/](https://data.cowenhoven.org/index-of-individuals/) | Searchable index of named individuals tracked by the project, with cross-references to WikiTree profiles and source citations. |
-| Idex of Enslavers | [data.cowenhoven.org/index-of-enslavers/](https://data.cowenhoven.org/index-of-enslavers/) | Searchable index of enslavers in the Van Kouwenhoven-Conover family who have been disambiguated and linked to the people they enslaved on the Index of Individuals. |
+| Index of Enslavers | [data.cowenhoven.org/index-of-enslavers/](https://data.cowenhoven.org/index-of-enslavers/) | Searchable index of enslavers in the Van Kouwenhoven-Conover family who have been disambiguated and linked to the people they enslaved on the Index of Individuals. |
 | Cluster map | [data.cowenhoven.org/cluster-map/](https://data.cowenhoven.org/cluster-map/) | Geographic map of Van Kouwenhoven-Conover branch and enslaver clusters across New York and New Jersey, plotting where the documented family lived and where they held enslaved people. |
-| LOD Network Viewer | [data.cowenhoven.org/networks/](https://data.cowenhoven.org/networks/) | 3D hero networks of enslaved people of color and their enslavers.|
+| LOD Network Viewer | [data.cowenhoven.org/networks/](https://data.cowenhoven.org/networks/) | 3D hero networks of enslaved people of color and their enslavers. |
 
 More visualizations and downloadable data assets will be added over time.
 
@@ -41,17 +41,15 @@ More visualizations and downloadable data assets will be added over time.
 
 The project draws on primary documentation including, but not limited to:
 
-- Birth and Manumission Records for Monmouth and Middlesex Counties 
-- Town of Brooklyn and Town of New Utrecht Manumission Records, Brooklyn Old Town Records Collection
-- Town of Flatlands Birth and Abandonment Records, Brooklyn Old Town Records Collection
+- Monmouth County Birth Records (Black Birth Book of Monmouth County, NJ)
+- Town of Brooklyn and Town of New Utrecht Manumission Records
 - Probate records, wills, and inventories (NY and NJ)
-- 1790, 1800, 1810, 1820, 1830, 1840, 1850, 1860, 1870 US Federal Census for New York
-- 1830, 1840, 1850, 1860, 1870 US Federal Census for New Jersey
+- 1790 US Federal Census, Kings County, NY
 - New Jersey Supreme Court Case Files (1704–1844)
 - New York Court of General Sessions Files (1704–1844)
 - Family papers held at the Center for Brooklyn History (CBH), New-York Historical Society (NYHS), New York Public Library (NYPL), New York State Archives (NYSA), New York City Municipal Archives (NYCMA), Monmouth County Historical Association (MCHA), New Jersey State Archives (NJSA), and Rutgers University Special Collections (RUSC)
-- Dutch Reformed Church baptism, marriage, and burial records
-- Newspaper advertisements
+- Dutch Reformed Church baptism and membership records
+- Newspaper notices
 
 A complete bibliography is maintained in the project's public Zotero library.
 
