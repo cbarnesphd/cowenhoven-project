@@ -5,26 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LOD Network Visualizations — The Cowenhoven Project</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
   :root {
-    --red: #913831;
+    --red: #914E3D;
     --slate: #738C8F;
-    --parchment: #F1EADC;
+    --parchment: #F1E9D2;
     --ink: #2A1F18;
     --ink-soft: #6B5C50;
-    --mortar: #B2AA99;
-    --cream: #FBF6E8;
-    --tan: #EAE0CB;
+    --mortar: #8F887F;
+    --cream: #FFFFFF;
+    --tan: #F1E9D2;
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--parchment); }
 
+  .embedded header { display: none; }
   header { padding: 20px 24px 0 24px; background: var(--parchment); color: var(--ink); border-top: 3px solid var(--red); }
-  header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate); font-weight: bold; margin: 0 0 8px 0; }
-  header h1 { font-family: 'Cardo', Georgia, serif; margin: 0 0 5px 0; font-size: 22px; font-weight: bold; color: var(--ink); letter-spacing: 0.2px; }
-  header .subtitle { font-size: 13px; color: var(--ink-soft); font-style: italic; margin: 0; }
-  header .meta { font-size: 11.5px; color: var(--ink-soft); font-family: "Courier New", monospace; margin: 8px 0 0 0; padding-bottom: 16px; }
+  header .eyebrow { font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate); font-weight: bold; margin: 0 0 8px 0; }
+  header h1 { font-family: 'EB Garamond', Georgia, serif; margin: 0 0 5px 0; font-size: 23px; font-weight: 600; color: var(--ink); letter-spacing: 0.2px; }
+  header .subtitle { font-family: 'EB Garamond', Georgia, serif; font-size: 15px; color: var(--ink-soft); font-style: italic; margin: 0; }
+  header .meta { font-size: 13px; color: var(--ink-soft); font-family: "Courier New", monospace; margin: 8px 0 0 0; padding-bottom: 16px; }
+  header .meta a { color: var(--slate); text-decoration: none; border-bottom: 1px solid rgba(115,140,143,.45); }
 
   .body-wrap { max-width: 1100px; margin: 0 auto; padding: 18px 24px 0 24px; }
 
@@ -54,21 +56,20 @@
     min-height: 600px; background: var(--cream); border-radius: 3px;
   }
 
-  footer { padding: 12px 24px; background: var(--parchment); color: var(--ink-soft); font-size: 10.5px; text-align: center; border-top: 1px solid #dcd2bb; margin-top: 10px; }
-  footer a { color: var(--red); }
 
   @media (max-width: 640px) {
     .selectors { flex-direction: column; gap: 14px; }
     iframe.hero-frame { height: 70vh; }
   }
 </style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
 <body>
 <header>
-  <div class="eyebrow"><a href="https://cowenhoven.org/3d-network-visualizations/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Cowenhoven Project</a></div>
+  <div class="eyebrow"><a href="https://cowenhoven.org/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Cowenhoven Project</a></div>
   <h1>LOD Network Visualizations</h1>
   <div class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</div>
-  <div class="meta">Four persons of color &middot; twelve enslavers &middot; Data Set 5.30.26</div>
+  <div class="meta">Four persons of color &middot; twelve enslavers &middot; Data Set 5.30.26 &nbsp;&nbsp; <a href="https://cowenhoven.org/data/3d-network-visualizations/" target="_blank" rel="noopener">&#8617; cowenhoven.org/data/3d-network-visualizations/</a></div>
 </header>
 
 <div class="body-wrap">
@@ -87,7 +88,7 @@
     together with their kin, the people tied to them through bondage, the places they lived, and the
     wills, manumissions, birth registries, and church records that preserve these names. Choose a name
     from either menu to load a network; click any node to open source-level detail. The
-    <a href="https://cowenhoven.org/methodology" target="_blank" rel="noopener">Methodology</a>
+    <a href="https://cowenhoven.org/about/methodology/" target="_blank" rel="noopener">Methodology</a>
     page explains how the data is assembled, what the visual conventions mean, and what we know we don&rsquo;t know.
   </p>
 
@@ -145,9 +146,6 @@
 
 </div>
 
-<footer>
-  Cowenhoven Project &middot; <a href="https://cowenhoven.org" target="_blank" rel="noopener noreferrer">cowenhoven.org</a> &middot; Locates, digitizes, and shares information about people of African descent enslaved in New York and New Jersey by the Van&nbsp;Kouwenhoven&ndash;Conover family.
-</footer>
 
 <script>
 (function () {
