@@ -4,16 +4,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Cowenhoven Project — Live Family Tree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
   :root {
-    --brick: #945446;
-    --brick-shadow: #8D5341;
-    --mortar: #B2AA99;
+    --brick: #914E3D;
+    --brick-shadow: #6E2A24;
+    --mortar: #8F887F;
     --cool-trim: #A8A29B;
     --door-green: #4F7451;
     --slate-blue: #738C8F;
-    --paper: #FAF7F2;
-    --ink: #1a1a1a;
+    --paper: #F1E9D2;
+    --ink: #2A1F18;
     --ink-soft: #4a4a4a;
     --ink-mute: #6B5C50;
 
@@ -58,28 +60,32 @@
     --gen-9: #6B4570;  /* deep plum */
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
-  header { padding: 22px 28px 14px; border-bottom: 1px solid #E5DED2; }
-  header h1 { margin: 0 0 4px; font-size: 22px; }
-  header p.subtitle { margin: 0; font-size: 13px; font-style: italic; color: var(--ink-soft); }
-  header p.meta { margin: 6px 0 0; font-size: 11.5px; color: var(--ink-mute); font-family: "Courier New", monospace; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: 'EB Garamond', "Times New Roman", serif; }
+  .embedded header { display: none; }
+  header { padding: 20px 28px 14px; border-top: 3px solid var(--brick); border-bottom: 1px solid var(--mortar); }
+  header .eyebrow { font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate-blue); font-weight: 700; margin: 0 0 8px 0; }
+  header .eyebrow a { color: inherit; text-decoration: none; }
+  header h1 { margin: 0 0 4px; font-size: 23px; font-weight: 600; }
+  header p.subtitle { margin: 0; font-size: 15px; font-style: italic; color: var(--ink-soft); }
+  header p.meta { margin: 6px 0 0; font-size: 13px; color: var(--ink-mute); font-family: "Courier New", monospace; }
+  header p.meta a { color: var(--slate-blue); text-decoration: none; border-bottom: 1px solid rgba(115,140,143,.45); }
 
   #toolbar { padding: 10px 28px; border-bottom: 1px solid #E5DED2; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 12px; }
-  #toolbar input[type="search"] { padding: 5px 8px; border: 1px solid var(--cool-trim); border-radius: 4px; min-width: 220px; font: 12px Georgia, serif; }
+  #toolbar input[type="search"] { padding: 5px 8px; border: 1px solid var(--cool-trim); border-radius: 4px; min-width: 220px; font: 12px 'EB Garamond', serif; }
   /* 2026-05-29 Stage 4: search hit-count + prev/next nav UI. */
   #toolbar .search-group { display: inline-flex; align-items: center; gap: 4px; }
   #toolbar .hit-count { font: 11px "Courier New", monospace; color: var(--ink-mute); min-width: 78px; text-align: center; padding: 0 4px; }
   #toolbar .hit-count.has-hits { color: var(--brick); font-weight: 700; }
   #toolbar .hit-count.no-hits { color: #B05540; font-weight: 700; }
-  #toolbar .nav-btn { padding: 3px 8px; border: 1px solid var(--cool-trim); border-radius: 3px; background: #fff; cursor: pointer; font: 12px Georgia, serif; color: var(--ink); min-width: 26px; }
-  #toolbar .nav-btn:hover:not(:disabled) { background: #F2EBDD; }
+  #toolbar .nav-btn { padding: 3px 8px; border: 1px solid var(--cool-trim); border-radius: 3px; background: #fff; cursor: pointer; font: 12px 'EB Garamond', serif; color: var(--ink); min-width: 26px; }
+  #toolbar .nav-btn:hover:not(:disabled) { background: #F1E9D2; }
   #toolbar .nav-btn:disabled { color: #C9C2B5; cursor: not-allowed; }
-  #toolbar button { padding: 5px 11px; border: 1px solid var(--cool-trim); border-radius: 4px; background: #fff; cursor: pointer; font: 12px Georgia, serif; color: var(--ink); }
-  #toolbar button:hover { background: #F2EBDD; }
+  #toolbar button { padding: 5px 11px; border: 1px solid var(--cool-trim); border-radius: 4px; background: #fff; cursor: pointer; font: 12px 'EB Garamond', serif; color: var(--ink); }
+  #toolbar button:hover { background: #F1E9D2; }
   #toolbar button.active { background: var(--brick); color: #fff; border-color: var(--brick-shadow); }
   /* 2026-05-29 Stage 9: view-mode toggle pair sits as one visual unit. */
   #toolbar .view-toggle { display: inline-flex; border: 1px solid var(--brick); border-radius: 6px; overflow: hidden; }
-  #toolbar .view-toggle .view-btn { border: 0; border-radius: 0; padding: 6px 12px; font: 600 12px Georgia, serif; }
+  #toolbar .view-toggle .view-btn { border: 0; border-radius: 0; padding: 6px 12px; font: 600 12px 'EB Garamond', serif; }
   #toolbar .view-toggle .view-btn.active { background: var(--brick); color: #fff; }
   #toolbar .view-toggle .view-btn:not(.active) { background: #fff; color: var(--brick); }
   #toolbar .view-toggle .view-btn:not(.active):hover { background: #F8E8E2; }
@@ -92,7 +98,7 @@
   #tree-wrap { position: relative; overflow: hidden; background: var(--paper); }
   #tree-svg { width: 100%; height: 100%; cursor: grab; }
   #tree-svg:active { cursor: grabbing; }
-  #side { border-left: 1px solid #E5DED2; padding: 18px 20px; overflow-y: auto; background: #fff; }
+  #side { border-left: 1px solid var(--mortar); padding: 18px 20px; overflow-y: auto; background: #fff; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
   #side h2 { margin: 0 0 4px; font-size: 16px; }
   #side .subline { color: var(--ink-mute); font-size: 11.5px; font-family: "Courier New", monospace; margin-bottom: 12px; }
   #side dl { margin: 0; font-size: 12.5px; }
@@ -106,7 +112,7 @@
   #side .e-tag { display: inline-block; padding: 2px 7px; border-radius: 10px; background: var(--brick); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; margin-left: 6px; vertical-align: 1px; }
   /* 2026-05-29 Stage 3: inheritance-chain variant — outlined, not solid. */
   #side .e-tag.e-tag-inheritance { background: transparent; color: var(--brick); border: 1px solid var(--brick); }
-  #side .pid-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #F2EBDD; color: var(--ink-mute); font: 10px "Courier New", monospace; margin-right: 4px; }
+  #side .pid-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #F1E9D2; color: var(--ink-mute); font: 10px "Courier New", monospace; margin-right: 4px; }
   #side .ep-section { margin: 14px 0 6px; padding: 10px 12px; background: #FFF6E5; border-left: 3px solid var(--brick); border-radius: 4px; }
   #side .ep-section h3 { margin: 0 0 8px; font-size: 13px; color: var(--brick-shadow); }
   #side .ep-list { margin: 0; padding: 0; list-style: none; font-size: 12.5px; }
@@ -160,15 +166,15 @@
   /* Time-strip header sitting above the tree — labels each generation
      column with G-id + approximate year range. */
   .time-strip text {
-    font: 600 13px Georgia, serif;
+    font: 600 13px 'EB Garamond', serif;
     fill: var(--ink-mute);
     text-anchor: middle;
   }
   /* 2026-05-29 Stage 8.2: bigger time-strip labels per Chris's feedback.
      2026-05-30: bumped again per Chris + counter-scale on zoom to enforce
      12pt viewport floor (see updateTimeStripScale() in JS). */
-  .time-strip .gen-id { font: 700 36px Georgia, serif; fill: var(--ink); }
-  .time-strip .gen-years { font: italic 22px Georgia, serif; fill: var(--ink-mute); }
+  .time-strip .gen-id { font: 700 36px 'EB Garamond', serif; fill: var(--ink); }
+  .time-strip .gen-years { font: italic 22px 'EB Garamond', serif; fill: var(--ink-mute); }
   .time-strip line { stroke: var(--cool-trim); stroke-width: 0.7; opacity: 0.55; }
   #unlinked { margin-top: 22px; padding-top: 14px; border-top: 1px dashed #E5DED2; }
   #unlinked h3 { margin: 0 0 6px; font-size: 13px; color: var(--ink-mute); }
@@ -218,7 +224,7 @@
   /* Larger base text. Labels are wrapped in a .label-group whose transform
      also applies an inverse-zoom scale, so labels stay constant size
      regardless of how far the user zooms in or out. */
-  .node text { font: 16px Georgia, serif; fill: var(--ink); pointer-events: none; }
+  .node text { font: 16px 'EB Garamond', serif; fill: var(--ink); pointer-events: none; }
   .node text.spouse-name { font-style: italic; fill: var(--ink-soft); }
   /* 2026-05-29 click separation: name tspans are individually clickable
      (each line = one person). Circle still toggles expand/collapse.
@@ -262,8 +268,10 @@
 </style>
 </head>
 <body>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 <header>
-  <h1>The Cowenhoven Project — Live Family Tree</h1>
+  <p class="eyebrow"><a href="https://cowenhoven.org/" target="_blank" rel="noopener">The Cowenhoven Project</a></p>
+  <h1>Live Family Tree</h1>
   <p class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</p>
   <p class="meta" id="meta">loading…</p>
 </header>
@@ -451,7 +459,7 @@
   if (md.hypothesis_dropped) {
     parts.push(`${md.hypothesis_dropped} HYPOTHESIS rows hidden`);
   }
-  document.getElementById("meta").textContent = parts.join("  ·  ");
+  document.getElementById("meta").innerHTML = parts.join("  ·  ") + '  &nbsp;&nbsp; <a href="https://cowenhoven.org/about/the-van-kouwenhoven-conover-family/family-tree/" target="_blank" rel="noopener">&#8617; cowenhoven.org/&hellip;/family-tree/</a>';
 
   // --- build the hierarchy from Wolphert (cp_fam_001), greedy/visited
   const visited = new Set();
