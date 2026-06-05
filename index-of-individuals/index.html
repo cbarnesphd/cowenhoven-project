@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Index of Individuals — Cowenhoven Project</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;700&display=swap">
 <style>
   :root {
-    --bg: #F1EADC;
+    --bg: #F1E9D2;
     --ink: #2A1F18;
-    --muted: #6b6258;
+    --muted: #6B5C50;
     --rule: #d6cfc1;
     --rule-soft: #ebe5d7;
-    --accent: #913831;
+    --accent: #914E3D;
     --accent-soft: #f3e7d8;
     --slate-blue: #738C8F;
     --warn: #a8410e;
-    --good: #2e6a45;
+    --good: #4F7451;
   }
   * { box-sizing: border-box; }
   body {
@@ -30,15 +30,18 @@
   }
   .wrap { max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
   h1 {
-    font-family: 'Cardo', Georgia, serif;
+    font-family: 'EB Garamond', Georgia, serif;
     font-size: 2rem;
     margin: 0 0 0.25rem 0;
     letter-spacing: -0.01em;
     font-weight: 600;
   }
-  .eyebrow { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate-blue); font-weight: 700; margin: 0 0 0.5rem 0; }
-  .subtitle { font-style: italic; color: var(--muted); margin: 0 0 0.35rem 0; font-size: 0.98rem; }
-  .meta { font-family: "Courier New", monospace; font-size: 0.72rem; color: var(--muted); margin: 0 0 1.5rem 0; }
+  .embedded header { display: none; }
+  html.embedded body { border-top: 0; }
+  .eyebrow { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate-blue); font-weight: 700; margin: 0 0 0.5rem 0; }
+  .subtitle { font-family: 'EB Garamond', Georgia, serif; font-style: italic; color: var(--muted); margin: 0 0 0.35rem 0; font-size: 1.05rem; }
+  .meta { font-family: "Courier New", monospace; font-size: 0.82rem; color: var(--muted); margin: 0 0 1.5rem 0; }
+  .meta a { color: var(--slate-blue); text-decoration: none; border-bottom: 1px solid rgba(115,140,143,.45); }
   .lede {
     color: var(--muted);
     margin: 0 0 1.5rem 0;
@@ -288,13 +291,16 @@
     color: var(--muted);
   }
 </style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
 <body>
 <div class="wrap">
-  <p class="eyebrow"><a href="https://cowenhoven.org/people/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Cowenhoven Project</a></p>
+  <header>
+  <p class="eyebrow"><a href="https://cowenhoven.org/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">The Cowenhoven Project</a></p>
   <h1>Index of Individuals</h1>
   <p class="subtitle">Recovering Black Lives from Enslaver Archives in New York and New Jersey</p>
-  <p class="meta">Every named individual identified in archival documents and public records</p>
+  <p class="meta">Every named individual identified in archival documents and public records &nbsp;&nbsp; <a href="https://cowenhoven.org/people/" target="_blank" rel="noopener">&#8617; cowenhoven.org/people/</a></p>
+  </header>
 
   <div class="stats">
     <div class="stat"><b id="stat-total">—</b><span class="dim">people in the index</span></div>
@@ -366,7 +372,7 @@
 </div>
 
 <script>
-const META = { versionDate: "June 4, 2026" };
+const META = { versionDate: "June 5, 2026" };
 document.getElementById("version-date").textContent = META.versionDate;
 const DATA = [
   {
@@ -12704,7 +12710,7 @@ function enslaverNameHTML(p) {
   if (!p.enslaverName) return '';
   const nm = escapeHTML(p.enslaverName);
   if (p.enslaverSlug) {
-    return `<a class="enslaver-link" href="https://cowenhoven.org/enslaver-bios/#${p.enslaverSlug}" target="_blank" rel="noopener">${nm}</a>`;
+    return `<a class="enslaver-link" href="https://cowenhoven.org/enslavers/enslaver-bios/#${p.enslaverSlug}" target="_blank" rel="noopener">${nm}</a>`;
   }
   return nm;
 }
@@ -12717,7 +12723,7 @@ function enslaversHTML(p) {
   return list.map(e => {
     const nm = escapeHTML(e.name);
     return e.slug
-      ? `<a class="enslaver-link" href="https://cowenhoven.org/enslaver-bios/#${e.slug}" target="_blank" rel="noopener">${nm}</a>`
+      ? `<a class="enslaver-link" href="https://cowenhoven.org/enslavers/enslaver-bios/#${e.slug}" target="_blank" rel="noopener">${nm}</a>`
       : nm;
   }).join(", ");
 }
@@ -12730,7 +12736,7 @@ function enslaverDetailHTML(p) {
     : (p.enslaverIdRaw || '');
   return list.map(e => {
     const nm = e.slug
-      ? `<a class="enslaver-link" href="https://cowenhoven.org/enslaver-bios/#${e.slug}" target="_blank" rel="noopener">${escapeHTML(e.name)}</a>`
+      ? `<a class="enslaver-link" href="https://cowenhoven.org/enslavers/enslaver-bios/#${e.slug}" target="_blank" rel="noopener">${escapeHTML(e.name)}</a>`
       : escapeHTML(e.name);
     return e.pid ? `${nm} <span style="color:var(--muted)">[${e.pid}]</span>` : nm;
   }).join(", ");
