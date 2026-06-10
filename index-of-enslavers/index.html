@@ -161,6 +161,9 @@
       <label>Cluster
         <select id="f-cluster"><option value="">All</option></select>
       </label>
+      <label>Family Property
+        <select id="f-property"><option value="">All</option></select>
+      </label>
       <label>Town
         <select id="f-town"><option value="">All</option></select>
       </label>
@@ -198,7 +201,7 @@
 </div>
 
 <script>
-const META = { versionDate: "June 5, 2026" };
+const META = { versionDate: "June 10, 2026" };
 const ENSLAVER_CARD_BASE = "https://cowenhoven.org/enslavers/enslaver-bios/#";
 const INDIVIDUALS_BASE = "https://data.cowenhoven.org/index-of-individuals/?enslaver=";
 document.getElementById("version-date").textContent = META.versionDate;
@@ -228,6 +231,7 @@ const DATA = [
     "slug": "albert-willemse-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 0,
     "unnamedCount": 6,
     "unnamedUnknown": false,
@@ -259,6 +263,7 @@ const DATA = [
     "slug": "anna-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -290,11 +295,12 @@ const DATA = [
     "slug": "benjamin-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
     "peopleTotal": 2,
-    "notes": "PROMOTED 2026-05-28 from cp_fam_299 (FAMILY) to ENSLAVER status via Symmes p. 224 baptism entries for Agnes (1789) and Broof (1790). Per [[feedback-enslaver-disambiguation-rules]] Rule 1 mixed-prefix-no-rename: cp_fam_299 already existed in FAMILY before being identified as enslaver, so PID stays cp_fam_299 (not renumbered to new cp_ens). Mirror precedent…"
+    "notes": "NEW MINT 2026-05-12 per Chris-directed expanded batch-4 scope. Cocheu primary identifies him as 3rd child (#443) of cp_ens_011 William Albertse Couwenhoven; father of cp_ens_066 William B.⁷. The 'Benjamin' name is presumably from maternal grandfather Benjamin Van Cleef (his mother Lysbeth's father per Cocheu 82:1 #146). The Wyckoff sibling-pair pattern (B…"
   },
   {
     "id": "cp_ens_046",
@@ -321,6 +327,7 @@ const DATA = [
     "slug": "col-elias-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 7,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -352,6 +359,7 @@ const DATA = [
     "slug": "col-john-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 17,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -383,6 +391,9 @@ const DATA = [
     "slug": "cornelis-willemse-van-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Cornelius Couwenhoven House and Farm"
+    ],
     "namedCount": 5,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -414,6 +425,7 @@ const DATA = [
     "slug": "cornelius-albertse-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 8,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -445,6 +457,7 @@ const DATA = [
     "slug": "cornelius-c-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 6,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -476,6 +489,7 @@ const DATA = [
     "slug": "cornelius-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 4,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -507,6 +521,7 @@ const DATA = [
     "slug": "daniel-covenhoven-of-middletown",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -538,6 +553,7 @@ const DATA = [
     "slug": "daniel-d-conover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -569,6 +585,7 @@ const DATA = [
     "slug": "daniel-g-conover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -600,6 +617,7 @@ const DATA = [
     "slug": "elias-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 0,
     "unnamedCount": 3,
     "unnamedUnknown": false,
@@ -631,6 +649,7 @@ const DATA = [
     "slug": "elias-covenhoven-jr",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -662,6 +681,7 @@ const DATA = [
     "slug": "elias-covenhoven-of-middletown",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -693,6 +713,7 @@ const DATA = [
     "slug": "elizabeth-aumack-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -724,6 +745,7 @@ const DATA = [
     "slug": "garetta-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -755,6 +777,7 @@ const DATA = [
     "slug": "garret-conover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -786,6 +809,7 @@ const DATA = [
     "slug": "garret-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -817,6 +841,7 @@ const DATA = [
     "slug": "garret-covenhoven-of-upper-freehold",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -848,6 +873,9 @@ const DATA = [
     "slug": "garret-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Flatlands Original Patent"
+    ],
     "namedCount": 6,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -879,6 +907,7 @@ const DATA = [
     "slug": "garret-janse-covenhoven-esq",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 9,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -910,6 +939,7 @@ const DATA = [
     "slug": "garret-rezo-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -941,6 +971,9 @@ const DATA = [
     "slug": "garrett-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Garret Cowenhoven Farm"
+    ],
     "namedCount": 7,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -972,11 +1005,49 @@ const DATA = [
     "slug": "gerret-van-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Garret Cowenhoven Farm",
+      "Johannes Cowenhoven Farm"
+    ],
     "namedCount": 0,
-    "unnamedCount": 0,
+    "unnamedCount": 2,
     "unnamedUnknown": true,
-    "peopleTotal": 0,
+    "peopleTotal": 2,
     "notes": "Sparse ENSLAVER row — biographical data lives in FAMILY cp_fam_033 per project mixed-prefix convention. Bedford-Homestead branch enslaver, brother of cp_ens_007 John (1707-1778) and Nicasius (1742-1793, Van_Couwenhoven-84). The will's collective bequest of \"all my Negroes\" with no individuals named places this row firmly in the UNNAMED-group registry; fut…"
+  },
+  {
+    "id": "cp_ens_027",
+    "name": "Gerret Willemse Kouwenhoven",
+    "nameFull": "Gerret Willemse Kouwenhoven",
+    "nameVariations": "Garret Kouwenhoven; Garrit Kouwenhoven (1777 will signature spelling); Gerret William Kouwenhoven (FS GSRN-X37); Gerret William van Kouwenhoven; Gerret Willemse Couwenhoven; Garret W Kouwenhoven (NYSA file label); per feedback_kouwenhoven_no_r.md the Flatlands-branch surname is K-o-u-w-e-n-h-o-v-e-n, no R",
+    "dates": "1726–1777",
+    "birthYear": 1726,
+    "deathYear": 1777,
+    "town": "Flatlands",
+    "section": "Flatlands",
+    "sectionFull": "Flatlands",
+    "clusterNum": 1,
+    "clusterLabel": "Flatlands — Willem line",
+    "cluster": "C1 · Flatlands — Willem line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Flatlands, Kings County, Province of New York (PRIMARY: 1777 will opens \"I Garrit Kouwenhoven of Flatlands in Kings County on the Island Nasaw [Nassau] in the province of New York\")",
+    "occupation": "Farmer / yeoman (per home farm \"on the South Side\" bequeathed jointly to sons Peter + William; \"Stintenberg\" tract bequeathed to son Garret; \"plantans\" tract + Patentee Birth Right in Flatlands common lands bequeathed to son Luke; salt + fresh meadows in New Utrecht; multiple Flatlands wood lots)",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "",
+    "onCard": false,
+    "nonVKC": false,
+    "properties": [
+      "Flatlands Original Patent"
+    ],
+    "namedCount": 0,
+    "unnamedCount": 3,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "FLATLANDS branch enslaver — minted 2026-04-26 from primary will text + FS GSRN-X37 + Chris's three magnified close-ups of will pages 1 (daughters list), 4 (wenches clause), 5-bottom (executors list). Lineage primary-confirmed via own 1777 will text: cp_fam_007 Willem Gerritsz (great-grandfather Wolphert-grandson) → cp_fam_054 Willem Willemse (father, by 1…"
   },
   {
     "id": "cp_ens_048",
@@ -1003,6 +1074,7 @@ const DATA = [
     "slug": "hendrick-covenhoven-of-freehold",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 2,
     "unnamedUnknown": false,
@@ -1034,6 +1106,7 @@ const DATA = [
     "slug": "jacob-covenhoven-the-miller",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 5,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1065,6 +1138,7 @@ const DATA = [
     "slug": "jacob-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 5,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1096,6 +1170,7 @@ const DATA = [
     "slug": "jacob-i-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 5,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1127,6 +1202,7 @@ const DATA = [
     "slug": "jacob-willemse-van-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 5,
     "unnamedUnknown": false,
@@ -1158,6 +1234,9 @@ const DATA = [
     "slug": "jane-jannetje-lott-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Judge Nicholas's Mansion and Farm"
+    ],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1189,6 +1268,9 @@ const DATA = [
     "slug": "johannes-van-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Johannes Cowenhoven Farm"
+    ],
     "namedCount": 5,
     "unnamedCount": 8,
     "unnamedUnknown": false,
@@ -1220,17 +1302,20 @@ const DATA = [
     "slug": "john-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
     "namedCount": 5,
-    "unnamedCount": 0,
+    "unnamedCount": 5,
     "unnamedUnknown": false,
-    "peopleTotal": 5,
+    "peopleTotal": 10,
     "notes": "Bedford-Homestead-branch enslaver — paternal grandfather of cp_ens_005 (Bedford Nicholas), father of cp_ens_006 (Rem). Lineage: Wolphert → Gerrit → Jan Gerretse + Gerardina De Sille → Nicasius Janse + Elsje Jansen Staats → John (this profile). Marriage to Catharina Remsen explains the \"Rem\" patronymic carried by his son. The 1778-06-01 probate inventory d…"
   },
   {
     "id": "cp_ens_034",
     "name": "John Cowenhoven",
     "nameFull": "John Cowenhoven",
-    "nameVariations": "John Cowenhoven Jr.; John Couwenhoven; the 'John Cowenhoven, his uncle' grantee of the 30 June 1789 Brooklyn deed (Aughtieste Kamp); the 'John' executor son of cp_ens_007's 1778 inventory who drew £723; FS G9DJ-8D1",
+    "nameVariations": "John Cowenhoven Jr.; John Couwenhoven; the 'John Cowenhoven, his uncle' grantee of the 30 June 1789 Brooklyn deed (Aughtieste Kamp); the 'John' executor son of cp_ens_007's 1778 inventory who drew £723; FS G9DJ-8D1; John Junior / Uncle John (project naming convention, Chris 2026-06-08); also styled 'Major John' (Brooklyn) per 1805 death notice & Cocheu #656 — NOT Major John cp_ens_019 of New Utrecht.",
     "dates": "1752–1805",
     "birthYear": 1752,
     "deathYear": 1805,
@@ -1247,10 +1332,13 @@ const DATA = [
     "occupation": "(pending — likely yeoman/farmer; heir to portion of cp_ens_007's Bedford-era credit network via £723 inheritance portion)",
     "generation": "6",
     "branch": "Gerrit",
-    "cocheu": "",
+    "cocheu": "656 · p. 84",
     "slug": "john-cowenhoven-brooklyn",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
     "namedCount": 1,
     "unnamedCount": 7,
     "unnamedUnknown": false,
@@ -1282,6 +1370,7 @@ const DATA = [
     "slug": "john-g-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1313,6 +1402,7 @@ const DATA = [
     "slug": "john-i-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1344,6 +1434,7 @@ const DATA = [
     "slug": "john-jacobse-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1375,6 +1466,9 @@ const DATA = [
     "slug": "john-nicholas-major-john-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Judge Nicholas's Mansion and Farm"
+    ],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1406,6 +1500,7 @@ const DATA = [
     "slug": "john-p-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 10,
     "unnamedCount": 2,
     "unnamedUnknown": false,
@@ -1433,10 +1528,13 @@ const DATA = [
     "occupation": "BOLTER (flour-miller) of Brooklyn, Kings Co. NY — per cp_famsou_024 1797 absconding-debtor notice (\"John R. Cowenhoven now or late of Brooklyn, in Kings County, Bolter\"). Pre-1798 commercial trajectory ran flour-bolting business; debt-driven trustee-led liquidation in April 1798 (cp_famsou_001 / cp_sou_005 / cp_eve_023) ended this enterprise. Per Chris 2026-04-28: \"1798 sale by executors\" framing in prior workbook ingest was incorrect — actual structure was assignment to four trustees / Assignees (Lott, Polhemus, Vanderveer, Terhune) under NY's absconding-debtor statute, not estate executors.",
     "generation": "7",
     "branch": "Gerrit",
-    "cocheu": "",
+    "cocheu": "651(a) · p. 84",
     "slug": "john-r-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
     "namedCount": 12,
     "unnamedCount": 14,
     "unnamedUnknown": false,
@@ -1468,6 +1566,7 @@ const DATA = [
     "slug": "johnson-cownover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 8,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1499,6 +1598,7 @@ const DATA = [
     "slug": "joseph-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1530,6 +1630,9 @@ const DATA = [
     "slug": "judge-nicholas-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Judge Nicholas's Mansion and Farm"
+    ],
     "namedCount": 3,
     "unnamedCount": 10,
     "unnamedUnknown": false,
@@ -1561,6 +1664,7 @@ const DATA = [
     "slug": "lewis-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1592,6 +1696,7 @@ const DATA = [
     "slug": "lucas-luke-conover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1623,11 +1728,46 @@ const DATA = [
     "slug": "neeltje-williamson-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 7,
     "unnamedCount": 0,
     "unnamedUnknown": false,
     "peopleTotal": 7,
     "notes": "Neeltje is identifiable as the \"Eleanor Covenhoven\" of John's 1802 will by Dutch-English first-name equivalence — \"Neeltje\" = \"Nelly\" = \"Eleanor\" — plus chronological fit (John's first wife Eleanor Williams Wyckoff died 1793, before the will). Per FS KPHS-YKZ she is John's second wife, married ~1794. The 1802 will's clause \"all the negroes that came by he…"
+  },
+  {
+    "id": "cp_fam_027",
+    "name": "Nicasius Janse Van Couwenhoven",
+    "nameFull": "Nicasius Janse Van Couwenhoven",
+    "nameVariations": "Nicasius Janse VanCouwenhoven; Nicesimus Cowenhoven (1711 will abstract rendering — scribal/Latinized variant); Nicasius Kouvenhoven",
+    "dates": "1681–1749",
+    "birthYear": 1681,
+    "deathYear": 1749,
+    "town": "Brooklyn",
+    "section": "Brooklyn",
+    "sectionFull": "Town of Brooklyn, Kings County, New York",
+    "clusterNum": 8,
+    "clusterLabel": "Town of Brooklyn / Bedford — Jan line",
+    "cluster": "C8 · Town of Brooklyn / Bedford — Jan line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Brooklyn, near the Ferry (cp_pla_007), Kings County, NY",
+    "occupation": "Yeoman or Boulter (1746 will manuscript reading ambiguous on this descriptor; W5 close-read 2026-05-03 of NYSA J0038-92 SS2 0512 p1 flagged the word as either \"Yeoman\" or \"Boulter\" — flagged for paleographer review). \"Boulter\" = flour-sifter / sieve-maker as a trade.",
+    "generation": "4",
+    "branch": "Gerrit",
+    "cocheu": "33 · p. 24",
+    "slug": "nicasius-van-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
+    "namedCount": 0,
+    "unnamedCount": 3,
+    "unnamedUnknown": false,
+    "peopleTotal": 3,
+    "notes": "Named as co-executor of brother Gerret's 1711 will (rendered there as 'Nicesimus'). 'Nicesimus' = Latinized/scribal form of Dutch **Nicasius** (confirmed by WikiTree); his maternal grandfather Nicasius de Sille was the namesake. Spouse/children not yet entered — flag for follow-up WikiTree read. EXPANDED 2026-04-24 late PM via his own 1746 will (NY Wills…"
   },
   {
     "id": "cp_ens_022",
@@ -1654,6 +1794,7 @@ const DATA = [
     "slug": "nicholas-covenhoven-franklin",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1685,6 +1826,7 @@ const DATA = [
     "slug": "nicholas-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1716,6 +1858,9 @@ const DATA = [
     "slug": "nicholas-r-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
     "namedCount": 11,
     "unnamedCount": 5,
     "unnamedUnknown": false,
@@ -1747,6 +1892,7 @@ const DATA = [
     "slug": "peter-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 5,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1778,6 +1924,7 @@ const DATA = [
     "slug": "peter-covenhoven-of-upper-freehold",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1809,6 +1956,7 @@ const DATA = [
     "slug": "peter-g-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1840,6 +1988,9 @@ const DATA = [
     "slug": "rem-cowenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Brooklyn Homestead"
+    ],
     "namedCount": 7,
     "unnamedCount": 2,
     "unnamedUnknown": false,
@@ -1871,6 +2022,7 @@ const DATA = [
     "slug": "roelof-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 0,
     "unnamedCount": 2,
     "unnamedUnknown": false,
@@ -1902,6 +2054,7 @@ const DATA = [
     "slug": "ruliff-ralph-kovenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1933,6 +2086,7 @@ const DATA = [
     "slug": "rutgert-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1964,6 +2118,7 @@ const DATA = [
     "slug": "samuel-van-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 1,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -1995,6 +2150,7 @@ const DATA = [
     "slug": "sarah-cowenhoven-lefferts",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 0,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2026,6 +2182,7 @@ const DATA = [
     "slug": "theodorus-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 4,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2057,11 +2214,46 @@ const DATA = [
     "slug": "thomas-covenhoven-of-middletown",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 4,
     "unnamedCount": 0,
     "unnamedUnknown": false,
     "peopleTotal": 4,
     "notes": "Identified 2026-05-05 from the 1810-01-06 manumission of Joe (cp_eve_077, OPRSFile-24.pdf = Manumission Book pp. 119-120). Same-person identification with the BBB Thomas Covenhoven of Middletown (Farmer) is high-confidence: same first name, same Middletown Township, same Monmouth County, time period overlaps (1806-1810 at minimum). Period-occupation disam…"
+  },
+  {
+    "id": "cp_fam_054",
+    "name": "Willem Willemse Kowenhoven",
+    "nameFull": "Willem Willemse Kowenhoven",
+    "nameVariations": "William Willemse Kowenhoven; Willem Willemse Couwenhoven; Willem Willemse Cowenhoven; William Willemse Kouwenhoven; William Williamson Kouwenhoven (Anglicized rendering)",
+    "dates": "1686–1769",
+    "birthYear": 1686,
+    "deathYear": 1769,
+    "town": "Flatlands",
+    "section": "Flatlands",
+    "sectionFull": "Flatlands",
+    "clusterNum": 1,
+    "clusterLabel": "Flatlands — Willem line",
+    "cluster": "C1 · Flatlands — Willem line",
+    "county": "Kings",
+    "state": "NY",
+    "countyFull": "Kings County, NY",
+    "residence": "Town of Flatlands, Kings County, NY (cp_pla_010)",
+    "occupation": "Farmer (per inheritance of Flatlands Patentee Right + property from father; passed both down to son Gerret cp_ens_027 in 1727)",
+    "generation": "4",
+    "branch": "Gerrit",
+    "cocheu": "",
+    "slug": "",
+    "onCard": false,
+    "nonVKC": false,
+    "properties": [
+      "Flatlands Original Patent"
+    ],
+    "namedCount": 0,
+    "unnamedCount": 5,
+    "unnamedUnknown": false,
+    "peopleTotal": 5,
+    "notes": "INTERMEDIATE LINEAGE NODE — minted 2026-04-26 from grandson Gerret's 1777 will primary-source statement of the cp_fam_007 → cp_fam_054 → cp_ens_027 transfer chain. Father cp_fam_007 sold his Flatlands property to this son on 1709-11-01 (per Rootsweb) and later retired to NJ; this son passed the Patentee Right + property to his son Gerret cp_ens_027 on 28…"
   },
   {
     "id": "cp_ens_011",
@@ -2088,6 +2280,9 @@ const DATA = [
     "slug": "william-albertse-couwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Covenhoven House in Freehold"
+    ],
     "namedCount": 4,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2119,11 +2314,46 @@ const DATA = [
     "slug": "william-b-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
     "peopleTotal": 2,
     "notes": "PROMOTED 2026-05-12 from cp_fam_229 (now retired). Cocheu 82:1 #443 primary-source identifies him as William B.⁷ b. 1752-06-03, son of Benjamin⁶ #443 (b.1726 d.1800 intestate) + Catherine Wyckoff. Workbook previously misattributed father as Peter Jacobse Couwenhoven II cp_fam_132 + mother as Catherine Schenck — both CORRECTED via primary source 2026-05-12…"
+  },
+  {
+    "id": "cp_fam_101",
+    "name": "William Cornelisse Couwenhoven",
+    "nameFull": "William Cornelisse Couwenhoven",
+    "nameVariations": "William⁵ Covenhoven (Cocheu #121); William Kowenhoven (1755 will abstract); William Cownover; William Covenhoven; Willem Cornelis Couwenhoven (WikiTree Couwenhove-3)",
+    "dates": "1700–1755",
+    "birthYear": 1700,
+    "deathYear": 1755,
+    "town": "near Keyport",
+    "section": "Middletown",
+    "sectionFull": "Middletown Township, Monmouth County, New Jersey",
+    "clusterNum": 2,
+    "clusterLabel": "Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "cluster": "C2 · Middletown / Marlboro / Manalapan — Jacob Willemse line",
+    "county": "Monmouth",
+    "state": "NJ",
+    "countyFull": "Monmouth County, NJ",
+    "residence": "Corroway Plantation, near Keyport, Middletown Twp, Monmouth Co., NJ",
+    "occupation": "Planter — \"Corroway Plantation\" (EDSM Ap.iii); inherited 156 ac + 120 ac of his father's Middletown farm 1736",
+    "generation": "5",
+    "branch": "Gerrit",
+    "cocheu": "121",
+    "slug": "william-cornelisse-couwenhoven",
+    "onCard": true,
+    "nonVKC": false,
+    "properties": [
+      "Cornelius Couwenhoven House and Farm"
+    ],
+    "namedCount": 2,
+    "unnamedCount": 5,
+    "unnamedUnknown": false,
+    "peopleTotal": 7,
+    "notes": "Cocheu 71:2 #121. **Cousin-by-marriage chain** — 2nd wife was widow of his cousin cp_ens_009's son #160. ## COCHEU 81:4 ENRICHMENT (cp_sou_053) — Cocheu's #121 Will dated 1755-09-29, proved 1755-12-22 (NJA:32:187): names wife (unnamed), children Williampe + Cornelius + Catherine (latter 2 under age), former father-in-law Peter Wyckoff (owed bond); executo…"
   },
   {
     "id": "cp_ens_054",
@@ -2150,6 +2380,7 @@ const DATA = [
     "slug": "william-covenhoven-of-west-windsor",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 3,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2181,6 +2412,9 @@ const DATA = [
     "slug": "william-kouwenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [
+      "Flatlands Original Patent"
+    ],
     "namedCount": 8,
     "unnamedCount": 10,
     "unnamedUnknown": false,
@@ -2212,6 +2446,7 @@ const DATA = [
     "slug": "william-p-conover",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 7,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2243,6 +2478,7 @@ const DATA = [
     "slug": "william-w-covenhoven-jr",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 4,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2274,6 +2510,7 @@ const DATA = [
     "slug": "wyckoff-covenhoven",
     "onCard": true,
     "nonVKC": false,
+    "properties": [],
     "namedCount": 2,
     "unnamedCount": 0,
     "unnamedUnknown": false,
@@ -2314,6 +2551,21 @@ function fillSelect(id, vals) {
     sel.appendChild(opt);
   });
 })();
+// Family Property (2026-06-09): curated property/household groupings, multi-value;
+// mirrors the Index of Individuals filter. Option text shows the enslaver count
+// as a parenthetical (N); the option VALUE stays the bare label for matching and
+// the ?property= deep link.
+(function fillPropertyFilter() {
+  const counts = {};
+  for (const d of DATA) for (const v of (d.properties || [])) counts[v] = (counts[v] || 0) + 1;
+  const sel = $("#f-property");
+  for (const v of Object.keys(counts).sort((a, b) => a.localeCompare(b))) {
+    const opt = document.createElement("option");
+    opt.value = v;
+    opt.textContent = `${v} (${counts[v]})`;
+    sel.appendChild(opt);
+  }
+})();
 fillSelect("#f-town", uniqueSorted("town"));
 fillSelect("#f-county", uniqueSorted("countyFull"));
 
@@ -2331,16 +2583,19 @@ let sortDir = 1;
 function applyFilters() {
   const q = $("#q").value.trim().toLowerCase();
   const fCluster = $("#f-cluster").value;
+  const fProperty = $("#f-property").value;
   const fTown = $("#f-town").value;
   const fCounty = $("#f-county").value;
   const onlyUnnamed = $("#f-unnamed").checked;
   return DATA.filter(e => {
     if (q) {
       const hay = [e.name, e.nameFull, e.nameVariations, e.residence, e.town, e.countyFull,
-                   e.occupation, e.cluster, e.notes, e.id].join(" ").toLowerCase();
+                   e.occupation, e.cluster, (e.properties || []).join(" "), e.notes, e.id].join(" ").toLowerCase();
       if (!hay.includes(q)) return false;
     }
     if (fCluster && String(e.clusterNum) !== fCluster) return false;
+    // Family Property: multi-value match-any (enslavers with no property never match).
+    if (fProperty && !(Array.isArray(e.properties) && e.properties.includes(fProperty))) return false;
     if (fTown && e.town !== fTown) return false;
     if (fCounty && e.countyFull !== fCounty) return false;
     if (onlyUnnamed && !(e.unnamedCount > 0 || e.unnamedUnknown)) return false;
@@ -2458,14 +2713,14 @@ function render() {
 }
 
 // === Events ===
-["q","f-cluster","f-town","f-county","f-unnamed"].forEach(id => {
+["q","f-cluster","f-property","f-town","f-county","f-unnamed"].forEach(id => {
   const el = document.getElementById(id);
   el.addEventListener("input", render);
   el.addEventListener("change", render);
 });
 $("#reset").addEventListener("click", () => {
   $("#q").value = "";
-  ["f-cluster","f-town","f-county"].forEach(id => document.getElementById(id).value = "");
+  ["f-cluster","f-property","f-town","f-county"].forEach(id => document.getElementById(id).value = "");
   ["f-unnamed"].forEach(id => document.getElementById(id).checked = false);
   sortKey = "name"; sortDir = 1;
   render();
@@ -2494,6 +2749,24 @@ document.addEventListener("click", e => {
   row.classList.add("expanded");
   row.insertAdjacentHTML("afterend", detailHTML(ent));
 });
+
+// ?property=<slug> — deep link, same slug rule as the Index of Individuals
+// (locked 2026-06-09): lowercase, apostrophes dropped, other non-alphanumerics
+// → hyphens. E.g. ?property=judge-nicholass-mansion-and-farm.
+function propertySlug(name) {
+  return String(name).toLowerCase()
+    .replace(/[’‘']/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+(function applyPropertyFromURL() {
+  const slug = new URLSearchParams(location.search).get("property");
+  if (!slug) return;
+  const sel = $("#f-property");
+  for (const o of sel.options) {
+    if (o.value && propertySlug(o.value) === slug.toLowerCase()) { sel.value = o.value; break; }
+  }
+})();
 
 // Initial render
 render();
