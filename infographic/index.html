@@ -159,7 +159,7 @@
 
   <!-- CONTEXT QUOTE -->
   <div class="cwi-quote-panel">
-    <p>These 275 records represent named individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them. A further 118 unnamed individuals are referenced in the same records, listed as "a black man," "four children," or simply tallied as a number in a census column.</p>
+    <p>These 275 records represent named individuals -- each a person with a name, a family, a life -- whose existence is documented only through the legal and administrative records of those who enslaved them. A further 134 unnamed individuals are referenced in the same records, listed as "a black man," "four children," or simply tallied as a number in a census column.</p>
     <div class="cwi-quote-credit">Cowenhoven Project Research Overview</div>
   </div>
 
@@ -179,7 +179,7 @@
     </div>
     <div class="cwi-stat-card">
       <a class="cwi-stat-link" href="https://data.cowenhoven.org/index-of-enslavers/" target="_blank" rel="noopener" title="Explore the Index of Enslavers">
-        <div class="cwi-number">67</div>
+        <div class="cwi-number">71</div>
         <div class="cwi-label">Enslavers Identified</div>
         <div class="cwi-sub">using primary source evidence</div>
       </a>
@@ -271,7 +271,7 @@
   <div class="cwi-two-col">
     <div class="cwi-panel">
       <div class="cwi-section-title">Largest Enslavers and the People They Enslaved</div>
-      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 67 enslavers with primary-source documentary evidence across the Van Kouwenhoven-Conover family (unproven and non-family figures excluded)).</div>
+      <div class="cwi-section-desc">Records attributed to specific identified enslavers (the project has documented 71 enslavers with primary-source documentary evidence across the Van Kouwenhoven-Conover family (unproven and non-family figures excluded)).</div>
       <div class="cwi-enslaver-list" id="cwiEnslaverList"></div>
     </div>
 
@@ -502,8 +502,8 @@
     <p>
       The Cowenhoven Project | <a href="https://cowenhoven.org">cowenhoven.org</a> &nbsp;&middot;&nbsp; <a href="https://cowenhoven.org/data/">&#8617; cowenhoven.org/data/</a><br>
       Data drawn from the Cowenhoven Project Active Data Set | New York &amp; New Jersey | Pre-1865<br>
-      This infographic represents 275 named individuals. A further 118 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
-      Version 3.9 &mdash; 4 June 2026
+      This infographic represents 275 named individuals. A further 134 unnamed people are referenced in the same documents. Many more remain unrecorded.<br>
+      Version 3.11 &mdash; 9 June 2026
     </p>
   </div>
 
@@ -666,5 +666,24 @@
       + numCell;
     listEl.appendChild(row);
   });
+})();
+</script>
+<script>
+/* Auto-height reporter: tells the embedding page (cowenhoven.org) how tall this
+   infographic is, so the iframe can resize to fit its content on any screen
+   width — no inner scrollbar. Added 2026-06-08. */
+(function(){
+  function reportHeight(){
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    try { parent.postMessage({ cowenhovenInfographicHeight: h }, '*'); } catch (e) {}
+  }
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+  if (window.ResizeObserver) { new ResizeObserver(reportHeight).observe(document.body); }
+  setTimeout(reportHeight, 300);
+  setTimeout(reportHeight, 1200);
 })();
 </script>
