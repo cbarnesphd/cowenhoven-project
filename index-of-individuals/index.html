@@ -379,7 +379,7 @@
 
   <div class="footer-note">
     Index of Individuals · drawn from the Cowenhoven Project's Active dataset (cp_per_NNN PIDs).
-    Counts and details are current as of <span id="version-date">May 13, 2026</span>; many entries are works in progress.
+    Counts and details are current as of <span id="version-date">June 10, 2026</span>; many entries are works in progress.
     To suggest a correction or add documentation, contact the project.
   </div>
 </div>
@@ -14815,6 +14815,9 @@ let sortDir = 1; // 1 asc, -1 desc
 // Deep-link filter: when ?person=cp_per_NNN is present, restrict to that one
 // individual (set by applyPersonFromURL below). Drives links from the infographic.
 let personFilter = "";
+// Deep-link filter: when ?persons=cp_per_A,cp_per_B,… is present, restrict to that
+// set (set by applyPersonsFromURL below). Drives roster buttons from blog posts.
+let personsFilter = null;
 function applyFilters() {
   const q = $("#q").value.trim().toLowerCase();
   const fCounty = $("#f-county").value;
@@ -14831,6 +14834,7 @@ function applyFilters() {
 
   return DATA.filter(p => {
     if (personFilter && p.id !== personFilter) return false;
+    if (personsFilter && !personsFilter.has(p.id)) return false;
     if (q) {
       const allEnsNames = Array.isArray(p.enslavers) ? p.enslavers.map(e => e.name).join(" ") : "";
       const hay = [p.name, p.altNames, p.locationRaw, p.locality, p.source, p.description,
@@ -15128,6 +15132,31 @@ function propertySlug(name) {
   const clr = document.getElementById("clear-person");
   if (clr) clr.addEventListener("click", () => {
     personFilter = ""; banner.style.display = "none"; banner.innerHTML = ""; render();
+  });
+})();
+
+// ?persons=cp_per_A,cp_per_B,… — restrict to a set of individuals (deep link from
+// blog-post roster buttons, e.g. "Freedom Seeking During the Revolution").
+// Unknown PIDs are silently ignored. Shows a clearable banner like ?person=;
+// clearing also scrubs the parameter from the URL so a reload stays cleared.
+(function applyPersonsFromURL() {
+  const raw = new URLSearchParams(location.search).get("persons");
+  if (!raw) return;
+  const ids = raw.split(",").map(s => s.trim()).filter(Boolean);
+  const valid = ids.filter(id => DATA.some(p => p.id === id));
+  if (!valid.length) return;
+  personsFilter = new Set(valid);
+  const banner = $("#enslaver-banner");
+  banner.innerHTML = `Showing <b>${valid.length} individuals</b> from this post `
+    + `<a id="clear-persons">show all individuals</a>`;
+  banner.style.display = "";
+  const clr = document.getElementById("clear-persons");
+  if (clr) clr.addEventListener("click", () => {
+    personsFilter = null; banner.style.display = "none"; banner.innerHTML = "";
+    const u = new URL(location);
+    u.searchParams.delete("persons");
+    history.replaceState(null, "", u);
+    render();
   });
 })();
 
