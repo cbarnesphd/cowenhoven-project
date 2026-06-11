@@ -14793,6 +14793,20 @@ function updateEnslaverBanner() {
     banner.style.display = "";
     const clr = document.getElementById("clear-property");
     if (clr) clr.addEventListener("click", () => { $("#f-property").value = ""; updateEnslaverBanner(); render(); });
+  } else if (personsFilter) {
+    // ?persons= roster banner (deep link from blog-post buttons). Lives here so
+    // re-renders keep it; clearing also scrubs the parameter from the URL.
+    banner.innerHTML = `Showing <b>${personsFilter.size} individuals</b> from this post `
+      + `<a id="clear-persons">show all individuals</a>`;
+    banner.style.display = "";
+    const clr = document.getElementById("clear-persons");
+    if (clr) clr.addEventListener("click", () => {
+      personsFilter = null;
+      const u = new URL(location);
+      u.searchParams.delete("persons");
+      history.replaceState(null, "", u);
+      updateEnslaverBanner(); render();
+    });
   } else {
     banner.style.display = "none";
     banner.innerHTML = "";
@@ -15137,8 +15151,9 @@ function propertySlug(name) {
 
 // ?persons=cp_per_A,cp_per_B,… — restrict to a set of individuals (deep link from
 // blog-post roster buttons, e.g. "Freedom Seeking During the Revolution").
-// Unknown PIDs are silently ignored. Shows a clearable banner like ?person=;
-// clearing also scrubs the parameter from the URL so a reload stays cleared.
+// Unknown PIDs are silently ignored. The banner + clear link are rendered by
+// updateEnslaverBanner() so re-renders preserve them (fix 2026-06-11: the initial
+// render's banner reset was wiping a locally-built banner).
 (function applyPersonsFromURL() {
   const raw = new URLSearchParams(location.search).get("persons");
   if (!raw) return;
@@ -15146,18 +15161,7 @@ function propertySlug(name) {
   const valid = ids.filter(id => DATA.some(p => p.id === id));
   if (!valid.length) return;
   personsFilter = new Set(valid);
-  const banner = $("#enslaver-banner");
-  banner.innerHTML = `Showing <b>${valid.length} individuals</b> from this post `
-    + `<a id="clear-persons">show all individuals</a>`;
-  banner.style.display = "";
-  const clr = document.getElementById("clear-persons");
-  if (clr) clr.addEventListener("click", () => {
-    personsFilter = null; banner.style.display = "none"; banner.innerHTML = "";
-    const u = new URL(location);
-    u.searchParams.delete("persons");
-    history.replaceState(null, "", u);
-    render();
-  });
+  updateEnslaverBanner();
 })();
 
 // Initial render
