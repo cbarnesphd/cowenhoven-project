@@ -14,7 +14,7 @@ For each named individual identified in an archival document or public record, t
 The project spans multiple platforms:
 
 - **Website** — [cowenhoven.org](https://cowenhoven.org) (in development)
-- **Active dataset** — a working spreadsheet tracking 442 Van Kouwenhoven-Conover family members across 9 generations (1584–1840s), 67 enslavers, and 275 named + 118 unnamed individuals enslaved or indentured, together with their associated events, sources, locations, and enslavers
+- **Active dataset** — a working spreadsheet tracking the Van Kouwenhoven-Conover family across 9 generations (1584–1840s), the enslavers among them, and the named and unnamed individuals they enslaved or indentured, together with their associated events, sources, locations, and enslavers
 - **WikiTree profiles** — public genealogical profiles for each named individual
 - **Public Zotero library** — primary and secondary source bibliography
 - **Google Map** — geographic project locations
@@ -27,7 +27,7 @@ The project spans multiple platforms:
 | Asset | Live URL | Description |
 |---|---|---|
 | Infographic | [data.cowenhoven.org/infographic/](https://data.cowenhoven.org/infographic/) | Project-overview infographic across NY and NJ, 1736–1840. |
-| Live Family Tree | [data.cowenhoven.org/family-tree/](https://data.cowenhoven.org/family-tree/) | Interactive family tree of the Van Kouwenhoven-Conover family across 9 generations (1584–1840s) — 442 family members, 67 enslavers, 275 named + 118 unnamed individuals enslaved or indentured. Click any name for biographical details, sources, and external profile links. |
+| Live Family Tree | [data.cowenhoven.org/family-tree/](https://data.cowenhoven.org/family-tree/) | Interactive family tree of the Van Kouwenhoven-Conover family across 9 generations (1584–1840s). Click any name for biographical details, sources, and external profile links. |
 | Index of Individuals | [data.cowenhoven.org/index-of-individuals/](https://data.cowenhoven.org/index-of-individuals/) | Searchable index of named individuals tracked by the project, with cross-references to WikiTree profiles and source citations. |
 | Index of Enslavers | [data.cowenhoven.org/index-of-enslavers/](https://data.cowenhoven.org/index-of-enslavers/) | Searchable index of enslavers in the Van Kouwenhoven-Conover family who have been disambiguated and linked to the people they enslaved on the Index of Individuals. |
 | Cluster map | [data.cowenhoven.org/cluster-map/](https://data.cowenhoven.org/cluster-map/) | Geographic map of Van Kouwenhoven-Conover branch and enslaver clusters across New York and New Jersey, plotting where the documented family lived and where they held enslaved people. |
