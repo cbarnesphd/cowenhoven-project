@@ -1677,7 +1677,7 @@
     const pidChips = [];
     if (p.fam_pid) pidChips.push(`<span class="pid-chip">${p.fam_pid}</span>`);
     if (p.ens_pid && p.ens_pid !== p.fam_pid) pidChips.push(`<span class="pid-chip">${p.ens_pid}</span>`);
-    const wikitree = p.wikitree_url ? `<a href="${p.wikitree_url}" target="_blank" rel="noopener">${p.wikitree_id || "WikiTree profile"}</a>` : (p.wikitree_id || "");
+    const wikitree = p.wikitree_url ? `<a href="${escapeHtml(p.wikitree_url)}" target="_blank" rel="noopener">${escapeHtml(p.wikitree_id || "WikiTree profile")}</a>` : (p.wikitree_id ? escapeHtml(p.wikitree_id) : "");
     // 2026-05-29 Stage 3: distinct ENSLAVER vs INHERITANCE-CHAIN tag.
     const eTag = (() => {
       if (!p.is_enslaver) return "";
@@ -1762,13 +1762,13 @@
     h += dlPair("Mother", p.mother_text);
     h += dlPair("Spouse", p.spouse_text);
     h += dlPair("Children (text)", p.children_summary);
-    h += dlPair("WikiTree", wikitree);
+    h += dlPairRaw("WikiTree", wikitree);
     if (p.is_enslaver) {
       h += dlPair("Notable records", p.notable_records);
       h += dlPair("Will / probate", p.will_probate);
     }
     h += dlPair("Notes", p.notes);
-    h += dlPair("Sources", p.sources);
+    h += dlPairRaw("Sources", linkifyText(p.sources));
     h += "</dl>";
     card.innerHTML = h;
   }
@@ -1776,6 +1776,24 @@
   function dlPair(k, v) {
     if (!v || !String(v).trim()) return "";
     return `<dt>${k}</dt><dd>${escapeHtml(String(v))}</dd>`;
+  }
+
+  // Like dlPair but does NOT escape the value — for values that are already
+  // trusted, generated HTML (e.g. the WikiTree anchor, linkified Sources).
+  function dlPairRaw(k, v) {
+    if (!v || !String(v).trim()) return "";
+    return `<dt>${k}</dt><dd>${String(v)}</dd>`;
+  }
+
+  // Escape text, then turn bare http(s) URLs into clickable links.
+  function linkifyText(s) {
+    if (!s || !String(s).trim()) return "";
+    const parts = String(s).split(/(https?:\/\/[^\s|)<>]+)/g);
+    return parts.map(part =>
+      /^https?:\/\//.test(part)
+        ? `<a href="${escapeHtml(part)}" target="_blank" rel="noopener">${escapeHtml(part)}</a>`
+        : escapeHtml(part)
+    ).join("");
   }
 
   function joinNonempty(parts) { return parts.filter(p => p && String(p).trim()).join(", "); }
