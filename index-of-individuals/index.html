@@ -300,6 +300,14 @@
     font-size: 0.82rem;
     color: var(--muted);
   }
+  /* === Sticky header when embedded (added 2026-06-12; mirror edit — replicate in generator before next regen) === */
+  @media (min-width: 801px) {
+    html.embedded, html.embedded body { height: 100%; }
+    html.embedded body { overflow: hidden; }
+    html.embedded .wrap { height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; min-height: 0; }
+    html.embedded .table-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+    html.embedded table.idx thead th { position: sticky; top: 0; z-index: 5; }
+  }
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
@@ -363,6 +371,7 @@
 
   <div class="results-line">Showing <b id="result-count">—</b> of <b id="result-total">—</b> persons. Click any row to expand.</div>
 
+  <div class="table-scroll">
   <table class="idx" id="tbl">
     <thead>
       <tr>
@@ -382,6 +391,7 @@
     Counts and details are current as of <span id="version-date">June 10, 2026</span>; many entries are works in progress.
     To suggest a correction or add documentation, contact the project.
   </div>
+  </div><!-- /.table-scroll -->
 </div>
 
 <script>
