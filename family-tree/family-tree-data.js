@@ -4058,7 +4058,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "negros (man, woman and 4 children)",
           "source_citation": "New Jersey, U.S., Abstract of Wills, 1670-1817 [database on-line], Ancestry.com Operations Inc., 2011. Original: NJ State Archives, New Jersey, Published Archives Series, First Series. Vol. XXX, Abstracts of Wills, 1730-1750, p. 115. Will of Albert Couwenhoven, 1748-09-06; Lib. E, p. 213.",
           "source_url": "https://www.ancestry.com/discoveryui-content/view/10260:2495",
-          "notes": "Will dated 1748-09-06, proved 1748-10-03. Inventory taken 1748-11-21, total estate £1800.12.3. Signed 'Neltje Couenhouen' (Eleanor). Cornelius Albertse Couwenhoven (enslaver of cp_per_174 Thomas and cp_per_175 Jude) may be Albert's son Cornelius named in the will — pending confirmation."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -4604,7 +4604,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "six negros (post-Betty-promotion 2026-04-30: 5 remaining unnamed)",
           "source_citation": "New Jersey, U.S., Abstract of Wills, 1670-1817 [database online]. Provo, UT: Ancestry.com Operations, Inc., 2011. Original: New Jersey State Archives. New Jersey, Published Archives Series, First Series, Volume XXX, Abstracts of Wills, 1730-1750. Trenton, NJ: John L. Murphy Publishing Company. Will of Jacob Covenhoven of Middletown, Monmouth Co., yeoman, dated 1743-07-05; proved 1744-07-17. Lib. D, p. 152. Inventory taken 1744-12-03 (£618.18.8) by Samuel Ogborne, Hendrick Hendrickson and Edward Taylor — includes \"six negros, large Bible, 217 bushels Indian corn, books, 32 barrels flour\" plus extensive bonds and book debts.",
           "source_url": "https://www.ancestry.com/search/collections/2793/",
-          "notes": "Testator = cp_ens_009 = Jacob Willemse van Couwenhoven of Middletown, Monmouth Co. NJ (WikiTree Van_Couwenhoven-70). Will dated 1743-07-05; proved 1744-07-17 (Lib. D, p. 152); inventory taken 1744-12-03 (£618.18.8). Inventory mentions \"six negros\" but does NOT name them or break down by age/sex. Children named in will: Martin, Roeloff, Jacob, Garret, Peter, John (6 sons); granddaughter Sarah Covenhoven; grandsons Daniel Covenhoven, Daniel Hendrickson, Jacob Hendrickson. Executors: Roeloff, Jacob, Garret (3 sons). Witnesses: Joseph Goulder, George Crawford, Elias Golden, Charles Henderson. Inventory takers: Samuel Ogborne, Hendrick Hendrickson, Edward Taylor. Jacob is one of THREE Willemse Couwenhoven brothers — sons of cp_fam_007 Willem Gerritsz Couwenhoven (Couwenhoven-4, 1636-1728): cp_ens_002 Albert (1676-1748) of Freehold, cp_ens_004 Cornelis (1672-1736) of Pleasant Valley, cp_ens_009 Jacob (1679-1744) of Middletown — all NJ Monmouth Co. enslavers. AUDIT 2026-04-30: total decremented 6→5 — Betty promoted to NAMED row cp_per_243 per Chris confirmation she is named in will text ('my Negroe Woman Betty' bequeathed to son Martin Covenhoven = cp_ens_036). Remaining 5 unnamed persons in 1744 inventory still need disaggregation."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 1,
@@ -10514,7 +10514,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "All my Negroes together with all my household furniture",
           "source_citation": "New York, U.S., Wills and Probate Records, 1659-1999 [database online]. Lehi, UT: Ancestry.com Operations, Inc., 2015. Original: New York County, District and Probate Courts. Wills and Administrations (New York County, NY), 1680-1804, Vol 0035-0039, 1782-1787, pp. 222-225. Author: New York. Surrogate's Court (New York County). Will of Garret Couwenhoven of New Utrecht, Kings Co., NY, dated 1781-05-09; probated 1784-02-05 by Thomas Tredwell, Judge of Probates.",
           "source_url": "https://www.ancestry.com/search/collections/8800/records/4478508",
-          "notes": "First Brooklyn/Kings County will entered to UNNAMED sheet — all prior cp_rec_001-006 are Monmouth NJ. Testator = cp_fam_033 = Gerret Van Couwenhoven of New Utrecht (Bedford-Homestead branch, brother of cp_ens_007 John). Will dated 1781-05-09; probated 1784-02-05 by Thomas Tredwell, Judge of Probates, City of New York. Testator d.1783-11-17 per WikiTree. Witnesses: Petrus Van Pelt; John Verkerk Van Nuys; Nichs. Couwenhoven (HYPOTHESIS: brother Nicasius Van_Couwenhoven-84 b.1742, OR cousin Judge Nicholas cp_ens_001 b.1744 — both age-viable in Kings Co. 1781; flag for follow-up). Executors: son Johannes Couwenhoven; friend Aart Van Pelt (son of Petrus); daughter Sarah Couwenhoven Schenck (executrix). Heirs of \"all my Negroes\": (1) son Johannes 1/3; (2) daughter Sarah, wife of Martin Schenck, 1/3; (3) children of dec'd son Necasie — granddaughters Antie, Geertie, Sarah, Elizabeth, Nieltie + grandson Garret — collectively 1/3. Other property: New Utrecht homestead farm to grandson Garret (with cash payments £60 each to 5 sisters at majority); New Utrecht plantation purchased of John Rapelje to son Johannes; Somerset Co. NJ Raritan farm \"let last to Thomas Burgon\" (inherited from father Necasie/Nicasius cp_fam_027) to daughter Sarah Schenck. Farming utensils + horses + cattle to son Johannes + grandson Garret. Bequest of \"all my Negroes\" alongside \"household furniture\" — both as a unit divided 3 ways — treats enslaved people as chattels rather than as persons or family units. Land boundary clues: New Utrecht homestead bounded by Van Duys, Stilwell, Surtie Denyse (widow of Denis Denise), high road Flatbush→New Utrecht; \"yellow Hock lane\" on the northeast."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -10829,7 +10829,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1783,
           "location": "New York, New York",
           "profile_url": "https://cowenhoven.org/people/jack-cp_per_232/",
-          "source": "Inspection Roll of Negroes (\"Book of Negroes\" / Black Loyalist Directory), Book 2, p. 151 (1783-09-22). New York: joint Anglo-American commission. See cp_sou_078.",
+          "source": "Inspection Roll of Negroes (\"Book of Negroes\" / Black Loyalist Directory), Book 2, p. 151 (1783-09-22). New York: joint Anglo-American commission.",
           "source_url": "https://blackloyalist.com",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -14359,7 +14359,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "two Negro wenches",
           "source_citation": "Will of Garret Kouwenhoven of Flatlands, NYSA J0038-92 SS2 2869, dated 1777-09-13 (proved 1778-01-15 before Surrogate Cary Ludlow, City & County of NY; recorded 1778-03-04). Page 4 clause: \"after my youngest Living Child is Come to age or marries from that Time my wife antie Shall have one Room for her to Live in and two milk Cows in Pasture with Either of her Sons Cows and free planting in the Garden and Gitting fruit out of the orchards & Shall have two Negro wenches to Serve her During her Widowhood and from the Same time Shall Receive Every Year thirty pounds from my Nine Children Each of them to pay their Equal Ninth part towards it and Each of them to give her one Bushel of Indian [Indigion] Corn one Bushel of Rie and half a Bushel of wheat Every Year.\" Plural \"wenches\" + \"Widowhood\" duration confirmed via Chris's magnified close-up of page 4, 2026-04-26.",
           "source_url": "(pending — NYSA J0038-92 not yet linked online; check fultonhistory.com or NYSA digital catalog)",
-          "notes": "Two enslaved women devised by Gerret Willemse Kouwenhoven (cp_ens_027) as life-tenancy to widow Antie Lefferts (FS LKZT-151) during her widowhood. Adult-female assumption based on \"wenches\" usage in 18th-c. NY Dutch wills (typically signals adult enslaved women; \"girls\" signals minors). Antie d.1782 per FS — widowhood window approximately 1777-09-23 (Gerret's death) to ~1782 (Antie's death) ≈ 5 years; wenches would then revert to residuary estate or be distributed among the 9 children. Clause is conditional on a TWO-STEP trigger: (1) widowhood (terminates if Antie remarries — see page 2 £100 buyout-on-remarriage clause), AND (2) \"after my youngest Living Child is Come to age or marries\" (the widow's downsized one-room arrangement begins only then). Names + ultimate fate pending. NOTE: the will body names ONLY these two wenches; if Gerret held additional enslaved at death they would be in the residuary clause OR the probate inventory (NYSA J0038-92, image not in current folder set — pending Chris's confirmation)."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -18552,7 +18552,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1803,
           "location": "Monmouth County, New Jersey",
           "profile_url": "https://cowenhoven.org/people/cezar-cp_per_113/",
-          "source": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey, p. 151 (1812-06-03 cert / 1813-03-26 recorded — cp_eve_026); 1803-05-16 widow's-bequest sub-inventory in 1803 probate of Col. John Covenhoven (cp_eve_025)",
+          "source": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey, p. 151 (1812-06-03 cert / 1813-03-26 recorded —); 1803-05-16 widow's-bequest sub-inventory in 1803 probate of Col. John Covenhoven",
           "source_url": "https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-manumissions-1787-1844/",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -19114,7 +19114,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "\"A likely NEGRO WENCH ... she has a healthy female child about 7 months old\" (verbatim from ad; mother + infant offered as a unit for cash sale).",
           "source_citation": "cp_sou_079",
           "source_url": "(pending)",
-          "notes": "Unnamed enslaved woman (b. ~1750, age ~28) + her unnamed female infant daughter (b. ~Oct 1777, age ~7 months) offered for cash sale by Capt. Rem Cowenhoven (cp_ens_006) in May 1778 NY Gazette ad. Woman lived chiefly in NYC (likely Rem boarded her out or leased her to NYC households — common Brooklyn-NYC enslaver practice). Skilled domestic — washing, ironing, \"all sorts of house-work.\" Survived smallpox (relevant for value/marketability in 18th-c. ads). Sale ad published 1778-05-25, just 24 days after Rem's father cp_ens_007 John Cowenhoven of Bedford died (1778-05-01) and 7 days BEFORE the June 1, 1778 probate inventory (cp_eve_029 / cp_sou_008) that listed 5 named enslaved persons at Bedford. HYPOTHESIS: the woman + child were Rem's own property (not from his father's estate) — Rem moving an asset to cash quickly during the estate-settlement period; OR the pair were part of cp_ens_007's estate that Rem disposed of before the inventory was officially taken (the June 1 inventory does not mention an unnamed woman + infant). Outcome of sale unknown — pending further research on Rem's accounts or post-1778 attestations."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 7,
@@ -19349,7 +19349,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of New Utrecht — household head \"Nelly Cowenhoven\" with 1 fwm≥16 / 0 fwm<16 / 3 fwf / 0 other free / 5 enslaved. Female head of household (widow).",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); New Utrecht enumeration page 12; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "Nelly Van Pelt Cowenhoven was widowed in 1783 (cp_fam_033 Gerret died); ran the NU household 1783 to ~1792-95 (son Garrett cp_ens_014's majority). 1790 census = mid-widowhood baseline. The 1 fwm≥16 may be her son Garrett (b.1774) at age 16, just barely qualifying as adult by census definition. The 3 fwf may include her daughters per cp_fam_033's 1781 will (Antie, Geertie, Sarah, Elizabeth, Nieltie — 5 daughters; some may have been married out by 1790). 5 enslaved 1790 baseline — pre-dates ENSLAVER row's noted 9-12 yr enslaver window pre-1799 NY law birth-indentures. Currently no Active rows linked to cp_ens_016 (her enslaver attestation period pre-dates 1799 indenture records); the 5 enslaved here are her FIRST documented enslaver-attestation."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -20171,7 +20171,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1812,
           "location": "Freehold Township, Monmouth County, New Jersey",
           "profile_url": "https://cowenhoven.org/people/dick-cp_per_115/",
-          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10. See cp_sou_035.",
+          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10.",
           "source_url": "",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -20191,7 +20191,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1812,
           "location": "Freehold Township, Monmouth County, New Jersey",
           "profile_url": "https://cowenhoven.org/people/franck-cp_per_116/",
-          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10. See cp_sou_035.",
+          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10.",
           "source_url": "",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -20211,7 +20211,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1812,
           "location": "Freehold Township, Monmouth County, New Jersey",
           "profile_url": "https://cowenhoven.org/people/liz-cp_per_117/",
-          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10. See cp_sou_035.",
+          "source": "Inventory section of File 8944 M (Monmouth Probate of John P. Covenhoven of Freehold, taken 1812-02-10 by Teunis VanDerveer + John J. Ely). Will signed 1811-04-29; proved 1812-03-10.",
           "source_url": "",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -20352,7 +20352,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "\"one Negro Girl and Childe\" (verbatim from File 8944 M inventory; appraised together at $110.00)",
           "source_citation": "cp_sou_035",
           "source_url": "https://www.ancestry.com/search/collections/2793/",
-          "notes": "Unnamed woman + her child enslaved in cp_ens_050 John P. Covenhoven's household at his death 1811-12-24; appraised together as one $110 line item in the 1812-02-10 inventory. The \"Girl\" likely indicates young woman of working age (18th–early 19th c. usage); the \"Childe\" likely an infant or toddler. Cross-referenced to cp_eve_160 via that event row's unnamed_group_id field. HYPOTHESIS-LOW: could this pair be cp_per_089 Rachel + an unrecorded second child born to her 1808-1811? Rachel was alive in cp_ens_050's household in 1807 (filed BBB for son Isaac cp_per_162) but is absent from the 1812 inventory. If she remained in the household, she'd appear here; the unnamed \"Girl + Childe\" pair could be her. But her son Isaac would be 5 in 1812 (too old for \"Childe\"), so if it's Rachel, she had a second child unrecorded by BBB. Pure speculation — keep separate from any cp_per_089 wiring until evidence emerges."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 10,
@@ -20409,7 +20409,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": 1764,
       "decade_active_end": 1804,
       "confidence_flag": "Working hypothesis",
-      "fs_pid": "",
+      "fs_pid": "(pending)",
       "findagrave_id": "(pending)",
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -20928,7 +20928,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": 1760,
       "decade_active_end": 1770,
       "confidence_flag": "Working hypothesis",
-      "fs_pid": "",
+      "fs_pid": "(pending)",
       "findagrave_id": "(pending)",
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -21000,7 +21000,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": 1761,
       "decade_active_end": 1778,
       "confidence_flag": null,
-      "fs_pid": "",
+      "fs_pid": "(pending)",
       "findagrave_id": "(pending — likely on same FaG cemetery as Nelly; search \"Nicholas Covenhoven\" New Utrecht 1778)",
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -21529,7 +21529,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of New Utrecht — household head \"Nicholas Cowenhoven\" with 4 free white males ≥16 / 0 fwm<16 / 2 fwf / 1 all other free / 10 enslaved. Slave column = aggregate count, no age/sex breakdown.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); New Utrecht enumeration page 11; verified 2026-04-26 by Chris from FamilySearch image.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "Largest single Cowenhoven enslaved household in 1790 Kings Co. (tied with cp_ens_008). Judge Nicholas was Chief Judge of Kings Co. Court of Common Pleas; the household line shows 4 wm≥16 (Judge Nicholas + three unaccounted adult sons including HYPOTHESIS cp_ens_019 Major John age 21 still under his father's roof per project_major_john_hypothesis.md and project_new_utrecht_1790_census.md analysis 2026-04-26). The \"1 all other free\" person is unusual for 1790 NU and may indicate a free Black/Native individual continuing residence as wage labor or by social tie — flagged for follow-up. Trajectory: 10 enslaved 1790 → ENSLAVER row already documents 3 named MATCH (cp_per_041 Jack 1782, cp_per_042 Cuffee 1785, cp_per_043 Bet 1792) plus 2 unprocessed AMBIG rows (cp_per_138 Margaret + cp_per_139 Charles 1784 NJ)."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 3,
@@ -21586,7 +21586,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": 1770,
       "decade_active_end": 1810,
       "confidence_flag": "Working hypothesis",
-      "fs_pid": "",
+      "fs_pid": "(pending)",
       "findagrave_id": "(pending)",
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -22165,7 +22165,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of New Utrecht — household head \"Johnanes Cowenhoven\" [Johannes spelling variant] with 1 fwm≥16 / 0 fwm<16 / 6 fwf / 0 other free / 8 enslaved.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); New Utrecht enumeration page 12; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "cp_ens_013 NU residence CONFIRMED (was previously \"presumed\" pending primary). Spouse cp_ens_017 Catherine Stellerwerf is one of the 6 fwf; the others likely daughters and/or female kin/servants. 1790 baseline of 8 enslaved is forward-trackable: cp_ens_013's ENSLAVER row links 5 MATCH from later years (cp_per_004 Jack 1822 manumission age 30 → b. ~1792, indenture-era; cp_per_020-023 Sare/Mary/Cate/Tom 1806-1813 NU births). The 8 enslaved persons here in 1790 are not yet named individually — their names may surface in subsequent 1799-law birth indentures recorded in NU town clerk's book."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 5,
@@ -22967,7 +22967,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": null,
       "decade_active_end": null,
       "confidence_flag": "Documented match",
-      "fs_pid": "L6S9-265, FS likely transcription error)",
+      "fs_pid": "L6S9-265",
       "findagrave_id": null,
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -23350,7 +23350,7 @@ window.FAMILY_TREE_DATA = {
       "notes": "",
       "raw_related_family": "",
       "raw_related_enslavers": "Father|cp_fam_143;Sibling|cp_ens_035 (Luke Conover);Spouse|cp_fam_247 (Lammetie Voorhees)",
-      "notable_records": "Soldier, Middlesex County Militia, NJ Militia (per DAR A210200, NJ Rev War Slips FHL Roll #569441).. (Calendar of NJ Wills Vol. VI p.557; Lib. 19, p. 389): 'Wife, Lamy, household and kitchen furniture, a covered waggon, 2 horses, 3 cows, 1 sleigh,, to be at her disp[osal].' Inventory taken 1809-01-08, £600.13.6, by Coert Voorhies and David Slaback.",
+      "notable_records": "Soldier, Middlesex County Militia, NJ Militia (per DAR A210200, NJ Rev War Slips FHL Roll #569441). (Calendar of NJ Wills Vol. VI p.557; Lib. 19, p. 389): 'Wife, Lamy, household and kitchen furniture, a covered waggon, 2 horses, 3 cows, 1 sleigh,, to be at her disp[osal].' Inventory taken 1809-01-08, £600.13.6, by Coert Voorhies and David Slaback.",
       "enslaved_people_linked": "(Eve, adult woman, transferred to widow Lammetie per 1807 will / 1809 probate) (Bob, boy/child, transferred to widow Lammetie per same will). Active sheet 'Rutes Covenhoven' rows now wireable to this new cp_ens.",
       "will_probate": "1807-02-17 dated / 1809-01-27 proved (East Windsor Twp Middlesex Co. NJ)",
       "burial_location": "",
@@ -23787,7 +23787,7 @@ window.FAMILY_TREE_DATA = {
           "year": 1772,
           "location": "Monmouth County, New Jersey",
           "profile_url": "https://cowenhoven.org/people/joseph-cp_per_053/",
-          "source": "Bond of Manumission, 30 January 1772 — Slave Manumissions collection (cp_sou_016), Monmouth County Department of Archives. NOTE: 1772 record predates cp_sou_016's stated 1787-1844 range; the database has been expanded to include earlier colonial-era bonds.",
+          "source": "Bond of Manumission, 30 January 1772 — Slave Manumissions collection, Monmouth County Department of Archives. NOTE: 1772 record predates's stated 1787-1844 range; the database has been expanded to include earlier colonial-era bonds.",
           "source_url": "https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-manumissions-1787-1844/",
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
@@ -23977,7 +23977,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of Brooklyn — household head \"John Cowenhoven\" with 3 fwm≥16 / 1 fwm<16 / 5 fwf / 0 other free / 7 enslaved. Household = 9 white + 7 enslaved = 16 total. Substantial multi-generational household.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); Brooklyn enumeration left page ~position 104; FS ark XHKP-BWK; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "IDENTITY RESOLVED 2026-04-28: enslaver = John Cowenhoven 1752-1805 (cp_ens_034, FS G9DJ-8D1), youngest son of cp_ens_007. Primary evidence: 1778 inventory cp_eve_029 (named as one of three executor sons, drew £723 by consent of widow Catharina Remsen) + 30 June 1789 Brooklyn deed naming him 'John Cowenhoven his uncle' to nephew Nicholas R. cp_ens_005. The earlier HYPOTHESIS that this household = cp_fam_049 (son of cp_fam_029) is RETIRED — cp_fam_049 in FAMILY remains a separate John (b. before 1753, unrelated lineage). | IDENTITY UNRESOLVED. The 9-white + 7-enslaved household structure (3 wm≥16 + 1 boy + 5 wf) suggests a multi-generational patriarchal household. Original 2026-04-26 PM hypothesis identified him as cp_fam_029 John (Jan) Cowenhoven of Bushwick — but cp_fam_029 died between 1753-02-01 and 1761-08-17 per FAMILY sheet, ruling him out (dead 29+ years before 1790). REVISED HYPOTHESIS 2026-04-27: cp_fam_049 = John (Jan) Cowenhoven Jr., son of cp_fam_029, named \"Jan\" / \"John\" in his father's 1753 will, born before 1753-02-01 — would be 37+ in 1790. cp_fam_049 row currently has NO death date and NO residence in FAMILY sheet — both gaps must be filled before any cp_ens_### promotion. Other Johns ruled out: cp_fam_008 Jan Gerretse (d. abt.1724), cp_fam_032 John Nicasse (d.1778), cp_fam_041 John Fred (different family). Per Chris's instruction 2026-04-27, NO ENSLAVER row minted yet — UNNAMED row stands as the documentation of the 7 enslaved persons pending resolution. Major John (cp_ens_019, age 21 in 1790) was previously a candidate but is ruled out — complete NU 1790 census shows no separate Major John entry, and Judge Nicholas's NU HH has 4 wm≥16 indicating Major John was still under his father's roof in 1790."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 1,
@@ -25676,7 +25676,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of Flatlands — household head \"William Cowenhoven\" with 1 fwm≥16 / 1 fwm<16 / 4 fwf / 0 other free / 8 enslaved.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); Flatlands enumeration page 15; FS ark XHKP-BKX; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "cp_ens_026 William Kouwenhoven (age 32 in 1790, m. 1778-12-12 to Annatie Wyckoff). Wife is one of the 4 fwf; remaining 3 likely daughters. The 1 fwm<16 is fewer than the ≥4 sons FS L6MR-8DT lists by 1790 — discrepancy already flagged in cp_ens_026 ENSLAVER row notes. **PROMOTES THIS UNNAMED ROW FROM HOLD STATUS** (per project_brooklyn_1790_census_transcribed.md HOLD on cp_ens_026's 8 enslaved 1790 census). 8 enslaved 1790 baseline supports forward-trajectory tracking via cp_ens_026's 7 BOTR-Flatlands birth-register MATCHes (cp_per_025 John 1800 / cp_per_028+029 Saar+Hanna 1802 / cp_per_031 Jack 1806 / cp_per_032 John 1807 / cp_per_033+034 Dick+Isabel 1808). The 1790 baseline likely includes the mothers Hanna (cp_per_029) and Isabel (cp_per_034) as adults, plus possibly individuals who exited the household pre-1799 NY law birth-indenture period (sold, manumitted, or died 1790-1799)."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 8,
@@ -25834,7 +25834,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "",
           "source_citation": "cp_sou_064 (1790 US Federal Census, Dutchess County, NY)",
           "source_url": "",
-          "notes": "Single enslaved person in Peter Covenhoven household at Fishkill, Dutchess. Census records aggregate slave count only — name, age, sex, kin not recorded in 1790 schedule."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -26347,7 +26347,7 @@ window.FAMILY_TREE_DATA = {
       "raw_related_family": "",
       "raw_related_enslavers": "Parent|cp_ens_027;Sibling|cp_ens_026",
       "notable_records": "1777 Will of father Garret Kouwenhoven (NYSA J0038-92 SS2 2869): bequeathed \"plantans\" tract + half \"wholepoint\" NW of Stintenberg + ¼ share of Lyon Hook (W end) + ¼ share of frozen-back meadows + ¼ share of 2 Flatlands Kill woodlots + £150 building money for plantans + £60 son's portion + 3 milk cows + the Patentee Birth Right (Flatlands common-lands). 1790 US Census, Town of Flatlands, Kings County NY (FS ark XHKP-BKX, page 15): household 1 wm≥16 / 2 wm<16 / 1 wf / 0 other free / 3 enslaved.",
-      "enslaved_people_linked": "3 unnamed enslaved persons per 1800 federal census Newtown Queens — first documented enslavement record for (Cocheu #617).",
+      "enslaved_people_linked": "Future candidate. | 3 unnamed enslaved persons per 1800 federal census Newtown Queens — first documented enslavement record for (Cocheu #617).",
       "will_probate": "",
       "burial_location": "",
       "on_family_sheet": false,
@@ -26395,7 +26395,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of Flatlands — household head \"Luke Cowenhoven\" with [white-side counts to confirm] / 3 enslaved.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); Flatlands enumeration page 15-16; FS ark XHKP-BKX; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "cp_ens_028 Luke Kouwenhoven (1766-1853 per ENSLAVER row, age 24 in 1790). 3 enslaved 1790 baseline — Luke's earliest documented enslaver attestation. Modest household size (3 enslaved) is consistent with a young establishing yeoman in the Flatlands community. Trajectory forward: cp_ens_028's later attestations are documented in his ENSLAVER row."
+          "notes": ""
         },
         {
           "group_id": "cp_rec_026",
@@ -26410,7 +26410,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "",
           "source_citation": "cp_sou_065 (1800 US Federal Census, Queens County, NY)",
           "source_url": "",
-          "notes": "Three enslaved persons in Luke Covenhoven household at Newtown Queens, 1800. FIRST documented enslavement record for cp_ens_028 (Cocheu #617 'Luke⁶ of Poor Bowery, Newtown, L.I.', b./bap. 1766 Flatlands). Luke had moved from Flatlands Kings (where he was 1790 census head) to Newtown by 1800. Household composition: 2/0/0/1/0/1/0/0/1/1/0/3/9 = 9 total. Census records aggregate slave count only."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -26947,7 +26947,7 @@ window.FAMILY_TREE_DATA = {
       "decade_active_start": 1830,
       "decade_active_end": 1830,
       "confidence_flag": "Documented match",
-      "fs_pid": "",
+      "fs_pid": "(pending)",
       "findagrave_id": "(pending)",
       "wikidata_qid": null,
       "enslaved_org_id": null,
@@ -28459,7 +28459,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of Brooklyn — household head \"John R. Cowenhoven\" with 2 fwm≥16 / 1 fwm<16 / 2 fwf / 0 other free / 10 enslaved. Largest 1790 Cowenhoven enslaved household in Kings Co. (tied with cp_ens_001).",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); Brooklyn enumeration left page ~position 102; FS ark XHKP-BW2; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "AUDIT 2026-05-23 PM3: cp_ens_001 removed from enslaver_ids — was a sloppy cross-reference (Judge Nicholas lived in New Utrecht, not Brooklyn). John R. (cp_ens_008) is the documented household head and sole enslaver per 1790 census enumeration. cp_ens_008 (age 29 in 1790) with wife cp_ens_025 Garetta Tiebout (age 27, m. 1785) likely one of the 2 fwf; the boy is a son b. ~1786-90; the second adult man may be brother/relative/hired hand. 10 enslaved is a substantial Brooklyn holding — sets the baseline for tracking John R.'s household 1790 → 1810 census → 1811-09-02 death (cp_eve_023 1798 trustee-creditor liquidation includes cp_per_048-052 Neen/Harry/Bet/Prince/Harry + cp_per_234 Harry, suggesting at least 6 of the 1790 cohort were sold off in 1798). Widow Garetta becomes head of household post-1811; her receipt book cp_sou_004 documents continued enslavement 1814-1830. Cross-event: the 1790 10-person cohort overlaps with 1798 6-person trustee sale (cp_eve_023) — name-level matching pending."
+          "notes": ""
         },
         {
           "group_id": "cp_rec_025",
@@ -28474,7 +28474,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "",
           "source_citation": "cp_sou_066 (1810 US Federal Census, Kings County, NY)",
           "source_url": "",
-          "notes": "Four enslaved persons in John R. Couwenhoven household, 1810. FIRST documented enslavement record for cp_ens_008 (b. 1761-02-28 d. 1811-09-02). Page concludes with Brooklyn Navy Yard military summary (Capt. Chancery, Capt. Hall, Capt. of the Marines), confirming Kings County context. Census records aggregate slave count only — name, age, sex, kin not recorded in 1810 schedule."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 12,
@@ -28872,7 +28872,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "",
           "source_citation": "cp_sou_063 (1790 US Federal Census, Westchester County, NY)",
           "source_url": "",
-          "notes": "Single enslaved person in Jacob Cowenhoven household at Greenburgh, Westchester. Census records aggregate slave count only — name, age, sex, kin not recorded in 1790 schedule."
+          "notes": ""
         },
         {
           "group_id": "cp_rec_024",
@@ -28887,7 +28887,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "",
           "source_citation": "cp_sou_067 (1810 US Federal Census, Westchester County, NY)",
           "source_url": "",
-          "notes": "Single enslaved person in Jacob Cowenhoven household at Greenburgh, Westchester, 1810. Same enslavement count as 1790 (cp_rec_022). Wife Cathalyna Westervelt died Sept 1809 and is absent. Census records aggregate slave count only — name, age, sex, kin not recorded in 1810 schedule."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -29119,7 +29119,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of New Utrecht — household head \"George Cowenhoven\" with 1 fwm≥16 / 0 fwm<16 / 1 fwf / 0 other free / 4 enslaved. Slave column = aggregate count.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); New Utrecht enumeration page 11; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "George Cowenhoven (cp_ens_018, age 26 in 1790) was already an active independent enslaver at age 26 with own household (1 wife + 4 enslaved = 6 total). Listed CONSECUTIVELY after cp_ens_001 Judge Nicholas on page 11 — circumstantial support for father-son relationship (per project_new_utrecht_1790_census.md). cp_ens_018 died at 40 in 1805. Modest holding but 1790 → 1805 (15 yrs) trajectory unknown — search Kings Co. Surrogate filings 1805-1806 for inventory + minor-heir guardianship."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 0,
@@ -29975,7 +29975,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1790 US Federal Census, Town of Brooklyn — household head \"Nicholas Cowenhoven\" with 1 fwm≥16 / 0 fwm<16 / 1 fwf / 0 other free / 5 enslaved.",
           "source_citation": "cp_sou_007 (1790 US Federal Census, Kings Co. NY); Brooklyn enumeration right page ~position 147; FS ark XHKP-BWL; verified 2026-04-26 by Chris.",
           "source_url": "https://www.familysearch.org/search/collection/1417683",
-          "notes": "cp_ens_005 (age 22 in 1790, pre-marriage to Mary/Catharine 1791) — already an active independent enslaver. The 1 fwf likely his mother Magdalene Van Vechten (if alive 1790) or a sister. **MAJOR TRAJECTORY**: 5 enslaved 1790 → 11 named in 1809 will (cp_eve_021/022). Household more than DOUBLED across 19 years — substantive growth, not pure inheritance — supports Blog Post Idea #3 about the 1809 will architecture (3-tier manumission structure). The 5 enslaved here in 1790 are not yet named individually but are forward-trackable: any of cp_per_006-010 (Nero, Susannah, Harry, James, Sarah) + cp_per_044-045 (Thomas, Neen) named in the 1809-1810 records may overlap with the 1790 cohort, particularly the older individuals."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 11,
@@ -37122,7 +37122,7 @@ window.FAMILY_TREE_DATA = {
           "grouping_language": "1830 US Federal Census, Freehold Borough, Monmouth, NJ — household head 'Hendrick Conover': 11 free white + 2 enslaved (1 male 24-36, 1 female 36-55) + 8 free Black persons. Household total = 21.",
           "source_citation": "cp_sou_024",
           "source_url": "https://www.familysearch.org/ark:/61903/1:1:XH5D-NYQ",
-          "notes": "The SM 24-36 in this household is HYPOTHESIZED to be cp_per_066 Silas Higgins (manumitted by cp_ens_048 in cp_eve_072 1834-07-29 at age 21-40 per statutory certification; the 1830 cohort fits 4 years earlier). Hendrick is enumerated 4th from the bottom of the page, immediately below his father Tunis Covenhoven (5th from the bottom; household = 7 free white, 0 enslaved, 0 free Black per Chris)."
+          "notes": ""
         }
       ],
       "enslaved_named_count": 1,
