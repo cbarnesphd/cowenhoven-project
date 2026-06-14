@@ -1677,7 +1677,15 @@
     const pidChips = [];
     if (p.fam_pid) pidChips.push(`<span class="pid-chip">${p.fam_pid}</span>`);
     if (p.ens_pid && p.ens_pid !== p.fam_pid) pidChips.push(`<span class="pid-chip">${p.ens_pid}</span>`);
-    const wikitree = p.wikitree_url ? `<a href="${escapeHtml(p.wikitree_url)}" target="_blank" rel="noopener">${escapeHtml(p.wikitree_id || "WikiTree profile")}</a>` : (p.wikitree_id ? escapeHtml(p.wikitree_id) : "");
+    // External links (genealogy aggregators) — NOT sources; surfaced in their own
+    // "Links" section, built from the structured ID fields. (2026-06-14)
+    const extLinks = [];
+    if (p.wikitree_url) extLinks.push(`<a href="${escapeHtml(p.wikitree_url)}" target="_blank" rel="noopener">WikiTree${p.wikitree_id ? " (" + escapeHtml(p.wikitree_id) + ")" : ""}</a>`);
+    else if (p.wikitree_id) extLinks.push(`WikiTree (${escapeHtml(p.wikitree_id)})`);
+    if (p.fs_pid) extLinks.push(`<a href="https://www.familysearch.org/tree/person/details/${encodeURIComponent(p.fs_pid)}" target="_blank" rel="noopener">FamilySearch (${escapeHtml(p.fs_pid)})</a>`);
+    if (p.findagrave_id) extLinks.push(`<a href="https://www.findagrave.com/memorial/${encodeURIComponent(p.findagrave_id)}" target="_blank" rel="noopener">Find a Grave (#${escapeHtml(p.findagrave_id)})</a>`);
+    if (p.wikidata_qid) extLinks.push(`<a href="https://www.wikidata.org/wiki/${encodeURIComponent(p.wikidata_qid)}" target="_blank" rel="noopener">Wikidata (${escapeHtml(p.wikidata_qid)})</a>`);
+    const extLinksHtml = extLinks.join("<br>");
     // 2026-05-29 Stage 3: distinct ENSLAVER vs INHERITANCE-CHAIN tag.
     const eTag = (() => {
       if (!p.is_enslaver) return "";
@@ -1712,8 +1720,9 @@
           const yr = e.year ? `b. ${e.year}` : "";
           const meta = [e.role, e.event_type, e.location, e.date_of_record, e.race, e.age].filter(s => s && String(s).trim()).join(" · ");
           let nameHtml;
-          if (e.profile_url && e.profile_url.startsWith("http")) {
-            nameHtml = `<a href="${escapeHtml(e.profile_url)}" target="_blank" rel="noopener">${escapeHtml(e.name)}</a>`;
+          if (e.person_id) {
+            const ioiUrl = `https://data.cowenhoven.org/index-of-individuals/?persons=${encodeURIComponent(e.person_id)}`;
+            nameHtml = `<a href="${ioiUrl}" target="_blank" rel="noopener">${escapeHtml(e.name)}</a>`;
           } else {
             nameHtml = escapeHtml(e.name);
           }
@@ -1762,7 +1771,7 @@
     h += dlPair("Mother", p.mother_text);
     h += dlPair("Spouse", p.spouse_text);
     h += dlPair("Children (text)", p.children_summary);
-    h += dlPairRaw("WikiTree", wikitree);
+    h += dlPairRaw("Links", extLinksHtml);
     if (p.is_enslaver) {
       h += dlPair("Notable records", p.notable_records);
       h += dlPair("Will / probate", p.will_probate);
