@@ -854,10 +854,10 @@ window.addEventListener('error', e => showError(e.message + ' @ ' + (e.filename 
 const GRAPH = {
   "metadata": {
     "hero_pid": "cp_ens_003",
-    "generated": "2026-05-28T04:04:53",
+    "generated": "2026-06-14T20:54:48",
     "workbook": "Project Data Sets/Cowenhoven Project Data Set.xlsx",
-    "node_count": 32,
-    "edge_count": 43,
+    "node_count": 33,
+    "edge_count": 44,
     "asymmetric_count": 0,
     "verification_legend": {
       "verified": "Bidirectional reciprocal present on counterpart row",
@@ -874,7 +874,7 @@ const GRAPH = {
       "label": "Cornelius Albertse Couwenhoven (1728-1802)",
       "birth_date": "1728-10-29",
       "baptism_date": "",
-      "marriage_date": "(1) 1750-05-28 Antje Williamson #347 (b. 1730-09-13 d. 1757-09-14, daughter of William Williamson #177 + Altje Covenhoven cp_fam_116 #116, who were first cousins \u2014 **double cousin marriage**, EDSM:27, NJA:22:76, NJMis:2:312&354); (2) 1770-07-12 Mary Logan (b. 1748-08-09 d. 1831-05-02 \u2014 per Cocheu 82:1 #157 [cp_sou_054])",
+      "marriage_date": "1) 1750-05-28 Antje Williamson #347",
       "death_date": "1802-01-23",
       "branch": "Gerrit",
       "generation": 5,
@@ -905,10 +905,10 @@ const GRAPH = {
       "id": "cp_ens_011",
       "type": "enslaver",
       "label": "William Albertse Couwenhoven (1702-1790)",
-      "birth_date": "1702-03-09 (per Cocheu 82:1 #146 [cp_sou_054], confirms WikiTree Couwenhoven-11)",
+      "birth_date": "1702-03-09",
       "baptism_date": "",
-      "marriage_date": "~1721 (per Cocheu 82:1 #146 [cp_sou_054]; WikiTree gives ~1720)",
-      "death_date": "1790-03 (between 1786-11-18 will date and 1790-03-17 probate; per Cocheu 82:1 #146 [cp_sou_054]; supersedes prior workbook \"1790-03-19\" \u2014 19 was likely a transcription artifact)",
+      "marriage_date": "~1721",
+      "death_date": "1790-03",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "https://www.wikitree.com/wiki/Couwenhoven-11",
@@ -1027,7 +1027,7 @@ const GRAPH = {
       "birth_date": "1716-10-21",
       "baptism_date": "1716-12-09",
       "marriage_date": "1741-05-19",
-      "death_date": "1771 (per FS L6MV-84J \u2014 anchored 2026-05-12 batch 3)",
+      "death_date": "1771",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "",
@@ -1044,7 +1044,7 @@ const GRAPH = {
       "birth_date": "1719-02-07",
       "baptism_date": "",
       "marriage_date": "",
-      "death_date": "1738-04-22, ae. 19-2-15 (EDSM Ap. i)",
+      "death_date": "1738-04-22, ae. 19-2-15",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "",
@@ -1078,7 +1078,7 @@ const GRAPH = {
       "birth_date": "1723-02-18",
       "baptism_date": "1723-03-24",
       "marriage_date": "",
-      "death_date": "1767-04-28 age 44y 2m 10d (per Cocheu 82:1 #156 [cp_sou_054])",
+      "death_date": "1767-04-28 age 44y 2m 10d",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "",
@@ -1091,12 +1091,12 @@ const GRAPH = {
     {
       "id": "cp_fam_344",
       "type": "family",
-      "label": "Antje Williamson Covenhoven (1730-1757)",
-      "birth_date": "1730-09-13 (per Cocheu #347 + #157 [cp_sou_054])",
+      "label": "Antje Williamson (1730-1757)",
+      "birth_date": "1730-09-13",
       "baptism_date": "",
-      "marriage_date": "1750-05-28 (per Cocheu #157 + EDSM:27; NJA:22:76)",
-      "death_date": "1757-09-14 (aged 27 \u2014 died ~1 year after marriage; per Cocheu #157 [cp_sou_054])",
-      "branch": "Albert",
+      "marriage_date": "1750-05-28",
+      "death_date": "1757-09-14",
+      "branch": "In-law",
       "generation": 6,
       "wikitree_url": "",
       "wikidata_qid": "",
@@ -1108,12 +1108,12 @@ const GRAPH = {
     {
       "id": "cp_fam_348",
       "type": "family",
-      "label": "Mary Logan Covenhoven (1748-1831)",
-      "birth_date": "1748-08-09 (per Cocheu #157 [cp_sou_054] + EDSM:27)",
+      "label": "Mary Logan (1748-1831)",
+      "birth_date": "1748-08-09",
       "baptism_date": "",
-      "marriage_date": "1770-07-12 (per Cocheu #157 + NJA:22:76)",
-      "death_date": "1831-05-02 (per Cocheu #157)",
-      "branch": "Albert (marital)",
+      "marriage_date": "1770-07-12",
+      "death_date": "1831-05-02",
+      "branch": "In-law",
       "generation": 5,
       "wikitree_url": "",
       "wikidata_qid": "",
@@ -1121,6 +1121,23 @@ const GRAPH = {
       "is_hero": false,
       "source_sheet": "FAMILY",
       "hero_relation": "spouse"
+    },
+    {
+      "id": "cp_ens_030",
+      "type": "enslaver",
+      "label": "Cornelius C. Covenhoven (a.k.a. Cornelius C. Conover) (1771-1814)",
+      "birth_date": "1771-05-18",
+      "baptism_date": "",
+      "marriage_date": "",
+      "death_date": "1814-12-20",
+      "branch": "Gerrit",
+      "generation": 6,
+      "wikitree_url": "https://www.wikitree.com/wiki/Covenhoven-19",
+      "wikidata_qid": "",
+      "verification_status": "unknown",
+      "is_hero": false,
+      "source_sheet": "ENSLAVER",
+      "hero_relation": "child"
     },
     {
       "id": "cp_per_099",
@@ -1252,11 +1269,11 @@ const GRAPH = {
     {
       "id": "cp_sou_081",
       "type": "source",
-      "label": "MCHA 1802 Cornelius Covenhoven Sen'r Inventory \u2014 primary attestation of 5 enslaved individuals at cp_ens_003 + new mother-child kinship cp_per_099 Elizabeth + cp_per_100 Samuel.",
+      "label": "MCHA 1802 Cornelius Covenhoven Sen'r Inventory \u2014 primary attestation of 5 enslaved individuals at + new mother-child kinship Elizabeth + Samuel.",
       "title": "Probate inventory of Cornelius Covenhoven Sen'r (= cp_ens_003 Cornelius Albertse Couwenhoven, d. 1802-01-20 Freehold Twsp Monmouth Co. NJ), taken February 16, 1802 by appraisers David Gordon and Garret Covenhoven; personal estate total $888.50. MCHA typescript transcription of the original Monmouth Surrogate probate inventory. Names 5 enslaved persons individually with valuations: Elizabeth + her son Samuel (mother-child pair, appraised together $47.50), Simon ($125 \u2014 adult man), Pheabe ($62.50 \u2014 adult woman, with manuscript-correction Rachel\u2192Pheabe visible in typescript), Rachel ($50 \u2014 \"Negro Girl\", young).",
       "source_type": "Manuscript probate inventory (MCHA typescript transcription of original Monmouth Surrogate filing).",
       "date": "1802-02-16 (inventory taken). Testator died 1802-01-20.",
-      "author": "David Gordon + Garret Covenhoven (appraisers). Filed: Monmouth Surrogate. Transcribed: Monmouth County Historical Association (MCHA). Subject decedent: cp_ens_003 Cornelius Albertse Couwenhoven, b. 1728-10-29 d. 1802-01-20 Freehold.",
+      "author": "David Gordon + Garret Covenhoven (appraisers). Filed: Monmouth Surrogate. Transcribed: Monmouth County Historical Association (MCHA). Subject decedent: Cornelius Albertse Couwenhoven, b. 1728-10-29 d. 1802-01-20 Freehold.",
       "url": "(pending \u2014 MCHA archival access on-site)",
       "archive": "Monmouth County Historical Association (MCHA). Local: Source Documents/Cornelius Covenhoven Sen. 1802 Probate Inventory/ (IMG_7830-7834 = inventory pages; IMG_7835 misfiled per analysis.md \u2014 actually belongs to the Cornelius C. Conover 1815 packet). Prior analysis: Source Documents/Cornelius Covenhoven Sen. 1802 Probate Inventory/Cornelius Covenhoven Sen 1802 Inventory - analysis.md (2026-04-27).",
       "citation": "Probate inventory of Cornelius Covenhoven Sen'r, deceased; taken 1802-02-16 by David Gordon and Garret Covenhoven; total personal estate $888.50. Typescript transcription, Monmouth County Historical Association (MCHA).",
@@ -1271,10 +1288,10 @@ const GRAPH = {
       "title": "Will and Inventory of Cornelius A. Covenhoven (Cornelius Albertse Couwenhoven) of Freehold Township, Monmouth County, New Jersey (1793 will signed; 1802 inventory and probate)",
       "source_type": "Probate abstract (19th-c. printed editorial digest from NJ Published Archives Series, First Series \u2014 original manuscript at NJ State Archives not yet pulled)",
       "date": "1793-09-11 (will signed); 1802-02-16 (inventory); 1802-04-15 (proved)",
-      "author": "cp_ens_003 (testator Cornelius A. Covenhoven, Cornelius Albertse Couwenhoven); executors Stophel Logan + Tobias Polhemus; witnesses Garret Covenhoven + Ruth Covenhoven + Joseph Throckmorton; appraisers David Gordon + Garret Covenhoven (1802 inventory)",
+      "author": "(testator Cornelius A. Covenhoven, Cornelius Albertse Couwenhoven); executors Stophel Logan + Tobias Polhemus; witnesses Garret Covenhoven + Ruth Covenhoven + Joseph Throckmorton; appraisers David Gordon + Garret Covenhoven (1802 inventory)",
       "url": "https://www.ancestry.com/search/collections/2793/",
       "archive": "New Jersey State Archives \u2014 Monmouth County Surrogate, Will Lib. 40 p. 46; File 8479 M; Calendar of Wills vol. XXXIX (1801-1805); also published in NJ Published Archives Series, First Series, Volume XXXIX (Abstracts of Wills, 1801-1805), John L. Murphy Publishing Company, Trenton NJ",
-      "citation": "Will of Cornelius A. Covenhoven of Freehold Township, Monmouth County, NJ, yeoman, dated 1793-09-11. Names wife Mary; sons Cornelius (primary heir), Albert (dependent, supported by \u00a3600 charge on Cornelius's inheritance), William; daughters Nelly, Allice, Sarah. Specifically devises 'negro woman named Jane' (cp_per_083) to widow Mary for the duration of her widowhood, with use of one room and a 'comfortable living' from son Cornelius; if Mary remarried, the devise lapsed and she instead received \u00a350. Residuary clause divides the covered wagon, horses, cattle, and remaining enslaved people among five children (William, Nelly, Allice, Cornelius, Sarah). Inventory taken 1802-02-16, total $888.50, including '5 negroes' (cp_per_099 Elizabeth, cp_per_100 Samuel, cp_per_101 Simon, cp_per_102 Pheabe, cp_per_103 Rachel \u2014 named individually only in the full probate packet, not in this abstract). Will proved 1802-04-15 before the Surrogate of Monmouth County. Citation: NJ Abstract of Wills Vol. XXXIX, Lib. 40 p. 46, File 8479 M. PROVENANCE: SOURCE row contents derived from Ancestry.com display of NJ Published Archives Series Vol. XXXIX (19th-c. printed editorial digest); original manuscript at NJ State Archives Monmouth Surrogate Lib. 40 p. 46, File 8479 M not yet pulled \u2014 abstract may contain editorial collapse and transcription errors per cp_sou_031 manuscript-vs-abstract pattern.",
+      "citation": "Will of Cornelius A. Covenhoven of Freehold Township, Monmouth County, NJ, yeoman, dated 1793-09-11. Names wife Mary; sons Cornelius (primary heir), Albert (dependent, supported by \u00a3600 charge on Cornelius's inheritance), William; daughters Nelly, Allice, Sarah. Specifically devises 'negro woman named Jane' to widow Mary for the duration of her widowhood, with use of one room and a 'comfortable living' from son Cornelius; if Mary remarried, the devise lapsed and she instead received \u00a350. Residuary clause divides the covered wagon, horses, cattle, and remaining enslaved people among five children (William, Nelly, Allice, Cornelius, Sarah). Inventory taken 1802-02-16, total $888.50, including '5 negroes' (Elizabeth Samuel Simon Pheabe Rachel \u2014 named individually only in the full probate packet, not in this abstract). Will proved 1802-04-15 before the Surrogate of Monmouth County. Citation: NJ Abstract of Wills Vol. XXXIX, Lib. 40 p. 46, File 8479 M. PROVENANCE: SOURCE row contents derived from Ancestry.com display of NJ Published Archives Series Vol. XXXIX (19th-c. printed editorial digest); original manuscript at NJ State Archives Monmouth Surrogate Lib. 40 p. 46, File 8479 M not yet pulled \u2014 abstract may contain editorial collapse and transcription errors per manuscript-vs-abstract pattern.",
       "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
@@ -1293,12 +1310,12 @@ const GRAPH = {
       "type": "source",
       "label": "Walker to Cornelius Albertse Couwenhoven 1752 Bill of Sale",
       "title": "Bill of Sale from Daniel Walker to Cornelius Albertse Couwenhoven for an enslaved family: Thomas, Jude, and an unnamed child",
-      "source_type": "Bill of Sale (1752-07-29) for an enslaved family: Thomas (cp_per_174), Jude (cp_per_175), and an unnamed child. 2 of 3 PIDs named in the document.",
+      "source_type": "Bill of Sale (1752-07-29) for an enslaved family: Thomas, Jude, and an unnamed child. 2 of 3 PIDs named in the document.",
       "date": "1752-07-29",
-      "author": "Daniel Walker (seller, non-Cowenhoven, unminted); Cornelius Albertse Couwenhoven (cp_ens_003, buyer)",
+      "author": "Daniel Walker (seller, non-Cowenhoven,); Cornelius Albertse Couwenhoven (buyer)",
       "url": "",
       "archive": "Monmouth County Historical Association (MCHA), Freehold, NJ \u2014 Covenhoven Family Papers",
-      "citation": "Bill of Sale, Daniel Walker to Cornelius Albertse Couwenhoven, dated 29 July 1752, for Thomas (cp_per_174), Jude (cp_per_175), and an unnamed child. Covenhoven Family Papers, Monmouth County Historical Association, Freehold, NJ. Linked event ID cp_eve_164. Linked PIDs cp_per_174, cp_per_175. Linked enslaver cp_ens_003.",
+      "citation": "Bill of Sale, Daniel Walker to Cornelius Albertse Couwenhoven, dated 29 July 1752, for Thomas, Jude, and an unnamed child. Covenhoven Family Papers, Monmouth County Historical Association, Freehold, NJ. Linked event ID. Linked PIDs. Linked enslaver.",
       "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
@@ -1312,7 +1329,7 @@ const GRAPH = {
       "date": "Letter dated 18 Jul 1778 at Monmouth Co., NJ; reprinted 6 Aug 1778; events 26\u201328 Jun 1778.",
       "author": "Anonymous Monmouth Patriot correspondent (Freehold).",
       "url": "(pending \u2014 Chris-supplied PDF.)",
-      "archive": "*The Pennsylvania Evening Post* (Benjamin Towne, Philadelphia), 6 August 1778, pp. 1\u20132. Reprinted from a Trenton paper of 5 August 1778 (likely *The New-Jersey Gazette*). Local: Family Sources/Three Covenhoven Houses Burned 1778 Pennsylvania Evening Post/",
+      "archive": "*The Pennsylvania Evening Post* (Benjamin Towne, Philadelphia), 6 August 1778, pp. 1\u20132. Reprinted from a Trenton paper of 5 August 1778 (likely *The New-Jersey Gazette*). Local: Family Sources/Three Covenhoven Houses Burned 1778 Pennsylvania Evening Post",
       "citation": "*The Pennsylvania Evening Post* (Benjamin Towne, Philadelphia), 6 August 1778, pp. 1\u20132. Reprinted from a Trenton paper of 5 August 1778 (likely *The New-Jersey Gazette*).",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1326,7 +1343,7 @@ const GRAPH = {
       "date": "1989 (single-volume reprint); consolidates articles originally published in The New York Genealogical and Biographical Record across 1939\u20131978.",
       "author": "Lincoln C. Cocheu (1880\u20131960).",
       "url": "https://archive.org/details/vankouwenhovenco00coch",
-      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition/",
+      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition",
       "citation": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. Single-volume reprint. New York: Van Kouwenhoven-Conover Family Association, 1989. (Reprinted from The New York Genealogical and Biographical Record, with added index and continuous pagination.) Internet Archive digitization (2019): vankouwenhovenco00coch.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1415,6 +1432,12 @@ const GRAPH = {
       "source": "cp_ens_003",
       "target": "cp_fam_348",
       "relation": "spouse",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_003",
+      "target": "cp_ens_030",
+      "relation": "child",
       "verification_status": "verified"
     },
     {
@@ -1574,13 +1597,13 @@ const GRAPH = {
     },
     {
       "source": "cp_ens_003",
-      "target": "cp_sou_075",
+      "target": "cp_sou_081",
       "relation": "cited_in",
       "verification_status": "verified"
     },
     {
       "source": "cp_ens_003",
-      "target": "cp_sou_081",
+      "target": "cp_sou_075",
       "relation": "cited_in",
       "verification_status": "verified"
     },
@@ -1728,7 +1751,7 @@ function displayDateField(s) {
   // Year detection: 1600s-2000s, with optional ISO suffix, OR fuzzy date markers
   const hasDate = /\b(?:1[6-9]\d{2}|20\d{2})(?:-\d{2}-\d{2})?\b|\b(?:abt\.|circa|ca\.|bef\.|aft\.)\s*\d{4}/i.test(s);
   if (!hasDate) return normalizeISODate(s);   // non-date strings: still pass through, harmless if no ISO present
-  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FaG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
+  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
   const stripped = s.replace(/\s*\(([^)]*)\)/g, (m, inner) => {
     const idx = inner.search(CITATION_RE);
     if (idx < 0) return m;             // no citation marker — keep paren as-is
@@ -3435,7 +3458,7 @@ function showSidePanel(node) {
     ['Race', node.type === 'enslaved_person' ? node.race : null],
     ['Age category', node.type === 'enslaved_person' ? node.age_category : null],
     ['Date of record', (node.type === 'enslaved_person' && node.event_date && node.event_type !== 'Birth') ? displayDateField(node.event_date) : null],
-    ['Profile on Cowenhoven.org', (node.type === 'enslaved_person' && node.profile_url && /^https?:\/\//.test(node.profile_url)) ? `<a href="${node.profile_url}" target="_blank">${node.profile_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>` : null],
+    ['Index of Individuals', (node.type === 'enslaved_person' && /^cp_per_\d+$/.test(node.id)) ? `<a href="https://data.cowenhoven.org/index-of-individuals/?persons=${encodeURIComponent(node.id)}" target="_blank" rel="noopener">View in the Index of Individuals</a>` : null],
     [`${HERO_FIRST_NAME}'s role in Event`, _heroRoleInEvent],
     ['Birth', displayDateField(node.birth_date)],
     ['Baptism', displayDateField(node.baptism_date)],

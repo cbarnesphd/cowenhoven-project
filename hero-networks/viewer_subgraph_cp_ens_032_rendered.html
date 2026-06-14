@@ -854,10 +854,10 @@ window.addEventListener('error', e => showError(e.message + ' @ ' + (e.filename 
 const GRAPH = {
   "metadata": {
     "hero_pid": "cp_ens_032",
-    "generated": "2026-05-28T04:05:09",
+    "generated": "2026-06-14T20:57:34",
     "workbook": "Project Data Sets/Cowenhoven Project Data Set.xlsx",
-    "node_count": 23,
-    "edge_count": 33,
+    "node_count": 26,
+    "edge_count": 43,
     "asymmetric_count": 0,
     "verification_legend": {
       "verified": "Bidirectional reciprocal present on counterpart row",
@@ -873,8 +873,8 @@ const GRAPH = {
       "type": "enslaver",
       "label": "Jacob (Van Couwenhoven) Covenhoven (1751-1815)",
       "birth_date": "1751-11-11",
-      "baptism_date": "1752-01-19 (per Cocheu 82:2 #522 [cp_sou_055])",
-      "marriage_date": "1782-12-29 (2nd m.); 1788-12-10 (3rd m.); abt. 1770 (1st m., no exact date in Cocheu)",
+      "baptism_date": "1752-01-19",
+      "marriage_date": "1782-12-29",
       "death_date": "1815-04-28",
       "branch": "Gerrit",
       "generation": 6,
@@ -886,19 +886,19 @@ const GRAPH = {
     },
     {
       "id": "cp_fam_133",
-      "type": "family",
-      "label": "John Jacobse Couwenhoven (b. 1722)",
+      "type": "enslaver",
+      "label": "John Jacobse Couwenhoven (1722-1792)",
       "birth_date": "1722-05-17",
       "baptism_date": "1722-07-15",
-      "marriage_date": "1750-11-05 (lic)",
-      "death_date": "",
+      "marriage_date": "1750-11-05",
+      "death_date": "1792",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "",
       "wikidata_qid": "",
-      "verification_status": "MATCH",
+      "verification_status": "MATCH (9-source Cocheu + 1792 will convergence)",
       "is_hero": false,
-      "source_sheet": "FAMILY",
+      "source_sheet": "ENSLAVER",
       "hero_relation": "parent"
     },
     {
@@ -922,10 +922,10 @@ const GRAPH = {
       "id": "cp_ens_073",
       "type": "enslaver",
       "label": "Jacob I. Conover (1773-1843)",
-      "birth_date": "1773 (year per FS LKCC-7PV \u2014 exact day pending; baptism record expected at Freehold-Middletown DRC)",
+      "birth_date": "1773",
       "baptism_date": "",
       "marriage_date": "1799-09-26",
-      "death_date": "1843-09-09 (per FG Memorial #39831879)",
+      "death_date": "1843-09-09",
       "branch": "Gerrit",
       "generation": 7,
       "wikitree_url": "",
@@ -940,9 +940,9 @@ const GRAPH = {
       "type": "family",
       "label": "Ariantje (Covenhoven) Covenhoven (d. 1780)",
       "birth_date": "",
-      "baptism_date": "1746-09-25 (per Cocheu #502 p.57 [cp_sou_055])",
-      "marriage_date": "abt. 1770 (no exact date in Cocheu; per #522 p.60)",
-      "death_date": "1780-05-04 (aged 33 yrs 8 mos 23 days per Cocheu #522 p.60 [cp_sou_055])",
+      "baptism_date": "1746-09-25",
+      "marriage_date": "abt. 1770",
+      "death_date": "1780-05-04",
       "branch": "Gerrit",
       "generation": 6,
       "wikitree_url": "",
@@ -955,12 +955,12 @@ const GRAPH = {
     {
       "id": "cp_fam_346",
       "type": "family",
-      "label": "Nelly (Neeltje) Schenck Covenhoven",
+      "label": "Nelly (Neeltje) Schenck",
       "birth_date": "",
-      "baptism_date": "1769-06-17 (per Cocheu #522 + #161 [cp_sou_055])",
-      "marriage_date": "1788-12-10 (per Cocheu #522 + #161)",
-      "death_date": "(in Jersey Hill, Illinois \u2014 date not stated in Cocheu)",
-      "branch": "Gerrit (marital)",
+      "baptism_date": "1769-06-17",
+      "marriage_date": "1788-12-10",
+      "death_date": "",
+      "branch": "In-law",
       "generation": 6,
       "wikitree_url": "",
       "wikidata_qid": "",
@@ -972,13 +972,13 @@ const GRAPH = {
     {
       "id": "cp_fam_347",
       "type": "family",
-      "label": "Eleanor (Neeltje) Smock Covenhoven (1756-1788)",
-      "birth_date": "1756-10-28 (per Cocheu #522 [cp_sou_055])",
+      "label": "Eleanor (Neeltje) Smock (1756-1788)",
+      "birth_date": "1756-10-28",
       "baptism_date": "",
-      "marriage_date": "1782-12-29 (per Cocheu #522)",
-      "death_date": "1788-04-26 (aged 31 yrs 5 mos 28 days; per Cocheu #522)",
-      "branch": "Gerrit (marital)",
-      "generation": 6,
+      "marriage_date": "1782-12-29",
+      "death_date": "1788-04-26",
+      "branch": "In-law",
+      "generation": 7,
       "wikitree_url": "",
       "wikidata_qid": "",
       "verification_status": "MATCH",
@@ -1097,6 +1097,39 @@ const GRAPH = {
       "source_sheet": "SOURCE"
     },
     {
+      "id": "cp_eve_052",
+      "type": "event",
+      "label": "Birth 1808-11-01",
+      "event_type": "Birth",
+      "document_date": "1808-11-01",
+      "source_quotation": "",
+      "source_sheet": "EVENT"
+    },
+    {
+      "id": "cp_sou_015",
+      "type": "source",
+      "label": "Monmouth Slave Births",
+      "title": "Slave Births, 1804-1848, Monmouth County, New Jersey",
+      "source_type": "Birth Register (manuscript record book of slave births filed under the 1804 NJ Act for the Gradual Abolition of Slavery; definitive online edition maintained by the Monmouth County Clerk, including post-1989 additions; abridged published abstract by Ellen Thorne Morris, 1989, now superseded by the online database)",
+      "date": "1804-1848 (manuscript registrations); ongoing (Monmouth County Clerk online database, with post-1989 additions); 1989 (Morris/Moss published abstract)",
+      "author": "Monmouth County town clerks (manuscript registrations from enslaver-filed birth certificates); Office of the Monmouth County Clerk (definitive online database); Ellen Thorne Morris (compiler, 1989 abstract); George H. Moss, Jr. (editor, 1989 abstract)",
+      "url": "https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-births-1804-1848/",
+      "archive": "Office of the Monmouth County Clerk, Freehold, NJ",
+      "citation": "Slave Births, 1804\u20131848, Monmouth County, New Jersey. Manuscript register, Monmouth County Clerk's Archives, Freehold, NJ. Definitive online database: Office of the Monmouth County Clerk, https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-births-1804-1848/. Abridged published abstract (incomplete; superseded by the online database for entries identified after 1989): Morris, Ellen Thorne, comp. Black Birth Book of Monmouth County, New Jersey, 1804\u20131848. Edited by George H. Moss, Jr. Freehold, NJ: Office of the Monmouth County Clerk, 1989. 67 pp.",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
+    },
+    {
+      "id": "cp_eve_058",
+      "type": "event",
+      "label": "Birth 1810-10-20",
+      "event_type": "Birth",
+      "document_date": "1810-10-20",
+      "source_quotation": "",
+      "source_sheet": "EVENT"
+    },
+    {
       "id": "cp_eve_068",
       "type": "event",
       "label": "Manumission 1813-01-27",
@@ -1145,7 +1178,7 @@ const GRAPH = {
       "date": "1989 (single-volume reprint); consolidates articles originally published in The New York Genealogical and Biographical Record across 1939\u20131978.",
       "author": "Lincoln C. Cocheu (1880\u20131960).",
       "url": "https://archive.org/details/vankouwenhovenco00coch",
-      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition/",
+      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition",
       "citation": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. Single-volume reprint. New York: Van Kouwenhoven-Conover Family Association, 1989. (Reprinted from The New York Genealogical and Biographical Record, with added index and continuous pagination.) Internet Archive digitization (2019): vankouwenhovenco00coch.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1266,6 +1299,68 @@ const GRAPH = {
     {
       "source": "cp_eve_004",
       "target": "cp_sou_034",
+      "relation": "documented_by",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_032",
+      "target": "cp_eve_052",
+      "relation": "documented_in",
+      "verification_status": "verified",
+      "note": "EVENT.enslaver_ids \u2194 ENSLAVER.notable_records OR related_event_ids"
+    },
+    {
+      "source": "cp_eve_052",
+      "target": "cp_per_165",
+      "relation": "concerns",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_052",
+      "target": "cp_per_164",
+      "relation": "concerns",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_052",
+      "target": "cp_pla_012",
+      "relation": "located_at",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_052",
+      "target": "cp_sou_015",
+      "relation": "documented_by",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_032",
+      "target": "cp_eve_058",
+      "relation": "documented_in",
+      "verification_status": "verified",
+      "note": "EVENT.enslaver_ids \u2194 ENSLAVER.notable_records OR related_event_ids"
+    },
+    {
+      "source": "cp_eve_058",
+      "target": "cp_per_165",
+      "relation": "concerns",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_058",
+      "target": "cp_per_206",
+      "relation": "concerns",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_058",
+      "target": "cp_pla_012",
+      "relation": "located_at",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_058",
+      "target": "cp_sou_015",
       "relation": "documented_by",
       "verification_status": "verified"
     },
@@ -1501,7 +1596,7 @@ function displayDateField(s) {
   // Year detection: 1600s-2000s, with optional ISO suffix, OR fuzzy date markers
   const hasDate = /\b(?:1[6-9]\d{2}|20\d{2})(?:-\d{2}-\d{2})?\b|\b(?:abt\.|circa|ca\.|bef\.|aft\.)\s*\d{4}/i.test(s);
   if (!hasDate) return normalizeISODate(s);   // non-date strings: still pass through, harmless if no ISO present
-  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FaG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
+  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
   const stripped = s.replace(/\s*\(([^)]*)\)/g, (m, inner) => {
     const idx = inner.search(CITATION_RE);
     if (idx < 0) return m;             // no citation marker — keep paren as-is
@@ -3208,7 +3303,7 @@ function showSidePanel(node) {
     ['Race', node.type === 'enslaved_person' ? node.race : null],
     ['Age category', node.type === 'enslaved_person' ? node.age_category : null],
     ['Date of record', (node.type === 'enslaved_person' && node.event_date && node.event_type !== 'Birth') ? displayDateField(node.event_date) : null],
-    ['Profile on Cowenhoven.org', (node.type === 'enslaved_person' && node.profile_url && /^https?:\/\//.test(node.profile_url)) ? `<a href="${node.profile_url}" target="_blank">${node.profile_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>` : null],
+    ['Index of Individuals', (node.type === 'enslaved_person' && /^cp_per_\d+$/.test(node.id)) ? `<a href="https://data.cowenhoven.org/index-of-individuals/?persons=${encodeURIComponent(node.id)}" target="_blank" rel="noopener">View in the Index of Individuals</a>` : null],
     [`${HERO_FIRST_NAME}'s role in Event`, _heroRoleInEvent],
     ['Birth', displayDateField(node.birth_date)],
     ['Baptism', displayDateField(node.baptism_date)],

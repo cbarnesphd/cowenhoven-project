@@ -864,10 +864,10 @@ const GRAPH = {
   "metadata": {
     "hero_pid": "cp_per_208",
     "hero_type": "enslaved_person",
-    "generated": "2026-05-25T15:31:04",
+    "generated": "2026-06-14T20:55:13",
     "workbook": "Project Data Sets/Cowenhoven Project Data Set.xlsx",
-    "node_count": 12,
-    "edge_count": 22,
+    "node_count": 37,
+    "edge_count": 57,
     "asymmetric_count": 0,
     "uei_count": 0,
     "verification_legend": {
@@ -886,6 +886,7 @@ const GRAPH = {
       "sex": "Female",
       "age": "",
       "age_category": "Adult (14-39)",
+      "race": "",
       "person_status": "Freed Person",
       "birth_date": "",
       "event_type": "Birth",
@@ -903,14 +904,20 @@ const GRAPH = {
           "event_type": "Manumission",
           "event_date": "1822-08-26",
           "location": "Freehold Township, Monmouth County, New Jersey"
+        },
+        {
+          "event_id": "cp_eve_169",
+          "event_type": "Will",
+          "event_date": "1830-06-05",
+          "location": "Township of Freehold, Monmouth County, New Jersey (will signed); New Brunswick, Middlesex County (probated 1830)"
         }
       ],
       "occupation": "",
       "location": "Monmouth County, New Jersey",
-      "description": "Rachel was held in slavery by Eleanor Conover of the Village & Township of Freehold (cp_ens_021 Neeltje Williamson Covenhoven, who used both English-form spellings 'Eleanor Conover' and 'Eleanor Covenhoven' on her household's filings). She gave birth to two sons in close succession: James Henry on February 25, 1815 (cp_per_209, cp_eve_041) and Ephraim on August 28, 1816 (cp_per_210, cp_eve_065). Both births were registered with Monmouth County under New Jersey's 1804 Act for the Gradual Abolition of Slavery on a single multi-child certificate filed by Eleanor. Six years after Ephraim's birth, on August 26, 1822, Eleanor Covenhoven manumitted Rachel under the full pre-1820 statutory protocol (cp_eve_071, Monmouth Manumission Book pp. 88-89): five days earlier on August 21, Rachel had been certified before Overseers of the Poor of Freehold (Francis M. Deklyn, Lewis Gordon) and Justices of the Peace of Monmouth (Wm. J. Bowne, William Lloyd) as sound in mind, not bodily incapacitated, and within the 21-40 statutory age window \u2014 she was 'about twenty four years' old, born ~1798. The deed was acknowledged the same day before Judge William J. Bowne of the Inferior Court of Common Pleas and recorded September 6, 1822 by Wm. Ten Eyck Clk. CONSOLIDATION: cp_per_061 (1822 manumission row) retired into cp_per_208 (BBB mother row) on 2026-05-05 \u2014 single Rachel, three events.",
+      "description": "Rachel was held in slavery by Eleanor Conover of the Village & Township of Freehold (Neeltje Williamson Covenhoven, who used both English-form spellings 'Eleanor Conover' and 'Eleanor Covenhoven' on her household's filings). She gave birth to two sons in close succession: James Henry on February 25, 1815 and Ephraim on August 28, 1816. Both births were registered with Monmouth County under New Jersey's 1804 Act for the Gradual Abolition of Slavery on a single multi-child certificate filed by Eleanor. Six years after Ephraim's birth, on August 26, 1822, Eleanor Covenhoven manumitted Rachel under the full pre-1820 statutory protocol (Monmouth Manumission Book pp. 88-89): five days earlier on August 21, Rachel had been certified before Overseers of the Poor of Freehold (Francis M. Deklyn, Lewis Gordon) and Justices of the Peace of Monmouth (Wm. J. Bowne, William Lloyd) as sound in mind, not bodily incapacitated, and within the 21-40 statutory age window \u2014 she was 'about twenty four years' old, born ~1798. The deed was acknowledged the same day before Judge William J. Bowne of the Inferior Court of Common Pleas and recorded September 6, 1822 by Wm. Ten Eyck Clk. CONSOLIDATION: (1822 manumission row) retired into (BBB mother row) on 2026-05-05 \u2014 single Rachel, three events.",
       "notes": "",
       "wikitree_url": "",
-      "profile_url": "https://cowenhoven.org/people/rachel-cp_per_208/",
+      "profile_url": "https://cowenhoven.org/profiles/rachel-cp_per_208/",
       "enslaved_by_text": "Eleanor Conover",
       "is_hero": true,
       "verification_status": "hero",
@@ -919,7 +926,7 @@ const GRAPH = {
     {
       "id": "cp_eve_041",
       "type": "event",
-      "label": "Birth of James Henry",
+      "label": "Birth of James Henry (1815)",
       "event_type": "Birth",
       "document_date": "1815-02-25",
       "event_date": "1815-02-25",
@@ -927,7 +934,7 @@ const GRAPH = {
       "total_people": "2",
       "enslaver_name": "Eleanor Conover of the Village & Township of Freehold",
       "participants": "(unnamed in source) (enslaver who filed the registration certificate per the 1804 Act)",
-      "notes": "Birth registration filed under New Jersey's Act for the Gradual Abolition of Slavery (1804). Mother Rachel (cp_per_208) and infant James Henry (cp_per_209); enslaver Eleanor Conover of the Village & Township of Freehold, Monmouth County. Eleanor Conover is one of only two known woman enslavers in this cohort (the other being Helena Longstreet of Shrewsbury \u2014 non-Cowenhoven). CERTIFICATE TEXT (partial \u2014 verbatim from manuscript, top of certificate only): \"I Eleanor Conover of the Village & township of Freehold in the County of Monmouth and State of New Jersey do certify that on the twenty fifth day of February in the year of our Lord one thousand eight hundred and fifteen my Female Slave Rachel had a male child born named James Henry \u2014 And that on the twenty \u2014\" [CONTINUATION PENDING \u2014 bottom of certificate not yet captured; expected to contain Ephraim portion (cp_eve_065) + filing date + signature.] MULTI-CHILD CERTIFICATE PATTERN (4th instance in cohort): one Eleanor Conover certificate covers cp_eve_041 (James Henry, 1815-02-25) and cp_eve_065 (Ephraim, 1816-08-28). Filing date currently unknown \u2014 pending acquisition of certificate continuation. ENSLAVER IDENTIFIED 2026-05-04: previously '(unnamed in source)' \u2014 now confirmed Eleanor Conover. MINTED 2026-05-04 originally; partial certificate-driven update 2026-05-04.",
+      "notes": "",
       "source_quotation": "",
       "hero_role": "Parent",
       "verification_status": "verified",
@@ -951,9 +958,9 @@ const GRAPH = {
     {
       "id": "cp_ens_021",
       "type": "enslaver",
-      "label": "Neeltje Williamson Covenhoven",
-      "birth_date": "1743 (per FamilySearch KPHS-YKZ; verified 2026-05-25 via FS family tree showing parents Willem Williamson + Aeltie van Couwenhoven; year-only precision)",
-      "death_date": "1830 (per FS KPHS-YKZ; confirmed by will probate 1830-06-05 per cp_sou_084)",
+      "label": "Neeltje Williamson Covenhoven (1743-1830)",
+      "birth_date": "1743",
+      "death_date": "1830",
       "branch": "In-law",
       "generation": 6,
       "wikitree_url": "(pending \u2014 no WikiTree profile located 2026-04-25; future creation candidate)",
@@ -992,7 +999,7 @@ const GRAPH = {
     {
       "id": "cp_eve_065",
       "type": "event",
-      "label": "Birth of Ephraim",
+      "label": "Birth of Ephraim (1816)",
       "event_type": "Birth",
       "document_date": "1816-08-28",
       "event_date": "1816-08-28",
@@ -1000,7 +1007,7 @@ const GRAPH = {
       "total_people": "2",
       "enslaver_name": "Eleanor Conover of the Village & Township of Freehold",
       "participants": "(unnamed in source) (enslaver who filed the registration certificate per the 1804 Act)",
-      "notes": "Birth registration filed under New Jersey's Act for the Gradual Abolition of Slavery (1804). Infant Ephraim (cp_per_210) registered to mother Rachel (cp_per_208); enslaver Eleanor Conover of the Village & Township of Freehold, Monmouth County. ENSLAVER IDENTIFIED 2026-05-04: previously '(unnamed in source)' \u2014 now confirmed Eleanor Conover from the partial top of the multi-child certificate that also covers cp_eve_041. MULTI-CHILD CERTIFICATE: this event is documented on the SAME certificate as cp_eve_041 (James Henry, 1815-02-25) \u2014 a single Eleanor Conover filing covering Rachel's two children. [CONTINUATION PENDING \u2014 full certificate text for the Ephraim portion + filing date is not yet captured. The screenshot partial-top shows the certificate continues with 'And that on the twenty \u2014' which is presumably the start of the Ephraim entry.] Filing date for this event is unknown until certificate continuation is acquired. Rachel cp_per_208 is a multi-event mother \u2014 see also cp_eve_041 (James Henry). MINTED 2026-05-04 originally; partial certificate-driven update 2026-05-04.",
+      "notes": "",
       "source_quotation": "",
       "hero_role": "Parent",
       "verification_status": "verified",
@@ -1024,19 +1031,34 @@ const GRAPH = {
     {
       "id": "cp_eve_071",
       "type": "event",
-      "label": "Manumission of Rachel",
+      "label": "Manumission of Rachel (1822)",
       "event_type": "Manumission",
       "document_date": "1822-09-06",
       "event_date": "1822-08-26",
       "location": "Freehold Township, Monmouth County, New Jersey",
       "total_people": "1",
       "enslaver_name": "Eleanor Covenhoven of Freehold Township",
-      "participants": "Eleanor Covenhoven of Freehold (cp_ens_021, manumitter); William J. Bowne (witness to signing + acknowledging Judge of Common Pleas + one of two certifying Justices); Arthur W. Wykoff (witness to signing); Francis M. Deklyn + Lewis Gordon (Overseers of the Poor of Freehold, statutory certifiers); William Lloyd (Justice of the Peace of Monmouth, second statutory certifier); Wm. Ten Eyck Clk (recording clerk)",
-      "notes": "Manumission deed filed in the Monmouth County Manumission Book at pages 88-89 (statutory certification on bottom half of p88; deed body, acknowledgment, recording on p89). DATE SEQUENCE (1822, all stages): statutory certification 1822-08-21 \u2192 deed signed and acknowledged 1822-08-26 \u2192 received and recorded 1822-09-06. DEED TEXT (verbatim from manuscript, p89): \"State of New Jersey Monmouth County to wit To all to whom these presents shall come Greeting\u2014 It is hereby made known that on this twenty sixth day of August eighteen hundred & twenty two I Eleanor Covenhoven of the township of Freehold in the said County of Monmouth have liberated manumitted and set free my female slave named Rachel of the age of about twenty four years and I do hereby liberate manumit and set free my said slave and do discharge her from all service or demand of service to be hereafter made either by me or any person claiming by from or under me. In Witness Whereof I have hereunto set my hand & seal the day & year aforesaid. Signed Sealed & Delivered in presence of us \u2014 Wm. J. Bowne; Arthur W. Wykoff. Eleanor Covenhoven [seal]\" STATUTORY CERTIFICATION TEXT (verbatim, p88 bottom): \"Certificate of examination of Rachel slave of Eleanor Covenhoven. Monmouth County to wit: We do hereby certify that on this twenty first day of August in the year of our Lord eighteen hundred and twenty two Eleanor Covenhoven of the township of Freehold in the said County of Monmouth brought before us two of the overseers of the poor of the said township and two of the Justices of the peace of the said County her slave named Rachel who on view and examination appears to us to be sound in mind and not under any bodily incapacity of obtaining a support and also is not under the age of twenty one years nor above the age of forty years. In Witness Whereof we have hereunto set our hands the day and year first written. Francis M. Deklyn + Lewis Gordon (Overseers of the poor of the said township of Freehold); Wm. J. Bowne + William Lloyd (Justices of the peace in & for the County of Monmouth)\" ACKNOWLEDGMENT BLOCK (verbatim, p89): \"New Jersey Monmouth County to wit\u2014 Be it remembered that on the twenty sixth day of August eighteen hundred and twenty two personally appeared before me William J. Bowne one of the Judges of the Court of Common Pleas in & for said County the within named Eleanor Covenhoven who Acknowledged that she executes the within instrument of writing as her voluntary act and deed for the uses & purposes therein contained. Acknowledged before me Wm J. Bowne. Received and Recorded 6 Septr 1822. Compared. Wm. Ten Eyck Clk\" AGE: Rachel stated as \"of the age of about twenty four years\" \u2192 birth ~1798. STATUTORY CONTEXT: Full pre-1820 statutory wrapper with 2 Overseers + 2 Justices certifying soundness, no bodily incapacity, age 21-40. The certification (Aug 21) preceded the deed (Aug 26) by 5 days \u2014 Eleanor first secured the statutory officials' approval, then executed the deed. ENSLAVER ATTRIBUTION: cp_ens_021 Neeltje Williamson Covenhoven of Freehold (already identified in Active R61 col AG). Her name_variations explicitly include \"Eleanor Covenhoven (English form used in 1802 will + 1812 + 1822 manumissions)\" \u2014 this 1822 deed is one of those documented attestations. \u26a0 CONSOLIDATION QUESTION (FLAGGED FOR CHRIS): cp_per_061 Rachel (manumitted 1822, age 24, born ~1798, enslaver Eleanor Covenhoven of Freehold = cp_ens_021) may be the SAME PERSON as cp_per_208 Rachel (BBB mother of cp_per_209 James Henry b. 1815-02-25 and cp_per_210 Ephraim b. 1816-08-28, enslaver \"Eleanor Conover of the Village & Township of Freehold\"). cp_ens_021's variant list explicitly notes \"Eleanor Conover (post-Anglicization)\" \u2014 the surname-spelling difference resolves. Age math: Rachel 24 in 1822 \u2192 17 when James Henry was born in 1815 \u2192 18 when Ephraim was born in 1816. Biologically plausible. If consolidation is confirmed by Chris, the workflow would be: retire cp_per_061 to Freed PIDs (or vice versa); update cp_eve_071 col G to point to the consolidated PID; add cp_eve_071 to the consolidated row's col AI alongside cp_eve_041 + cp_eve_065. Not auto-consolidating pending Chris's call. WITNESS NETWORK: Wm. J. Bowne plays double role (witness to signing + acknowledging Judge of Common Pleas + one of the two certifying Justices). Arthur W. Wykoff is a recurring Monmouth Dutch surname. Wm. Ten Eyck Clk handles recording \u2014 same clerk who recorded the prior Joseph C. Gordon manumission on the same page (p88). PRECEDENT: this is the 1st ingested cp_ens_021 manumission. cp_ens_021's variant list mentions 1812 + 1822 manumissions; the 1812 one is not yet ingested in EVENT. MINTED 2026-05-05. PRIMARY-SOURCE VERIFICATION 2026-05-25: Full document re-reviewed against workbook (OPRS PDF re-downloaded by Chris). All dates, people, places verified; no discrepancies. ORTHOGRAPHY CORRECTION: Workbook's earlier transcription of \"Elenor\" in the statutory certification (p.88) and the acknowledgment block (p.89) corrected to \"Eleanor\" \u2014 Chris confirmed the name appears uniformly as \"Eleanor\" throughout the document. No \"Elenor\" variant attested. TESTAMENTARY CROSS-REF 2026-05-25: This 1822 deed is the voluntary early execution of Item 6 of Neeltje's 1817 will (cp_sou_084) \u2014 Rachel was to \"be free from the date of my death provided she will give security to indemnify my estate.\" Neeltje executed the manumission while still alive rather than waiting for the testamentary trigger at her ~1830 death. The will's executors (John Bray = 3rd husband; Garret Wyckoff = nephew) share surnames with the deed witnesses (Arthur W. Wykoff = Wyckoff family).",
+      "participants": "Eleanor Covenhoven of Freehold (manumitter); William J. Bowne (witness to signing + acknowledging Judge of Common Pleas + one of two certifying Justices); Arthur W. Wykoff (witness to signing); Francis M. Deklyn + Lewis Gordon (Overseers of the Poor of Freehold, statutory certifiers); William Lloyd (Justice of the Peace of Monmouth, second statutory certifier); Wm. Ten Eyck Clk (recording clerk)",
+      "notes": "",
       "source_quotation": "\"...I Eleanor Covenhoven of the township of Freehold in the said County of Monmouth have liberated manumitted and set free my female slave named Rachel of the age of about twenty four years...\"",
       "hero_role": "Subject",
       "verification_status": "verified",
       "source_sheet": "EVENT"
+    },
+    {
+      "id": "cp_sou_016",
+      "type": "source",
+      "label": "Monmouth Slave Manumissions",
+      "title": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey",
+      "source_type": "Manumission Register (manuscript)",
+      "date": "1787-1844",
+      "author": "Office of the Monmouth County Clerk",
+      "url": "https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-manumissions-1787-1844/",
+      "archive": "Office of the Monmouth County Clerk, Freehold, NJ",
+      "citation": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey. Office of the Monmouth County Clerk, Freehold, NJ.",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
     },
     {
       "id": "cp_sou_084",
@@ -1054,16 +1076,334 @@ const GRAPH = {
       "source_sheet": "SOURCE"
     },
     {
-      "id": "cp_sou_016",
+      "id": "cp_eve_169",
+      "type": "event",
+      "label": "Will of Neeltje Williamson Covenhoven (1743-1830) (1830) \u2014 devising Phillis, Jacob, James, Leah, Rachel",
+      "event_type": "Will",
+      "document_date": "1817-07-24",
+      "event_date": "1830-06-05",
+      "location": "Township of Freehold, Monmouth County, New Jersey (will signed); New Brunswick, Middlesex County (probated 1830)",
+      "total_people": "5",
+      "enslaver_name": "Elenor Covenhoven of the Township of Freehold (testator; also recorded as Elenor Bray late Elenor Covenhoven in 1830 surrogate's certificate, post-remarriage to John Bray of New Brunswick)",
+      "participants": "Testator: Eleanor \"Neeltje\" Williamson Covenhoven, aka Elenor Covenhoven (will body) and Elenor Bray (1830 probate). Executors: John Bray of New Brunswick (likely 3rd husband; \"my friend\" in will body) and Garret Wyckoff (nephew, son of testator's sister Patience). Witnesses (1817 signing): Maria Scudder, Cornelia Scudder (\u2192 Cornelia Fonda by 1830), Ursula Walker. Surrogate (1830): David Manneian[?] of Middlesex County, NJ.",
+      "notes": "",
+      "source_quotation": "\"Not being willing that any of my Kitchen Family should be slaves after my decease my Will is that Phillis Jacob & James be free as they shall severally attain to the age of twenty eight years that my Negro woman Leah shall be free from & after the day of my death and that the sum of One hundred dollars be retained in hand by my executors for her aid & support provided she should ever need it that my Negro woman Rachel be free from the date of my death provided she will give security to indemnify my estate from all charges on her account during the residue of her life\" \u2014 Item 6 of the 1817 will of Elenor Covenhoven; the project's primary-source anchor for the manumission of 5 named enslaved persons.",
+      "hero_role": "Subject",
+      "verification_status": "verified",
+      "source_sheet": "EVENT"
+    },
+    {
+      "id": "cp_per_237",
+      "type": "enslaved_person",
+      "label": "Phillis",
+      "sex": "Female",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "role_within_event": "Emancipated person",
+      "event_type": "Manumitted in will (effective at age 28)",
+      "event_date": "1817-07-24",
+      "source_sheet": "Active"
+    },
+    {
+      "id": "cp_per_240",
+      "type": "enslaved_person",
+      "label": "Jacob",
+      "sex": "Male",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "role_within_event": "Emancipated person",
+      "event_type": "Manumitted in will (effective at age 28)",
+      "event_date": "1817-07-24",
+      "source_sheet": "Active"
+    },
+    {
+      "id": "cp_per_256",
+      "type": "enslaved_person",
+      "label": "James",
+      "sex": "Male",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "role_within_event": "Emancipated person",
+      "event_type": "Manumitted in will (effective at age 28)",
+      "event_date": "1817-07-24",
+      "source_sheet": "Active"
+    },
+    {
+      "id": "cp_per_255",
+      "type": "enslaved_person",
+      "label": "Leah",
+      "sex": "Female",
+      "age": "",
+      "age_category": "Older Person (40 and up)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "role_within_event": "Emancipated person",
+      "event_type": "Manumitted in will",
+      "event_date": "1817-07-24",
+      "source_sheet": "Active"
+    },
+    {
+      "id": "cp_per_113",
+      "type": "enslaved_person",
+      "label": "Cezar",
+      "sex": "Male",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "event_type": "Transfer",
+      "event_date": "1803",
+      "role_within_event": "Transferred person",
+      "source_sheet": "Active",
+      "cohort_via": "cp_ens_021"
+    },
+    {
+      "id": "cp_per_057",
+      "type": "enslaved_person",
+      "label": "Tom",
+      "sex": "Male",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "event_type": "Probate Inventory",
+      "event_date": "17830210",
+      "role_within_event": "Inventoried Enslaved Person",
+      "source_sheet": "Active",
+      "cohort_via": "cp_ens_021"
+    },
+    {
+      "id": "cp_per_114",
+      "type": "enslaved_person",
+      "label": "Suki",
+      "sex": "Female",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "event_type": "Transfer",
+      "event_date": "1803",
+      "role_within_event": "Transferred person",
+      "source_sheet": "Active",
+      "cohort_via": "cp_ens_021"
+    },
+    {
+      "id": "cp_per_090",
+      "type": "enslaved_person",
+      "label": "Rose",
+      "sex": "Female",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved",
+      "birth_date": "",
+      "event_type": "Transfer",
+      "event_date": "1803",
+      "role_within_event": "Transferred person",
+      "source_sheet": "Active",
+      "cohort_via": "cp_ens_021"
+    },
+    {
+      "id": "cp_per_061",
+      "type": "enslaved_person",
+      "label": "Nancy",
+      "sex": "Female",
+      "age": "",
+      "age_category": "Adult (14-39)",
+      "person_status": "Enslaved Person",
+      "birth_date": "",
+      "event_type": "Birth",
+      "event_date": "18070910",
+      "role_within_event": "Participant",
+      "source_sheet": "Active",
+      "cohort_via": "cp_ens_021"
+    },
+    {
+      "id": "cp_eve_025",
+      "type": "event",
+      "label": "Probate (Inventory) of Cezar (1803)",
+      "event_type": "Probate (Inventory)",
+      "document_date": "1803-05-16",
+      "event_date": "1803-05-16",
+      "location": "Freehold Township, Monmouth County, New Jersey",
+      "enslaver_name": "Col. John Covenhoven (deceased; estate inventory)",
+      "participants": "(appraisers' names \u2014 TBD from manuscript; estate inherited by widow Neeltje Williamson Covenhoven per will dated 1802-12-14)",
+      "notes": "",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "EVENT",
+      "cohort_event_for": "cp_per_113"
+    },
+    {
+      "id": "cp_ens_020",
+      "type": "enslaver",
+      "label": "John Covenhoven (1733-1803)",
+      "birth_date": "1733-03-08",
+      "death_date": "1803-04-23",
+      "branch": "Gerrit",
+      "generation": 6,
+      "wikitree_url": "https://www.wikitree.com/wiki/Van_Couwenhoven-76",
+      "verification_status": "verified",
+      "source_sheet": "ENSLAVER"
+    },
+    {
+      "id": "cp_sou_028",
       "type": "source",
-      "label": "Monmouth Slave Manumissions",
-      "title": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey",
-      "source_type": "Manumission Register (manuscript record book of slave manumissions filed under New Jersey law; physical volumes include Manumission Books C & D \u2014 224 records digitized and searchable on the Monmouth County Clerk's OPRS \u2014 and Miscellaneous Books B & C, with Misc B viewable online but not text-searchable; abridged published abstract by Ellen Thorne Morris, 1992, ed. George H. Moss Jr., 429 records).",
-      "date": "1787-1844 (manuscript registrations); ongoing (Monmouth County Clerk online database / OPRS); 1992 (Morris/Moss published abstract)",
-      "author": "Monmouth County (manuscript registrations from enslaver-filed manumission certificates); Office of the Monmouth County Clerk (online digitization via OPRS); Ellen Thorne Morris (compiler, 1992 abstract); George H. Moss, Jr. (editor, 1992 abstract)",
-      "url": "https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-manumissions-1787-1844/",
-      "archive": "Office of the Monmouth County Clerk, Freehold, NJ",
-      "citation": "Slave Manumissions, 1787-1844, Monmouth County, New Jersey. Manuscript register, Monmouth County Clerk's Archives, Freehold, NJ. Definitive online database: Office of the Monmouth County Clerk, https://www.monmouthcountyclerk.gov/archives/record-groups/county-clerk-records/slave-manumissions-1787-1844/. Searchable digital edition (Books C & D, 224 records): Open Public Records Search System, https://oprs.co.monmouth.nj.us/. Published abstract: Morris, Ellen Thorne, comp. Manumission Book of Monmouth County, New Jersey 1791-1844. Edited by George H. Moss, Jr. Freehold, NJ: Office of the Monmouth County Clerk, 1992. 429 records. Finding aid: ArchiveGrid, https://researchworks.oclc.org/archivegrid/archiveComponent/33278727.",
+      "label": "Col. John Covenhoven 1802 Will + 1803 Probate (Monmouth Probate File 5980 M)",
+      "title": "Will and Probate of Col. John (Eliase) Covenhoven of Freehold, Monmouth County, New Jersey",
+      "source_type": "Will and Probate (Will + Inventory + Probate file)",
+      "date": "1802-12-14 (will signed); 1803-05-16 (inventory); 1803-07-09 (proved)",
+      "author": "(testator John Eliase Covenhoven); appraisers Lewis Gordon + John Vanderveer",
+      "url": "https://familysearch.org/",
+      "archive": "Monmouth County (NJ) Surrogate's Court Probate File 5980 M; FamilySearch DGS 007637520 frames 00719-00729",
+      "citation": "Will of Col. John Covenhoven of Freehold, Monmouth County, New Jersey, dated 14 December 1802; proved 9 July 1803 before the Surrogate of Monmouth County. Companion documents in the same probate file: estate inventory dated 16 May 1803 (signed by appraisers Lewis Gordon + John Vanderveer; estate total $18,556.49 including 10 named enslaved persons). Main inventory: Mock $250, Diana $100, Jennet+infant Philip $160 grouped, Rachel $60, Samuel $150, Dina $100 (in possession of Dan'l Ketcham). Widow's-bequest sub-inventory headed \"An Inventory of the goods & Chattels Given to the Widow by Will\": Cezar $250, Suki $150, Rose $150. Witnesses to will: Lewis Gordon,, John Vanderveer. Executor: son Elias Covenhoven (Col Elias Conover post-Anglicization). Will-mechanism for family separation: widow's bequest \"all the negroes that came by her excepting the issue thereof\" \u2014 wife Neeltje Williamson Covenhoven inherits her dowry-enslaved adults but their children stay with the main estate. DAR Patriot Ancestor #A026770.",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
+    },
+    {
+      "id": "cp_eve_026",
+      "type": "event",
+      "label": "Manumission of Cezar (1812)",
+      "event_type": "Manumission",
+      "document_date": "1813-03-26",
+      "event_date": "1812-06-03",
+      "location": "Freehold Township, Monmouth County, New Jersey",
+      "enslaver_name": "Neeltje Williamson Covenhoven (widow of Col. John Covenhoven; second wife)",
+      "participants": "Eleanor Couwenhouen / Eleanor Covenhoven Widow of Freehold Township (manumitter); Peter Bowne + (Overseers of the Poor of Freehold, statutory certifiers); John Hyll + John Quay (Justices of the Peace of Monmouth, statutory certifiers); C. Lloyd Clk (recording clerk)",
+      "notes": "",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "EVENT",
+      "cohort_event_for": "cp_per_113"
+    },
+    {
+      "id": "cp_eve_031",
+      "type": "event",
+      "label": "Probate Inventory of Tom (1783)",
+      "event_type": "Probate Inventory",
+      "document_date": "1783-02-10",
+      "event_date": "1783-02-10",
+      "location": "Town of Brooklyn, Kings County, New York",
+      "enslaver_name": "Rem Cowenhoven (deceased; estate inventoried by John Cowenhoven [likely brother] + Leffert Lefferts Esq. as appraisers); 8 enslaved persons + entire personal estate transferred to son John R. Couwenhoven at appraisement",
+      "participants": "John Cowenhoven (appraiser \u2014 likely brother, since son had conflict-of-interest as estate-buyer; ID flag); Leffert Lefferts Esq. (appraiser \u2014 note distinct from Peter Lefferts named as will executor); John R. Couwenhoven (son of testator; took entire personal estate at appraisement, becoming new enslaver of all 8 named persons + livestock + tools + crops + household goods)",
+      "notes": "",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "EVENT",
+      "cohort_event_for": "cp_per_057"
+    },
+    {
+      "id": "cp_ens_006",
+      "type": "enslaver",
+      "label": "Rem Cowenhoven (1734-1783)",
+      "birth_date": "1734-07-13",
+      "death_date": "1783-01-14",
+      "branch": "Gerrit",
+      "generation": 6,
+      "wikitree_url": "https://www.wikitree.com/wiki/Covenhoven-115",
+      "verification_status": "verified",
+      "source_sheet": "ENSLAVER"
+    },
+    {
+      "id": "cp_ens_008",
+      "type": "enslaver",
+      "label": "John R. Couwenhoven (1761-1811)",
+      "birth_date": "1761-02-28",
+      "death_date": "1811-09-02",
+      "branch": "Gerrit",
+      "generation": 7,
+      "wikitree_url": "(pending \u2014 WikiTree profile ID not yet identified; vitals confirmed via WikiTree-genealogy snippet listing Rem's sons and via BHS finding aid)",
+      "verification_status": "verified",
+      "source_sheet": "ENSLAVER"
+    },
+    {
+      "id": "cp_pla_002",
+      "type": "place",
+      "label": "Town of Brooklyn",
+      "place_type": "Town",
+      "source_sheet": "PLACE"
+    },
+    {
+      "id": "cp_pla_011",
+      "type": "place",
+      "label": "Kings County",
+      "place_type": "County",
+      "source_sheet": "PLACE"
+    },
+    {
+      "id": "cp_sou_009",
+      "type": "source",
+      "label": "Rem Cowenhoven 1782 Will + 1783 Probate Inventory",
+      "title": "Will and Probate Inventory of Rem Cowenhoven of the Township of Brooklyn, Kings County, deceased (will executed 12 January 1782; proved 10 February 1783; letters issued 1 March 1783; inventory taken 10 February 1783)",
+      "source_type": "Probate file (manuscript) \u2014 composite of (1) will text 12 Jan 1782, (2) subscribing-witness deposition 10 Jan 1783, (3) probate cover sheet from Lt. Gov. James Robertson + Surrogate Cary Ludlow + Sec'y Samuel Bayard Jr. with prerogative seal 1 Mar 1783, (4) inventory of personal estate 10 Feb 1783; 14 pages",
+      "date": "Will executed 12 Jan 1782; deponents' affidavit before Surrogate Cary Ludlow 10 Jan 1783 (4 days before Rem's death 14 Jan 1783); will proved + inventory taken 10 Feb 1783; letters of administration issued 1 March 1783 under prerogative seal of Province of New York",
+      "author": "Rem Cowenhoven (testator, signed with mark X 'with the assistance of Nicholas Cowenhoven'); James Robertson Esq. Lt. Governor of NY (issuing authority on probate cover sheet); Cary Ludlow Esq. (Surrogate, City and Province of NY); Samuel Bayard Jr. (Secretary); Nicholas Cowenhoven + Peter Lefferts + John R. Cowenhoven (subscribing witnesses to will, deponents 10 Jan 1783); John Cowenhoven [likely brother of testator] + Leffert Lefferts Esq. (inventory appraisers 10 Feb 1783)",
+      "url": "",
+      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, Capt. Rem'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): finding-aid label 'Capt. Rem' indicates Rem held a captain's commission \u2014 historical context flag for cp_ens_006 occupation field (likely Loyalist militia given his December 1776 oath of loyalty to British Crown, but possibly pre-Revolutionary Kings County militia rank; primary commission record needed).",
+      "citation": "Will of Rem Cowenhoven of the Township of Brooklyn, Kings County, NY, executed 12 January 1782 (Rem signed by mark X, assisted by his brother Nicholas, being 'very sick in body'). Three executors named: brother Nicholas Cowenhoven, son John R. Cowenhoven, and Peter Lefferts. Subscribing-witness deposition taken before Cary Ludlow Esq., Surrogate of the City and Province of New York, 10 January 1783, four days before Rem's death of 14 January 1783. Will proved 10 February 1783. Letters of administration issued 1 March 1783 under prerogative seal of Province of New York, signed by Samuel Bayard Jr., Secretary, by authority of Lt. Gov. James Robertson Esq. Companion inventory of personal estate taken 10 February 1783 by John Cowenhoven and Leffert Lefferts Esqrs as appraisers; total goods+chattels \u00a31,412-2-0 (8 enslaved persons valued at \u00a3275, plus livestock, farm tools, household goods, books, silver); separate bonds-and-notes inventory totaling \u00a33,565-13-4, including a sub-section of bonds Rem inherited from his father John Cowenhoven Sr.'s 1778 estate distribution. Closing line of inventory (page 14): 'This what Leffert Lefferts Esq & John Cowenhoven have appraised Amt to \u00a31412-2-0. John R. Cowenhoven Son of the Testator is willing to take and takes it at the appraisement & acknowledges himself indebted to the Estate thereon' \u2014 entire personal estate (incl. all 8 enslaved persons: Sam, Oldest Harry, Young Jack, Old Jack, Tom, small-boy Harry, Sare, Sare's child Tom) passed to son John R. Couwenhoven at appraisement value, charged against his eventual inheritance share. 14-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, Capt. Rem'",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
+    },
+    {
+      "id": "cp_eve_136",
+      "type": "event",
+      "label": "Birth of Delilah (1807)",
+      "event_type": "Birth",
+      "document_date": "1814-11-29",
+      "event_date": "1807-09-10",
+      "location": "South Brunswick, Middlesex County, New Jersey",
+      "enslaver_name": "William W. Covenhoven Jr. of South Brunswick, Middlesex County, New Jersey, Farmer",
+      "participants": "William W. Covenhoven (enslaver, signed cert); Nancy (mother of Delilah, enslaved); Delilah (subject)",
+      "notes": "",
+      "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "EVENT",
+      "cohort_event_for": "cp_per_061"
+    },
+    {
+      "id": "cp_ens_052",
+      "type": "enslaver",
+      "label": "William W. Covenhoven Jr. (1783-1837)",
+      "birth_date": "1783-08-11",
+      "death_date": "1837-01-23",
+      "branch": "Gerrit",
+      "generation": 7,
+      "wikitree_url": "",
+      "verification_status": "verified",
+      "source_sheet": "ENSLAVER"
+    },
+    {
+      "id": "cp_pla_061",
+      "type": "place",
+      "label": "South Brunswick",
+      "place_type": "Town",
+      "source_sheet": "PLACE"
+    },
+    {
+      "id": "cp_pla_013",
+      "type": "place",
+      "label": "Middlesex County",
+      "place_type": "County",
+      "source_sheet": "PLACE"
+    },
+    {
+      "id": "cp_sou_036",
+      "type": "source",
+      "label": "Middlesex County Slave Births",
+      "title": "Middlesex County Slave Births",
+      "source_type": "Town record book",
+      "date": "18141129",
+      "author": "",
+      "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSGD-7SJW-Z?view=index&personArk=%2Fark%3A%2F61903%2F1%3A1%3AZXTD-DL3Z&action=view&cc=3418453&lang=en&groupId=",
+      "archive": "",
+      "citation": "",
       "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
@@ -1186,13 +1526,74 @@ const GRAPH = {
     },
     {
       "source": "cp_eve_071",
-      "target": "cp_sou_084",
+      "target": "cp_sou_016",
       "relation": "documented_by",
       "verification_status": "verified"
     },
     {
       "source": "cp_eve_071",
-      "target": "cp_sou_016",
+      "target": "cp_sou_084",
+      "relation": "documented_by",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_per_208",
+      "target": "cp_eve_169",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Active.EventID / additional_events \u2194 EVENT.enslaved_person_ids"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_per_237",
+      "relation": "concerns",
+      "verification_status": "verified",
+      "note": "EVENT.enslaved_person_ids"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_per_240",
+      "relation": "concerns",
+      "verification_status": "verified",
+      "note": "EVENT.enslaved_person_ids"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_per_256",
+      "relation": "concerns",
+      "verification_status": "verified",
+      "note": "EVENT.enslaved_person_ids"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_per_255",
+      "relation": "concerns",
+      "verification_status": "verified",
+      "note": "EVENT.enslaved_person_ids"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_ens_021",
+      "relation": "devised_by",
+      "verification_status": "verified",
+      "note": "EVENT.enslaver_ids (resolved FK)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_208",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "EVENT.enslaver_ids \u2192 hero (resolved FK)"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_pla_024",
+      "relation": "located_at",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_169",
+      "target": "cp_sou_084",
       "relation": "documented_by",
       "verification_status": "verified"
     },
@@ -1216,6 +1617,188 @@ const GRAPH = {
       "relation": "sibling",
       "verification_status": "sibling_derivable",
       "note": "Active.Relationships (peer-to-peer sibling token)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_113",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "ENSLAVER.enslaved_people_linked (cohort walk)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_057",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "ENSLAVER.enslaved_people_linked (cohort walk)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_114",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "ENSLAVER.enslaved_people_linked (cohort walk)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_090",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "ENSLAVER.enslaved_people_linked (cohort walk)"
+    },
+    {
+      "source": "cp_ens_021",
+      "target": "cp_per_061",
+      "relation": "enslaved",
+      "verification_status": "verified",
+      "note": "ENSLAVER.enslaved_people_linked (cohort walk)"
+    },
+    {
+      "source": "cp_per_113",
+      "target": "cp_eve_025",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_eve_025",
+      "target": "cp_ens_020",
+      "relation": "asserted_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.enslaver_ids"
+    },
+    {
+      "source": "cp_eve_025",
+      "target": "cp_pla_024",
+      "relation": "located_at",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.place_id"
+    },
+    {
+      "source": "cp_eve_025",
+      "target": "cp_sou_028",
+      "relation": "documented_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT sources"
+    },
+    {
+      "source": "cp_per_113",
+      "target": "cp_eve_026",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_eve_026",
+      "target": "cp_ens_021",
+      "relation": "manumitted_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.enslaver_ids"
+    },
+    {
+      "source": "cp_eve_026",
+      "target": "cp_pla_024",
+      "relation": "located_at",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.place_id"
+    },
+    {
+      "source": "cp_eve_026",
+      "target": "cp_sou_016",
+      "relation": "documented_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT sources"
+    },
+    {
+      "source": "cp_per_057",
+      "target": "cp_eve_031",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_eve_031",
+      "target": "cp_ens_006",
+      "relation": "asserted_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.enslaver_ids"
+    },
+    {
+      "source": "cp_eve_031",
+      "target": "cp_ens_008",
+      "relation": "asserted_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.enslaver_ids"
+    },
+    {
+      "source": "cp_eve_031",
+      "target": "cp_pla_002",
+      "relation": "located_at",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.place_id"
+    },
+    {
+      "source": "cp_pla_002",
+      "target": "cp_pla_011",
+      "relation": "part_of",
+      "verification_status": "verified",
+      "note": "PLACE.parent_place_id (hierarchy)"
+    },
+    {
+      "source": "cp_eve_031",
+      "target": "cp_sou_009",
+      "relation": "documented_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT sources"
+    },
+    {
+      "source": "cp_per_114",
+      "target": "cp_eve_025",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_per_090",
+      "target": "cp_eve_025",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_per_061",
+      "target": "cp_eve_136",
+      "relation": "appears_in",
+      "verification_status": "verified",
+      "note": "Cohort events walk: cp_per cohort's EventID/additional_events"
+    },
+    {
+      "source": "cp_eve_136",
+      "target": "cp_ens_052",
+      "relation": "registered_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.enslaver_ids"
+    },
+    {
+      "source": "cp_eve_136",
+      "target": "cp_pla_061",
+      "relation": "located_at",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT.place_id"
+    },
+    {
+      "source": "cp_pla_061",
+      "target": "cp_pla_013",
+      "relation": "part_of",
+      "verification_status": "verified",
+      "note": "PLACE.parent_place_id (hierarchy)"
+    },
+    {
+      "source": "cp_eve_136",
+      "target": "cp_sou_036",
+      "relation": "documented_by",
+      "verification_status": "verified",
+      "note": "Cohort events walk: EVENT sources"
     }
   ]
 };
@@ -1245,6 +1828,20 @@ const NODE_BY_ID = new Map(GRAPH.nodes.map(n => [n.id, n]));
 function compactLabel(s, maxLen) {
   if (!s) return '';
   if (typeof maxLen !== 'number') maxLen = 38;
+
+  // Preserve a trailing year-suffix parenthetical: (NNNN), (NNNN-NNNN),
+  // (b. NNNN), (d. NNNN), (c. NNNN) — emitted by enslaver_display_label()
+  // and the cohort/spouse event labels. Strip every OTHER parenthetical.
+  // Chris 2026-05-26 evening: years are diagnostic for kin-disambiguation
+  // and should remain visible on every enslaver/event node label.
+  let yearSuffix = '';
+  const yearMatch = String(s).match(
+    /\s*(\((?:[bdc]\.\s*)?1[6-9]\d{2}(?:\s*[-–]\s*(?:1[6-9]\d{2}|20\d{2}|\?)?)?\))\s*$/
+  );
+  if (yearMatch) {
+    yearSuffix = ' ' + yearMatch[1];
+  }
+
   let out = String(s)
     .replace(/\s*\([^)]*\)/g, '')   // remove all balanced parentheticals
     .replace(/\s*\([^)]*$/g, '')    // remove a trailing unclosed paren run
@@ -1254,10 +1851,13 @@ function compactLabel(s, maxLen) {
     // Defensive: if stripping nuked everything, fall back to text-before-first-paren
     out = String(s).split('(')[0].trim();
   }
-  if (out.length > maxLen) {
-    out = out.slice(0, maxLen - 1).trimEnd() + '…';
+  // Reserve space for year suffix when truncating so the years aren't lost.
+  const reservedForYears = yearSuffix.length;
+  const nameCap = Math.max(8, maxLen - reservedForYears);
+  if (out.length > nameCap) {
+    out = out.slice(0, nameCap - 1).trimEnd() + '…';
   }
-  return out;
+  return out + yearSuffix;
 }
 function compactDate(s) {
   if (!s) return '';
@@ -1324,7 +1924,7 @@ function displayDateField(s) {
   // Year detection: 1600s-2000s, with optional ISO suffix, OR fuzzy date markers
   const hasDate = /\b(?:1[6-9]\d{2}|20\d{2})(?:-\d{2}-\d{2})?\b|\b(?:abt\.|circa|ca\.|bef\.|aft\.)\s*\d{4}/i.test(s);
   if (!hasDate) return normalizeISODate(s);   // non-date strings: still pass through, harmless if no ISO present
-  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FaG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
+  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
   const stripped = s.replace(/\s*\(([^)]*)\)/g, (m, inner) => {
     const idx = inner.search(CITATION_RE);
     if (idx < 0) return m;             // no citation marker — keep paren as-is
@@ -1951,20 +2551,13 @@ function labelFor(n) {
       return compactLabel(combined || n.id, cap);
     }
     case 'source':
-      // For cp_sou nodes, source_type tends to be the most readable label
-      // ("Bill of Sale (Receipt)"). For cp_famsou nodes (which also render
-      // as type=source per Chris 2026-05-23 PM2 v3.1) the Abbreviation/Short
-      // Title is better — "Cocheu (1989)" rather than a verbose source_type.
-      // Heuristic: if `label` is short (likely an Abbreviation/Short Title)
-      // and source_type is long, prefer label.
-      {
-        const lab = n.label || '';
-        const st  = n.source_type || '';
-        if (lab && lab.length <= 30 && st.length > 30) {
-          return compactLabel(lab, cap);
-        }
-        return compactLabel(st || lab || n.id, cap);
-      }
+      // v3.10 fix #4 (Chris 2026-05-25 PM3): prefer label (Abbreviation/Short
+      // Title) over source_type. Earlier heuristic preferred source_type for
+      // cp_sou nodes — that produced "Probate file" on Frank's cp_sou_031 even
+      // though Short Title "Nicholas Covenhoven 1802 Will + 1803 Probate (...)"
+      // was both populated and dramatically more informative. compactLabel
+      // truncates if needed; verbosity not a concern.
+      return compactLabel(n.label || n.source_type || n.id, cap);
     case 'place':
       return compactLabel(n.label || n.id, cap);
     case 'uei_anchor': {
@@ -3025,6 +3618,15 @@ function showSidePanel(node) {
     // below carries the meaningful type — extended 2026-05-25 per Chris).
     ['Type', (node.type === 'event' || node.type === 'enslaved_person' || node.type === 'source') ? null : node.type],
     ['Status', node.type === 'enslaved_person' ? node.person_status : null],
+    // v3.10 fix #2 (Chris 2026-05-25 PM3): biographical density on enslaved-person
+    // panels. Race + Age category come from Active.G + Active.J; Date of record
+    // surfaces Active.L when the record isn't a Birth (Birth dates already
+    // render in the Birth row below via compute_active_birth_date). Profile URL
+    // is the public-facing cowenhoven.org calling-card link.
+    ['Race', node.type === 'enslaved_person' ? node.race : null],
+    ['Age category', node.type === 'enslaved_person' ? node.age_category : null],
+    ['Date of record', (node.type === 'enslaved_person' && node.event_date && node.event_type !== 'Birth') ? displayDateField(node.event_date) : null],
+    ['Index of Individuals', (node.type === 'enslaved_person' && /^cp_per_\d+$/.test(node.id)) ? `<a href="https://data.cowenhoven.org/index-of-individuals/?persons=${encodeURIComponent(node.id)}" target="_blank" rel="noopener">View in the Index of Individuals</a>` : null],
     [`${HERO_FIRST_NAME}'s role in Event`, _heroRoleInEvent],
     ['Birth', displayDateField(node.birth_date)],
     ['Baptism', displayDateField(node.baptism_date)],

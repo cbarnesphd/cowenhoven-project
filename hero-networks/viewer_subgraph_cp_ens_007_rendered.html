@@ -854,11 +854,11 @@ window.addEventListener('error', e => showError(e.message + ' @ ' + (e.filename 
 const GRAPH = {
   "metadata": {
     "hero_pid": "cp_ens_007",
-    "generated": "2026-05-28T04:05:00",
+    "generated": "2026-06-14T20:57:30",
     "workbook": "Project Data Sets/Cowenhoven Project Data Set.xlsx",
-    "node_count": 33,
-    "edge_count": 42,
-    "asymmetric_count": 0,
+    "node_count": 36,
+    "edge_count": 47,
+    "asymmetric_count": 1,
     "verification_legend": {
       "verified": "Bidirectional reciprocal present on counterpart row",
       "sibling_derivable": "Sibling edge \u2014 not mandatory bidirectional per workflow",
@@ -886,19 +886,19 @@ const GRAPH = {
     },
     {
       "id": "cp_fam_027",
-      "type": "family",
+      "type": "enslaver",
       "label": "Nicasius Janse Van Couwenhoven (1681-1749)",
       "birth_date": "1681-06-30",
       "baptism_date": "1681-07-08",
       "marriage_date": "1703-11-03",
-      "death_date": "1749-09-16 (age 68; will proved 1749-11-02)",
+      "death_date": "1749-09-16",
       "branch": "Gerrit",
       "generation": 4,
       "wikitree_url": "https://www.wikitree.com/wiki/VanCouwenhoven-24",
       "wikidata_qid": "",
       "verification_status": "MATCH",
       "is_hero": false,
-      "source_sheet": "FAMILY",
+      "source_sheet": "ENSLAVER",
       "hero_relation": "parent"
     },
     {
@@ -908,8 +908,8 @@ const GRAPH = {
       "birth_date": "1686-02-07",
       "baptism_date": "",
       "marriage_date": "1703-11-03",
-      "death_date": "1749 (same year as husband; specific date not yet located)",
-      "branch": "Gerrit",
+      "death_date": "1749",
+      "branch": "In-law",
       "generation": 4,
       "wikitree_url": "pending \u2014 no standalone profile located 2026-04-24; referenced on husband's page https://www.wikitree.com/wiki/VanCouwenhoven-24",
       "wikidata_qid": "",
@@ -922,7 +922,7 @@ const GRAPH = {
       "id": "cp_fam_033",
       "type": "enslaver",
       "label": "Gerret Van Couwenhoven (1712-1783)",
-      "birth_date": "1712 in New Utrecht, L.I. (per Cocheu 82:4 #215; supersedes workbook \"~1711\"; 1-year refinement)",
+      "birth_date": "1712 in New Utrecht, L.I",
       "baptism_date": "",
       "marriage_date": "",
       "death_date": "1783-11-17",
@@ -939,10 +939,10 @@ const GRAPH = {
       "id": "cp_fam_034",
       "type": "family",
       "label": "Peter Van Couwenhoven (1713-1786)",
-      "birth_date": "1713 (per Cocheu 82:4 #216 [cp_sou_057]; supersedes prior workbook \"abt. 1712\"; baptism 1712-04-06 retained as alternate)",
+      "birth_date": "1713",
       "baptism_date": "1712-04-06",
       "marriage_date": "~1734",
-      "death_date": "between 1786-09-20 (will dated; Peter still living) and 1788-03-29 (will proved NJA:36:55)",
+      "death_date": "between 1786-09-20",
       "branch": "Gerrit",
       "generation": 5,
       "wikitree_url": "pending follow-up",
@@ -956,7 +956,7 @@ const GRAPH = {
       "id": "cp_fam_035",
       "type": "family",
       "label": "Gerardina Van Couwenhoven (1705-1757)",
-      "birth_date": "before 1705-08-07 (baptism date; birth shortly before)",
+      "birth_date": "before 1705-08-07",
       "baptism_date": "1705-08-07",
       "marriage_date": "1722-11-05",
       "death_date": "aft. 1757-01-01",
@@ -994,7 +994,7 @@ const GRAPH = {
       "baptism_date": "1716-03-13",
       "marriage_date": "abt. 1730",
       "death_date": "1786",
-      "branch": "(in-law: Remsen / Lott)",
+      "branch": "In-law",
       "generation": 5,
       "wikitree_url": "(pending)",
       "wikidata_qid": "",
@@ -1024,7 +1024,7 @@ const GRAPH = {
       "id": "cp_ens_001",
       "type": "enslaver",
       "label": "Nicholas Cowenhoven (1744-1793)",
-      "birth_date": "circa September 1744 (calculated from gravestone 'aged 48 years and 6 months' on death 1793-03-07 \u2014 primary by inference; precision month-only as gravestone gives years+months without days; SUPERSEDES prior WikiTree-asserted 1744-04-18 which conflicted by ~5 months)",
+      "birth_date": "circa September 1744",
       "baptism_date": "",
       "marriage_date": "1763-09-24",
       "death_date": "1793-03-07",
@@ -1041,10 +1041,10 @@ const GRAPH = {
       "id": "cp_ens_034",
       "type": "enslaver",
       "label": "John Cowenhoven (1752-1805)",
-      "birth_date": "1752 (per FS G9DJ-8D1; primary baptism record from Brooklyn or Flatbush DRC pending)",
+      "birth_date": "1752",
       "baptism_date": "",
       "marriage_date": "",
-      "death_date": "1805 (per FS G9DJ-8D1; primary Kings Co. probate or burial record pending)",
+      "death_date": "1805",
       "branch": "Gerrit",
       "generation": 6,
       "wikitree_url": "(pending \u2014 no WikiTree profile located 2026-04-28; FS G9DJ-8D1 serves as primary genealogy anchor)",
@@ -1186,6 +1186,15 @@ const GRAPH = {
       "source_sheet": "Active"
     },
     {
+      "id": "cp_rec_033",
+      "type": "unnamed_group",
+      "label": "colonial census (1755 Census of Slaves; counts by sex only, no ages, no names in this return)",
+      "document_date": "1755",
+      "total": "5",
+      "source_sheet": "UNNAMED",
+      "record_type": "colonial census (1755 Census of Slaves; counts by sex only, no ages, no names in this return)"
+    },
+    {
       "id": "cp_eve_029",
       "type": "event",
       "label": "Probate Inventory 1778-06-01",
@@ -1209,28 +1218,13 @@ const GRAPH = {
       "source_sheet": "PLACE"
     },
     {
-      "id": "cp_sou_008",
-      "type": "source",
-      "label": "John Cowenhoven 1778 Probate Inventory",
-      "title": "Probate Inventory of John Cowenhoven of the Township of Brooklyn, Kings County, deceased (1 June 1778)",
-      "source_type": "Probate Inventory (manuscript, 11 pages)",
-      "date": "Inventory taken 1778-06-01, one month after death 1778-05-01",
-      "author": "Engelbert Lott + Engelbert Lott Jr. (appraisers, signed 'Errors Excepted' on final page); Catharina Remsen widow (consenting party); Rem Cowenhoven cp_ens_006 + Nicholas Cowenhoven (Judge Nicholas, 1744-1793) + John Cowenhoven (1752-1805) \u2014 three executor sons",
-      "url": "",
-      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, John R.'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): the Erasmus Hall records collection's date range is 1325\u20131989 (bulk circa 1775\u20131975), and contains the records of Erasmus Hall Academy (1787\u20131896) and its successor Erasmus Hall High School at 911 Flatbush Avenue, Brooklyn. The 1778 inventory of cp_ens_007 ended up in this collection presumably via the school's connections to the Cowenhoven family \u2014 likely descended through grandson John R. Couwenhoven (cp_ens_008). NOTE: not to be confused with the Brooklyn-side John R. Couwenhoven account book at Center for Brooklyn History (cp_sou_005, BHS arms_1973_167) \u2014 different physical document at a different archive.",
-      "citation": "Inventory of the Monies, Goods & Chattles belonging to the Estate of the Late John Cowenhoven of the Township of Broockhlin, in Kings County, On the Island Nassau in the Province of New York, Deceased. Taken and Appraised by Engelbert Lott and Engelbert Lott Junr. on the First day of June, in the Year of Our Lord, One Thousand Seven Hundred and Seventy Eight. 11-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, John R.' (provenance updated 2026-04-28 per Chris's finding-aid lookup; earlier 'John R. Cowenhoven Papers' attribution was an inaccurate local label). Local copy: /Source Documents/Brooklyn Cowenhoven Land Agreements/ErasmusHall_JohnRCowenhoven-1.pdf (filename internal labeling \u2014 content is the 1778 inventory of patriarch John Cowenhoven cp_ens_007, NOT of his grandson John R.). Names five enslaved persons (Frederick, Tom, Ben, Anthony, Mary) appraised at total \u00a3225, plus full estate inventory totaling \u00a315,699.16 including ~\u00a38,200 in bonds/mortgages receivable, NYC real estate near the New Sugar House (\u00a3900), off-site valuables held during British occupation, and three executor sons drawing inheritance portions by consent of widow Catharina Remsen.",
-      "source_quotation": "",
-      "verification_status": "verified",
-      "source_sheet": "SOURCE"
-    },
-    {
       "id": "cp_sou_079",
       "type": "source",
-      "label": "NY Gazette & Weekly Mercury 1778-05-25 Rem Cowenhoven Sale Ad \u2014 unnamed enslaved woman + her ~7-mo-old daughter (cp_rec_029); cp_ens_006 enslaver.",
-      "title": "Newspaper sale advertisement offering for cash a \"likely NEGRO WENCH\" (~28 yrs, skilled domestic, survived smallpox) and her ~7-month-old female child, by Captain Rem Cowenhoven (cp_ens_006) of Bedford Homestead, ~2 miles from Brooklyn-Ferry, NY. Published in The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), May 25, 1778.",
+      "label": "NY Gazette & Weekly Mercury 1778-05-25 Rem Cowenhoven Sale Ad \u2014 unnamed enslaved woman + her ~7-mo-old daughter enslaver.",
+      "title": "Newspaper sale advertisement offering for cash a \"likely NEGRO WENCH\" (~28 yrs, skilled domestic, survived smallpox) and her ~7-month-old female child, by Captain Rem Cowenhoven (cp_ens_006) of Brooklyn Homestead, ~2 miles from Brooklyn-Ferry, NY. Published in The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), May 25, 1778.",
       "source_type": "Newspaper sale advertisement (offer-for-sale of enslaved persons).",
       "date": "1778-05-25 (publication date \u2014 The New-York Gazette and the Weekly Mercury). Ad placement / number of weeks pending \u2014 single issue captured. Hugh Gaine's NY Gazette typically Monday publication.",
-      "author": "Capt. Rem Cowenhoven (cp_ens_006), Bedford Homestead, ~2 miles from Brooklyn-Ferry, NY (subject + advertiser). Publisher: The New-York Gazette and the Weekly Mercury (Hugh Gaine, printer at the Bible and Crown, Hanover-Square, NYC) \u2014 Loyalist-occupied Manhattan paper (same publication that carried cp_famsou_002 1776 Loyalty Address, cp_famsou_010 1780 Copartnership Dissolution, cp_famsou_011 1781 Queen-street merchant ad).",
+      "author": "Capt. Rem Cowenhoven, Brooklyn Homestead, ~2 miles from Brooklyn-Ferry, NY (subject + advertiser). Publisher: The New-York Gazette and the Weekly Mercury (Hugh Gaine, printer at the Bible and Crown, Hanover-Square, NYC) \u2014 Loyalist-occupied Manhattan paper (same publication that carried 1776 Loyalty Address 1780 Copartnership Dissolution 1781 Queen-street merchant ad).",
       "url": "(pending \u2014 Chris-supplied PDF.)",
       "archive": "Original: The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), Monday May 25, 1778. Local: Source Documents/Rem Cowenhoven 1778 Sale Ad of Woman and Child/.",
       "citation": "\"A likely NEGRO WENCH, To be SOLD, for CASH. SHE is about 28 years old, has lived chiefly in the city of New-York, is well acquainted with all sorts of house-work, particularly washing and ironing, is brisk and active, and has had the small-pox; she has a healthy female child about 7 months old. Apply to Captain REM COWENHOVEN, about two miles from Brooklyn-Ferry.\" The New-York Gazette and the Weekly Mercury (Hugh Gaine, NYC), May 25, 1778.",
@@ -1239,17 +1233,41 @@ const GRAPH = {
       "source_sheet": "SOURCE"
     },
     {
-      "id": "cp_sou_009",
+      "id": "cp_sou_008",
       "type": "source",
-      "label": "Rem Cowenhoven 1782 Will + 1783 Probate Inventory",
-      "title": "Will and Probate Inventory of Rem Cowenhoven of the Township of Brooklyn, Kings County, deceased (will executed 12 January 1782; proved 10 February 1783; letters issued 1 March 1783; inventory taken 10 February 1783)",
-      "source_type": "Probate file (manuscript) \u2014 composite of (1) will text 12 Jan 1782, (2) subscribing-witness deposition 10 Jan 1783, (3) probate cover sheet from Lt. Gov. James Robertson + Surrogate Cary Ludlow + Sec'y Samuel Bayard Jr. with prerogative seal 1 Mar 1783, (4) inventory of personal estate 10 Feb 1783; 14 pages",
-      "date": "Will executed 12 Jan 1782; deponents' affidavit before Surrogate Cary Ludlow 10 Jan 1783 (4 days before Rem's death 14 Jan 1783); will proved + inventory taken 10 Feb 1783; letters of administration issued 1 March 1783 under prerogative seal of Province of New York",
-      "author": "Rem Cowenhoven (testator, signed with mark X 'with the assistance of Nicholas Cowenhoven'); James Robertson Esq. Lt. Governor of NY (issuing authority on probate cover sheet); Cary Ludlow Esq. (Surrogate, City and Province of NY); Samuel Bayard Jr. (Secretary); Nicholas Cowenhoven cp_ens_001 + Peter Lefferts + John R. Cowenhoven cp_ens_008 (subscribing witnesses to will, deponents 10 Jan 1783); John Cowenhoven [likely cp_ens_034 brother of testator] + Leffert Lefferts Esq. (inventory appraisers 10 Feb 1783)",
+      "label": "John Cowenhoven 1778 Probate Inventory",
+      "title": "Probate Inventory of John Cowenhoven of the Township of Brooklyn, Kings County, deceased (1 June 1778)",
+      "source_type": "Probate Inventory (manuscript, 11 pages)",
+      "date": "Inventory taken 1778-06-01, one month after death 1778-05-01",
+      "author": "Engelbert Lott + Engelbert Lott Jr. (appraisers, signed 'Errors Excepted' on final page); Catharina Remsen widow (consenting party); Rem Cowenhoven + Nicholas Cowenhoven (Judge Nicholas, 1744-1793) + John Cowenhoven (1752-1805) \u2014 three executor sons",
       "url": "",
-      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, Capt. Rem'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): finding-aid label 'Capt. Rem' indicates Rem held a captain's commission \u2014 historical context flag for cp_ens_006 occupation field (likely Loyalist militia given his December 1776 oath of loyalty to British Crown, but possibly pre-Revolutionary Kings County militia rank; primary commission record needed).",
-      "citation": "Will of Rem Cowenhoven of the Township of Brooklyn, Kings County, NY, executed 12 January 1782 (Rem signed by mark X, assisted by his brother Nicholas, being 'very sick in body'). Three executors named: brother Nicholas Cowenhoven (cp_ens_001), son John R. Cowenhoven (cp_ens_008), and Peter Lefferts. Subscribing-witness deposition taken before Cary Ludlow Esq., Surrogate of the City and Province of New York, 10 January 1783, four days before Rem's death of 14 January 1783. Will proved 10 February 1783. Letters of administration issued 1 March 1783 under prerogative seal of Province of New York, signed by Samuel Bayard Jr., Secretary, by authority of Lt. Gov. James Robertson Esq. Companion inventory of personal estate taken 10 February 1783 by John Cowenhoven and Leffert Lefferts Esqrs as appraisers; total goods+chattels \u00a31,412-2-0 (8 enslaved persons valued at \u00a3275, plus livestock, farm tools, household goods, books, silver); separate bonds-and-notes inventory totaling \u00a33,565-13-4, including a sub-section of bonds Rem inherited from his father John Cowenhoven Sr. (cp_ens_007)'s 1778 estate distribution. Closing line of inventory (page 14): 'This what Leffert Lefferts Esq & John Cowenhoven have appraised Amt to \u00a31412-2-0. John R. Cowenhoven Son of the Testator is willing to take and takes it at the appraisement & acknowledges himself indebted to the Estate thereon' \u2014 entire personal estate (incl. all 8 enslaved persons: Sam cp_per_236, Oldest Harry cp_per_237, Young Jack cp_per_238, Old Jack cp_per_239, Tom cp_per_057, small-boy Harry cp_per_240, Sare cp_per_241, Sare's child Tom cp_per_242) passed to son John R. Couwenhoven cp_ens_008 at appraisement value, charged against his eventual inheritance share. 14-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, Capt. Rem' (provenance confirmed 2026-04-28 per Chris's finding-aid lookup). Local copy: /Source Documents/[filing location TBD]/ErasmusHall_RemCowenhoven.pdf.",
+      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, John R.'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): the Erasmus Hall records collection's date range is 1325\u20131989 (bulk circa 1775\u20131975), and contains the records of Erasmus Hall Academy (1787\u20131896) and its successor Erasmus Hall High School at 911 Flatbush Avenue, Brooklyn. The 1778 inventory of cp_ens_007 ended up in this collection presumably via the school's connections to the Cowenhoven family \u2014 likely descended through grandson John R. Couwenhoven (cp_ens_008). NOTE: not to be confused with the Brooklyn-side John R. Couwenhoven account book at Center for Brooklyn History (cp_sou_005, BHS arms_1973_167) \u2014 different physical document at a different archive.",
+      "citation": "Inventory of the Monies, Goods & Chattles belonging to the Estate of the Late John Cowenhoven of the Township of Broockhlin, in Kings County, On the Island Nassau in the Province of New York, Deceased. Taken and Appraised by Engelbert Lott and Engelbert Lott Junr. on the First day of June, in the Year of Our Lord, One Thousand Seven Hundred and Seventy Eight. 11-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, John R.'",
       "source_quotation": "",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
+    },
+    {
+      "id": "cp_eve_208",
+      "type": "event",
+      "label": "Registration 1755",
+      "event_type": "Registration",
+      "document_date": "1755",
+      "source_quotation": "",
+      "source_sheet": "EVENT"
+    },
+    {
+      "id": "cp_sou_093",
+      "type": "source",
+      "label": "1755 Census of Slaves (Brooklyn, Capt. John Lott district)",
+      "title": "\"The List of the Negroes both male and female Who Reside In the District of Capt John Lott In Kings County in Brucklen\" \u2014 Census of Slaves, 1755",
+      "source_type": "Census",
+      "date": "1755",
+      "author": "Census of Slaves, 1755, Province of New York (Kings County returns); ed. E. B. O'Callaghan",
+      "url": "https://archive.org/details/censusofslaves1700ocal/page/857/mode/2up",
+      "archive": "1755 Census of Slaves, Kings County returns \u2014 archive.org 'censusofslaves1700ocal', District of Capt. John Lott (Brooklyn), p. 857.",
+      "citation": "\"The List of the Negroes both male and female Who Reside In the District of Capt John Lott In Kings County in Brucklen, To Every Person belonging by name as foloing\" (Census of Slaves, 1755), Kings County, NY; in O'Callaghan, ed. (archive.org censusofslaves1700ocal), p. 857.",
+      "source_quotation": "Header: \"The list of the Negroes both male and female Who Reside In the District of Capt John Lott In Kings County in brucklen To Every Person belonging by name as foloing.\" John Cowenhoven: \"4 male ... 1 female.\" (Other masters in the same district: Christopher Codwise 2m/2f; Marten Reverse 1m; Jeremias Remse[n] 2m/2f; Lammert Sudam 1m/1f; John Lott \u2014/2f.)",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
     },
@@ -1263,8 +1281,23 @@ const GRAPH = {
       "author": "John R. Couwenhoven and wife Atree; Nicholas R. Couwenhoven; John Couwenhoven (party of the other part)",
       "url": "(pending \u2014 NYU Special Collections finding aid for Erasmus Hall records MS 201)",
       "archive": "New-York Historical Society \u2014 Erasmus Hall records (Collection MS 201), archival series \"Cowenhoven, John R.\"",
-      "citation": "Indentures of Partition, John R. Couwenhoven and wife Atree, and Nicholas R. Couwenhoven (sons of Rem Couwenhoven, dec'd), with John Couwenhoven (son of John Couwenhoven of Brooklyn, dec'd). Executed 1 May 1789, acknowledged 8 July 1789, recorded 1 August 1789. Town of Brooklyn, Kings County, New York. Recorded pp.418-427 [recording-volume identifier pending verification]. Erasmus Hall records, Collection MS 201, archival series \"Cowenhoven, John R.\", New-York Historical Society.",
+      "citation": "Indentures of Partition, John R. Couwenhoven and wife Atree, and Nicholas R. Couwenhoven (sons of Rem Couwenhoven, dec'd), with John Couwenhoven (son of John Couwenhoven of Brooklyn, dec'd). Executed 1 May 1789, acknowledged 8 July 1789, recorded 1 August 1789. Town of Brooklyn, Kings County, New York. Recorded pp.418-427. Erasmus Hall records, Collection MS 201, archival series \"Cowenhoven, John R.\", New-York Historical Society.",
       "source_quotation": "\"This Indenture made this first Day of May in the Year of Our Lord 1789 Between John R. Couwenhoven & Atree his wife and Nicholas R. Couwenhoven all of the Township of Brooklyn in Kings County in the State of New York both sons of Rem Couwenhoven deceased of the one part and John Couwenhoven of the same place Son of John Couwenhoven deceased of the other part Witnesseth...\" Witnesses: Thomas Havens; Nichs. Couwenhoven. \u00a350 consideration. Acknowledged 8 July 1789 before Nicholas Couwenhoven Esq., Judge of the Inferior Court of Common Pleas, Kings County.",
+      "verification_status": "verified",
+      "source_sheet": "SOURCE"
+    },
+    {
+      "id": "cp_sou_009",
+      "type": "source",
+      "label": "Rem Cowenhoven 1782 Will + 1783 Probate Inventory",
+      "title": "Will and Probate Inventory of Rem Cowenhoven of the Township of Brooklyn, Kings County, deceased (will executed 12 January 1782; proved 10 February 1783; letters issued 1 March 1783; inventory taken 10 February 1783)",
+      "source_type": "Probate file (manuscript) \u2014 composite of (1) will text 12 Jan 1782, (2) subscribing-witness deposition 10 Jan 1783, (3) probate cover sheet from Lt. Gov. James Robertson + Surrogate Cary Ludlow + Sec'y Samuel Bayard Jr. with prerogative seal 1 Mar 1783, (4) inventory of personal estate 10 Feb 1783; 14 pages",
+      "date": "Will executed 12 Jan 1782; deponents' affidavit before Surrogate Cary Ludlow 10 Jan 1783 (4 days before Rem's death 14 Jan 1783); will proved + inventory taken 10 Feb 1783; letters of administration issued 1 March 1783 under prerogative seal of Province of New York",
+      "author": "Rem Cowenhoven (testator, signed with mark X 'with the assistance of Nicholas Cowenhoven'); James Robertson Esq. Lt. Governor of NY (issuing authority on probate cover sheet); Cary Ludlow Esq. (Surrogate, City and Province of NY); Samuel Bayard Jr. (Secretary); Nicholas Cowenhoven + Peter Lefferts + John R. Cowenhoven (subscribing witnesses to will, deponents 10 Jan 1783); John Cowenhoven [likely brother of testator] + Leffert Lefferts Esq. (inventory appraisers 10 Feb 1783)",
+      "url": "",
+      "archive": "The New York Historical (formerly New-York Historical Society). Held within the **Erasmus Hall records (Collection MS 201)**, archival series **'Cowenhoven, Capt. Rem'** Online finding aid hosted by NYU Special Collections (the cataloging/finding aid platform); physical materials reside at The New York Historical. Per project provenance research 2026-04-28 (Chris): finding-aid label 'Capt. Rem' indicates Rem held a captain's commission \u2014 historical context flag for cp_ens_006 occupation field (likely Loyalist militia given his December 1776 oath of loyalty to British Crown, but possibly pre-Revolutionary Kings County militia rank; primary commission record needed).",
+      "citation": "Will of Rem Cowenhoven of the Township of Brooklyn, Kings County, NY, executed 12 January 1782 (Rem signed by mark X, assisted by his brother Nicholas, being 'very sick in body'). Three executors named: brother Nicholas Cowenhoven, son John R. Cowenhoven, and Peter Lefferts. Subscribing-witness deposition taken before Cary Ludlow Esq., Surrogate of the City and Province of New York, 10 January 1783, four days before Rem's death of 14 January 1783. Will proved 10 February 1783. Letters of administration issued 1 March 1783 under prerogative seal of Province of New York, signed by Samuel Bayard Jr., Secretary, by authority of Lt. Gov. James Robertson Esq. Companion inventory of personal estate taken 10 February 1783 by John Cowenhoven and Leffert Lefferts Esqrs as appraisers; total goods+chattels \u00a31,412-2-0 (8 enslaved persons valued at \u00a3275, plus livestock, farm tools, household goods, books, silver); separate bonds-and-notes inventory totaling \u00a33,565-13-4, including a sub-section of bonds Rem inherited from his father John Cowenhoven Sr.'s 1778 estate distribution. Closing line of inventory (page 14): 'This what Leffert Lefferts Esq & John Cowenhoven have appraised Amt to \u00a31412-2-0. John R. Cowenhoven Son of the Testator is willing to take and takes it at the appraisement & acknowledges himself indebted to the Estate thereon' \u2014 entire personal estate (incl. all 8 enslaved persons: Sam, Oldest Harry, Young Jack, Old Jack, Tom, small-boy Harry, Sare, Sare's child Tom) passed to son John R. Couwenhoven at appraisement value, charged against his eventual inheritance share. 14-page manuscript. Held at The New York Historical, Erasmus Hall records (Collection MS 201), archival series 'Cowenhoven, Capt. Rem'",
+      "source_quotation": "",
       "verification_status": "verified",
       "source_sheet": "SOURCE"
     },
@@ -1277,7 +1310,7 @@ const GRAPH = {
       "date": "Address dated 13 Nov 1776; Proclamation dated 30 Nov 1776; publication 9 Dec 1776.",
       "author": "Richard Viscount Howe + William Howe (proclamation); Freeholders and Inhabitants of King's County (address).",
       "url": "(pending \u2014 Chris-supplied PDFs; source-of-scan database not yet identified. Title-block masthead reads 'MONDAY, December 9, 1776' and 'No. 1311.' Same publication is digitized in Readex Early American Newspapers / America's Historical Newspapers via NYPL ezproxy; may also be available in GenealogyBank, Newspapers.com, and on microfilm at NYPL, NYHS, and NY State Library.)",
-      "archive": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, printer), No. 1311, 9 December 1776, pp. 1\u20132. Local: Family Sources/Kings County Loyalty Address 1776/",
+      "archive": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, printer), No. 1311, 9 December 1776, pp. 1\u20132. Local: Family Sources/Kings County Loyalty Address 1776",
       "citation": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, NYC), No. 1311 (9 December 1776), pp. 1\u20132.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1291,7 +1324,7 @@ const GRAPH = {
       "date": "Death 1 Feb 1805; publication 2 Feb 1805.",
       "author": "Anonymous newspaper notice.",
       "url": "(pending \u2014 Chris-supplied PDF; source-of-scan database not yet identified. Same publication is digitized in Readex Early American Newspapers / America's Historical Newspapers via NYPL ezproxy; possibly also GenealogyBank, Newspapers.com, and microfilm at NYPL, NYHS.)",
-      "archive": "*New-York Commercial Advertiser*, 2 February 1805. Local: Family Sources/Major John Cowenhoven of Brooklyn 1805 Death Notice/",
+      "archive": "*New-York Commercial Advertiser*, 2 February 1805. Local: Family Sources/Major John Cowenhoven of Brooklyn 1805 Death Notice",
       "citation": "*New-York Commercial Advertiser*, 2 February 1805.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1305,7 +1338,7 @@ const GRAPH = {
       "date": "Publication 17 Feb 1779.",
       "author": "Executors: Rem Cowenhoven, Nicholas Cowenhoven, John Cowenhoven.",
       "url": "(pending \u2014 Chris-supplied PDF; source-of-scan database not yet identified. Royal Gazette is digitized in Readex Early American Newspapers / America's Historical Newspapers via NYPL ezproxy; possibly also GenealogyBank, Newspapers.com, and microfilm at NYPL, NYHS.)",
-      "archive": "*The Royal Gazette* (James Rivington, NYC), 17 February 1779. Local: Family Sources/John Cowenhoven 1779 Manhattan Brick House Sale Ad/",
+      "archive": "*The Royal Gazette* (James Rivington, NYC), 17 February 1779. Local: Family Sources/John Cowenhoven 1779 Manhattan Brick House Sale Ad",
       "citation": "*The Royal Gazette* (James Rivington, NYC), 17 February 1779.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1319,7 +1352,7 @@ const GRAPH = {
       "date": "Publication 8 May 1780.",
       "author": "John Remsen + John Cowenhoven (former partners).",
       "url": "(pending \u2014 Chris-supplied PDF; source-of-scan database not yet identified. The New-York Gazette and the Weekly Mercury (Hugh Gaine, 1768-1783) is digitized in Readex Early American Newspapers / America's Historical Newspapers via NYPL ezproxy; possibly also GenealogyBank and microfilm at NYPL, NYHS, AAS.)",
-      "archive": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, NYC), 8 May 1780. Local: Family Sources/Remsen and Cowenhoven Copartnership Dissolution 1780/",
+      "archive": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, NYC), 8 May 1780. Local: Family Sources/Remsen and Cowenhoven Copartnership Dissolution 1780",
       "citation": "*The New-York Gazette and the Weekly Mercury* (Hugh Gaine, NYC), 8 May 1780.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1331,9 +1364,9 @@ const GRAPH = {
       "title": "News Report \u2014 Kings County Freeholders' Meeting Endorsing Gov. George Clinton (1 Mar 1792)",
       "source_type": "Newspaper-published political-meeting minutes.",
       "date": "Meeting 1 Mar 1792 (Dr. James Van Beuren's house, Flatbush); publication 3 Mar 1792.",
-      "author": "Nicholas Cowenhoven (Chairman, cp_ens_001) + Jacobus L. Lefferts (Secretary).",
+      "author": "Nicholas Cowenhoven (Chairman) + Jacobus L. Lefferts (Secretary).",
       "url": "(pending \u2014 Chris-supplied PDF.)",
-      "archive": "*The Daily Advertiser* (NYC), 3 March 1792. Local: Family Sources/Judge Nicholas Cowenhoven 1792 Clinton Endorsement/",
+      "archive": "*The Daily Advertiser* (NYC), 3 March 1792. Local: Family Sources/Judge Nicholas Cowenhoven 1792 Clinton Endorsement",
       "citation": "*The Daily Advertiser* (NYC), 3 March 1792.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1347,7 +1380,7 @@ const GRAPH = {
       "date": "1989 (single-volume reprint); consolidates articles originally published in The New York Genealogical and Biographical Record across 1939\u20131978.",
       "author": "Lincoln C. Cocheu (1880\u20131960).",
       "url": "https://archive.org/details/vankouwenhovenco00coch",
-      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition/",
+      "archive": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. New York: Van Kouwenhoven-Conover Family Association, 1989 (with permission of The New York Genealogical and Biographical Society). Local: Published genealogical sources/Cocheu/Cocheu_Van Kouwenhoven-Conover Family_1989 edition",
       "citation": "Cocheu, Lincoln C. The Van Kouwenhoven-Conover Family. Single-volume reprint. New York: Van Kouwenhoven-Conover Family Association, 1989. (Reprinted from The New York Genealogical and Biographical Record, with added index and continuous pagination.) Internet Archive digitization (2019): vankouwenhovenco00coch.",
       "verification_status": "verified",
       "source_sheet": "FAMILY_SOURCES"
@@ -1475,6 +1508,13 @@ const GRAPH = {
     },
     {
       "source": "cp_ens_007",
+      "target": "cp_rec_033",
+      "relation": "enslaved_group",
+      "verification_status": "asymmetric",
+      "note": "UNNAMED.enslaver_ids/cross_ref/enslaver_name \u2194 ENSLAVER.enslaved_people_linked"
+    },
+    {
+      "source": "cp_ens_007",
       "target": "cp_eve_029",
       "relation": "documented_in",
       "verification_status": "verified",
@@ -1525,21 +1565,41 @@ const GRAPH = {
     },
     {
       "source": "cp_eve_029",
-      "target": "cp_sou_008",
-      "relation": "documented_by",
-      "verification_status": "verified"
-    },
-    {
-      "source": "cp_eve_029",
       "target": "cp_sou_079",
       "relation": "documented_by",
       "verification_status": "verified"
     },
     {
-      "source": "cp_ens_007",
-      "target": "cp_sou_009",
-      "relation": "cited_in",
+      "source": "cp_eve_029",
+      "target": "cp_sou_008",
+      "relation": "documented_by",
       "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_007",
+      "target": "cp_eve_208",
+      "relation": "documented_in",
+      "verification_status": "verified",
+      "note": "EVENT.enslaver_ids \u2194 ENSLAVER.notable_records OR related_event_ids"
+    },
+    {
+      "source": "cp_eve_208",
+      "target": "cp_pla_002",
+      "relation": "located_at",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_208",
+      "target": "cp_sou_093",
+      "relation": "documented_by",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_eve_208",
+      "target": "cp_rec_033",
+      "relation": "documents_group",
+      "verification_status": "verified",
+      "note": "EVENT.unnamed_group_id \u2192 UNNAMED.group_id (one-way structured FK)"
     },
     {
       "source": "cp_ens_007",
@@ -1556,6 +1616,12 @@ const GRAPH = {
     {
       "source": "cp_ens_007",
       "target": "cp_sou_008",
+      "relation": "cited_in",
+      "verification_status": "verified"
+    },
+    {
+      "source": "cp_ens_007",
+      "target": "cp_sou_009",
       "relation": "cited_in",
       "verification_status": "verified"
     },
@@ -1743,7 +1809,7 @@ function displayDateField(s) {
   // Year detection: 1600s-2000s, with optional ISO suffix, OR fuzzy date markers
   const hasDate = /\b(?:1[6-9]\d{2}|20\d{2})(?:-\d{2}-\d{2})?\b|\b(?:abt\.|circa|ca\.|bef\.|aft\.)\s*\d{4}/i.test(s);
   if (!hasDate) return normalizeISODate(s);   // non-date strings: still pass through, harmless if no ISO present
-  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FaG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
+  const CITATION_RE = /\b(?:per\s+|Cocheu\b|\[cp_(?:sou|famsou|eve|rec)_|NJA:|EDSM|KCo\b|NJMis|FG\b|Findagrave|FS\s+[A-Z0-9-]|WikiTree|no exact date|date not stated|date not given)/i;
   const stripped = s.replace(/\s*\(([^)]*)\)/g, (m, inner) => {
     const idx = inner.search(CITATION_RE);
     if (idx < 0) return m;             // no citation marker — keep paren as-is
@@ -3450,7 +3516,7 @@ function showSidePanel(node) {
     ['Race', node.type === 'enslaved_person' ? node.race : null],
     ['Age category', node.type === 'enslaved_person' ? node.age_category : null],
     ['Date of record', (node.type === 'enslaved_person' && node.event_date && node.event_type !== 'Birth') ? displayDateField(node.event_date) : null],
-    ['Profile on Cowenhoven.org', (node.type === 'enslaved_person' && node.profile_url && /^https?:\/\//.test(node.profile_url)) ? `<a href="${node.profile_url}" target="_blank">${node.profile_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>` : null],
+    ['Index of Individuals', (node.type === 'enslaved_person' && /^cp_per_\d+$/.test(node.id)) ? `<a href="https://data.cowenhoven.org/index-of-individuals/?persons=${encodeURIComponent(node.id)}" target="_blank" rel="noopener">View in the Index of Individuals</a>` : null],
     [`${HERO_FIRST_NAME}'s role in Event`, _heroRoleInEvent],
     ['Birth', displayDateField(node.birth_date)],
     ['Baptism', displayDateField(node.baptism_date)],
