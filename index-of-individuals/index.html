@@ -13,7 +13,7 @@
     --muted: #6B5C50;
     --rule: #d6cfc1;
     --rule-soft: #ebe5d7;
-    --accent: #914E3D;
+    --accent: #B1472F;
     --accent-soft: #f3e7d8;
     --slate-blue: #738C8F;
     --warn: #a8410e;
@@ -388,14 +388,14 @@
 
   <div class="footer-note">
     Index of Individuals · drawn from the Cowenhoven Project's Active dataset (cp_per_NNN PIDs).
-    Counts and details are current as of <span id="version-date">June 10, 2026</span>; many entries are works in progress.
+    Counts and details are current as of <span id="version-date">June 19, 2026</span>; many entries are works in progress.
     To suggest a correction or add documentation, contact the project.
   </div>
   </div><!-- /.table-scroll -->
 </div>
 
 <script>
-const META = { versionDate: "June 14, 2026" };
+const META = { versionDate: "June 19, 2026" };
 document.getElementById("version-date").textContent = META.versionDate;
 const DATA = [
   {
@@ -870,7 +870,7 @@ const DATA = [
     "id": "cp_per_137",
     "name": "Amy",
     "altNames": "",
-    "relationships": "",
+    "relationships": "Mother | cp_per_279 (Rachael)",
     "eventTypeRaw": "Sale",
     "eventType": "Sale",
     "role": "Sold person",
@@ -881,9 +881,9 @@ const DATA = [
     "ageCategoryRaw": "Adult (14-39)",
     "statusRaw": "Enslaved Person",
     "status": "Enslaved",
-    "dateRaw": "17890702",
-    "year": 1789,
-    "description": "July 2, 1789: Acknowledgement of a sale of a “Certain Neagro Woman Named Amy” to Daniel Covenhoven by Rulef Vanmater, by virtue of a bill of sale to him from Jacob Tice and Jeames Holmes, dated March 2, 1789.",
+    "dateRaw": "1793-10-08",
+    "year": 1793,
+    "description": "October 8, 1793: Rulef Vanmater sold Amy to Daniel Covenhoven of Middletown. Per Vanmater's chain-of-title certificate (signed July 2, 1798), Amy's title ran: Thomas Seabrook to James Holmes (1 May 1786); Jacob Tice & James Holmes to Rulef Vanmater (2 March 1789); Vanmater to Daniel Covenhoven (8 October 1793). On June 17, 1798 Amy sought freedom, taking her ~2-year-old daughter Rachael; Daniel Covenhoven advertised for them in The Argus (New York), July 11, 1798.",
     "occupation": "",
     "locationRaw": "Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -11424,6 +11424,57 @@ const DATA = [
     "notes": "",
     "hasProfile": true,
     "profileUrl": "https://cowenhoven.org/profiles/prince-cp_per_051/"
+  },
+  {
+    "id": "cp_per_279",
+    "name": "Rachael",
+    "altNames": "",
+    "relationships": "Mother | cp_per_137 (Amy)",
+    "eventTypeRaw": "Disappearance",
+    "eventType": "Runaway / Disappearance",
+    "role": "Freedom seeker (fled with her mother)",
+    "sex": "Female",
+    "sexRaw": "Female",
+    "age": "about 2",
+    "ageCategory": "Infant (0–2)",
+    "ageCategoryRaw": "Infant (0-2)",
+    "statusRaw": "Enslaved Person",
+    "status": "Enslaved",
+    "dateRaw": "1798-07-11",
+    "year": 1798,
+    "description": "Rachael was about two years old in the summer of 1798. On June 17, 1798 she left the household of Daniel Covenhoven of Middletown, Monmouth County, New Jersey, carried by her mother, Amy, who sought freedom for them both. Daniel Covenhoven advertised for their return in The Argus (New York) on July 11, 1798, offering a ten-dollar reward and stating Amy was supposed to be 'lurking about New-York.' Rachael had been born about 1796, into the household where her mother was held. Her fate after the advertisement is not yet documented.",
+    "occupation": "",
+    "locationRaw": "Middletown Township, Monmouth County, New Jersey",
+    "county": "Monmouth",
+    "locality": "Middletown Township",
+    "source": "\"Ten Dollars Reward,\" The Argus, or Greenleaf's New Daily Advertiser (New York, NY), July 11, 1798; dateline Middletown, County of Monmouth, New-Jersey, July 7, 1798. Runaway notice for Amy (aged ~40) and her child Rachael (~2), placed by Daniel Cowenhoven; reward contact Jacob Reauseau, No. 27 Cliff Street, New-York.",
+    "sourceLink": "",
+    "enslaverIdRaw": "Daniel Cowenhoven",
+    "enslaverIdFieldRaw": "cp_ens_072",
+    "enslaverId": "cp_ens_072",
+    "enslaverSlug": "daniel-covenhoven-of-middletown",
+    "enslavers": [
+      {
+        "pid": "cp_ens_072",
+        "name": "Daniel Covenhoven of Middletown",
+        "slug": "daniel-covenhoven-of-middletown"
+      }
+    ],
+    "properties": [],
+    "freePerson": false,
+    "employerId": "",
+    "employerName": "",
+    "employerSlug": "",
+    "identified": true,
+    "nonVKC": false,
+    "enslaverName": "Daniel Covenhoven of Middletown",
+    "enslaverNameRaw": "Daniel Covenhoven (of Middletown)",
+    "enslaverNameSource": "ENSLAVER",
+    "enslaverResidence": "Middletown Township, Monmouth County, NJ (presumed lifelong; anchored by Schenck-Couwenhoven Cemetery burial + father's lifelong Middletown residence)",
+    "confidence": "Documented match",
+    "notes": "",
+    "hasProfile": false,
+    "profileUrl": ""
   },
   {
     "id": "cp_per_103",
