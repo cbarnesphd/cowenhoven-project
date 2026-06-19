@@ -7,7 +7,6 @@ The Cowenhoven Project locates, digitizes, and shares the names, relations, and 
 This repository hosts the project's open data site, **[data.cowenhoven.org](https://data.cowenhoven.org)** — the interactive visualizations, indexes, and (over time) downloadable datasets that sit behind the main project website.
 
 **Project website:** [cowenhoven.org](https://cowenhoven.org)
-**Open data & visualizations:** [data.cowenhoven.org](https://data.cowenhoven.org)
 **Project lead:** Christopher A. Barnes ([0000-0002-9952-4378](https://orcid.org/0000-0002-9952-4378))
 **Contact:** [chris.barnes@cowenhoven.org](mailto:chris.barnes@cowenhoven.org)
 
