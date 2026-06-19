@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-06-14T20:58:22+00:00",
+    "generated_at": "2026-06-19T02:09:22+00:00",
     "source_workbook": "Cowenhoven Project Data Set.xlsx",
     "family_rows": 442,
     "enslaver_rows": 88,
@@ -16,7 +16,7 @@
       "inheritance-chain": 1
     },
     "enslavers_with_persons": 79,
-    "enslaved_named_total": 236,
+    "enslaved_named_total": 237,
     "enslaved_unnamed_total": 105,
     "branch_counts": {
       "Pre-branch": 2,
@@ -22429,8 +22429,8 @@
       "notes": "",
       "raw_related_family": "",
       "raw_related_enslavers": "",
-      "notable_records": "1789-07-02 Sale acknowledgment: purchase of \"Certain Neagro Woman Named Amy\" from Rulef Vanmater, by virtue of bill of sale to Vanmater from Jacob Tice and James Holmes dated 1789-03-02. Source: MCHA collection (photo from 70 Court Street display)",
-      "enslaved_people_linked": "(Amy)",
+      "notable_records": "Acknowledgment of sale (Rulef Vanmater, signed 2 July 1798): Daniel Covenhoven purchased Amy on 8 October 1793; documented chain of title back to 1786 (Seabrook→Holmes; Tice & Holmes→Vanmater 1789; Vanmater→Covenhoven 1793). Original in MCHA collection. / — 1798 runaway: Amy and her child Rachael sought freedom 17 June 1798 (Argus advertisement, 11 July 1798).",
+      "enslaved_people_linked": "(Amy) (Rachael)",
       "will_probate": "",
       "burial_location": "Schenck-Couwenhoven Cemetery, Holmdel, Monmouth County, NJ",
       "on_family_sheet": true,
@@ -22451,7 +22451,7 @@
       "enslaved_org_id": null,
       "church_affiliations": "Freehold-Middletown Dutch Reformed Church (1746 baptism per Cocheu 81:3 #360); Schenck-Couwenhoven Cemetery, Holmdel (1821 burial — same ground as father Elias⁵, mother Williampe, uncle Roelof⁵, aunt Sara⁵ Cocheu #262 family, Schenck Cocheu #233 family — Middletown Dutch network)",
       "evidence_status": "documented",
-      "ancestry_enslaved_count": 1,
+      "ancestry_enslaved_count": 2,
       "parent_ids": [
         "cp_ens_044",
         "cp_fam_317"
@@ -22472,8 +22472,8 @@
           "age_category": "Adult (14-39)",
           "role": "Sold person",
           "event_type": "Sale",
-          "date_of_record": "17890702",
-          "year": 1789,
+          "date_of_record": "1793-10-08",
+          "year": 1793,
           "location": "Monmouth County, New Jersey",
           "profile_url": "",
           "source": "In collection of MCHA. See photo taken of document while on display at 70 Court Street.",
@@ -22481,12 +22481,32 @@
           "linkage_kind": "primary",
           "primary_enslaver_id": null,
           "subsequent_enslaver_id": null
+        },
+        {
+          "person_id": "cp_per_279",
+          "name": "Rachael",
+          "alt_names": "",
+          "race": "",
+          "sex": "Female",
+          "age": "about 2",
+          "age_category": "Infant (0-2)",
+          "role": "Freedom seeker (fled with her mother)",
+          "event_type": "Disappearance",
+          "date_of_record": "1798-07-11",
+          "year": 1798,
+          "location": "Middletown Township, Monmouth County, New Jersey",
+          "profile_url": "",
+          "source": "\"Ten Dollars Reward,\" The Argus, or Greenleaf's New Daily Advertiser (New York, NY), July 11, 1798; dateline Middletown, County of Monmouth, New-Jersey, July 7, 1798. Runaway notice for Amy (aged ~40) and her child Rachael (~2), placed by Daniel Cowenhoven; reward contact Jacob Reauseau, No. 27 Cliff Street, New-York.",
+          "source_url": "",
+          "linkage_kind": "primary",
+          "primary_enslaver_id": null,
+          "subsequent_enslaver_id": null
         }
       ],
       "unnamed_groups": [],
-      "enslaved_named_count": 1,
+      "enslaved_named_count": 2,
       "enslaved_unnamed_count": 0,
-      "enslaved_total_count": 1
+      "enslaved_total_count": 2
     },
     {
       "id": "cp_fam_198",
