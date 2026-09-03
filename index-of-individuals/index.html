@@ -297,6 +297,12 @@
   a.pidref { color: var(--accent); text-decoration: none; }
   a.pidref:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
   code.pidref { color: var(--muted); }
+  /* 2026-09-03: relationships rendered as a list instead of raw Role|PID syntax */
+  ul.rel-list { list-style: none; margin: 0.15rem 0 0; padding: 0; }
+  ul.rel-list li { padding: 0.12rem 0; }
+  .rel-role { display: inline-block; min-width: 4.6rem; color: var(--muted);
+              font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .rel-note { color: var(--muted); font-style: italic; }
 
   @media (max-width: 800px) {
     .detail-inner { grid-template-columns: 1fr; }
@@ -398,7 +404,7 @@
   </table>
 
   <div class="footer-note">
-    Index of Individuals · drawn from the Cowenhoven Project's Active dataset (cp_per_NNN PIDs).
+    Index of Individuals · drawn from the Cowenhoven Project's PEOPLE dataset (cp_per_NNN PIDs).
     Counts and details are current as of <span id="version-date">June 10, 2026</span>; many entries are works in progress.
     To suggest a correction or add documentation, contact the project.
   </div>
@@ -479,6 +485,7 @@ const ENS_SLUG = {
 "cp_fam_243": "garret-covenhoven",
 "cp_fam_159": "samuel-van-couwenhoven"
 };
+const EXT_NAMES = {"cp_rel_001": "Boston", "cp_rel_002": "Ezekiel Forman", "cp_rel_003": "Samuel Anderson", "cp_per_259": "Lewis I. Conover"};
 document.getElementById("version-date").textContent = META.versionDate;
 const DATA = [
   {
@@ -498,7 +505,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "17830800",
     "year": 1783,
-    "description": "Age 8 (b. ~1775), given name not recorded in BLD entry (placeholder \"[son] Strong\" reflects matrilineal recording). Registered for evacuation from New York Harbor with his mother Dinah Strong (cp_per_229) aboard the ship CLINTON (Lt. Trounce, master), bound for Annapolis Royal (Nova Scotia) with intermediate / co-destination of St. John's. | | BLD manuscript (Nova Scotia Archives images, transcribed 2026-06-11): escape ≈ early 1780 at age ≈4–5; born ca. 1775 under John Covenhoven's enslavement.",
+    "description": "Age 8 (b. ~1775), given name not recorded in BLD entry (placeholder \"[son] Strong\" reflects matrilineal recording). Registered for evacuation from New York Harbor with his mother Dinah Strong (cp_per_229) aboard the ship CLINTON (Lt. Trounce, master), bound for Annapolis Royal (Nova Scotia) with intermediate / co-destination of St. John's. | BLD manuscript: escape ≈ early 1780 at age ≈4–5; born ca. 1775 under John Covenhoven's enslavement.",
     "occupation": "",
     "locationRaw": "New York, New York",
     "county": "New York (Manhattan)",
@@ -929,7 +936,7 @@ const DATA = [
     "ageCategoryRaw": "Adult (14-39)",
     "statusRaw": "Freed Person",
     "status": "Freed",
-    "dateRaw": "July 31, 1819 (signed, delivered, acknowledged); recording date pending page-49 continuation",
+    "dateRaw": "July 31, 1819 (signed, delivered, acknowledged)",
     "year": 1819,
     "description": "William Conover, acting executor of the last will and testament of Jacob Covenhoven of Middletown Township (deceased 1815, = cp_ens_032), manumitted Amey on July 31, 1819, when she was 26 years old (born ~1793). The deed was acknowledged the same day before Judge James Frost of the Monmouth County Inferior Court of Common Pleas. Witnesses to the signing: John Truax and Frances Murphy. The deed includes a notable scribal note that the word \"Conover\" was interlined between the fourth and fifth lines before delivery — a correction inserted to clarify William's surname. Amey was in Jacob Covenhoven's household at his April 1815 death (age ~22 at that time); the 1819 manumission is post-mortem, executed by the estate's acting executor.",
     "occupation": "",
@@ -1175,7 +1182,7 @@ const DATA = [
     "enslaverName": "John Cowenhoven",
     "enslaverNameRaw": "John Cowenhoven",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (: Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Georeferenced 2026-06-06/07 from the Atlantic Terminal Documentary Study address + Hyde 1916 Plate 27 + OSM centerlines; KML at Places Map/Cowenhoven_Homestead_House_Site.kml. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100). Corrected 2026-09-02.)",
+    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100).",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -1338,7 +1345,7 @@ const DATA = [
     "enslaverName": "John Cowenhoven",
     "enslaverNameRaw": "John Cowenhoven",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (: Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Georeferenced 2026-06-06/07 from the Atlantic Terminal Documentary Study address + Hyde 1916 Plate 27 + OSM centerlines; KML at Places Map/Cowenhoven_Homestead_House_Site.kml. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100). Corrected 2026-09-02.)",
+    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100).",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -2599,7 +2606,7 @@ const DATA = [
     "status": "Enslaved",
     "dateRaw": "1803",
     "year": 1803,
-    "description": "Listed in widow's-bequest sub-inventory of 1803-05-16 inventory of Col. John Covenhoven (cp_eve_025), Freehold, Monmouth Co. NJ. Appraised at $250 as \"Negro Man\" (adult-male range). One of three Negro adults bequeathed to widow Neeltje Williamson Covenhoven (cp_ens_021) per will's \"came-by-her\" provision; later manumitted by her 1812-06-03 (cp_eve_026). ⚠ MANUSCRIPT INGESTED 2026-05-05: cp_eve_026 1812 manumission certification text now anchored to Monmouth Manumission Book p. 151 (recorded 1813-03-26). Eleanor Covenhoven of Freehold Township certified Cezar before two Overseers (Peter Bowne + one more) and two Justices (John Hyll + John Quay).",
+    "description": "Listed in widow's-bequest sub-inventory of 1803-05-16 inventory of Col. John Covenhoven (cp_eve_025), Freehold, Monmouth Co. NJ. Appraised at $250 as \"Negro Man\" (adult-male range). One of three Negro adults bequeathed to widow Neeltje Williamson Covenhoven (cp_ens_021) per will's \"came-by-her\" provision; later manumitted by her 1812-06-03 (cp_eve_026). Eleanor Covenhoven of Freehold Township certified Cezar before two Overseers (Peter Bowne + one more) and two Justices (John Hyll + John Quay).",
     "occupation": "",
     "locationRaw": "Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -2923,7 +2930,7 @@ const DATA = [
     "county": "Monmouth",
     "locality": "",
     "source": "NJ Supreme Court Case 34539 (1813-1814)",
-    "sourceLink": "(local PDF — no public URL)",
+    "sourceLink": "",
     "sourceId": "cp_sou_037",
     "birthDate": "",
     "enslaverIdRaw": "Garret Covenhoven (of Monmouth County, NJ — township ambiguous)",
@@ -2968,9 +2975,9 @@ const DATA = [
     "ageCategoryRaw": "Adult (14-39)",
     "statusRaw": "Freed Person",
     "status": "Freed",
-    "dateRaw": "July 29, 1826 (signed, certified, and presumably acknowledged same day; recording date pending — bottom of scan cut off)",
+    "dateRaw": "July 29, 1826",
     "year": 1826,
-    "description": "Ann F. Conover of Upper Freehold Township manumitted Cloe Jeffers on July 29, 1826, when Cloe was about 30 years old (born ~1796). The deed was signed and certified the same day. Witnesses to the signing: David Cloke and Garlick Hendrickson — Hendrickson played a dual role as both private witness and one of the two certifying Overseers of the Poor of Upper Freehold (alongside Wm L. Earl), with Justices of the Peace Wm T. Emery and one other (cut off in scan) attesting that Cloe was sound of mind, not bodily incapacitated, and within the 21-40 statutory age window. ⚠ This is the project's first manumission ingested from Upper Freehold Township — a separate township from Freehold Township (cp_pla_024).",
+    "description": "Ann F. Conover of Upper Freehold Township manumitted Cloe Jeffers on July 29, 1826, when Cloe was about 30 years old (born ~1796). The deed was signed and certified the same day. Witnesses to the signing: David Cloke and Garlick Hendrickson — Hendrickson played a dual role as both private witness and one of the two certifying Overseers of the Poor of Upper Freehold (alongside Wm L. Earl), with Justices of the Peace Wm T. Emery and one other attesting that Cloe was sound of mind, not bodily incapacitated, and within the 21-40 statutory age window. ⚠ This is the project's first manumission ingested from Upper Freehold Township — a separate township from Freehold Township (cp_pla_024).",
     "occupation": "",
     "locationRaw": "Upper Freehold Township, Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -3182,7 +3189,7 @@ const DATA = [
     "ageCategoryRaw": "Adult (14-39)",
     "statusRaw": "Freed Person",
     "status": "Freed",
-    "dateRaw": "July 25, 1825 (signed); July 26, 1825 (acknowledged before Justice John Patterson); July 28, 1825 (statutory certification by 2 Overseers + 2 Justices); recording date pending p181 continuation",
+    "dateRaw": "July 25, 1825 (signed); July 26, 1825 (acknowledged before Justice John Patterson); July 28, 1825 (statutory certification by 2 Overseers + 2 Justices)",
     "year": 1825,
     "description": "Jacob Covenhoven of Freehold Township (cp_ens_037, Freehold Shoemaker per the 1829 Catharine manumission) manumitted Cuffee with the full pre-1820 statutory wrapper. The deed was signed July 25, 1825; acknowledged before Justice John Patterson July 26; and certified July 28 by two Overseers of the Poor of Freehold (John E. Golden, John M. Heyer) and two Justices of the Peace of Monmouth (John Patterson, James G. Hulett) attesting that Cuffee was sound of mind, not bodily incapacitated, and within the 21-40 statutory age window. Witnesses to the signing: John Patterson and Hendrick Conover. Hendrick Conover later appears as the enslaver-of-record on cp_per_066 Silas Higgins (1834 manumission), making this 1825 witnessing a kin-network signal between the Freehold Jacob and the Hendrick Conover household.",
     "occupation": "",
@@ -3879,7 +3886,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "17830800",
     "year": 1783,
-    "description": "Age 20 (b. ~1763); \"stout wench.\" Registered for evacuation from New York Harbor with her 8-year-old son (cp_per_230) aboard the ship CLINTON (Lt. Trounce, master), bound for Annapolis Royal (Nova Scotia) with intermediate / co-destination of St. John's. | | BLD manuscript (Nova Scotia Archives images, transcribed 2026-06-11): register records 3½ years within the British lines → escape ≈ early 1780 (age ≈16; son ≈4–5). Manuscript spellings: \"John Covenhooven,\" \"Acgauckonack.\" Same-page Acquackanonk cluster (Sip[? reading uncertain]/Vanryper/Lashley rows at 4/5/6 years — separate escapes, shared sailing); two women in the same departing group entered \"Says she was born free\" (one surnamed Holmes — allied-surname watchlist lead, unasserted).",
+    "description": "Age 20 (b. ~1763); \"stout wench.\" Registered for evacuation from New York Harbor with her 8-year-old son (cp_per_230) aboard the ship CLINTON (Lt. Trounce, master), bound for Annapolis Royal (Nova Scotia) with intermediate / co-destination of St. John's. | BLD manuscript: register records 3½ years within the British lines → escape ≈ early 1780 (age ≈16; son ≈4–5). Manuscript spellings: \"John Covenhooven,\" \"Acgauckonack.\" Same-page Acquackanonk cluster (Sip[? reading uncertain]/Vanryper/Lashley rows at 4/5/6 years — separate escapes, shared sailing); two women in the same departing group entered \"Says she was born free\" (one surnamed Holmes — allied-surname watchlist lead, unasserted).",
     "occupation": "",
     "locationRaw": "New York, New York",
     "county": "New York (Manhattan)",
@@ -4015,7 +4022,7 @@ const DATA = [
     "enslaverName": "William P. Conover",
     "enslaverNameRaw": "William P. (Covenhoven) Conover",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William;... owned the mill property, which he left to his son, Samuel')",
+    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William … owned the mill property, which he left to his son, Samuel')",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -5568,7 +5575,7 @@ const DATA = [
     "enslaverName": "John Cowenhoven",
     "enslaverNameRaw": "John Cowenhoven",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (: Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Georeferenced 2026-06-06/07 from the Atlantic Terminal Documentary Study address + Hyde 1916 Plate 27 + OSM centerlines; KML at Places Map/Cowenhoven_Homestead_House_Site.kml. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100). Corrected 2026-09-02.)",
+    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100).",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -5969,7 +5976,7 @@ const DATA = [
     "status": "Enslaved",
     "dateRaw": "1806-09-18",
     "year": 1806,
-    "description": "Hagar (also recorded 'Hager'), an enslaved woman held by Garret Covenhoven Sr. of Freehold Township, Monmouth County. Mother of two children registered in the Monmouth County slave-birth register under New Jersey's 1804 Gradual Abolition Act: Rose (b. 1806-09-18, cp_per_160; registered 1807) and Abraham (b. 1809-05-15, cp_per_173; registered 1809-10-10). Two registrations of one mother — consolidated 2026-05-31 from former cp_per_091 (the 'Hager' registration of Abraham's birth).",
+    "description": "Hagar (also recorded 'Hager'), an enslaved woman held by Garret Covenhoven Sr. of Freehold Township, Monmouth County. Mother of two children registered in the Monmouth County slave-birth register under New Jersey's 1804 Gradual Abolition Act: Rose (b. 1806-09-18, cp_per_160; registered 1807) and Abraham (b. 1809-05-15, cp_per_173; registered 1809-10-10).",
     "occupation": "",
     "locationRaw": "Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -6627,7 +6634,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "17830800",
     "year": 1783,
-    "description": "Age 24 (b. ~1759); \"stout healthy negro.\" Registered for evacuation from New York Harbor aboard the ship AURORA, bound for St. John's (likely Saint John, New Brunswick). Mr. Buskirk also referenced in BLD entry (role TBD). | | BLD manuscript (Nova Scotia Archives images, transcribed 2026-06-11): remarks read \"Came in 2½ Years ago from Mr. Cowenhoven in Jersey\" → escape ≈ winter–spring 1781 (age ≈21). Mr. Buskirk = claimant-column entry (resolves 'role TBD'). Manuscript renders his name \"Harry Cowenhoven.\"",
+    "description": "Age 24 (b. ~1759); \"stout healthy negro.\" Registered for evacuation from New York Harbor aboard the ship AURORA, bound for St. John's (likely Saint John, New Brunswick). Mr. Buskirk also referenced in BLD entry. | BLD manuscript: remarks read \"Came in 2½ Years ago from Mr. Cowenhoven in Jersey\" → escape ≈ winter–spring 1781 (age ≈21). Mr. Buskirk = claimant-column entry. Manuscript renders his name \"Harry Cowenhoven.\"",
     "occupation": "",
     "locationRaw": "New York, New York",
     "county": "New York (Manhattan)",
@@ -7161,7 +7168,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "17830922",
     "year": 1783,
-    "description": "Age 60 (b. ~1723); \"stout fellow.\" Registered for evacuation from New York Harbor aboard the ship LORD TOWNSHEND (Captain James Hog), bound for Annapolis Royal, Nova Scotia. Major Tympany conducted or witnessed the registration. | | BLD manuscript (Nova Scotia Archives images, transcribed 2026-06-11): remarks read \"[Formerly Slave] to Saml. Cowenhoven Hackinsack New Jersey, left him four years [ago]\" → escape ≈ 1779 (age ≈56), Samuel then still living (d. by probate 1783-06-27).",
+    "description": "Age 60 (b. ~1723); \"stout fellow.\" Registered for evacuation from New York Harbor aboard the ship LORD TOWNSHEND (Captain James Hog), bound for Annapolis Royal, Nova Scotia. Major Tympany conducted or witnessed the registration. | BLD manuscript: remarks read \"[Formerly Slave] to Saml. Cowenhoven Hackinsack New Jersey, left him four years [ago]\" → escape ≈ 1779 (age ≈56), Samuel then still living (d. by probate 1783-06-27).",
     "occupation": "",
     "locationRaw": "New York, New York",
     "county": "New York (Manhattan)",
@@ -7823,7 +7830,7 @@ const DATA = [
     "county": "Monmouth",
     "locality": "Freehold Township",
     "source": "1802 Intestate Probate Inventory of John G. Covenhoven of Monmouth County",
-    "sourceLink": "(pending — Ancestry URL TBD; Monmouth Surrogate File 8480 M, p. 392)",
+    "sourceLink": "",
     "sourceId": "cp_sou_088",
     "birthDate": "(unknown — not stated in source)",
     "enslaverIdRaw": "John G. Covenhoven",
@@ -8008,7 +8015,7 @@ const DATA = [
     "enslaverName": "William P. Conover",
     "enslaverNameRaw": "William P. (Covenhoven) Conover",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William;... owned the mill property, which he left to his son, Samuel')",
+    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William … owned the mill property, which he left to his son, Samuel')",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -10260,7 +10267,7 @@ const DATA = [
     "enslaverName": "John Cowenhoven",
     "enslaverNameRaw": "John Cowenhoven",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (: Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Georeferenced 2026-06-06/07 from the Atlantic Terminal Documentary Study address + Hyde 1916 Plate 27 + OSM centerlines; KML at Places Map/Cowenhoven_Homestead_House_Site.kml. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100). Corrected 2026-09-02.)",
+    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100).",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": true,
@@ -10987,7 +10994,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "March 13, 1826",
     "year": 1826,
-    "description": "Garret Covenhoven of the Township of Upper Freehold manumits Nead, age 30 or thereabouts, on March 13, 1826, before Justice of the Peace Gilbert Hendrickson; deed witnessed by Peter H. Wikoff. Same Garret Covenhoven of Upper Freehold who manumitted George (cp_per_060) in 1817 — anchored to cp_ens_040 (inline-).",
+    "description": "Garret Covenhoven of the Township of Upper Freehold manumits Nead, age 30 or thereabouts, on March 13, 1826, before Justice of the Peace Gilbert Hendrickson; deed witnessed by Peter H. Wikoff. Same Garret Covenhoven of Upper Freehold who manumitted George (cp_per_060) in 1817 — anchored to cp_ens_040.",
     "occupation": "",
     "locationRaw": "Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -11452,7 +11459,7 @@ const DATA = [
     "enslaverName": "William P. Conover",
     "enslaverNameRaw": "William P. (Covenhoven) Conover",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William;... owned the mill property, which he left to his son, Samuel')",
+    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William … owned the mill property, which he left to his son, Samuel')",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -11671,7 +11678,7 @@ const DATA = [
     "enslaverName": "William P. Conover",
     "enslaverNameRaw": "William P. (Covenhoven) Conover",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William;... owned the mill property, which he left to his son, Samuel')",
+    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William … owned the mill property, which he left to his son, Samuel')",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -12150,7 +12157,7 @@ const DATA = [
     "enslaverName": "William P. Conover",
     "enslaverNameRaw": "William P. (Covenhoven) Conover",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William;... owned the mill property, which he left to his son, Samuel')",
+    "enslaverResidence": "Englishtown, Monmouth Co. NJ — farmer owning considerable property + mill property (Cocheu 81:3 #341 primary; 'bought the Gib Hendrickson farms for his sons Richard and William … owned the mill property, which he left to his son, Samuel')",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -12226,7 +12233,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "1815-02-25",
     "year": 1815,
-    "description": "Rachel was held in slavery by Eleanor Conover of the Village & Township of Freehold (cp_ens_021 Neeltje Williamson Covenhoven, who used both English-form spellings 'Eleanor Conover' and 'Eleanor Covenhoven' on her household's filings). She gave birth to two sons in close succession: James Henry on February 25, 1815 (cp_per_209, cp_eve_041) and Ephraim on August 28, 1816 (cp_per_210, cp_eve_065). Both births were registered with Monmouth County under New Jersey's 1804 Act for the Gradual Abolition of Slavery on a single multi-child certificate filed by Eleanor. Six years after Ephraim's birth, on August 26, 1822, Eleanor Covenhoven manumitted Rachel under the full pre-1820 statutory protocol (cp_eve_071, Monmouth Manumission Book pp. 88-89): five days earlier on August 21, Rachel had been certified before Overseers of the Poor of Freehold (Francis M. Deklyn, Lewis Gordon) and Justices of the Peace of Monmouth (Wm. J. Bowne, William Lloyd) as sound in mind, not bodily incapacitated, and within the 21-40 statutory age window — she was 'about twenty four years' old, born ~1798. The deed was acknowledged the same day before Judge William J. Bowne of the Inferior Court of Common Pleas and recorded September 6, 1822 by Wm. Ten Eyck Clk. CONSOLIDATION: cp_per_061 (1822 manumission row) retired into cp_per_208 (BBB mother row) on 2026-05-05 — single Rachel, three events.",
+    "description": "Rachel was held in slavery by Eleanor Conover of the Village & Township of Freehold (cp_ens_021 Neeltje Williamson Covenhoven, who used both English-form spellings 'Eleanor Conover' and 'Eleanor Covenhoven' on her household's filings). She gave birth to two sons in close succession: James Henry on February 25, 1815 (cp_per_209, cp_eve_041) and Ephraim on August 28, 1816 (cp_per_210, cp_eve_065). Both births were registered with Monmouth County under New Jersey's 1804 Act for the Gradual Abolition of Slavery on a single multi-child certificate filed by Eleanor. Six years after Ephraim's birth, on August 26, 1822, Eleanor Covenhoven manumitted Rachel under the full pre-1820 statutory protocol (cp_eve_071, Monmouth Manumission Book pp. 88-89): five days earlier on August 21, Rachel had been certified before Overseers of the Poor of Freehold (Francis M. Deklyn, Lewis Gordon) and Justices of the Peace of Monmouth (Wm. J. Bowne, William Lloyd) as sound in mind, not bodily incapacitated, and within the 21-40 statutory age window — she was 'about twenty four years' old, born ~1798. The deed was acknowledged the same day before Judge William J. Bowne of the Inferior Court of Common Pleas and recorded September 6, 1822 by Wm. Ten Eyck Clk.",
     "occupation": "",
     "locationRaw": "Monmouth County, New Jersey",
     "county": "Monmouth",
@@ -12877,7 +12884,7 @@ const DATA = [
     "county": "Monmouth",
     "locality": "Freehold Township",
     "source": "1802 Intestate Probate Inventory of John G. Covenhoven of Monmouth County",
-    "sourceLink": "(pending)",
+    "sourceLink": "",
     "sourceId": "cp_sou_088",
     "birthDate": "(unknown — not stated in source)",
     "enslaverIdRaw": "John G. Covenhoven",
@@ -14534,7 +14541,7 @@ const DATA = [
     "enslaverName": "John Cowenhoven",
     "enslaverNameRaw": "John Cowenhoven",
     "enslaverNameSource": "ENSLAVER",
-    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (: Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Georeferenced 2026-06-06/07 from the Atlantic Terminal Documentary Study address + Hyde 1916 Plate 27 + OSM centerlines; KML at Places Map/Cowenhoven_Homestead_House_Site.kml. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100). Corrected 2026-09-02.)",
+    "enslaverResidence": "Brooklyn Homestead, Town of Brooklyn, Kings County, New York (Bedford = neighborhood; Brooklyn Homestead = property name. Property inherited from grandfather Jan Gerretse van Couwenhoven; the Homestead at its greatest extent stretched from Wallabout Bay south to Atlantic Avenue. Main house site: former 195 Fort Greene Place, west side, ~160 ft north of Atlantic Avenue (Block 2001 Lot 3), lat 40.68404 lng -73.97604 — today the open plaza at the south end of Fort Greene Place beside Atlantic Terminal. Corroborated by the 1775 will's home-lot bounds: 45 acres bounded S by the Kings High road from New York to Bedford, N by the Arme Landt, E by land formerly of Johanes De Bevois, W by the highway by the house to the Arme Landt (cp_sou_100).",
     "confidence": "Documented match",
     "notes": "",
     "hasProfile": false,
@@ -14948,7 +14955,7 @@ const DATA = [
     "status": "Freed",
     "dateRaw": "17830918",
     "year": 1783,
-    "description": "likely boy | | BLD manuscript (Nova Scotia Archives images, transcribed 2026-06-11): remarks read \"Formerly Slave to Peter Cowoenhoven Middletown new Jersey. capured by Col. Hyde's Detachment in 1779. & afterwards purchased by Captain Cogg[le]\" (line continues past crop; tail wanted). Captured ≈ age 15 (1779); purchaser Captain Coggle, 1st Battalion New Jersey Volunteers = his claimant-column entry at registration. Embarked free per the registration (status rule, Chris 2026-06-11). Events: cp_eve_188 (Enslavement — captured, 1779) + cp_eve_189 (Registration, 1783-09-18).",
+    "description": "likely boy | BLD manuscript: remarks read \"Formerly Slave to Peter Cowoenhoven Middletown new Jersey. capured by Col. Hyde's Detachment in 1779. & afterwards purchased by Captain Cogg[le]\". Captured ≈ age 15 (1779); purchaser Captain Coggle, 1st Battalion New Jersey Volunteers = his claimant-column entry at registration. Embarked free per the registration. Events: cp_eve_188 (Enslavement — captured, 1779) + cp_eve_189 (Registration, 1783-09-18).",
     "occupation": "",
     "locationRaw": "New York, New York",
     "county": "New York (Manhattan)",
@@ -15681,13 +15688,53 @@ function rowHTML(p) {
 // back into this index; cp_ens_/cp_fam_ link to their Enslavers-page card when carded.
 // Everything else is an unlinked chip (no public destination until the Stage-4 filters).
 const PID_RE = /\b(cp_(?:per|ens|fam|sou|eve|pla)_\d+)\b/g;   // reader-facing prefixes only
-function pidLink(escaped) {
-  return escaped.replace(PID_RE, m => {
-    if (m.startsWith("cp_per_")) return `<a class="pidref" href="?person=${m}">${m}</a>`;
-    const slug = ENS_SLUG[m];
-    if (slug) return `<a class="pidref" href="https://cowenhoven.org/enslavers/#${slug}">${m}</a>`;
-    return `<code class="pidref">${m}</code>`;
+const INDEX_IDS = new Set(DATA.map(p => p.id));
+const NAME_OF = Object.assign({}, EXT_NAMES);
+DATA.forEach(p => { NAME_OF[p.id] = p.name; });
+
+function pidChip(pid) {
+  // Only deep-link a cp_per_ that is actually IN this index — cp_per_259 and other
+  // out-of-scope people have no row, so a ?person= link would return nothing.
+  if (pid.startsWith("cp_per_")) {
+    return INDEX_IDS.has(pid)
+      ? `<a class="pidref" href="?person=${pid}">${pid}</a>`
+      : `<code class="pidref">${pid}</code>`;
+  }
+  const slug = ENS_SLUG[pid];
+  return slug ? `<a class="pidref" href="https://cowenhoven.org/enslavers/#${slug}">${pid}</a>`
+              : `<code class="pidref">${pid}</code>`;
+}
+function pidLink(escaped) { return escaped.replace(PID_RE, m => pidChip(m)); }
+
+// Split on ";" only at paren depth 0 — trailing notes contain their own semicolons.
+function splitTopLevel(s) {
+  const out = []; let depth = 0, cur = "";
+  for (const ch of s) {
+    if (ch === "(") depth++;
+    else if (ch === ")") depth--;
+    if (ch === ";" && depth === 0) { out.push(cur); cur = ""; } else cur += ch;
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+// 2026-09-03: `relationships` is stored as "Role|cp_per_NNN" pairs. It used to print
+// that raw syntax to readers on 102 records. Resolve each PID to a name and list it.
+function relationshipsHTML(p) {
+  const segs = splitTopLevel(p.relationships).map(x => x.trim()).filter(Boolean);
+  const items = segs.map(seg => {
+    const m = seg.match(/^([A-Za-z /]+?)\s*\|\s*(cp_[a-z]+_\d+)\s*(.*)$/);
+    if (!m) return `<li>${pidLink(escapeHTML(seg))}</li>`;
+    const role = m[1].trim(), pid = m[2], name = NAME_OF[pid] || "";
+    let tail = m[3].trim();
+    if (name && tail) {
+      tail = tail.replace(new RegExp("^\\(\\s*" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[;,]?\\s*", "i"), "(");
+    }
+    if (tail === "()" || tail === "(" || tail === ")") tail = "";
+    const who = name ? escapeHTML(name) : '<span class="no-data">name not recorded</span>';
+    return `<li><span class="rel-role">${escapeHTML(role)}</span> ${who} ${pidChip(pid)}`
+         + (tail ? ` <span class="rel-note">${escapeHTML(tail)}</span>` : "") + `</li>`;
   });
+  return `<ul class="rel-list">${items.join("")}</ul>`;
 }
 
 function detailHTML(p) {
@@ -15697,7 +15744,7 @@ function detailHTML(p) {
     if (opts.pids) body = pidLink(body);   // 2026-09-03: escape first, then linkify
     return `<div class="blk${opts.full ? ' full' : ''}"><h4>${label}</h4>${body}</div>`;
   };
-  const sourceLink = p.sourceLink
+  const sourceLink = /^https?:\/\//i.test(p.sourceLink || '')
     ? `<a href="${escapeHTML(p.sourceLink)}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.source || 'source link')}</a>`
     : escapeHTML(p.source || '');
 
@@ -15723,7 +15770,7 @@ function detailHTML(p) {
           ${fld('Age recorded', p.age)}
           ${fld('Age category', p.ageCategoryRaw || p.ageCategory)}
           ${fld('Person status', p.statusRaw || p.status)}
-          ${fld('Relationships', p.relationships, {full: true, pids: true})}
+          ${fld('Relationships', p.relationships ? relationshipsHTML(p) : '', {full: true, html: true})}
           ${fld('Occupation', p.occupation)}
           ${(p.freePerson && !p.enslaverName)
             ? ''
