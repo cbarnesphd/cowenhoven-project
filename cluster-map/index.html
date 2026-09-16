@@ -1973,9 +1973,8 @@ const CLUSTERS = {
 
 const map = L.map('map').setView([40.65, -73.95], 9);
 
-const cartoTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+const cartoTiles = L.tileLayer('https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=cb1_3mmp_1_4d58c6db6a9878dc6b2dce98', {
   maxZoom: 18,
-  subdomains: 'abcd',
   attribution: 'Tiles &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a> &middot; Data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
 });
 let fallbackTried = false;
